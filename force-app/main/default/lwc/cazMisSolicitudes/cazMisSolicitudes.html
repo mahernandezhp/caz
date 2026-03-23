@@ -1,0 +1,83 @@
+<template>
+    <div class="caz-mis-solicitudes">
+        <div class="slds-card">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__figure slds-line-height_reset">
+                        <lightning-icon icon-name="standard:case" size="small"></lightning-icon>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 class="slds-card__header-title">Mis Solicitudes de Devolución</h2>
+                    </div>
+                </header>
+                <div class="slds-no-flex">
+                    <lightning-button
+                        variant="brand"
+                        label="Nueva Solicitud"
+                        onclick={handleNuevaSolicitud}>
+                    </lightning-button>
+                </div>
+            </div>
+
+            <div class="slds-card__body slds-card__body_inner">
+                <template if:true={isLoading}>
+                    <lightning-spinner alternative-text="Cargando..." size="medium"></lightning-spinner>
+                </template>
+
+                <template if:false={isLoading}>
+                    <template if:true={hasSolicitudes}>
+                        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+                            <thead>
+                                <tr class="slds-line-height_reset">
+                                    <th scope="col"><div class="slds-truncate">No. Caso</div></th>
+                                    <th scope="col"><div class="slds-truncate">Asunto</div></th>
+                                    <th scope="col"><div class="slds-truncate">Estatus</div></th>
+                                    <th scope="col"><div class="slds-truncate">Importe</div></th>
+                                    <th scope="col"><div class="slds-truncate">Fecha</div></th>
+                                    <th scope="col"><div class="slds-truncate">Acciones</div></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each={solicitudes} for:item="caso">
+                                    <tr key={caso.Id}>
+                                        <td><div class="slds-truncate">{caso.CaseNumber}</div></td>
+                                        <td><div class="slds-truncate">{caso.Subject}</div></td>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <lightning-badge label={caso.Status} class={caso.statusClass}></lightning-badge>
+                                            </div>
+                                        </td>
+                                        <td><div class="slds-truncate">{caso.importeFormatted}</div></td>
+                                        <td><div class="slds-truncate">{caso.fechaFormatted}</div></td>
+                                        <td>
+                                            <lightning-button-icon
+                                                icon-name="utility:preview"
+                                                variant="border-filled"
+                                                alternative-text="Ver detalle"
+                                                data-id={caso.Id}
+                                                onclick={handleVerDetalle}>
+                                            </lightning-button-icon>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </template>
+
+                    <template if:false={hasSolicitudes}>
+                        <div class="slds-illustration slds-illustration_small slds-p-around_large slds-text-align_center">
+                            <lightning-icon icon-name="custom:custom18" size="large" class="slds-m-bottom_medium"></lightning-icon>
+                            <p class="slds-text-body_regular">No tienes solicitudes de devolución registradas.</p>
+                            <lightning-button
+                                variant="brand"
+                                label="Crear primera solicitud"
+                                onclick={handleNuevaSolicitud}
+                                class="slds-m-top_medium">
+                            </lightning-button>
+                        </div>
+                    </template>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

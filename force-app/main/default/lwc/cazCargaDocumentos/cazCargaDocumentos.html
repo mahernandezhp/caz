@@ -1,0 +1,55 @@
+<template>
+    <div class="caz-carga-container">
+        <div class="slds-card slds-p-around_medium">
+            <h3 class="slds-text-heading_small slds-m-bottom_medium">Documentos Requeridos</h3>
+
+            <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Cargando..." size="small"></lightning-spinner>
+            </template>
+
+            <template if:true={errorMessage}>
+                <div class="slds-notify slds-notify_alert slds-alert_error slds-m-bottom_small" role="alert">
+                    <p>{errorMessage}</p>
+                </div>
+            </template>
+
+            <template if:true={documentosRequeridos}>
+                <div class="slds-m-bottom_medium">
+                    <ul class="slds-list_dotted">
+                        <template for:each={documentosRequeridos} for:item="doc">
+                            <li key={doc.label} class="slds-item">
+                                <lightning-icon
+                                    icon-name={doc.iconName}
+                                    size="x-small"
+                                    class="slds-m-right_x-small">
+                                </lightning-icon>
+                                {doc.label}
+                                <template if:true={doc.obligatorio}>
+                                    <abbr class="slds-required" title="requerido"> *</abbr>
+                                </template>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </template>
+
+            <lightning-file-upload
+                label="Adjuntar Documentos"
+                name="cazDocumentos"
+                accept={acceptedFormats}
+                record-id={recordId}
+                onuploadfinished={handleUploadFinished}
+                multiple>
+            </lightning-file-upload>
+
+            <template if:true={uploadedFiles.length}>
+                <div class="slds-m-top_medium">
+                    <p class="slds-text-body_small slds-text-color_success">
+                        <lightning-icon icon-name="action:approval" size="x-small"></lightning-icon>
+                        {uploadedFiles.length} archivo(s) cargado(s) exitosamente.
+                    </p>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>
