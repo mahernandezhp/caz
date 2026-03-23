@@ -6,7 +6,7 @@
     <name>Tesorería</name>
     <queueMembers>
         <publicGroups>
-            <publicGroup>AllInternalUsers</publicGroup>
+            <publicGroup>CAZ_Tesoreria</publicGroup>
         </publicGroups>
     </queueMembers>
     <queueSobject>

@@ -6,7 +6,7 @@
     <name>Crédito y Cobranza</name>
     <queueMembers>
         <publicGroups>
-            <publicGroup>AllInternalUsers</publicGroup>
+            <publicGroup>CAZ_CreditoCobranza</publicGroup>
         </publicGroups>
     </queueMembers>
     <queueSobject>
