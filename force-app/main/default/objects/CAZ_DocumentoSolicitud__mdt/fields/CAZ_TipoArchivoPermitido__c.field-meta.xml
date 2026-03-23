@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_TipoArchivoPermitido__c</fullName>
+    <label>Tipo de Archivo Permitido</label>
+    <type>Text</type>
+    <length>100</length>
+    <unique>false</unique>
+</CustomField>

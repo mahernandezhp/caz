@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>New</fullName>
+        <default>true</default>
+        <label>New</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Working</fullName>
+        <default>false</default>
+        <label>Working</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Escalated</fullName>
+        <default>false</default>
+        <label>Escalated</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed</fullName>
+        <default>false</default>
+        <label>Closed</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Borrador</fullName>
+        <default>false</default>
+        <label>Borrador</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Por atender</fullName>
+        <default>false</default>
+        <label>Por atender</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Vencido</fullName>
+        <default>false</default>
+        <label>Vencido</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>En Proceso</fullName>
+        <default>false</default>
+        <label>En Proceso</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Completado</fullName>
+        <default>false</default>
+        <label>Completado</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Rechazado</fullName>
+        <default>false</default>
+        <label>Rechazado</label>
+        <closed>true</closed>
+    </standardValue>
+</StandardValueSet>
