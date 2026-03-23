@@ -1,14 +1,23 @@
-Estimado distribuidor,
+Estimado(a) {!Case.Contact.Name},
 
-Hemos recibido tu solicitud de devolución con el número de caso {!Case.CaseNumber}.
+Le informamos que hemos recibido su solicitud de devolución de dinero, la cual ya se encuentra en proceso de atención por el área de Crédito y Cobranza.
 
-Detalles de tu solicitud:
-- Motivo: {!Case.CAZ_MotivoDevolucion__c}
-- Importe: {!Case.CAZ_ImporteDevolucion__c}
-- Fecha de solicitud: {!Case.CreatedDate}
+Detalles de la solicitud:
 
-Tu solicitud está siendo revisada por el equipo de Crédito y Cobranza.
-Te notificaremos sobre el avance del proceso.
+• Número de solicitud: {!Case.CaseNumber}
+• Monto solicitado: ${!Case.CAZ_ImporteDevolucion__c} MXN
+• Fecha de recepción: {!Case.CreatedDate}
+• Motivo: {!Case.CAZ_MotivoDevolucion__c}
+
+Nuestro equipo está revisando la información y documentación correspondiente para proceder conforme a las políticas de la Cemento Cruz Azul.
+
+Una vez finalizado el proceso, le notificaremos la resolución y le compartiremos el comprobante de pago.
+
+Agradecemos su paciencia y confianza en nosotros.
 
 Atentamente,
-Cruz Azul
+
+Gerencia de Crédito y Cobranza
+CDMX
+correo@cruzazul.com.mx
+Tel. 55-5424-9000 Ext. 1234

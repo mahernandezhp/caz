@@ -4,6 +4,6 @@
     <encodingKey>UTF-8</encodingKey>
     <name>CAZ - Devolución Completada</name>
     <style>none</style>
-    <subject>Cruz Azul - Tu devolución ha sido procesada exitosamente ({!Case.CaseNumber})</subject>
+    <subject>Confirmación de devolución exitosa</subject>
     <type>text</type>
 </EmailTemplate>

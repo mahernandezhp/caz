@@ -1,14 +1,22 @@
-Estimado distribuidor,
+Estimado(a) {!Case.Contact.Name},
 
-Nos complace informarte que tu solicitud de devolución con el número de caso {!Case.CaseNumber} ha sido procesada exitosamente.
+Le informamos que la devolución de dinero solicitada ha sido procesada exitosamente por el área de Crédito y Cobranza.
 
 Detalles de la devolución:
-- Importe devuelto: {!Case.CAZ_ImporteDevolucion__c}
-- Cuenta bancaria destino: {!Case.CAZ_NumeroCuentaBancaria__c}
-- Número de provisión JDE: {!Case.CAZ_NumeroProvisionJDE__c}
 
-El depósito ha sido realizado. Si no lo recibes en 24-48 horas hábiles,
-por favor comunícate con tu ejecutivo de cuenta.
+• Número de solicitud: {!Case.CaseNumber}
+• Monto devuelto: ${!Case.CAZ_ImporteDevolucion__c} MXN
+• Fecha de devolución: {!Case.CAZ_FechaEnvioTesoreria__c}
+• Motivo de la devolución: {!Case.CAZ_MotivoDevolucion__c}
+• Referencia bancaria: {!Case.CAZ_NumeroProvisionJDE__c}
+
+El depósito se realizó a la cuenta previamente indicada. Le recomendamos verificar la acreditación del monto en su estado de cuenta.
+
+Agradecemos su confianza y quedamos atentos a cualquier duda o aclaración adicional.
 
 Atentamente,
-Cruz Azul
+
+Gerencia de Crédito y Cobranza
+CDMX
+correo@cruzazul.com.mx
+Tel. 55-5424-9000 Ext. 1234

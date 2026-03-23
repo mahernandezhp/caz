@@ -4,6 +4,6 @@
     <encodingKey>UTF-8</encodingKey>
     <name>CAZ - Confirmación de Recepción</name>
     <style>none</style>
-    <subject>Cruz Azul - Tu solicitud de devolución ha sido recibida ({!Case.CaseNumber})</subject>
+    <subject>Confirmación de solicitud de devolución – En proceso de atención</subject>
     <type>text</type>
 </EmailTemplate>
