@@ -1,22 +1,63 @@
-Estimado(a) {!Case.Contact.Name},
+<html>
+<head>
+<meta charset="UTF-8"/>
+<style>
+  body { margin: 0; padding: 0; font-family: Arial, sans-serif; font-size: 14px; color: #333333; background-color: #f4f4f4; }
+  .wrapper { width: 100%; background-color: #f4f4f4; padding: 20px 0; }
+  .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 4px; overflow: hidden; }
+  .header { background-color: #003087; padding: 20px 30px; }
+  .header h1 { color: #ffffff; font-size: 16px; margin: 0; letter-spacing: 1px; text-transform: uppercase; }
+  .body { padding: 30px; }
+  .body p { line-height: 1.6; margin: 0 0 16px 0; }
+  .section-title { font-weight: bold; margin-bottom: 10px; }
+  .details { background-color: #f9f9f9; border-left: 4px solid #003087; padding: 16px 20px; margin: 16px 0; border-radius: 2px; }
+  .details ul { margin: 0; padding: 0; list-style: none; }
+  .details ul li { padding: 4px 0; }
+  .details ul li::before { content: "• "; color: #003087; font-weight: bold; }
+  .footer { background-color: #f4f4f4; padding: 20px 30px; border-top: 1px solid #e0e0e0; }
+  .footer p { font-size: 13px; color: #666666; margin: 2px 0; line-height: 1.5; }
+  .footer a { color: #003087; text-decoration: none; }
+  .logo-area { margin-top: 12px; }
+  .logo-text { font-weight: bold; font-size: 18px; color: #003087; letter-spacing: 1px; }
+  .logo-sub { font-size: 11px; color: #e60000; font-weight: bold; letter-spacing: 2px; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="container">
+    <div class="header">
+      <h1>Confirmación de Devolución Exitosa</h1>
+    </div>
+    <div class="body">
+      <p>Estimado(a) <strong>{!Case.Contact.Name}</strong>,</p>
+      <p>Le informamos que la <strong>devolución de dinero solicitada ha sido procesada exitosamente</strong> por el área de Crédito y Cobranza.</p>
 
-Le informamos que la devolución de dinero solicitada ha sido procesada exitosamente por el área de Crédito y Cobranza.
+      <p class="section-title">Detalles de la devolución:</p>
+      <div class="details">
+        <ul>
+          <li>Número de solicitud: <strong>{!Case.CaseNumber}</strong></li>
+          <li>Monto devuelto: <strong>${!Case.CAZ_ImporteDevolucion__c} MXN</strong></li>
+          <li>Fecha de devolución: <strong>{!Case.CAZ_FechaEnvioTesoreria__c}</strong></li>
+          <li>Motivo de la devolución: <strong>{!Case.CAZ_MotivoDevolucion__c}</strong></li>
+          <li>Referencia bancaria: <strong>{!Case.CAZ_NumeroProvisionJDE__c}</strong></li>
+        </ul>
+      </div>
 
-Detalles de la devolución:
-
-• Número de solicitud: {!Case.CaseNumber}
-• Monto devuelto: ${!Case.CAZ_ImporteDevolucion__c} MXN
-• Fecha de devolución: {!Case.CAZ_FechaEnvioTesoreria__c}
-• Motivo de la devolución: {!Case.CAZ_MotivoDevolucion__c}
-• Referencia bancaria: {!Case.CAZ_NumeroProvisionJDE__c}
-
-El depósito se realizó a la cuenta previamente indicada. Le recomendamos verificar la acreditación del monto en su estado de cuenta.
-
-Agradecemos su confianza y quedamos atentos a cualquier duda o aclaración adicional.
-
-Atentamente,
-
-Gerencia de Crédito y Cobranza
-CDMX
-correo@cruzazul.com.mx
-Tel. 55-5424-9000 Ext. 1234
+      <p>El depósito se realizó a la cuenta previamente indicada. Le recomendamos verificar la acreditación del monto en su estado de cuenta.</p>
+      <p>Agradecemos su confianza y quedamos atentos a cualquier duda o aclaración adicional.</p>
+    </div>
+    <div class="footer">
+      <p>Atentamente,</p>
+      <p><strong>Gerencia de Crédito y Cobranza</strong></p>
+      <p>CDMX</p>
+      <p><a href="mailto:correo@cruzazul.com.mx">correo@cruzazul.com.mx</a></p>
+      <p>Tel. 55-5424-9000 Ext. 1234</p>
+      <div class="logo-area">
+        <div class="logo-text">&#10010; CEMENTO</div>
+        <div class="logo-sub">CRUZ AZUL</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

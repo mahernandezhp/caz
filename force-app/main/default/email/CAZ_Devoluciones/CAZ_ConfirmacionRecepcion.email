@@ -1,23 +1,63 @@
-Estimado(a) {!Case.Contact.Name},
+<html>
+<head>
+<meta charset="UTF-8"/>
+<style>
+  body { margin: 0; padding: 0; font-family: Arial, sans-serif; font-size: 14px; color: #333333; background-color: #f4f4f4; }
+  .wrapper { width: 100%; background-color: #f4f4f4; padding: 20px 0; }
+  .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 4px; overflow: hidden; }
+  .header { background-color: #003087; padding: 20px 30px; }
+  .header h1 { color: #ffffff; font-size: 16px; margin: 0; letter-spacing: 1px; text-transform: uppercase; }
+  .body { padding: 30px; }
+  .body p { line-height: 1.6; margin: 0 0 16px 0; }
+  .section-title { font-weight: bold; margin-bottom: 10px; }
+  .details { background-color: #f9f9f9; border-left: 4px solid #003087; padding: 16px 20px; margin: 16px 0; border-radius: 2px; }
+  .details ul { margin: 0; padding: 0; list-style: none; }
+  .details ul li { padding: 4px 0; }
+  .details ul li::before { content: "• "; color: #003087; font-weight: bold; }
+  .footer { background-color: #f4f4f4; padding: 20px 30px; border-top: 1px solid #e0e0e0; }
+  .footer p { font-size: 13px; color: #666666; margin: 2px 0; line-height: 1.5; }
+  .footer a { color: #003087; text-decoration: none; }
+  .logo-area { margin-top: 12px; }
+  .logo-text { font-weight: bold; font-size: 18px; color: #003087; letter-spacing: 1px; }
+  .logo-sub { font-size: 11px; color: #e60000; font-weight: bold; letter-spacing: 2px; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="container">
+    <div class="header">
+      <h1>Confirmación de Solicitud de Devolución</h1>
+    </div>
+    <div class="body">
+      <p>Estimado(a) <strong>{!Case.Contact.Name}</strong>,</p>
+      <p>Le informamos que <strong>hemos recibido su solicitud de devolución de dinero</strong>, la cual <strong>ya se encuentra en proceso de atención</strong> por el área de Crédito y Cobranza.</p>
 
-Le informamos que hemos recibido su solicitud de devolución de dinero, la cual ya se encuentra en proceso de atención por el área de Crédito y Cobranza.
+      <p class="section-title">Detalles de la solicitud:</p>
+      <div class="details">
+        <ul>
+          <li>Número de solicitud: <strong>{!Case.CaseNumber}</strong></li>
+          <li>Monto solicitado: <strong>${!Case.CAZ_ImporteDevolucion__c} MXN</strong></li>
+          <li>Fecha de recepción: <strong>{!Case.CreatedDate}</strong></li>
+          <li>Motivo: <strong>{!Case.CAZ_MotivoDevolucion__c}</strong></li>
+        </ul>
+      </div>
 
-Detalles de la solicitud:
-
-• Número de solicitud: {!Case.CaseNumber}
-• Monto solicitado: ${!Case.CAZ_ImporteDevolucion__c} MXN
-• Fecha de recepción: {!Case.CreatedDate}
-• Motivo: {!Case.CAZ_MotivoDevolucion__c}
-
-Nuestro equipo está revisando la información y documentación correspondiente para proceder conforme a las políticas de la Cemento Cruz Azul.
-
-Una vez finalizado el proceso, le notificaremos la resolución y le compartiremos el comprobante de pago.
-
-Agradecemos su paciencia y confianza en nosotros.
-
-Atentamente,
-
-Gerencia de Crédito y Cobranza
-CDMX
-correo@cruzazul.com.mx
-Tel. 55-5424-9000 Ext. 1234
+      <p>Nuestro equipo está revisando la información y documentación correspondiente para proceder conforme a las políticas de la <strong>Cemento Cruz Azul.</strong></p>
+      <p>Una vez finalizado el proceso, le notificaremos la resolución y le compartiremos el comprobante de pago.</p>
+      <p>Agradecemos su paciencia y confianza en nosotros.</p>
+    </div>
+    <div class="footer">
+      <p>Atentamente,</p>
+      <p><strong>Gerencia de Crédito y Cobranza</strong></p>
+      <p>CDMX</p>
+      <p><a href="mailto:correo@cruzazul.com.mx">correo@cruzazul.com.mx</a></p>
+      <p>Tel. 55-5424-9000 Ext. 1234</p>
+      <div class="logo-area">
+        <div class="logo-text">&#10010; CEMENTO</div>
+        <div class="logo-sub">CRUZ AZUL</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

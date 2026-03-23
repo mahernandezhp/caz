@@ -3,7 +3,9 @@
     <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>CAZ - Devolución Completada</name>
-    <style>none</style>
+    
     <subject>Confirmación de devolución exitosa</subject>
-    <type>text</type>
+    <style>none</style>
+    <type>custom</type>
+
 </EmailTemplate>
