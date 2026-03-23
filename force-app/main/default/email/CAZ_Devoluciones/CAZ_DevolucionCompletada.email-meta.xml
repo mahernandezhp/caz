@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>CAZ - Devolución Completada</name>
+    <style>none</style>
+    <subject>Cruz Azul - Tu devolución ha sido procesada exitosamente ({!Case.CaseNumber})</subject>
+    <type>text</type>
+</EmailTemplate>

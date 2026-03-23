@@ -1,0 +1,14 @@
+Estimado distribuidor,
+
+Nos complace informarte que tu solicitud de devolución con el número de caso {!Case.CaseNumber} ha sido procesada exitosamente.
+
+Detalles de la devolución:
+- Importe devuelto: {!Case.CAZ_ImporteDevolucion__c}
+- Cuenta bancaria destino: {!Case.CAZ_NumeroCuentaBancaria__c}
+- Número de provisión JDE: {!Case.CAZ_NumeroProvisionJDE__c}
+
+El depósito ha sido realizado. Si no lo recibes en 24-48 horas hábiles,
+por favor comunícate con tu ejecutivo de cuenta.
+
+Atentamente,
+Cruz Azul

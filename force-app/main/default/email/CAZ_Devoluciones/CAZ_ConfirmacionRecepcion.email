@@ -1,0 +1,14 @@
+Estimado distribuidor,
+
+Hemos recibido tu solicitud de devolución con el número de caso {!Case.CaseNumber}.
+
+Detalles de tu solicitud:
+- Motivo: {!Case.CAZ_MotivoDevolucion__c}
+- Importe: {!Case.CAZ_ImporteDevolucion__c}
+- Fecha de solicitud: {!Case.CreatedDate}
+
+Tu solicitud está siendo revisada por el equipo de Crédito y Cobranza.
+Te notificaremos sobre el avance del proceso.
+
+Atentamente,
+Cruz Azul

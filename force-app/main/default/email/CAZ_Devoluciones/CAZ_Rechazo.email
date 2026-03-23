@@ -1,0 +1,13 @@
+Estimado distribuidor,
+
+Lamentamos informarte que tu solicitud de devolución con el número de caso {!Case.CaseNumber} ha sido rechazada.
+
+Detalles:
+- Motivo de rechazo: {!Case.CAZ_MotivoRechazo__c}
+- Importe solicitado: {!Case.CAZ_ImporteDevolucion__c}
+- Fecha de solicitud: {!Case.CreatedDate}
+
+Si tienes alguna duda, por favor comunícate con tu ejecutivo de cuenta.
+
+Atentamente,
+Cruz Azul
