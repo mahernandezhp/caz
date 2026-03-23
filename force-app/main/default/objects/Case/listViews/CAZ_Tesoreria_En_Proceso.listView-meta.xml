@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_Tesoreria_En_Proceso</fullName>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CASES.STATUS</field>
+        <operation>equals</operation>
+        <value>En Proceso</value>
+    </filters>
+    <label>Devoluciones - En Proceso</label>    <sharedTo>
+        <group>CAZ_Tesoreria</group>
+    </sharedTo>
+</ListView>

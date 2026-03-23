@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_Devoluciones_Pendientes_Tesoreria</fullName>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CASES.STATUS</field>
+        <operation>equals</operation>
+        <value>Por atender</value>
+    </filters>
+    <label>Devoluciones - Pendientes Tesorería</label>    <sharedTo>
+        <group>CAZ_CreditoCobranza</group>
+    </sharedTo>
+</ListView>

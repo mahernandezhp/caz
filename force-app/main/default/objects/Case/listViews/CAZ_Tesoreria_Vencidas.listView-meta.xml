@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_Tesoreria_Vencidas</fullName>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CASES.STATUS</field>
+        <operation>equals</operation>
+        <value>Vencido</value>
+    </filters>
+    <label>Devoluciones - Vencidas</label>    <sharedTo>
+        <group>CAZ_Tesoreria</group>
+    </sharedTo>
+</ListView>
