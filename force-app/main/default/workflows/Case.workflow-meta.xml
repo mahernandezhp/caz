@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>CAZ_EA_Rechazo_Devolucion</fullName>
+        <description>CAZ - Notificación de rechazo al distribuidor</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>CAZ_Devoluciones/CAZ_Rechazo</template>
+    </alerts>
+    <alerts>
+        <fullName>CAZ_EA_Confirmacion_Recepcion</fullName>
+        <description>CAZ - Confirmación de recepción al distribuidor</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>CAZ_Devoluciones/CAZ_ConfirmacionRecepcion</template>
+    </alerts>
+    <alerts>
+        <fullName>CAZ_EA_Devolucion_Completada</fullName>
+        <description>CAZ - Devolución completada al distribuidor</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>CAZ_Devoluciones/CAZ_DevolucionCompletada</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>CAZ_FU_Status_PorAtender</fullName>
+        <description>CAZ - Cambia Status a Por atender al aprobar C&amp;C</description>
+        <field>Status</field>
+        <literalValue>Por atender</literalValue>
+        <name>CAZ - Status Por atender</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>CAZ_FU_Status_EnProceso</fullName>
+        <description>CAZ - Cambia Status a En Proceso al aprobar Tesorería</description>
+        <field>Status</field>
+        <literalValue>En Proceso</literalValue>
+        <name>CAZ - Status En Proceso</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>CAZ_FU_Status_Rechazado</fullName>
+        <description>CAZ - Cambia Status a Rechazado al rechazar cualquier etapa</description>
+        <field>Status</field>
+        <literalValue>Rechazado</literalValue>
+        <name>CAZ - Status Rechazado</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>CAZ_FU_FechaEnvioTesoreria</fullName>
+        <description>CAZ - Registra fecha de envío a Tesorería al aprobar C&amp;C</description>
+        <field>CAZ_FechaEnvioTesoreria__c</field>
+        <formula>NOW()</formula>
+        <name>CAZ - Fecha Envío Tesorería</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>CAZ_FU_Owner_Tesoreria</fullName>
+        <description>CAZ - Reasigna el Case a la Queue de Tesorería al aprobar C&amp;C</description>
+        <field>OwnerId</field>
+        <lookupValue>Tesoreria</lookupValue>
+        <lookupValueType>Queue</lookupValueType>
+        <name>CAZ - Reasignar a Tesorería</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+</Workflow>
