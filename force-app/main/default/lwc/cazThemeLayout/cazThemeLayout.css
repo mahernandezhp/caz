@@ -1,0 +1,25 @@
+.theme-container {
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--slds-g-color-neutral-base-95, #F8FAFC);
+}
+
+.theme-sidebar {
+    background-color: var(--slds-g-color-brand-base-10, #002E6D);
+    height: 100vh;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+    z-index: 20;
+}
+
+.theme-main {
+    height: 100vh;
+}
+
+.theme-header {
+    z-index: 10;
+}
+
+.theme-body {
+    scrollbar-width: thin;
+    scrollbar-color: var(--slds-g-color-neutral-base-70, #cbd5e1) transparent;
+}

@@ -1,0 +1,6 @@
+.caz-custom-search {
+    width: 250px;
+    --sds-c-input-color-background: var(--slds-g-color-neutral-base-95, #f3f3f3);
+    --sds-c-input-radius-border: 20px;
+    --sds-c-input-color-border: transparent;
+}

@@ -1,0 +1,96 @@
+<template>
+    <div class="slds-grid slds-grid_vertical sidebar-container">
+        <!-- Área del Logo -->
+        <div class="slds-p-around_medium" style="border-bottom: 1px solid rgba(255,255,255,0.1); background-color: rgba(255,255,255,0.05);">
+            <div class="slds-grid slds-grid_vertical-align-center">
+                <div class="slds-m-right_x-small slds-p-horizontal_x-small slds-p-vertical_xxx-small" style="background-color: white; border-radius: 4px 0 4px 4px; color: var(--slds-g-color-brand-base-10, #002E6D); font-weight: bold; font-size: 1.2rem;">
+                    +
+                </div>
+                <span class="slds-text-heading_small slds-text-color_inverse" style="font-weight: bold; letter-spacing: 0.5px;">Portal Distribuidor</span>
+            </div>
+        </div>
+
+        <!-- Menú Principal -->
+        <nav class="slds-col slds-grow slds-p-vertical_medium slds-p-horizontal_small slds-scrollable_y">
+            <h2 class="slds-text-title_caps slds-m-bottom_small slds-p-horizontal_small" style="color: rgba(255,255,255,0.5); font-weight: bold;">Principal</h2>
+            
+            <ul class="slds-nav-vertical">
+                <li class="slds-nav-vertical__item sidebar-item active-item slds-m-bottom_xx-small">
+                    <a href="javascript:void(0);" class="slds-nav-vertical__action slds-p-around_small slds-text-color_inverse slds-grid slds-grid_vertical-align-center">
+                        <lightning-icon icon-name="utility:home" size="small" variant="inverse" class="slds-m-right_small"></lightning-icon>
+                        <span style="font-weight: bold;">Inicio</span>
+                    </a>
+                </li>
+                
+                <li class="slds-nav-vertical__item sidebar-item slds-m-bottom_xx-small">
+                    <a href="javascript:void(0);" class="slds-nav-vertical__action slds-p-around_small slds-text-color_inverse slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+                        <div class="slds-grid slds-grid_vertical-align-center">
+                            <lightning-icon icon-name="utility:moneybag" size="small" variant="inverse" class="slds-m-right_small"></lightning-icon>
+                            <span>Cuenta <span class="slds-text-body_small" style="opacity: 0.7;">(Crédito)</span></span>
+                        </div>
+                        <lightning-icon icon-name="utility:chevronright" size="xx-small" variant="inverse" style="opacity: 0.5;"></lightning-icon>
+                    </a>
+                </li>
+
+                <li class="slds-nav-vertical__item sidebar-item slds-m-bottom_xx-small">
+                    <a href="javascript:void(0);" class="slds-nav-vertical__action slds-p-around_small slds-text-color_inverse slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+                        <div class="slds-grid slds-grid_vertical-align-center">
+                            <lightning-icon icon-name="utility:shopping_bag" size="small" variant="inverse" class="slds-m-right_small"></lightning-icon>
+                            <span>Órdenes</span>
+                        </div>
+                        <span class="slds-badge" style="background-color: var(--slds-g-color-brand-base-10, #E31837); color: white; border: none;">2</span>
+                    </a>
+                </li>
+
+                <li class="slds-nav-vertical__item sidebar-item slds-m-bottom_xx-small">
+                    <a href="javascript:void(0);" class="slds-nav-vertical__action slds-p-around_small slds-text-color_inverse slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+                        <div class="slds-grid slds-grid_vertical-align-center">
+                            <lightning-icon icon-name="utility:file" size="small" variant="inverse" class="slds-m-right_small"></lightning-icon>
+                            <span>Facturas</span>
+                        </div>
+                        <lightning-icon icon-name="utility:chevronright" size="xx-small" variant="inverse" style="opacity: 0.5;"></lightning-icon>
+                    </a>
+                </li>
+
+                <li class="slds-nav-vertical__item sidebar-item slds-m-bottom_xx-small">
+                    <a href="javascript:void(0);" class="slds-nav-vertical__action slds-p-around_small slds-text-color_inverse slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+                        <div class="slds-grid slds-grid_vertical-align-center">
+                            <lightning-icon icon-name="utility:case" size="small" variant="inverse" class="slds-m-right_small"></lightning-icon>
+                            <span>Casos</span>
+                        </div>
+                        <lightning-icon icon-name="utility:chevronright" size="xx-small" variant="inverse" style="opacity: 0.5;"></lightning-icon>
+                    </a>
+                </li>
+            </ul>
+            
+            <h2 class="slds-text-title_caps slds-m-top_large slds-m-bottom_small slds-p-horizontal_small" style="color: rgba(255,255,255,0.5); font-weight: bold;">Ajustes &amp; Soporte</h2>
+            <ul class="slds-nav-vertical">
+                <li class="slds-nav-vertical__item sidebar-item slds-m-bottom_xx-small">
+                    <a href="javascript:void(0);" class="slds-nav-vertical__action slds-p-around_small slds-text-color_inverse slds-grid slds-grid_vertical-align-center">
+                        <lightning-icon icon-name="utility:setup" size="small" variant="inverse" class="slds-m-right_small"></lightning-icon>
+                        Perfil &amp; Ajustes
+                    </a>
+                </li>
+                <li class="slds-nav-vertical__item sidebar-item slds-m-bottom_xx-small">
+                    <a href="javascript:void(0);" class="slds-nav-vertical__action slds-p-around_small slds-text-color_inverse slds-grid slds-grid_vertical-align-center">
+                        <lightning-icon icon-name="utility:help" size="small" variant="inverse" class="slds-m-right_small"></lightning-icon>
+                        FAQ's
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Panel de Usuario Inferior -->
+        <div class="slds-p-around_medium" style="border-top: 1px solid rgba(255,255,255,0.1); background-color: rgba(0,0,0,0.1);">
+            <div class="slds-grid slds-grid_vertical-align-center">
+                <span class="slds-avatar slds-avatar_circle slds-avatar_medium slds-m-right_small">
+                    <img src="https://ui-avatars.com/api/?name=Marco+C&amp;background=ffffff&amp;color=002E6D" alt="User Avatar" />
+                </span>
+                <div class="slds-truncate">
+                    <div class="slds-text-color_inverse slds-truncate" style="font-weight: bold; font-size: 0.85rem;">Distribuidora Norte</div>
+                    <div class="slds-text-color_inverse" style="font-size: 0.7rem; opacity: 0.7;">ID: DST-0092</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

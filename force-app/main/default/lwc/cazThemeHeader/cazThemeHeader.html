@@ -1,0 +1,29 @@
+<template>
+    <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-p-horizontal_medium slds-p-vertical_small" style="height: 64px; background-color: var(--slds-g-color-neutral-base-100, #ffffff); box-shadow: var(--slds-g-shadow-3, 0 1px 2px rgba(0,0,0,0.05));">
+        
+        <!-- Controles Móviles / Título -->
+        <div class="slds-grid slds-grid_vertical-align-center">
+            <lightning-button-icon icon-name="utility:collapse_all" variant="bare" class="slds-show_medium-none slds-m-right_small" alternative-text="Menu"></lightning-button-icon>
+            <h1 class="slds-text-heading_medium slds-hide_small slds-show_medium" style="font-weight: bold; color: var(--slds-g-color-neutral-base-10, #181818);">Inicio Dashboard</h1>
+        </div>
+
+        <!-- Búsqueda, Notificaciones y Usuario -->
+        <div class="slds-grid slds-grid_vertical-align-center">
+            <!-- Buscar -->
+            <div class="slds-m-right_medium slds-hide_small slds-show_medium">
+                <lightning-input type="search" placeholder="Buscar orden, factura..." variant="label-hidden" class="caz-custom-search"></lightning-input>
+            </div>
+            
+            <!-- Notificaciones -->
+            <div class="slds-m-right_medium" style="position: relative;">
+                <lightning-button-icon icon-name="utility:notification" variant="bare" alternative-text="Notificaciones" size="large"></lightning-button-icon>
+                <span style="position: absolute; top: 0; right: 0; background-color: var(--slds-g-color-brand-base-10, #E31837); width: 8px; height: 8px; border-radius: 50%;"></span>
+            </div>
+
+            <!-- Avatar Móvil / Slot para Menú de Perfil de Experience Cloud -->
+            <span class="slds-avatar slds-avatar_circle slds-avatar_medium">
+                <img src="https://ui-avatars.com/api/?name=Marco+C&amp;background=002E6D&amp;color=fff" alt="User Avatar" />
+            </span>
+        </div>
+    </div>
+</template>

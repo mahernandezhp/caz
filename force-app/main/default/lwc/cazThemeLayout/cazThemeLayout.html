@@ -1,0 +1,24 @@
+<template>
+    <div class="slds-grid slds-grid_vertical-stretch slds-wrap theme-container">
+        
+        <!-- Sidebar Column (Visible in medium/desktop, hidden on small by default) -->
+        <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-12 slds-hide_small slds-show_large theme-sidebar">
+            <c-caz-theme-sidebar></c-caz-theme-sidebar>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="slds-col slds-size_1-of-1 slds-large-size_10-of-12 slds-grid slds-grid_vertical theme-main">
+            <!-- Header Row -->
+            <header class="slds-col slds-grow-none theme-header z-index-10">
+                <c-caz-theme-header></c-caz-theme-header>
+            </header>
+
+            <!-- Body Row (Scrollable wrapper for main content) -->
+            <main class="slds-col slds-grow theme-body" style="overflow-y: auto;">
+                <div class="slds-p-around_medium" style="width: 100%; height: 100%;">
+                    <slot></slot>
+                </div>
+            </main>
+        </div>
+    </div>
+</template>

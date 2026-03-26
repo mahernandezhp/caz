@@ -1,0 +1,20 @@
+.sidebar-container {
+    height: 100%;
+}
+.sidebar-item {
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+.sidebar-item:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+.active-item {
+    background-color: rgba(255,255,255,0.15);
+    border-left: 4px solid white;
+}
+.slds-nav-vertical__action {
+    text-decoration: none;
+}
+.slds-nav-vertical__action:hover {
+    text-decoration: none;
+}
