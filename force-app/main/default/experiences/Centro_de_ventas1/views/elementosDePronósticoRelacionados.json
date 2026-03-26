@@ -1,0 +1,39 @@
+{
+  "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "9804c68e-2a03-4056-856e-a02095b65677",
+  "label" : "Elementos de pronóstico relacionados",
+  "regions" : [ {
+    "id" : "0677298a-6a8c-415c-9a6e-78abd6c74d5c",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customTitle" : "",
+        "parentRecordId" : "{!recordId}",
+        "relatedListName" : "{!relationshipApiName}",
+        "showBreadCrumbs" : true,
+        "showCustomTitle" : false,
+        "showManualRefreshButton" : true,
+        "showRowNumbers" : true
+      },
+      "componentName" : "forceCommunity:relatedList",
+      "id" : "21641e1c-4365-4e4d-a914-6d2c9ace54e1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "38a788b9-330b-414c-b7ac-9d9d8e69e1b4",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "e8f0e0ee-b543-4db3-b1bd-038c806464b9",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "relatedlist-0u8"
+}

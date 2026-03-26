@@ -1,0 +1,9 @@
+{
+  "type" : "sfdc_cms__site",
+  "title" : "Portal de Distribuidores",
+  "contentBody" : {
+    "authenticationType" : "AUTHENTICATED",
+    "geoBotsAllowed" : false
+  },
+  "urlName" : "portal-de-distribuidores"
+}

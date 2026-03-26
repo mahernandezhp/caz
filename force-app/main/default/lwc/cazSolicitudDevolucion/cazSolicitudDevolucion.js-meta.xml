@@ -9,6 +9,7 @@
     <targetConfigs>
         <targetConfig targets="lightningCommunity__Default">
             <property name="title" type="String" default="Nueva Solicitud de Devolución" label="Título"/>
+            <property name="targetPageName" type="String" default="Mis_Solicitudes__c" label="API Name de la página destino (Éxito)"/>
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

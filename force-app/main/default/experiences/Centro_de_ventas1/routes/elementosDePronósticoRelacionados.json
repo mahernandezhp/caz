@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "9804c68e-2a03-4056-856e-a02095b65677",
+  "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
+  "configurationTags" : [ ],
+  "devName" : "relatedlist_0u8",
+  "id" : "ea52c353-4fae-4e2c-a34f-0d224855c173",
+  "label" : "Elementos de pronóstico relacionados",
+  "routeType" : "relatedlist-0u8",
+  "type" : "route",
+  "urlPrefix" : "advacctforecastsetuse"
+}

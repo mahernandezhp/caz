@@ -1,0 +1,46 @@
+{
+  "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "1b6cac31-9520-4ca1-ba17-36d31f0ff05c",
+  "label" : "Lista de planes de actuación",
+  "regions" : [ {
+    "id" : "410b1968-a923-4787-9989-5dd1acb86771",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "{!filterId}",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "{!objectName}",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "151c0d7d-51b0-4d89-80b1-a401ee95d95c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d76f2ede-9f01-4ab5-96b2-e9ea08e7a23b",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "6b66cd21-8817-4fe1-b693-1f9dfea81a9c",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "list-07r"
+}

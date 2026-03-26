@@ -1,0 +1,39 @@
+{
+  "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "3628b6e2-646e-4eac-81ae-b1fd84915847",
+  "label" : "Lista relacionada de planes de acción",
+  "regions" : [ {
+    "id" : "544cf70e-63be-4bc5-a1a0-c74b17a21d71",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customTitle" : "",
+        "parentRecordId" : "{!recordId}",
+        "relatedListName" : "{!relationshipApiName}",
+        "showBreadCrumbs" : true,
+        "showCustomTitle" : false,
+        "showManualRefreshButton" : true,
+        "showRowNumbers" : true
+      },
+      "componentName" : "forceCommunity:relatedList",
+      "id" : "ebf882bc-14af-4671-80b4-ca4c19d6a4be",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "7f6c3e2f-c6c7-4808-a4e9-c0f163ac027f",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "dae65890-034d-40eb-9027-ba42a6a0c3b4",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "relatedlist-07r"
+}

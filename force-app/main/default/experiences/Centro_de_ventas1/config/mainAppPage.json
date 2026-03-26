@@ -1,0 +1,11 @@
+{
+  "cmsSettings" : { },
+  "currentThemeId" : "a8bdba16-e209-4210-b6b1-84f355635298",
+  "headMarkup" : "<link href=\"https://cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css\" rel=\"stylesheet\">",
+  "id" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
+  "isLockerServiceEnabled" : true,
+  "isRelaxedCSPLevel" : false,
+  "label" : "main",
+  "templateName" : "Manufacturing Template",
+  "type" : "appPage"
+}

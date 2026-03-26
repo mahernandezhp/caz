@@ -1,0 +1,39 @@
+{
+  "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "328d9e4f-2e21-42bb-836f-3d89dcb15913",
+  "label" : "Lista relacionada de plantillas de planes de acción",
+  "regions" : [ {
+    "id" : "81d331e6-ce55-4664-966e-207e38648a8f",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customTitle" : "",
+        "parentRecordId" : "{!recordId}",
+        "relatedListName" : "{!relationshipApiName}",
+        "showBreadCrumbs" : true,
+        "showCustomTitle" : false,
+        "showManualRefreshButton" : true,
+        "showRowNumbers" : true
+      },
+      "componentName" : "forceCommunity:relatedList",
+      "id" : "0da28023-a1de-4bd7-b112-248d1f4d774a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "8afa7c3c-3b9c-420a-b595-3016b5495330",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "fb0bbc8a-207b-47f8-ba25-def95460b284",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "relatedlist-0PR"
+}

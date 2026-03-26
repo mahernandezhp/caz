@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Acta constitutiva</label>
+    <protected>false</protected>
+    <values>
+        <field>CAZ_TipoProceso__c</field>
+        <value xsi:type="xsd:string">Credito</value>
+    </values>
+    <values>
+        <field>CAZ_Obligatorio__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>CAZ_TipoArchivoPermitido__c</field>
+        <value xsi:type="xsd:string">pdf,jpg,png</value>
+    </values>
+</CustomMetadata>

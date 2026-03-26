@@ -8,7 +8,9 @@
     </targets>
     <targetConfigs>
         <targetConfig targets="lightningCommunity__Default">
-            <property name="recordId" type="String" label="ID del Caso"/>
+            <property name="recordId" type="String" label="ID del Registro"/>
+            <property name="processName" type="String" default="Devolucion" label="Nombre del Proceso (p.ej. Devolucion)"/>
+            <property name="title" type="String" default="Documentos Requeridos" label="Título del Componente"/>
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

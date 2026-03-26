@@ -1,0 +1,322 @@
+<template><div class="bg-gray-100 text-gray-800 font-sans min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="bg-cbl-blue text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <!-- Fake Logo -->
+                    <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick={handleNavHome}>
+                        <div class="w-8 h-8 bg-white flex items-center justify-center rounded text-cbl-blue font-bold text-xl rounded-tl-lg rounded-br-lg shadow-inner">+</div>
+                        <span class="font-bold text-xl tracking-wide">Portal Distribuidor</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="p-2 rounded-full hover:bg-blue-800 transition relative">
+                        <i class="mdi mdi-bell-outline text-xl"></i>
+                        <span class="absolute top-1 right-1 w-2.5 h-2.5 bg-cbl-red rounded-full border-2 border-cbl-blue"></span>
+                    </button>
+                    <div class="flex items-center gap-3 border-l border-blue-800 pl-4 ml-2">
+                        <div class="w-9 h-9 rounded-full bg-gray-300 overflow-hidden shadow-sm border border-blue-400">
+                            <img src="https://ui-avatars.com/api/?name=Marco+C&background=ffffff&color=002E6D" alt="User" />
+                        </div>
+                        <div class="hidden md:flex flex-col">
+                            <span class="text-sm font-bold leading-tight">Distribuidora del Norte</span>
+                            <span class="text-xs text-blue-200 leading-tight">ID: DST-0092</span>
+                        </div>
+                        <i class="mdi mdi-chevron-down text-blue-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Welcome Section -->
+        <div class="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+                <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight">Inicio rápido</h1>
+                <p class="text-gray-500 mt-1 text-sm md:text-base">Resumen de tu cuenta y operaciones principales de hoy, 25 de Marzo.</p>
+            </div>
+            
+            <div class="flex gap-3">
+                <button class="px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors flex items-center gap-2">
+                    <i class="mdi mdi-download"></i> Estado de Cuenta
+                </button>
+            </div>
+        </div>
+
+        <!-- Quick Stats / Balances -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 relative overflow-hidden group hover:shadow-md transition-shadow">
+                <div class="absolute -right-6 -top-6 w-24 h-24 bg-blue-50 rounded-full group-hover:scale-110 transition-transform duration-500"></div>
+                <div class="relative z-10">
+                    <div class="flex items-center justify-between mb-2">
+                        <p class="text-sm font-bold text-gray-500 uppercase tracking-wider">Saldo Disponible</p>
+                        <i class="mdi mdi-wallet text-cbl-blue text-xl"></i>
+                    </div>
+                    <p class="text-3xl font-black text-gray-900 mb-1">$1,250,400.<span class="text-lg text-gray-400 font-bold">00</span></p>
+                    <p class="text-xs text-green-600 font-medium flex items-center gap-1"><i class="mdi mdi-trending-up"></i> +5.2% vs mes anterior</p>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 relative overflow-hidden group hover:shadow-md transition-shadow">
+                <div class="absolute -right-6 -top-6 w-24 h-24 bg-green-50 rounded-full group-hover:scale-110 transition-transform duration-500"></div>
+                <div class="relative z-10">
+                    <div class="flex items-center justify-between mb-2">
+                        <p class="text-sm font-bold text-gray-500 uppercase tracking-wider">Crédito Utilizado</p>
+                        <i class="mdi mdi-chart-donut text-green-600 text-xl"></i>
+                    </div>
+                    <p class="text-3xl font-black text-gray-900 mb-1">58%</p>
+                    <div class="w-full bg-gray-200 rounded-full h-1.5 mt-2 mb-1">
+                        <div class="bg-green-500 h-1.5 rounded-full" style="width: 58%"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 font-medium">Límite total: $3,000,000.00</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 relative overflow-hidden group hover:shadow-md transition-shadow">
+                <div class="absolute -right-6 -top-6 w-24 h-24 bg-red-50 rounded-full group-hover:scale-110 transition-transform duration-500"></div>
+                <div class="relative z-10">
+                    <div class="flex items-center justify-between mb-2">
+                        <p class="text-sm font-bold text-gray-500 uppercase tracking-wider">Saldo Vencido</p>
+                        <i class="mdi mdi-alert-circle text-cbl-red text-xl"></i>
+                    </div>
+                    <p class="text-3xl font-black text-gray-900 mb-1">$0.<span class="text-lg text-gray-400 font-bold">00</span></p>
+                    <p class="text-xs text-gray-500 font-medium flex items-center gap-1"><i class="mdi mdi-check-circle text-green-500"></i> Cuenta al corriente</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Actions -->
+        <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6 mb-8">
+            <!-- 1. Nueva Orden -->
+            <button class="group bg-gradient-to-br from-cbl-blue to-blue-900 rounded-2xl p-5 text-left shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-44">
+                <div class="absolute right-0 top-0 w-24 h-24 bg-white opacity-5 rounded-bl-full"></div>
+                <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-white mb-3 shadow-inner relative z-10">
+                    <i class="mdi mdi-truck-fast text-xl"></i>
+                </div>
+                <div class="relative z-10 w-full flex items-end justify-between mt-auto">
+                    <div>
+                        <h3 class="text-base lg:text-lg font-bold text-white leading-tight mb-1">Nueva Orden</h3>
+                        <p class="text-blue-100/80 text-xs hidden sm:block">Crear pedido</p>
+                    </div>
+                    <i class="mdi mdi-arrow-right text-xl lg:text-2xl text-white/30 group-hover:text-white group-hover:translate-x-1 transition-all"></i>
+                </div>
+            </button>
+
+            <!-- 2. Órdenes -->
+            <button class="group bg-white border border-gray-200 rounded-2xl p-5 text-left shadow-sm hover:border-cbl-blue hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-44">
+                <div class="absolute right-0 top-0 w-24 h-24 bg-gray-50 rounded-bl-full transition-colors group-hover:bg-blue-50/50"></div>
+                <div class="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center text-gray-600 mb-3 transition-colors group-hover:bg-blue-100 group-hover:text-cbl-blue relative z-10">
+                    <i class="mdi mdi-clipboard-text-outline text-xl"></i>
+                </div>
+                <div class="relative z-10 w-full flex items-end justify-between mt-auto">
+                    <div>
+                        <h3 class="text-base lg:text-lg font-bold text-gray-800 leading-tight mb-1">Órdenes</h3>
+                        <p class="text-gray-500 text-xs hidden sm:block">Historial y rastreo</p>
+                    </div>
+                    <i class="mdi mdi-arrow-right text-xl lg:text-2xl text-gray-200 group-hover:text-cbl-blue group-hover:translate-x-1 transition-all"></i>
+                </div>
+            </button>
+
+            <!-- 3. Solicitud de Devolución -->
+            <button onclick={handleNavDevoluciones} class="group bg-white border border-gray-200 rounded-2xl p-5 text-left shadow-sm hover:border-cbl-red/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-44">
+                <div class="absolute right-0 top-0 w-24 h-24 bg-gray-50 rounded-bl-full transition-colors group-hover:bg-red-50/50"></div>
+                <div class="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center text-gray-600 mb-3 transition-colors group-hover:bg-red-100 group-hover:text-cbl-red relative z-10">
+                    <i class="mdi mdi-keyboard-return text-xl"></i>
+                </div>
+                <div class="relative z-10 w-full flex items-end justify-between mt-auto">
+                    <div>
+                        <h3 class="text-base lg:text-lg font-bold text-gray-800 leading-tight mb-1">Devoluciones</h3>
+                        <p class="text-gray-500 text-xs hidden sm:block">Retornos o quejas</p>
+                    </div>
+                    <i class="mdi mdi-arrow-right text-xl lg:text-2xl text-gray-200 group-hover:text-cbl-red group-hover:translate-x-1 transition-all"></i>
+                </div>
+            </button>
+
+            <!-- 4. Solicitud de Crédito -->
+            <button class="group bg-white border border-gray-200 rounded-2xl p-5 text-left shadow-sm hover:border-green-400 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-44">
+                <div class="absolute right-0 top-0 w-24 h-24 bg-gray-50 rounded-bl-full transition-colors group-hover:bg-green-50/50"></div>
+                <div class="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center text-gray-600 mb-3 transition-colors group-hover:bg-green-100 group-hover:text-green-600 relative z-10">
+                    <i class="mdi mdi-cash-plus text-xl"></i>
+                </div>
+                <div class="relative z-10 w-full flex items-end justify-between mt-auto">
+                    <div>
+                        <h3 class="text-base lg:text-lg font-bold text-gray-800 leading-tight mb-1">Sol. Crédito</h3>
+                        <p class="text-gray-500 text-xs hidden sm:block">Ampliar línea/plazo</p>
+                    </div>
+                    <i class="mdi mdi-arrow-right text-xl lg:text-2xl text-gray-200 group-hover:text-green-600 group-hover:translate-x-1 transition-all"></i>
+                </div>
+            </button>
+
+            <!-- 5. Aclaración de pagos -->
+            <button class="group bg-white border border-gray-200 rounded-2xl p-5 text-left shadow-sm hover:border-yellow-500 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-44">
+                <div class="absolute right-0 top-0 w-24 h-24 bg-gray-50 rounded-bl-full transition-colors group-hover:bg-yellow-50/50"></div>
+                <div class="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center text-gray-600 mb-3 transition-colors group-hover:bg-yellow-100 group-hover:text-yellow-600 relative z-10">
+                    <i class="mdi mdi-help-network text-xl"></i>
+                </div>
+                <div class="relative z-10 w-full flex items-end justify-between mt-auto">
+                    <div>
+                        <h3 class="text-base lg:text-lg font-bold text-gray-800 leading-tight mb-1">Aclaraciones</h3>
+                        <p class="text-gray-500 text-xs hidden sm:block">Pagos o facturas</p>
+                    </div>
+                    <i class="mdi mdi-arrow-right text-xl lg:text-2xl text-gray-200 group-hover:text-yellow-600 group-hover:translate-x-1 transition-all"></i>
+                </div>
+            </button>
+        </div>
+        <!-- Recent Activity & Status -->
+        <template if:true={isHome}>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Table Section -->
+                <div class="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden flex flex-col">
+                    <div class="px-6 py-5 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
+                        <h3 class="font-bold text-lg text-gray-800">Mis Solicitudes Activas</h3>
+                        <button class="text-sm font-bold text-cbl-blue hover:text-blue-800 transition-colors flex items-center gap-1">Ver panel completo <i class="mdi mdi-chevron-right"></i></button>
+                    </div>
+                    <div class="overflow-x-auto flex-1">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="text-gray-400 text-xs uppercase tracking-wider font-bold border-b border-gray-100">
+                                    <th class="px-6 py-4">Folio / Ref</th>
+                                    <th class="px-6 py-4">Fecha Creada</th>
+                                    <th class="px-6 py-4">Tipo</th>
+                                    <th class="px-6 py-4">Status Actual</th>
+                                    <th class="px-6 py-4 text-right">Monto</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm divide-y divide-gray-50">
+                                <tr class="hover:bg-blue-50/30 transition-colors cursor-pointer group">
+                                    <td class="px-6 py-4">
+                                        <div class="font-bold text-gray-900 group-hover:text-cbl-blue transition-colors">ORD-9021</div>
+                                        <div class="text-xs text-gray-500">Planta Tula</div>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-600 font-medium">25 Mar, 08:30</td>
+                                    <td class="px-6 py-4"><span class="flex items-center gap-1.5"><i class="mdi mdi-package-variant text-gray-400"></i> Pedido</span></td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-yellow-50 border border-yellow-200 text-yellow-700 text-xs rounded-lg font-bold">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse"></span> En Tránsito
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 font-bold text-gray-900 text-right">$145,000.00</td>
+                                </tr>
+                                <tr class="hover:bg-blue-50/30 transition-colors cursor-pointer group">
+                                    <td class="px-6 py-4">
+                                        <div class="font-bold text-gray-900 group-hover:text-cbl-blue transition-colors">DEV-1045</div>
+                                        <div class="text-xs text-gray-500">Merma material</div>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-600 font-medium">22 Mar, 14:15</td>
+                                    <td class="px-6 py-4"><span class="flex items-center gap-1.5"><i class="mdi mdi-keyboard-return text-gray-400"></i> Devolución</span></td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-blue-50 border border-blue-200 text-blue-700 text-xs rounded-lg font-bold">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> En Revisión
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 font-bold text-gray-900 text-right">$12,500.00</td>
+                                </tr>
+                                <tr class="hover:bg-blue-50/30 transition-colors cursor-pointer group">
+                                    <td class="px-6 py-4">
+                                        <div class="font-bold text-gray-900 group-hover:text-cbl-blue transition-colors">ORD-8944</div>
+                                        <div class="text-xs text-gray-500">Obra Sur</div>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-600 font-medium">18 Mar, 09:00</td>
+                                    <td class="px-6 py-4"><span class="flex items-center gap-1.5"><i class="mdi mdi-package-variant text-gray-400"></i> Pedido</span></td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-green-50 border border-green-200 text-green-700 text-xs rounded-lg font-bold">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Entregado
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 font-bold text-gray-900 text-right">$320,000.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+    
+                <!-- Active Delivery Track (Tailwind Modern) -->
+                <div class="bg-gradient-to-b from-cbl-blue to-blue-900 rounded-2xl shadow-lg p-1 relative overflow-hidden">
+                    <!-- Background decoration -->
+                    <i class="mdi mdi-map-marker text-white/5 absolute -right-10 -bottom-10 text-[10rem] rotate-12"></i>
+                    
+                    <div class="glass-panel h-full rounded-xl p-6 relative z-10">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="font-bold text-lg text-gray-900">Seguimiento en Vivo</h3>
+                            <span class="bg-red-100 text-cbl-red text-xs font-bold px-2 py-1 rounded-md flex items-center gap-1"><i class="mdi mdi-record text-xs"></i> GPS Activo</span>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4 border border-gray-100 shadow-sm mb-6">
+                            <div class="flex justify-between items-end mb-2">
+                                <div>
+                                    <p class="text-xs font-bold text-gray-500 uppercase">Orden</p>
+                                    <p class="font-black text-cbl-blue">ORD-9021</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-xs font-bold text-gray-500 uppercase">Llegada Est.</p>
+                                    <p class="font-black text-gray-900">Hoy, 18:00 hrs</p>
+                                </div>
+                            </div>
+                            <div class="w-full bg-gray-100 rounded-full h-2 mt-2 overflow-hidden">
+                                <div class="bg-gradient-to-r from-blue-400 to-cbl-blue h-2 rounded-full relative" style="width: 70%">
+                                    <div class="absolute right-0 top-0 bottom-0 w-4 bg-white/30 animate-pulse"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative border-l-2 border-dashed border-gray-300 ml-4 space-y-6">
+                            <div class="relative">
+                                <div class="absolute -left-[11px] bg-white w-5 h-5 rounded-full border-2 border-green-500 flex items-center justify-center">
+                                    <i class="mdi mdi-check text-green-500 text-[10px] font-bold"></i>
+                                </div>
+                                <div class="pl-6">
+                                    <p class="text-sm font-bold text-gray-900 leading-none">Carga Completada</p>
+                                    <p class="text-xs text-gray-500 mt-1">14:30 PM - Planta Tula</p>
+                                </div>
+                            </div>
+                            
+                            <div class="relative">
+                                <div class="absolute -left-[14px] bg-cbl-blue w-7 h-7 rounded-full border-4 border-white shadow-sm flex items-center justify-center">
+                                    <i class="mdi mdi-truck text-white text-[12px]"></i>
+                                </div>
+                                <div class="pl-6 bg-blue-50/50 -mt-2 p-2 rounded-lg border border-blue-100 mr-2">
+                                    <p class="text-sm font-bold text-cbl-blue leading-none mb-1">En Ruta (Unidad 557)</p>
+                                    <p class="text-xs text-gray-600">Aproximado a 45 min del destino.</p>
+                                    <div class="mt-2 text-xs font-bold text-blue-700 flex items-center gap-1 cursor-pointer">
+                                        <i class="mdi mdi-map"></i> Ver en mapa
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="relative">
+                                <div class="absolute -left-[11px] bg-white w-5 h-5 rounded-full border-2 border-gray-300"></div>
+                                <div class="pl-6">
+                                    <p class="text-sm font-medium text-gray-400 leading-none">Entrega en Obra</p>
+                                    <p class="text-xs text-gray-400 mt-1">Pendiente de firma</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!-- SPA Routing Views -->
+        <template if:true={isDevoluciones}>
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 relative animate-fade-in">
+                <button onclick={handleNavHome} class="text-sm font-bold text-gray-500 mb-4 flex items-center gap-1 hover:text-cbl-blue transition-colors">
+                    <i class="mdi mdi-arrow-left"></i> Volver al Inicio
+                </button>
+                <c-caz-mis-solicitudes new-request-page-name="SPA" onnavigatetopage={handleSpaNavigation}></c-caz-mis-solicitudes>
+            </div>
+        </template>
+
+        <template if:true={isNuevaDevolucion}>
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 relative animate-fade-in">
+                <button onclick={handleNavDevoluciones} class="text-sm font-bold text-gray-500 mb-4 flex items-center gap-1 hover:text-cbl-blue transition-colors">
+                    <i class="mdi mdi-arrow-left"></i> Volver a Solicitudes Activas
+                </button>
+                <c-caz-solicitud-devolucion target-page-name="SPA" onnavigatetopage={handleSpaNavigation}></c-caz-solicitud-devolucion>
+            </div>
+        </template>
+    </div>
+
+</div></div></template>

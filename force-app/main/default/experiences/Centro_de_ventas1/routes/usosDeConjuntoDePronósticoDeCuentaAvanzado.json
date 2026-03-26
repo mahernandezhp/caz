@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "6516c723-c51f-4dfd-a5cb-93e756008ddf",
+  "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
+  "configurationTags" : [ ],
+  "devName" : "list_0u8",
+  "id" : "92c16e70-df58-48f8-8cf4-5884b5f3d63d",
+  "label" : "Usos de conjunto de Pronóstico de cuenta avanzado",
+  "routeType" : "list-0u8",
+  "type" : "route",
+  "urlPrefix" : "advacctforecastsetuse"
+}

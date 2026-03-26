@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "328d9e4f-2e21-42bb-836f-3d89dcb15913",
+  "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
+  "configurationTags" : [ ],
+  "devName" : "relatedlist_0PR",
+  "id" : "44b239d4-3bd9-414d-85be-9023b827dd37",
+  "label" : "Lista relacionada de plantillas de planes de acción",
+  "routeType" : "relatedlist-0PR",
+  "type" : "route",
+  "urlPrefix" : "actionplantemplate"
+}

@@ -1,0 +1,174 @@
+{
+  "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "29282e9f-4a5a-4792-8e5d-879d4a38be8f",
+  "label" : "Detalles de uso de conjunto de Pronóstico de cuenta avanzado",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "0547494b-476e-485e-bb41-0d6a2a1574b6",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e00f48b4-3f19-4aad-b0cb-308cf9f5fdb8",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "tabsetConfig" : {
+          "UUID" : "d74f1703-0697-464b-9df5-bb8c77dc7478",
+          "activeTab" : "tab1",
+          "tabs" : [ {
+            "UUID" : "060c1888-1857-4760-b4c6-5c93d957332e",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ {
+              "attributes" : { },
+              "fqn" : "industries_mfg_adv_forecast:advancedForecast"
+            } ],
+            "tabKey" : "tab1",
+            "tabName" : "ADVANCED FORECAST"
+          }, {
+            "UUID" : "c52411ff-d2bf-4e8d-9dcc-d26bdce0d66c",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ {
+              "attributes" : { },
+              "fqn" : "forceCommunity:recordDetail"
+            } ],
+            "tabKey" : "tab2",
+            "tabName" : "DETAILS"
+          }, {
+            "UUID" : "45dc11d5-e07a-44a6-9c1d-76fc26f155b4",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ {
+              "attributes" : { },
+              "fqn" : "forceCommunity:forceCommunityFeed"
+            } ],
+            "tabKey" : "tab3",
+            "tabName" : "ACTIVITY"
+          }, {
+            "UUID" : "a380fb41-41ad-4c33-a937-73994088114b",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ {
+              "attributes" : { },
+              "fqn" : "forceCommunity:relatedRecords"
+            } ],
+            "tabKey" : "tab4",
+            "tabName" : "RELATED"
+          } ],
+          "useOverflowMenu" : false
+        }
+      },
+      "componentName" : "forceCommunity:tabLayout",
+      "id" : "d74f1703-0697-464b-9df5-bb8c77dc7478",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : { },
+          "componentName" : "industries_mfg_adv_forecast:advancedForecast",
+          "id" : "fe4f89b8-1f9d-425e-8a64-59ababd8c3f9",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "060c1888-1857-4760-b4c6-5c93d957332e",
+        "regionLabel" : "ADVANCED FORECAST",
+        "regionName" : "tab1",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : {
+            "recordId" : "{!recordId}"
+          },
+          "componentName" : "forceCommunity:recordDetail",
+          "id" : "c0469625-60d0-4c0e-b762-07c6993e43c1",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "c52411ff-d2bf-4e8d-9dcc-d26bdce0d66c",
+        "regionLabel" : "DETAILS",
+        "regionName" : "tab2",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : {
+            "canChangeSorting" : true,
+            "defaultFilter" : "",
+            "defaultSortOrderHomeFeed" : "Relevance",
+            "defaultSortOrderTopicsFeed" : "Relevance",
+            "feedDesign" : "DEFAULT",
+            "hasFeedSearch" : true,
+            "subjectId" : "{!recordId}",
+            "type" : "Record"
+          },
+          "componentName" : "forceCommunity:forceCommunityFeed",
+          "id" : "e489af91-709e-49cf-89db-dcf14b0dfb75",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "45dc11d5-e07a-44a6-9c1d-76fc26f155b4",
+        "regionLabel" : "ACTIVITY",
+        "regionName" : "tab3",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : {
+            "recordId" : "{!recordId}",
+            "width" : "MEDIUM"
+          },
+          "componentName" : "forceCommunity:relatedRecords",
+          "id" : "4d24d542-a7ad-4122-96f5-dedaab318cd3",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "a380fb41-41ad-4c33-a937-73994088114b",
+        "regionLabel" : "RELATED",
+        "regionName" : "tab4",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e5b52c88-acdd-47fa-bf53-28252018f1c1",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "b7f3a084-67ea-40f7-862c-814c50f9e56b",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "445eb5dc-53a3-4c51-81ad-4430842b1ba6",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "b31de748-25be-41f9-b9b4-01c37ce44c1b",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-0u8"
+}

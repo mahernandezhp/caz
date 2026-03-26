@@ -1,0 +1,46 @@
+{
+  "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "6516c723-c51f-4dfd-a5cb-93e756008ddf",
+  "label" : "Usos de conjunto de Pronóstico de cuenta avanzado",
+  "regions" : [ {
+    "id" : "55ed27b8-9c05-4e52-a054-085115933fdc",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "{!filterId}",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "{!objectName}",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "ce2ebe48-e9ab-4427-93a3-0a64ab0ff5d5",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "316f1985-fa94-4f55-a25a-bb30c6cb6a70",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "e57adcbb-a520-4fa9-adf2-ee94921fd34f",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "list-0u8"
+}

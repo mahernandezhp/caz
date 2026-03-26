@@ -1,7 +1,7 @@
 <template>
     <div class="caz-carga-container">
         <div class="slds-card slds-p-around_medium">
-            <h3 class="slds-text-heading_small slds-m-bottom_medium">Documentos Requeridos</h3>
+            <h3 class="slds-text-heading_small slds-m-bottom_medium">{title}</h3>
 
             <template if:true={isLoading}>
                 <lightning-spinner alternative-text="Cargando..." size="small"></lightning-spinner>

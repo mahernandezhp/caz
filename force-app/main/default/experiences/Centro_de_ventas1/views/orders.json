@@ -1,0 +1,46 @@
+{
+  "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "2e856f33-7851-4084-9022-827e753f3c3c",
+  "label" : "orders",
+  "regions" : [ {
+    "id" : "8dc253fd-0f38-4e69-adab-9ab6dc708df7",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:cazPortalPedidos",
+      "id" : "4ccc9383-1621-49fa-b336-755560dbba38",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "b1a37839-fbf0-4942-911e-dab29c5e6887",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "db8a76d8-af71-4359-a837-8092cf58f810",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "orders"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "21c9b33e-bb9e-4b95-9537-e46c1fbe3b9a",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d193b3c8-ec59-4dd7-9294-73fe0e62ca26",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-orders"
+}

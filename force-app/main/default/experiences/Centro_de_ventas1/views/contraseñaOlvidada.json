@@ -1,0 +1,69 @@
+{
+  "appPageId" : "ebe77b50-407f-4796-b2fc-5c684a3e1965",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "2010573e-5f5c-4295-bb9d-944f036e59b5",
+  "label" : "Contraseña olvidada",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<div style=\"text-align: center;\"><span style=\"font-size:22px\">PASSWORD RESET</span></div>"
+      },
+      "componentName" : "forceCommunity:richTextInline",
+      "id" : "850c0b9a-ed7f-4d83-857f-3020348b9caf",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "richTextValue" : "<div style=\"text-align: center;\">To reset your password, we'll need your username.<br/> We'll send password reset instructions to the email address associated with your account.</div>"
+      },
+      "componentName" : "forceCommunity:richTextInline",
+      "id" : "73e5b8e4-d23d-4c35-bf66-d58560d162a3",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "checkEmailUrl" : "./CheckPasswordResetEmail",
+        "submitButtonLabel" : "Reset Password",
+        "usernameLabel" : "Username"
+      },
+      "componentName" : "salesforceIdentity:forgotPassword2",
+      "id" : "31577aa5-a26f-45a1-bdf4-e9e989926d2f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "richTextValue" : "<div style=\"text-align: center;\"><a href=\"./\">Cancel</a></div>"
+      },
+      "componentName" : "forceCommunity:richTextInline",
+      "id" : "1386e5b3-5e2b-491b-9c4c-8ef9872000ad",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "0674e87e-1692-43c4-8193-cc2ce50ba555",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Contraseña olvidada"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "99ff0334-1434-42e6-aa41-c7ed4755ac43",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e1cdefb2-1b28-4eeb-8013-4fce29fd0cc2",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Login",
+  "type" : "view",
+  "viewType" : "forgot-password"
+}

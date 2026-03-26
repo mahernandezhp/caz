@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "0bac33d9-1573-46a3-bcfb-3666ae6dfb67",
+  "appPageId" : "ebe77b50-407f-4796-b2fc-5c684a3e1965",
+  "configurationTags" : [ ],
+  "devName" : "Login",
+  "id" : "1aa6317c-ae0d-48e2-aa1e-bc848b93481a",
+  "label" : "Iniciar sesión",
+  "routeType" : "login-home",
+  "type" : "route",
+  "urlPrefix" : ""
+}

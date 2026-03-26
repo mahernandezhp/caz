@@ -6,4 +6,11 @@
         <target>lightningCommunity__Page</target>
         <target>lightningCommunity__Default</target>
     </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="title" type="String" default="Mis Solicitudes de Devolución" label="Título del Componente"/>
+            <property name="listPageSize" type="Integer" default="10" label="Registros por Página"/>
+            <property name="newRequestPageName" type="String" default="Nueva_Solicitud__c" label="API Name de la página de Nueva Solicitud"/>
+        </targetConfig>
+    </targetConfigs>
 </LightningComponentBundle>

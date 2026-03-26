@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>CAZ_ActualizacionDeDatos_correctos</fullName>
+        <description>CAZ_ActualizacionDeDatos_correctos</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>mario.q@capptus.com.cazs</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/CAZ_ActualizacionDeDatos_correctos</template>
+    </alerts>
+    <alerts>
+        <fullName>CAZ_ActualizacionDeDatos_incorrectos</fullName>
+        <description>CAZ_ActualizacionDeDatos_incorrectos</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>cruzazul@capptus.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>mario.q@capptus.com.cazs</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/CAZ_ActualizacionDeDatos_incorrectos</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>CAZ_SAD_activaPdeA</fullName>
+        <description>Cuando la Solicitud de actualización de datos es enviada a aprobación</description>
+        <field>CAZ_Estado__c</field>
+        <literalValue>En aprobación</literalValue>
+        <name>CAZ_SAD_activaPdeA</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>CAZ_SAD_aprobada</fullName>
+        <description>Cuando la Solicitud de actualización de datos es enviada a aprobación</description>
+        <field>CAZ_Aprobado__c</field>
+        <literalValue>1</literalValue>
+        <name>CAZ_SAD_aprobada</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>CAZ_SAD_rechazada</fullName>
+        <description>Cuando la Solicitud de actualización de datos es rechazada</description>
+        <field>CAZ_Aprobado__c</field>
+        <literalValue>0</literalValue>
+        <name>CAZ_SAD_rechazada</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+</Workflow>

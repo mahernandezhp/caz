@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Case</entityName>
+    <fieldName>Status</fieldName>
+    <masterLabel>Case Devolución</masterLabel>
+    <recordTypeName>Devolucion</recordTypeName>
+    <pathAssistantSteps>
+        <fieldValue>Borrador</fieldValue>
+        <info>&lt;p&gt;El distribuidor ha enviado la solicitud. Verificar documentos obligatorios y la información del caso.&lt;/p&gt;</info>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldValue>Por atender</fieldValue>
+        <info>&lt;p&gt;Crédito y Cobranza aprobó la solicitud y generó la provisión en JDE. Tesorería debe atender en 8 horas.&lt;/p&gt;</info>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldValue>En Proceso</fieldValue>
+        <info>&lt;p&gt;Tesorería está gestionando la devolución bancaria. Al confirmar el depósito usar la acción Confirmar Devolución.&lt;/p&gt;</info>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldValue>Completado</fieldValue>
+        <info>&lt;p&gt;La devolución fue depositada al distribuidor. El proceso ha concluido exitosamente.&lt;/p&gt;</info>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldValue>Rechazado</fieldValue>
+        <info>&lt;p&gt;La solicitud fue rechazada. El distribuidor fue notificado con el motivo de rechazo.&lt;/p&gt;</info>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldValue>Vencido</fieldValue>
+        <info>&lt;p&gt;Tesorería excedió las 8 horas de atención. Se envió recordatorio automático. El caso sigue activo.&lt;/p&gt;</info>
+    </pathAssistantSteps>
+</PathAssistant>

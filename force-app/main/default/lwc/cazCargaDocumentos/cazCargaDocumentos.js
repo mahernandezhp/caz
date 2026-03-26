@@ -1,10 +1,12 @@
 import { LightningElement, api, wire, track } from 'lwc';
 import { getRecords } from 'lightning/uiRecordApi';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import getDocumentosRequeridos from '@salesforce/apex/CAZ_DocumentoSolicitudController.getDocumentosDevolucion';
+import getDocumentosRequeridos from '@salesforce/apex/CAZ_DocumentoSolicitudController.getDocumentosRequeridos';
 
 export default class CazCargaDocumentos extends LightningElement {
     @api recordId;
+    @api processName = 'Devolucion';
+    @api title = 'Documentos Requeridos';
 
     @track isLoading = true;
     @track errorMessage = '';
@@ -19,7 +21,7 @@ export default class CazCargaDocumentos extends LightningElement {
 
     loadDocumentos() {
         this.isLoading = true;
-        getDocumentosRequeridos()
+        getDocumentosRequeridos({ processName: this.processName })
             .then(result => {
                 this.documentosRequeridos = result.map(doc => ({
                     label: doc.MasterLabel,

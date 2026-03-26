@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "2010573e-5f5c-4295-bb9d-944f036e59b5",
+  "appPageId" : "ebe77b50-407f-4796-b2fc-5c684a3e1965",
+  "configurationTags" : [ ],
+  "devName" : "Forgot_Password",
+  "id" : "44ed4be8-a5fa-4a4a-a7b8-626bf215abdc",
+  "label" : "Contraseña olvidada",
+  "routeType" : "forgot-password",
+  "type" : "route",
+  "urlPrefix" : "ForgotPassword"
+}
