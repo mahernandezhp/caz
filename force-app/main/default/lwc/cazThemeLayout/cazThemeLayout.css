@@ -1,5 +1,16 @@
+:host {
+    display: block;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    height: 100vh;
+}
+
 .theme-container {
     height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
     overflow: hidden;
     background-color: var(--slds-g-color-neutral-base-95, #F8FAFC);
 }

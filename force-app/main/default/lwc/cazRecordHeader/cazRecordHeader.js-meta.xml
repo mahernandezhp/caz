@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>CAZ Record Header (Navegación)</masterLabel>
+    <description>Cabecera de registro con breadcrumb, título, badges de estado y botones de navegación (regresar/editar). Diseñado para sitios LWR que no tienen Record Banner estándar.</description>
+    <targets>
+        <target>lightningCommunity__Default</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightning__RecordPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="recordId" type="String" label="Record ID" description="Se asigna automáticamente en Object Pages" />
+            <property name="objectApiName" type="String" label="Object API Name" description="Ej: Case, Order, Account" />
+            <property name="backLabel" type="String" label="Texto del botón Regresar" default="Regresar" />
+            <property name="objectLabel" type="String" label="Nombre del objeto (breadcrumb)" default="Lista" />
+            <property name="objectListPath" type="String" label="URL de la lista del objeto" default="/" description="Ej: /case/Case/Default" />
+            <property name="showEditButton" type="Boolean" label="Mostrar botón Editar" default="true" />
+            <property name="showBackButton" type="Boolean" label="Mostrar botón Regresar" default="true" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

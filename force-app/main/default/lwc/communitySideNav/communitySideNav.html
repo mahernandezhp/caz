@@ -1,0 +1,163 @@
+<template>
+    <aside class="sidebar">
+        <!-- Header -->
+        <div class="brand">
+            <div class="brand__icon">+</div>
+            <div class="brand__text">{portalTitle}</div>
+        </div>
+
+        <!-- Contenido -->
+        <div class="sidebar__content">
+            <!-- PRINCIPAL -->
+            <div class="section">
+                <div class="section__title">PRINCIPAL</div>
+
+                <div class={inicioClass} data-key="inicio" onclick={handleStaticClick}>
+                    <div class="menu-item__left">
+                        <lightning-icon
+                            icon-name="utility:home"
+                            size="small"
+                            alternative-text="Inicio"
+                            class="menu-item__icon"
+                        ></lightning-icon>
+                        <span class="menu-item__label">Inicio</span>
+                    </div>
+                </div>
+
+                <div class={cuentaClass} data-key="cuenta" onclick={handleStaticClick}>
+                    <div class="menu-item__left">
+                        <lightning-icon
+                            icon-name="utility:moneybag"
+                            size="small"
+                            alternative-text="Cuenta"
+                            class="menu-item__icon"
+                        ></lightning-icon>
+                        <span class="menu-item__label">Cuenta</span>
+                    </div>
+                    <div class="menu-item__right">
+                        <span class="menu-item__subtitle">(Prueba)</span>
+                        <lightning-icon
+                            icon-name="utility:chevronright"
+                            size="x-small"
+                            alternative-text="Ir"
+                            class="menu-item__chevron"
+                        ></lightning-icon>
+                    </div>
+                </div>
+
+                <div class={ordenesClass} data-key="ordenes" onclick={handleStaticClick}>
+                    <div class="menu-item__left">
+                        <lightning-icon
+                            icon-name="utility:orders"
+                            size="small"
+                            alternative-text="Órdenes"
+                            class="menu-item__icon"
+                        ></lightning-icon>
+                        <span class="menu-item__label">Órdenes</span>
+                    </div>
+                    <div class="menu-item__right">
+                        <span class="menu-item__badge">2</span>
+                    </div>
+                </div>
+
+                <div class={facturasClass} data-key="facturas" onclick={handleStaticClick}>
+                    <div class="menu-item__left">
+                        <lightning-icon
+                            icon-name="utility:file"
+                            size="small"
+                            alternative-text="Facturas"
+                            class="menu-item__icon"
+                        ></lightning-icon>
+                        <span class="menu-item__label">Facturas</span>
+                    </div>
+                    <div class="menu-item__right">
+                        <lightning-icon
+                            icon-name="utility:chevronright"
+                            size="x-small"
+                            alternative-text="Ir"
+                            class="menu-item__chevron"
+                        ></lightning-icon>
+                    </div>
+                </div>
+
+                <div class={casosClass} data-key="casos" onclick={handleStaticClick}>
+                    <div class="menu-item__left">
+                        <lightning-icon
+                            icon-name="utility:case"
+                            size="small"
+                            alternative-text="Casos"
+                            class="menu-item__icon"
+                        ></lightning-icon>
+                        <span class="menu-item__label">Casos</span>
+                    </div>
+                    <div class="menu-item__right">
+                        <lightning-icon
+                            icon-name="utility:chevronright"
+                            size="x-small"
+                            alternative-text="Ir"
+                            class="menu-item__chevron"
+                        ></lightning-icon>
+                    </div>
+                </div>
+
+                <div class={pagosClass} data-key="pagos" onclick={handleStaticClick}>
+                    <div class="menu-item__left">
+                        <lightning-icon
+                            icon-name="utility:currency"
+                            size="small"
+                            alternative-text="Pagos"
+                            class="menu-item__icon"
+                        ></lightning-icon>
+                        <span class="menu-item__label">Pagos</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AJUSTES -->
+            <div class="section section--secondary">
+                <div class="section__title">AJUSTES &amp; SOPORTE</div>
+
+                <div class={perfilClass} data-key="perfil" onclick={handleStaticClick}>
+                    <div class="menu-item__left">
+                        <lightning-icon
+                            icon-name="utility:settings"
+                            size="small"
+                            alternative-text="Perfil y Ajustes"
+                            class="menu-item__icon"
+                        ></lightning-icon>
+                        <span class="menu-item__label">Perfil &amp; Ajustes</span>
+                    </div>
+                </div>
+
+                <div class={faqsClass} data-key="faqs" onclick={handleStaticClick}>
+                    <div class="menu-item__left">
+                        <lightning-icon
+                            icon-name="utility:question"
+                            size="small"
+                            alternative-text="FAQ's"
+                            class="menu-item__icon"
+                        ></lightning-icon>
+                        <span class="menu-item__label">FAQ's</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer__account">
+                <div class="footer__avatar">MC</div>
+                <div class="footer__account-info">
+                    <div class="footer__account-name">{accountName}</div>
+                    <div class="footer__account-id">ID: {accountCode}</div>
+                </div>
+            </div>
+
+            <div class="footer__links">
+                <a href={termsUrl}>Términos</a>
+                <span>•</span>
+                <a href={privacyUrl}>Privacidad</a>
+            </div>
+        </div>
+    </aside>
+</template>

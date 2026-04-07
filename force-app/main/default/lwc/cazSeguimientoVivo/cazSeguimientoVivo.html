@@ -1,0 +1,63 @@
+<template>
+    <div class="slds-box p-tracking-panel">
+        <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-m-bottom_large">
+            <h2 class="slds-text-heading_small slds-text-title_bold panel-title">Seguimiento en Vivo</h2>
+            <div class="badge-gps">
+                <lightning-icon icon-name="utility:checking" size="xx-small" class="slds-m-right_xx-small"></lightning-icon> GPS Activo
+            </div>
+        </div>
+
+        <!-- Active Order Card -->
+        <div class="slds-box slds-theme_default p-tracking-card slds-m-bottom_large">
+            <div class="slds-grid slds-grid_align-spread slds-m-bottom_small">
+                <div>
+                    <p class="slds-text-heading_label slds-text-color_weak label-bold">ORDEN ACTIVA</p>
+                    <p class="slds-text-heading_small slds-text-title_bold order-ref">{activeOrderRef}</p>
+                </div>
+                <div class="slds-text-align_right">
+                    <p class="slds-text-heading_label slds-text-color_weak label-bold">LLEGADA EST.</p>
+                    <p class="slds-text-heading_small slds-text-title_bold eta-text">{estimatedArrival}</p>
+                </div>
+            </div>
+            <div class="progress-bar-container thick-bar slds-m-bottom_xx-small">
+                <div class="progress-filled blue-fill" style={progressStyle}></div>
+            </div>
+            <p class="slds-text-align_right slds-text-body_small slds-text-color_weak label-bold">{progressPercent}% completado</p>
+        </div>
+
+        <!-- Timeline -->
+        <div class="custom-timeline">
+            <template for:each={timelineSteps} for:item="step">
+                <div key={step.id} class="timeline-step">
+                    <div class="timeline-icon-col">
+                        <template if:true={step.isCompleted}>
+                            <div class="timeline-dot dot-success">
+                                <lightning-icon icon-name="utility:check" size="xx-small" variant="inverse"></lightning-icon>
+                            </div>
+                        </template>
+                        <template if:true={step.isActive}>
+                            <div class="timeline-dot dot-active">
+                                <lightning-icon icon-name="utility:record" size="xx-small" variant="inverse"></lightning-icon>
+                            </div>
+                        </template>
+                        <template if:true={step.isPending}>
+                            <div class="timeline-dot dot-pending"></div>
+                        </template>
+                        <template if:false={step.isLast}>
+                            <div class={step.connectorClass}></div>
+                        </template>
+                    </div>
+                    <div class={step.contentClass}>
+                        <h3 class={step.titleClass}>{step.title}</h3>
+                        <p class={step.descClass}>{step.description}</p>
+                        <template if:true={step.hasMapLink}>
+                            <a href="javascript:void(0);" class="slds-text-link_reset slds-text-title_bold slds-m-top_xx-small map-link">
+                                <lightning-icon icon-name="utility:macros" size="xx-small" class="slds-m-right_xxx-small"></lightning-icon> Ver en mapa
+                            </a>
+                        </template>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Menú Lateral de Distribuidor</masterLabel>
+    <description>Menú de navegación vertical configurable para el Portal de Distribuidores.</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <!-- Properties for header -->
+            <property name="logoText" type="String" default="+" label="Texto de Logo" />
+            <property name="brandName" type="String" default="Portal Distribuidor" label="Nombre de Marca" />
+            
+            <!-- Properties for main menu -->
+            <property name="titlePrincipal" type="String" default="PRINCIPAL" label="Título Sección Principal" />
+            <property name="menuPrincipalJson" type="String" label="JSON Menú Principal" description="Arreglo JSON con los items del menú principal" />
+            
+            <!-- Properties for settings menu -->
+            <property name="titleAjustes" type="String" default="AJUSTES &amp; SOPORTE" label="Título Sección Ajustes" />
+            <property name="menuAjustesJson" type="String" label="JSON Menú Ajustes" description="Arreglo JSON con los items de ajustes" />
+            
+            <!-- Properties for user profile -->
+            <property name="showUserPanel" type="Boolean" default="false" label="Mostrar Panel de Usuario" />
+            <property name="userName" type="String" default="Distribuidora Norte" label="Nombre de Usuario" />
+            <property name="userIdStr" type="String" default="ID: DST-0092" label="ID de Usuario / Subtítulo" />
+            <property name="userInitials" type="String" default="DN" label="Iniciales de Avatar" />
+            <property name="userAvatarUrl" type="String" label="URL de Avatar (Opcional)" />
+            
+            <!-- Properties for footer links -->
+            <property name="terminosUrl" type="String" default="/terminos" label="URL Términos" />
+            <property name="privacidadUrl" type="String" default="/privacidad" label="URL Privacidad" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

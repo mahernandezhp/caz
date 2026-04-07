@@ -1,0 +1,86 @@
+<template lwc:render-mode="light">
+    <!-- SIDEBAR (Navegación principal basada en el Sitemap) -->
+    <aside class="w-64 bg-cbl-blue text-white flex flex-col shadow-2xl relative z-20 h-full min-h-screen">
+        <!-- Logo Area -->
+        <div class="h-16 flex items-center px-6 border-b border-blue-800/50 bg-blue-900/20">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-white flex items-center justify-center rounded text-cbl-blue font-bold text-xl rounded-tl-lg rounded-br-lg shadow-inner">{logoText}</div>
+                <span class="font-bold text-lg tracking-wide">{brandName}</span>
+            </div>
+        </div>
+
+        <!-- Main Menu -->
+        <nav class="flex-1 overflow-y-auto py-6 px-3 space-y-1">
+            <template lwc:if={titlePrincipal}>
+                <div class="text-xs font-bold text-blue-300/50 uppercase tracking-wider mb-2 px-3">{titlePrincipal}</div>
+            </template>
+            
+            <template for:each={menuPrincipalParsed} for:item="item" for:index="index">
+                <a key={item.label} href={item.url} 
+                   class="flex items-center justify-between px-3 py-2.5 text-blue-100 hover:bg-blue-800/30 rounded-lg font-medium transition-colors group">
+                    <div class="flex items-center gap-3">
+                        <i class="mdi {item.icon} text-xl group-hover:text-white transition-colors"></i>
+                        {item.label}
+                        <template lwc:if={item.subLabel}>
+                            <span class="text-xs font-normal text-blue-300">{item.subLabel}</span>
+                        </template>
+                    </div>
+                    <template lwc:if={item.badge}>
+                        <span class="bg-cbl-red text-white text-xs font-bold px-2 py-0.5 rounded-full">{item.badge}</span>
+                    </template>
+                    <template lwc:elseif={item.showChevron}>
+                        <i class="mdi mdi-chevron-right text-blue-400 group-hover:text-white"></i>
+                    </template>
+                </a>
+            </template>
+
+            <template lwc:if={titleAjustes}>
+                <div class="mt-8 mb-2 px-3 text-xs font-bold text-blue-300/50 uppercase tracking-wider">{titleAjustes}</div>
+            </template>
+
+            <template for:each={menuAjustesParsed} for:item="item" for:index="index">
+                <a key={item.label} href={item.url} 
+                   class="flex items-center gap-3 px-3 py-2.5 text-blue-100 hover:bg-blue-800/30 rounded-lg font-medium transition-colors group">
+                    <i class="mdi {item.icon} text-xl group-hover:text-white transition-colors"></i>
+                    {item.label}
+                </a>
+            </template>
+        </nav>
+
+        <!-- User bottom panel -->
+        <template lwc:if={showUserPanel}>
+            <div class="p-4 bg-blue-900/30 border-t border-blue-800/50 mt-auto">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full border-2 border-white/20 overflow-hidden shrink-0">
+                        <template lwc:if={userAvatarUrl}>
+                            <img src={userAvatarUrl} alt="User Avatar">
+                        </template>
+                        <template lwc:else>
+                            <div class="w-full h-full bg-white text-cbl-blue flex items-center justify-center font-bold text-sm">
+                                {userInitials}
+                            </div>
+                        </template>
+                    </div>
+                    <div class="min-w-0">
+                        <p class="text-sm font-bold text-white truncate">{userName}</p>
+                        <p class="text-xs text-blue-300 truncate">{userIdStr}</p>
+                    </div>
+                </div>
+                <!-- Optional Footer Links -->
+                <div class="mt-3 flex gap-2 text-[10px] text-blue-300/70 justify-center border-t border-blue-800/50 pt-2">
+                    <template lwc:if={terminosUrl}>
+                        <a href={terminosUrl} class="hover:text-white">Términos</a>
+                    </template>
+                    <template lwc:if={terminosUrl}>
+                        <template lwc:if={privacidadUrl}>
+                            <span>·</span>
+                        </template>
+                    </template>
+                    <template lwc:if={privacidadUrl}>
+                        <a href={privacidadUrl} class="hover:text-white">Privacidad</a>
+                    </template>
+                </div>
+            </div>
+        </template>
+    </aside>
+</template>

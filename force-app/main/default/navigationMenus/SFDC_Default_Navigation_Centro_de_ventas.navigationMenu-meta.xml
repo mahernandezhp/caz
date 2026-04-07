@@ -11,10 +11,41 @@
         <type>InternalLink</type>
     </navigationMenuItem>
     <navigationMenuItem>
+        <defaultListViewId>All</defaultListViewId>
         <label>Devoluciones</label>
         <position>2</position>
         <publiclyAvailable>false</publiclyAvailable>
-        <target>/caz-solicituddevolucion-c</target>
-        <type>InternalLink</type>
+        <target>CAZ_SolicitudDevolucion__c</target>
+        <type>SalesforceObject</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <defaultListViewId>MyAccounts</defaultListViewId>
+        <label>Cuenta</label>
+        <position>3</position>
+        <publiclyAvailable>false</publiclyAvailable>
+        <target>Account</target>
+        <type>SalesforceObject</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <defaultListViewId>All</defaultListViewId>
+        <label>Actualización de datos</label>
+        <position>4</position>
+        <publiclyAvailable>false</publiclyAvailable>
+        <target>Solicitud_de_actualizacion_de_datos__c</target>
+        <type>SalesforceObject</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Test</label>
+        <position>5</position>
+        <publiclyAvailable>false</publiclyAvailable>
+        <target>Login</target>
+        <type>Event</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>SAD</label>
+        <position>6</position>
+        <publiclyAvailable>false</publiclyAvailable>
+        <target>Login</target>
+        <type>Event</type>
     </navigationMenuItem>
 </NavigationMenu>

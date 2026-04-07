@@ -1,6 +1,5 @@
-import { LightningElement, api, wire, track } from 'lwc';
+import { LightningElement, api, track } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
-import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
 import getMisSolicitudes from '@salesforce/apex/CAZ_SolicitudDevolucionController.getMisSolicitudes';
 import getTotalSolicitudes from '@salesforce/apex/CAZ_SolicitudDevolucionController.getTotalSolicitudes';
 import enviarSolicitud from '@salesforce/apex/CAZ_SolicitudDevolucionController.enviarSolicitud';
@@ -9,9 +8,8 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 const STATUS_CLASSES = {
     'Borrador': 'slds-theme_shade',
     'Por atender': 'slds-theme_info',
-    'En Proceso': 'slds-theme_warning',
-    'Vencido': 'slds-theme_error',
-    'Completado': 'slds-theme_success',
+    'En revisión Tesorería': 'slds-theme_warning',
+    'Aprobado': 'slds-theme_success',
     'Rechazado': 'slds-theme_error'
 };
 
@@ -63,8 +61,8 @@ export default class CazMisSolicitudes extends NavigationMixin(LightningElement)
             .then(result => {
                 this.solicitudes = result.map(caso => ({
                     ...caso,
-                    statusClass: STATUS_CLASSES[caso.Status] || '',
-                    isBorrador: caso.Status === 'Borrador',
+                    statusClass: STATUS_CLASSES[caso.CAZ_Status__c] || '',
+                    isBorrador: caso.CAZ_Status__c === 'Borrador',
                     importeFormatted: caso.CAZ_ImporteDevolucion__c
                         ? '$' + Number(caso.CAZ_ImporteDevolucion__c).toLocaleString('es-MX', { minimumFractionDigits: 2 })
                         : '-',
@@ -105,20 +103,20 @@ export default class CazMisSolicitudes extends NavigationMixin(LightningElement)
     }
 
     handleVerDetalle(event) {
-        const caseId = event.currentTarget.dataset.id;
+        const recordId = event.currentTarget.dataset.id;
         this[NavigationMixin.Navigate]({
             type: 'standard__recordPage',
             attributes: {
-                recordId: caseId,
+                recordId: recordId,
                 actionName: 'view'
             }
         });
     }
 
     handleEnviar(event) {
-        const caseId = event.currentTarget.dataset.id;
+        const recordId = event.currentTarget.dataset.id;
         this.isLoading = true;
-        enviarSolicitud({ caseId: caseId })
+        enviarSolicitud({ recordId: recordId })
             .then(() => {
                 this.dispatchEvent(
                     new ShowToastEvent({

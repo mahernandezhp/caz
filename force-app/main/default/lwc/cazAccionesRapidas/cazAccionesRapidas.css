@@ -1,0 +1,76 @@
+/* ============================================================
+   cazAccionesRapidas – Action Card Styles
+   Icon circles, hover effects, vibrant color backgrounds
+   ============================================================ */
+
+.section-title {
+    font-weight: 800;
+    color: var(--slds-g-color-neutral-base-10, #001642);
+}
+
+/* Base card */
+.action-card {
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid var(--slds-g-color-border-base-1, #e5e5e5);
+    background-color: transparent;
+    padding: 1.25rem;
+    border-radius: 1rem;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+}
+
+.action-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    border-color: var(--slds-g-color-brand-base-10, #002e6d);
+}
+
+.action-card:hover .icon-action-circle {
+    background-color: var(--slds-g-color-brand-base-90, #e0e5f8);
+}
+
+.action-card:hover .icon-action-circle lightning-icon {
+    --slds-c-icon-color-foreground-default: var(--slds-g-color-brand-base-10, #002e6d);
+    --sds-c-icon-color-foreground-default: var(--slds-g-color-brand-base-10, #002e6d);
+}
+
+.action-label {
+    font-size: 1rem;
+    color: var(--slds-g-color-neutral-base-10, #001642);
+}
+
+/* Icon Action Circles (Vibrantes) */
+.icon-action-circle {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.bg-blue-light { background-color: var(--slds-g-color-brand-base-95, #e0e5f8); }
+.bg-blue-light lightning-icon {
+    --slds-c-icon-color-foreground-default: var(--slds-g-color-brand-base-10, #002E6D);
+    --sds-c-icon-color-foreground-default: var(--slds-g-color-brand-base-10, #002E6D);
+}
+
+.bg-green-light { background-color: #ecfdf5; }
+.bg-green-light lightning-icon {
+    --slds-c-icon-color-foreground-default: #059669;
+    --sds-c-icon-color-foreground-default: #059669;
+}
+
+.bg-orange-light { background-color: #fff7ed; }
+.bg-orange-light lightning-icon {
+    --slds-c-icon-color-foreground-default: #ea580c;
+    --sds-c-icon-color-foreground-default: #ea580c;
+}
+
+.bg-purple-light { background-color: #faf5ff; }
+.bg-purple-light lightning-icon {
+    --slds-c-icon-color-foreground-default: #7e22ce;
+    --sds-c-icon-color-foreground-default: #7e22ce;
+}

@@ -10,9 +10,24 @@
     "type" : "region"
   }, {
     "components" : [ {
-      "componentAttributes" : { },
-      "componentName" : "c:cazDashboardDistribuidor",
-      "id" : "a1b2c3d4-e5f6-4a7b-8c9d-e1f2a3b4c5d6",
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "AllActivatedOrders",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "Order",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "6dabce45-fe3b-4b1d-b0d2-63dbd4e611b3",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"

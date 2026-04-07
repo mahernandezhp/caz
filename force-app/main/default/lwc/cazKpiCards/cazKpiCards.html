@@ -1,0 +1,113 @@
+<template>
+    <div class="slds-grid slds-gutters slds-m-bottom_x-large slds-wrap">
+        
+        <!-- Card 1: Línea de Crédito -->
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-m-bottom_medium">
+            <lightning-card title="Línea de Crédito" class="seller-card">
+                <div class="slds-p-horizontal_medium card-body-grid">
+                    <p class="card-subtitle slds-m-bottom_large">Montos asignados vs utilizados</p>
+                    
+                    <div class="slds-grid slds-grid_vertical-align-center">
+                        <!-- Donut -->
+                        <div class="slds-col slds-size_1-of-2">
+                            <div class="donut-chart donut-chart-blue">
+                                <div class="donut-content">
+                                    <span class="donut-value">{creditAvailable}</span>
+                                    <span class="donut-label">Disponible</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pills -->
+                        <div class="slds-col slds-size_1-of-2">
+                            <div class="metric-pill pill-green slds-m-bottom_x-small">
+                                <span class="pill-dot"></span> {creditAvailable} Libre
+                            </div>
+                            <div class="metric-pill pill-blue slds-m-bottom_x-small">
+                                <span class="pill-dot"></span> {creditUsed} Uso
+                            </div>
+                            <div class="metric-pill pill-gray">
+                                <span class="pill-dot"></span> {creditOverdue} Vencido
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div slot="footer" class="card-footer-custom">
+                    <lightning-button label="Solicitar Ampliación" variant="neutral" class="footer-action-btn" onclick={handleAmpliar}></lightning-button>
+                </div>
+            </lightning-card>
+        </div>
+
+        <!-- Card 2: Crédito Utilizado -->
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-m-bottom_medium">
+            <lightning-card title="Crédito Utilizado" class="seller-card">
+                <div class="slds-p-horizontal_medium card-body-grid">
+                    <p class="card-subtitle slds-m-bottom_large">Porcentaje usado del límite</p>
+                    
+                    <div class="slds-grid slds-grid_vertical-align-center">
+                        <!-- Donut -->
+                        <div class="slds-col slds-size_1-of-2">
+                            <div class={donutUsageClass}>
+                                <div class="donut-content">
+                                    <span class="donut-value">{usagePercent}%</span>
+                                    <span class="donut-label">Utilizado</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pills -->
+                        <div class="slds-col slds-size_1-of-2">
+                            <div class="metric-pill pill-blue slds-m-bottom_x-small">
+                                <span class="pill-dot"></span> {usagePercent}% Uso
+                            </div>
+                            <div class="metric-pill pill-green slds-m-bottom_x-small">
+                                <span class="pill-dot"></span> {freePercent}% Libre
+                            </div>
+                            <div class="metric-pill pill-gray">
+                                <span class="pill-dot"></span> Límite {creditLimit}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div slot="footer" class="card-footer-custom">
+                    <lightning-button label="Ver Detalles" variant="neutral" class="footer-action-btn" onclick={handleDetalles}></lightning-button>
+                </div>
+            </lightning-card>
+        </div>
+
+        <!-- Card 3: Saldo Vencido / Casos -->
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-m-bottom_medium">
+            <lightning-card title="Saldo Vencido / Casos" class="seller-card">
+                <div class="slds-p-horizontal_medium card-body-grid">
+                    <p class="card-subtitle slds-m-bottom_large">Adeudos e incidencias logísticas</p>
+                    
+                    <div class="slds-grid slds-grid_vertical-align-center">
+                        <!-- Donut -->
+                        <div class="slds-col slds-size_1-of-2">
+                            <div class="donut-chart donut-chart-gray">
+                                <div class="donut-content">
+                                    <span class="donut-value">{openCases}</span>
+                                    <span class="donut-label">Casos</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pills -->
+                        <div class="slds-col slds-size_1-of-2">
+                            <div class="metric-pill pill-green slds-m-bottom_x-small">
+                                <span class="pill-dot"></span> {overdueBalance} Vencido
+                            </div>
+                            <div class="metric-pill pill-green slds-m-bottom_x-small">
+                                <span class="pill-dot"></span> {openCases} Abiertos
+                            </div>
+                            <div class="metric-pill pill-gray">
+                                <span class="pill-dot"></span> {criticalCases} Críticos
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div slot="footer" class="card-footer-custom">
+                    <lightning-button label="Revisar Casos" variant="neutral" class="footer-action-btn" onclick={handleCasos}></lightning-button>
+                </div>
+            </lightning-card>
+        </div>
+        
+    </div>
+</template>

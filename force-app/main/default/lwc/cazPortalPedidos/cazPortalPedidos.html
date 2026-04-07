@@ -1,0 +1,165 @@
+<template>
+    <div class="caz-page">
+
+        <section class="caz-hero">
+            <div>
+                <h1 class="caz-title">Hola, {userName}</h1>
+                <p class="caz-subtitle">{accountName}</p>
+            </div>
+        </section>
+
+        <template if:true={isLoading}>
+            <div class="caz-loading">
+                <lightning-spinner alternative-text="Cargando" size="medium"></lightning-spinner>
+            </div>
+        </template>
+
+        <template if:true={errorMessage}>
+            <div class="caz-error-card">
+                <p>{errorMessage}</p>
+            </div>
+        </template>
+
+        <template if:true={hasContext}>
+            <section class="caz-kpi-grid">
+                <article class="caz-card caz-kpi-card">
+                    <div class="caz-kpi-header">
+                        <h2>Órdenes</h2>
+                    </div>
+                    <div class="caz-kpi-body">
+                        <div class="caz-kpi-circle blue">
+                            <span class="caz-kpi-number">{ordersCount}</span>
+                            <span class="caz-kpi-label">Registradas</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="caz-card caz-kpi-card">
+                    <div class="caz-kpi-header">
+                        <h2>Monto Total</h2>
+                    </div>
+                    <div class="caz-kpi-body">
+                        <div class="caz-kpi-circle red">
+                            <span class="caz-kpi-number">{formattedTotalAmount}</span>
+                            <span class="caz-kpi-label">Acumulado</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="caz-card caz-kpi-card">
+                    <div class="caz-kpi-header">
+                        <h2>Borradores</h2>
+                    </div>
+                    <div class="caz-kpi-body">
+                        <div class="caz-kpi-circle gray">
+                            <span class="caz-kpi-number">{draftOrdersCount}</span>
+                            <span class="caz-kpi-label">Borrador</span>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="caz-main-grid single-column">
+                <article class="caz-card caz-table-card">
+                    <div class="caz-card-header">
+                        <h2>Órdenes recientes</h2>
+
+                        <lightning-button
+                            label="Nueva orden"
+                            variant="brand"
+                            onclick={openModal}>
+                        </lightning-button>
+                    </div>
+
+                    <template if:true={hasOrders}>
+                        <div class="caz-table-wrap">
+                            <lightning-datatable
+                                key-field="orderId"
+                                data={orders}
+                                columns={columns}
+                                hide-checkbox-column
+                                onrowaction={handleRowAction}>
+                            </lightning-datatable>
+                        </div>
+                    </template>
+
+                    <template if:false={hasOrders}>
+                        <div class="caz-empty-state">
+                            No existen órdenes registradas para esta cuenta.
+                        </div>
+                    </template>
+                </article>
+            </section>
+        </template>
+
+        <template if:true={showModal}>
+            <section
+                role="dialog"
+                tabindex="-1"
+                aria-modal="true"
+                aria-labelledby="modal-heading"
+                class="slds-modal slds-fade-in-open">
+
+                <div class="slds-modal__container caz-modal-container">
+                    <header class="slds-modal__header caz-modal-header">
+                        <h2 id="modal-heading" class="slds-text-heading_medium">
+                            Nueva orden
+                        </h2>
+                    </header>
+
+                    <div class="slds-modal__content slds-p-around_medium caz-modal-content">
+                        <lightning-record-edit-form
+                            object-api-name="Order"
+                            onsubmit={handleSubmit}
+                            onsuccess={handleSuccess}
+                            onerror={handleError}>
+
+                            <lightning-messages></lightning-messages>
+
+                            <div class="caz-form-grid">
+                                <lightning-input-field field-name="EffectiveDate"></lightning-input-field>
+                                <lightning-input-field field-name="CAZ_Planta__c"></lightning-input-field>
+                            </div>
+
+                            <lightning-input-field field-name="Description"></lightning-input-field>
+
+                            <!-- Campos forzados -->
+                            <div class="slds-hide">
+                                <lightning-input-field
+                                    field-name="AccountId"
+                                    value={accountId}>
+                                </lightning-input-field>
+
+                                <lightning-input-field
+                                    field-name="CAZ_Contacto__c"
+                                    value={contactId}>
+                                </lightning-input-field>
+
+                                <lightning-input-field
+                                    field-name="Status"
+                                    value={defaultStatus}>
+                                </lightning-input-field>
+                            </div>
+
+                            <div class="caz-form-actions">
+                                <lightning-button
+                                    label="Cancelar"
+                                    onclick={closeModal}
+                                    class="slds-m-right_small">
+                                </lightning-button>
+
+                                <lightning-button
+                                    type="submit"
+                                    label="Guardar"
+                                    variant="brand">
+                                </lightning-button>
+                            </div>
+                        </lightning-record-edit-form>
+                    </div>
+                </div>
+            </section>
+
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+    </div>
+</template>

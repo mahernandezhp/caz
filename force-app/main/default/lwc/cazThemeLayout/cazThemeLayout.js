@@ -1,6 +1,7 @@
 import { LightningElement } from 'lwc';
 
 /**
- * @slot default This is the main content of the layout
+ * @slot default Área Central de la Página
+ * @slot sidebar Área Lateral (Arrastra aquí el componente de Menú)
  */
 export default class CazThemeLayout extends LightningElement {}

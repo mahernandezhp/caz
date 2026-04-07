@@ -7,7 +7,7 @@
     "ActionColor" : "rgb(0, 112, 210)",
     "BorderColor" : "#efefef",
     "CardBackgroundColor" : "rgba(255, 255, 255, 0)",
-    "CompanyLogo" : "/sfsites/assets/themes/mfg-logo.png",
+    "CompanyLogo" : "/file-asset/LogoNoOficialCAZ?v=1&height=300&width=300",
     "DetailTextColor" : "rgb(62, 62, 60)",
     "ErrorFontColor" : "#ff9e9e",
     "HeaderFonts" : "Salesforce Sans",

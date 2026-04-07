@@ -1,6 +1,58 @@
-.caz-custom-search {
-    width: 250px;
-    --sds-c-input-color-background: var(--slds-g-color-neutral-base-95, #f3f3f3);
-    --sds-c-input-radius-border: 20px;
-    --sds-c-input-color-border: transparent;
+.header-title {
+    font-weight: 700;
+    color: var(--slds-g-color-neutral-base-10, #03234d); /* SLDS 2.0 primary text */
+}
+
+/* Redondear nativo y emular neutralidad de SLDS 2 */
+.header-search {
+    width: 280px;
+    --sds-c-input-radius-border: 9999px;
+    --slds-c-input-radius-border: 9999px;
+    --sds-c-input-color-background: var(--slds-g-color-neutral-base-95, #f3f3f3); /* Light grey search start */
+    --slds-c-input-color-background: var(--slds-g-color-neutral-base-95, #f3f3f3);
+    transition: all 0.2s ease;
+}
+
+.header-search:focus-within {
+    --sds-c-input-color-background: var(--slds-g-color-neutral-base-100, #ffffff);
+    --slds-c-input-color-background: var(--slds-g-color-neutral-base-100, #ffffff);
+}
+
+.header-notification {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    padding: 0.25rem;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.header-notification:hover {
+    background-color: var(--slds-g-color-neutral-base-95, #f3f3f3);
+}
+
+.header-notification lightning-button-icon {
+    --slds-c-icon-color-foreground-default: var(--slds-g-color-neutral-base-50, #5c5c5c);
+    --sds-c-icon-color-foreground-default: var(--slds-g-color-neutral-base-50, #5c5c5c);
+    --slds-c-icon-color-foreground: var(--slds-g-color-neutral-base-50, #5c5c5c);
+    transition: color 0.2s ease;
+}
+
+.header-notification:hover lightning-button-icon {
+    --slds-c-icon-color-foreground-default: var(--slds-g-color-brand-base-10, #001642);
+    --sds-c-icon-color-foreground-default: var(--slds-g-color-brand-base-10, #001642);
+}
+
+.notification-dot {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--slds-g-color-error-base-10, #e31837); /* SLDS 2 Red */
+    border-radius: 50%;
+    border: 2px solid var(--slds-g-color-neutral-base-100, #ffffff);
+    pointer-events: none;
 }

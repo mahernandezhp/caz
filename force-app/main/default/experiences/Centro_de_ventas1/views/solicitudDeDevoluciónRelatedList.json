@@ -1,0 +1,39 @@
+{
+  "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "22f63076-a366-4bd7-8127-2c77fa048a0b",
+  "label" : "Solicitud de Devolución Related List",
+  "regions" : [ {
+    "id" : "f48522f3-c2c7-4391-a9c3-6828343b6736",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customTitle" : "",
+        "parentRecordId" : "{!recordId}",
+        "relatedListName" : "{!relationshipApiName}",
+        "showBreadCrumbs" : true,
+        "showCustomTitle" : false,
+        "showManualRefreshButton" : true,
+        "showRowNumbers" : true
+      },
+      "componentName" : "forceCommunity:relatedList",
+      "id" : "4a699ea5-1d99-4309-bcd7-6484e0be578b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c4db67a4-28f7-4e22-903c-8b4a77793322",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "9d7c9083-a27d-4af6-913a-4ec9cd61ad89",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "relatedlist-a1V"
+}

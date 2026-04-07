@@ -1,0 +1,78 @@
+<template>
+    <div class="record-header-container">
+
+        <!-- Breadcrumb Row -->
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+            <ol class="breadcrumb-list">
+                <template for:each={breadcrumbItems} for:item="crumb">
+                    <li key={crumb.id} class="breadcrumb-item">
+                        <template if:true={crumb.url}>
+                            <a href={crumb.url}
+                               data-url={crumb.url}
+                               onclick={handleBreadcrumbClick}
+                               class="breadcrumb-link">{crumb.label}</a>
+                            <span class="breadcrumb-separator">/</span>
+                        </template>
+                        <template if:false={crumb.url}>
+                            <span class="breadcrumb-current" aria-current="page">{crumb.label}</span>
+                        </template>
+                    </li>
+                </template>
+            </ol>
+        </nav>
+
+        <!-- Title Row -->
+        <div class="header-title-row">
+            <!-- Icon + Title -->
+            <div class="header-title-group">
+                <div class="header-icon-wrapper">
+                    <lightning-icon icon-name={objectIconName} size="medium"></lightning-icon>
+                </div>
+                <div class="header-title-content">
+                    <template if:true={isLoading}>
+                        <div class="placeholder-title"></div>
+                        <div class="placeholder-subtitle"></div>
+                    </template>
+                    <template if:true={hasRecord}>
+                        <h1 class="record-title">{recordTitle}</h1>
+                        <template if:true={recordSubtitle}>
+                            <p class="record-subtitle">{recordSubtitle}</p>
+                        </template>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="header-actions">
+                <!-- Status Badges -->
+                <template if:true={statusBadges.length}>
+                    <div class="header-badges">
+                        <template for:each={statusBadges} for:item="badge">
+                            <span key={badge.id} class={badge.variant}
+                                  data-variant={badge.variant}>{badge.label}</span>
+                        </template>
+                    </div>
+                </template>
+
+                <!-- Back Button -->
+                <template if:true={showBackButton}>
+                    <a href={backUrl}
+                       onclick={handleBack}
+                       class="action-btn action-btn_back"
+                       title={displayBackLabel}>
+                        <lightning-icon icon-name="utility:chevronleft" size="xx-small" class="btn-icon"></lightning-icon>
+                        <span class="btn-label">{displayBackLabel}</span>
+                    </a>
+                </template>
+
+                <!-- Edit Button -->
+                <template if:true={showEditButton}>
+                    <button class="action-btn action-btn_edit" onclick={handleEdit} title="Editar registro">
+                        <lightning-icon icon-name="utility:edit" size="xx-small" class="btn-icon"></lightning-icon>
+                        <span class="btn-label">Editar</span>
+                    </button>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

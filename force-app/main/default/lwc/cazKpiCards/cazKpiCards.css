@@ -1,0 +1,115 @@
+/* ============================================================
+   cazKpiCards – Seller Home Card Styles
+   Donut Charts (CSS puro), Data Pills, Footer Buttons
+   ============================================================ */
+
+/* --- SELLER HOME CARD OVERRIDES --- */
+.seller-card {
+    --sds-c-card-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    --slds-c-card-header-font-weight: 800;
+    --slds-c-card-header-text-color: #001642;
+    display: block;
+    height: 100%;
+}
+
+/* Subtítulo debajo del título de la tarjeta */
+.card-subtitle {
+    font-size: 0.75rem;
+    color: #5C5C5C;
+    line-height: 1.2;
+    font-weight: 500;
+}
+
+/* --- DONUT CHART (CSS PURO) --- */
+.donut-chart {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.02);
+}
+
+.donut-chart::before {
+    content: "";
+    position: absolute;
+    width: 82px;
+    height: 82px;
+    background-color: var(--slds-g-color-neutral-base-100, #ffffff);
+    border-radius: 50%;
+}
+
+.donut-chart-blue { background: conic-gradient(#3b82f6 0% 100%); }
+.donut-chart-red-partial { background: conic-gradient(#ef4444 0% 58%, #e2e8f0 58% 100%); }
+.donut-chart-gray { background: conic-gradient(#cbd5e1 0% 100%); }
+
+.donut-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.donut-value {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #181818;
+    line-height: 1.1;
+}
+
+.donut-label {
+    font-size: 0.65rem;
+    color: #5c5c5c;
+    margin-top: 2px;
+    font-weight: 600;
+}
+
+/* --- DATA PILLS --- */
+.metric-pill {
+    display: flex;
+    align-items: center;
+    background-color: #f8fafc;
+    border-radius: 9999px;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #334155;
+    border: 1px solid transparent;
+}
+
+.pill-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+.pill-green .pill-dot { background-color: #22c55e; }
+.pill-green { background-color: #f0fdf4; color: #166534; border-color: #bbf7d0; }
+
+.pill-blue .pill-dot { background-color: #3b82f6; }
+.pill-blue { background-color: #eff6ff; color: #1e40af; border-color: #bfdbfe; }
+
+.pill-red .pill-dot { background-color: #ef4444; }
+.pill-red { background-color: #fef2f2; color: #991b1b; border-color: #fecaca; }
+
+.pill-gray .pill-dot { background-color: #cbd5e1; }
+.pill-gray { background-color: #f8fafc; color: #475569; border-color: #e2e8f0; }
+
+/* --- FOOTER CARD BUTTON --- */
+.card-footer-custom {
+    border-top: 1px solid var(--slds-g-color-border-base-1, #e5e5e5);
+    padding-top: 0.75rem;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-action-btn {
+    --sds-c-button-text-color: var(--slds-g-color-brand-base-10, #002E6D);
+    width: 100%;
+    margin-top: 0.5rem;
+}

@@ -1,0 +1,12 @@
+<template>
+    <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-m-bottom_x-large">
+        <div>
+            <h1 class="slds-text-heading_large slds-text-title_bold welcome-title">Hola, {userName}</h1>
+            <p class="slds-text-body_regular slds-text-color_weak slds-m-top_xx-small welcome-subtitle">Resumen de tu cuenta y operaciones principales de hoy, {dateLabel}.</p>
+        </div>
+        <div class="slds-grid slds-grid_vertical-align-center slds-hide_small slds-show_medium">
+            <lightning-button variant="neutral" label="Estado de Cuenta" icon-name="utility:download" onclick={handleDownload}></lightning-button>
+            <lightning-button variant="brand" label="Nueva Orden" class="slds-m-left_small" onclick={handleNewOrder}></lightning-button>
+        </div>
+    </div>
+</template>

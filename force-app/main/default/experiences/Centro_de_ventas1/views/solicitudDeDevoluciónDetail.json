@@ -1,0 +1,66 @@
+{
+  "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "7b2237a2-17c5-4ada-99bb-f142b7c71e22",
+  "label" : "Solicitud de Devolución Detail",
+  "regions" : [ {
+    "id" : "8e5fead9-9d88-40b8-bcc2-6f78cc619559",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "214db621-a06b-4bf4-92b1-e607c3baac76",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "detailsTabLabel" : "Details",
+        "discussionsTabLabel" : "Feed",
+        "recordId" : "{!recordId}",
+        "relatedTabLabel" : "Related",
+        "showLegacyActivityComposer" : false,
+        "tab1Type" : "details",
+        "tab2Type" : "related",
+        "tab3Type" : "chatter",
+        "tab4Type" : "none",
+        "timelineTabLabel" : "Activity"
+      },
+      "componentName" : "forceCommunity:recordHomeTabs",
+      "id" : "43750b04-5ddd-4c03-aef0-fdfb740b40b4",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d0437a0b-68d4-48f2-82dc-aacdd2cceeb6",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "8fc38987-dc8a-446e-a56e-dbf8b22e1ae3",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "0006b71f-5e57-419f-aafd-5a3c7f22004e",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f03191df-6566-4e0f-aeea-11a95ab7c051",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-a1V"
+}

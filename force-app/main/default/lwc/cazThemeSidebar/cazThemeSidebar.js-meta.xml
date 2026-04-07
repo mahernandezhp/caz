@@ -6,5 +6,34 @@
     <targets>
         <target>lightning__AppPage</target>
         <target>lightning__HomePage</target>
+        <target>lightningCommunity__Default</target>
+        <target>lightningCommunity__Page</target>
     </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="item1Label" type="String" label="Item 1: Texto" default="Inicio" />
+            <property name="item1Icon" type="String" label="Item 1: Ícono" default="utility:home" />
+            <property name="item1Url" type="String" label="Item 1: URL" default="/" />
+            
+            <property name="item2Label" type="String" label="Item 2: Texto" default="Cuenta" />
+            <property name="item2Icon" type="String" label="Item 2: Ícono" default="utility:moneybag" />
+            <property name="item2Url" type="String" label="Item 2: URL" default="/cuenta" />
+            
+            <property name="item3Label" type="String" label="Item 3: Texto" default="Órdenes" />
+            <property name="item3Icon" type="String" label="Item 3: Ícono" default="utility:shopping_bag" />
+            <property name="item3Url" type="String" label="Item 3: URL" default="/ordenes" />
+            
+            <property name="item4Label" type="String" label="Item 4: Texto" default="Facturas" />
+            <property name="item4Icon" type="String" label="Item 4: Ícono" default="utility:file" />
+            <property name="item4Url" type="String" label="Item 4: URL" default="/facturas" />
+            
+            <property name="item5Label" type="String" label="Item 5: Texto" default="Casos" />
+            <property name="item5Icon" type="String" label="Item 5: Ícono" default="utility:case" />
+            <property name="item5Url" type="String" label="Item 5: URL" default="/casos" />
+            
+            <property name="item6Label" type="String" label="Item 6: Texto" />
+            <property name="item6Icon" type="String" label="Item 6: Ícono" default="utility:chevronright" />
+            <property name="item6Url" type="String" label="Item 6: URL" />
+        </targetConfig>
+    </targetConfigs>
 </LightningComponentBundle>

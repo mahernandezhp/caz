@@ -40,11 +40,11 @@
                             <tbody>
                                 <template for:each={solicitudes} for:item="caso">
                                     <tr key={caso.Id}>
-                                        <td><div class="slds-truncate">{caso.CaseNumber}</div></td>
-                                        <td><div class="slds-truncate">{caso.Subject}</div></td>
+                                        <td><div class="slds-truncate">{caso.Name}</div></td>
+                                        <td><div class="slds-truncate" title={caso.CAZ_Description__c}>{caso.CAZ_Description__c}</div></td>
                                         <td>
                                             <div class="slds-truncate">
-                                                <lightning-badge label={caso.Status} class={caso.statusClass}></lightning-badge>
+                                                <lightning-badge label={caso.CAZ_Status__c} class={caso.statusClass}></lightning-badge>
                                             </div>
                                         </td>
                                         <td><div class="slds-truncate">{caso.importeFormatted}</div></td>

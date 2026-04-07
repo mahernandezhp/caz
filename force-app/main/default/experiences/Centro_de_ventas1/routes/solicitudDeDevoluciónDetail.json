@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "7b2237a2-17c5-4ada-99bb-f142b7c71e22",
+  "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
+  "configurationTags" : [ ],
+  "devName" : "detail_a1V__c",
+  "id" : "1a705d9f-8922-42a4-b591-58ac200e4845",
+  "label" : "Solicitud de Devolución Detail",
+  "objectApiName" : "CAZ_SolicitudDevolucion__c",
+  "routeType" : "detail-a1V",
+  "type" : "route",
+  "urlPrefix" : "caz-solicituddevolucion"
+}

@@ -16,16 +16,12 @@
                 </template>
 
                 <lightning-record-edit-form
-                    object-api-name="Case"
-                    record-type-id={recordTypeId}
+                    object-api-name={objectApiName}
                     onsuccess={handleSuccess}
                     onerror={handleError}
                     onsubmit={handleSubmit}>
 
                     <div class="slds-grid slds-wrap slds-gutters">
-                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
-                            <lightning-input-field field-name="Subject" required></lightning-input-field>
-                        </div>
                         <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
                             <lightning-input-field field-name="CAZ_ImporteDevolucion__c" required></lightning-input-field>
                         </div>
@@ -39,7 +35,7 @@
                             <lightning-input-field field-name="CAZ_ComprobanteReferencia__c"></lightning-input-field>
                         </div>
                         <div class="slds-col slds-size_1-of-1">
-                            <lightning-input-field field-name="Description"></lightning-input-field>
+                            <lightning-input-field field-name="CAZ_Description__c" required></lightning-input-field>
                         </div>
                     </div>
 
@@ -65,7 +61,7 @@
                 <div class="slds-text-align_center slds-m-bottom_large">
                     <lightning-icon icon-name="action:approval" size="large" class="slds-m-bottom_medium"></lightning-icon>
                     <h2 class="slds-text-heading_medium slds-m-bottom_small">Solicitud Registrada Temporalmente</h2>
-                    <p class="slds-text-body_regular">Tu solicitud de devolución <strong>{caseNumber}</strong> fue guardada exitosamente en estado <strong>Borrador</strong>.</p>
+                    <p class="slds-text-body_regular">Tu solicitud de devolución <strong>{recordName}</strong> fue guardada exitosamente en estado <strong>Borrador</strong>.</p>
                     <p class="slds-text-body_regular slds-m-top_x-small">Para poder enviarla a revisión, por favor adjunta los documentos requeridos a continuación. Si requieres más tiempo, puedes continuar más tarde desde la sección de Mis Solicitudes.</p>
                 </div>
 

@@ -1,7 +1,6 @@
-import { LightningElement, api, wire, track } from 'lwc';
-import { getObjectInfo } from 'lightning/uiObjectInfoApi';
+import { LightningElement, api, track } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
-import CASE_OBJECT from '@salesforce/schema/Case';
+import DEVOLUCION_OBJECT from '@salesforce/schema/CAZ_SolicitudDevolucion__c';
 
 export default class CazSolicitudDevolucion extends NavigationMixin(LightningElement) {
     @api title = 'Nueva Solicitud de Devolución';
@@ -10,36 +9,23 @@ export default class CazSolicitudDevolucion extends NavigationMixin(LightningEle
     @track isLoading = false;
     @track isSubmitted = false;
     @track errorMessage = '';
-    @track caseNumber = '';
+    @track recordName = '';
     @track newRecordId = '';
-    @track recordTypeId;
-
-    @wire(getObjectInfo, { objectApiName: CASE_OBJECT })
-    handleObjectInfo({ data, error }) {
-        if (data) {
-            const rtis = data.recordTypeInfos;
-            const devolucionRt = Object.values(rtis).find(rt => rt.name === 'Devolucion');
-            if (devolucionRt) {
-                this.recordTypeId = devolucionRt.recordTypeId;
-            }
-        }
-        if (error) {
-            this.errorMessage = 'Error al cargar el formulario.';
-        }
-    }
+    
+    objectApiName = DEVOLUCION_OBJECT;
 
     handleSubmit(event) {
         event.preventDefault();
         this.isLoading = true;
         this.errorMessage = '';
         const fields = event.detail.fields;
-        fields.Status = 'Borrador';
+        fields.CAZ_Status__c = 'Borrador';
         this.template.querySelector('lightning-record-edit-form').submit(fields);
     }
 
     handleSuccess(event) {
         this.isLoading = false;
-        this.caseNumber = event.detail.fields.CaseNumber?.value || '';
+        this.recordName = event.detail.fields.Name?.value || '';
         this.newRecordId = event.detail.id;
         this.isSubmitted = true;
     }

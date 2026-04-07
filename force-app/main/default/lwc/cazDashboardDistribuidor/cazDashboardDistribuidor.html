@@ -1,282 +1,31 @@
 <template>
     <div class="slds-p-around_large dashboard-container">
-        <!-- WELCOME HEADER -->
-        <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-m-bottom_x-large">
-            <div>
-                <h1 class="slds-text-heading_large slds-text-title_bold" style="font-size: 2rem; font-weight: 800; color: var(--slds-g-color-neutral-base-10, #001642);">Hola, Marco</h1>
-                <p class="slds-text-body_regular slds-text-color_weak slds-m-top_xx-small" style="font-size: 0.95rem;">Resumen de tu cuenta y operaciones principales de hoy, 25 de Marzo.</p>
-            </div>
-            <div class="slds-grid slds-grid_vertical-align-center slds-hide_small slds-show_medium">
-                <lightning-button variant="neutral" label="Estado de Cuenta" icon-name="utility:download"></lightning-button>
-                <lightning-button variant="brand" label="Nueva Orden" class="slds-m-left_small custom-brand-button"></lightning-button>
-            </div>
-        </div>
 
-        <!-- RESUMEN / KPIs (Estilo Seller Home con lightning-card) -->
-        <div class="slds-grid slds-gutters slds-m-bottom_x-large slds-wrap">
-            
-            <!-- Card 1: Línea de Crédito -->
-            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-m-bottom_medium">
-                <lightning-card title="Línea de Crédito" class="seller-card">
-                    <div class="slds-p-horizontal_medium card-body-grid">
-                        <p class="card-subtitle slds-m-bottom_large">Montos asignados vs utilizados</p>
-                        
-                        <div class="slds-grid slds-grid_vertical-align-center">
-                            <!-- Donut -->
-                            <div class="slds-col slds-size_1-of-2">
-                                <div class="donut-chart donut-chart-blue">
-                                    <div class="donut-content">
-                                        <span class="donut-value">$1.25M</span>
-                                        <span class="donut-label">Disponible</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Pills -->
-                            <div class="slds-col slds-size_1-of-2">
-                                <div class="metric-pill pill-green slds-m-bottom_x-small">
-                                    <span class="pill-dot"></span> $1.25M Libre
-                                </div>
-                                <div class="metric-pill pill-blue slds-m-bottom_x-small">
-                                    <span class="pill-dot"></span> $1.74M Uso
-                                </div>
-                                <div class="metric-pill pill-gray">
-                                    <span class="pill-dot"></span> $0 Vencido
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div slot="footer" class="card-footer-custom">
-                        <lightning-button label="Solicitar Ampliación" variant="neutral" class="footer-action-btn"></lightning-button>
-                    </div>
-                </lightning-card>
-            </div>
+        <!-- 1. WELCOME HEADER (Componente hijo) -->
+        <c-caz-dashboard-header user-id={userId}></c-caz-dashboard-header>
 
-            <!-- Card 2: Crédito Utilizado -->
-            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-m-bottom_medium">
-                <lightning-card title="Crédito Utilizado" class="seller-card">
-                    <div class="slds-p-horizontal_medium card-body-grid">
-                        <p class="card-subtitle slds-m-bottom_large">Porcentaje usado del límite</p>
-                        
-                        <div class="slds-grid slds-grid_vertical-align-center">
-                            <!-- Donut -->
-                            <div class="slds-col slds-size_1-of-2">
-                                <div class="donut-chart donut-chart-red-partial">
-                                    <div class="donut-content">
-                                        <span class="donut-value">58%</span>
-                                        <span class="donut-label">Utilizado</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Pills -->
-                            <div class="slds-col slds-size_1-of-2">
-                                <div class="metric-pill pill-blue slds-m-bottom_x-small">
-                                    <span class="pill-dot"></span> 58% Uso
-                                </div>
-                                <div class="metric-pill pill-green slds-m-bottom_x-small">
-                                    <span class="pill-dot"></span> 42% Libre
-                                </div>
-                                <div class="metric-pill pill-gray">
-                                    <span class="pill-dot"></span> Límite $3M
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div slot="footer" class="card-footer-custom">
-                        <lightning-button label="Ver Detalles" variant="neutral" class="footer-action-btn"></lightning-button>
-                    </div>
-                </lightning-card>
-            </div>
+        <!-- 2. KPI CARDS (Componente hijo) -->
+        <c-caz-kpi-cards user-id={userId} onkpiaction={handleKpiAction}></c-caz-kpi-cards>
 
-            <!-- Card 3: Saldo Vencido / Casos -->
-            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-m-bottom_medium">
-                <lightning-card title="Saldo Vencido / Casos" class="seller-card">
-                    <div class="slds-p-horizontal_medium card-body-grid">
-                        <p class="card-subtitle slds-m-bottom_large">Adeudos e incidencias logísticas</p>
-                        
-                        <div class="slds-grid slds-grid_vertical-align-center">
-                            <!-- Donut -->
-                            <div class="slds-col slds-size_1-of-2">
-                                <div class="donut-chart donut-chart-gray">
-                                    <div class="donut-content">
-                                        <span class="donut-value">0</span>
-                                        <span class="donut-label">Casos</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Pills -->
-                            <div class="slds-col slds-size_1-of-2">
-                                <div class="metric-pill pill-green slds-m-bottom_x-small">
-                                    <span class="pill-dot"></span> $0 Vencido
-                                </div>
-                                <div class="metric-pill pill-green slds-m-bottom_x-small">
-                                    <span class="pill-dot"></span> 0 Abiertos
-                                </div>
-                                <div class="metric-pill pill-gray">
-                                    <span class="pill-dot"></span> 0 Críticos
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div slot="footer" class="card-footer-custom">
-                        <lightning-button label="Revisar Casos" variant="neutral" class="footer-action-btn"></lightning-button>
-                    </div>
-                </lightning-card>
-            </div>
-            
-        </div>
+        <!-- 3. ACCIONES RÁPIDAS (Componente hijo) -->
+        <c-caz-acciones-rapidas user-id={userId} onactionclick={handleQuickAction}></c-caz-acciones-rapidas>
 
-        <!-- ACCIONES RÁPIDAS -->
-        <h2 class="slds-text-heading_medium slds-m-bottom_medium" style="font-weight: 800; color: var(--slds-g-color-neutral-base-10, #001642);">Acciones Rápidas</h2>
-        <div class="slds-grid slds-gutters slds-m-bottom_x-large slds-wrap">
-            <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-large-size_1-of-4 slds-m-bottom_medium">
-                <button class="slds-box slds-theme_default slds-grid slds-grid_vertical-align-center slds-p-around_medium action-card">
-                    <div class="icon-action-circle bg-blue-light slds-m-right_medium"><lightning-icon icon-name="utility:delivery" size="small"></lightning-icon></div>
-                    <div class="slds-text-align_left">
-                        <p class="slds-text-title_bold" style="font-size: 1rem; color: var(--slds-g-color-neutral-base-10, #001642);">Nueva Orden</p>
-                        <p class="slds-text-body_small slds-text-color_weak">Crear pedido</p>
-                    </div>
-                </button>
-            </div>
-            <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-large-size_1-of-4 slds-m-bottom_medium">
-                <button class="slds-box slds-theme_default slds-grid slds-grid_vertical-align-center slds-p-around_medium action-card">
-                    <div class="icon-action-circle bg-green-light slds-m-right_medium"><lightning-icon icon-name="utility:money" size="small"></lightning-icon></div>
-                    <div class="slds-text-align_left">
-                        <p class="slds-text-title_bold" style="font-size: 1rem; color: var(--slds-g-color-neutral-base-10, #001642);">Pagar Órdenes</p>
-                        <p class="slds-text-body_small slds-text-color_weak">Liquidar adeudos</p>
-                    </div>
-                </button>
-            </div>
-            <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-large-size_1-of-4 slds-m-bottom_medium">
-                <button onclick={handleNavDevoluciones} class="slds-box slds-theme_default slds-grid slds-grid_vertical-align-center slds-p-around_medium action-card">
-                    <div class="icon-action-circle bg-orange-light slds-m-right_medium"><lightning-icon icon-name="utility:undo" size="small"></lightning-icon></div>
-                    <div class="slds-text-align_left">
-                        <p class="slds-text-title_bold" style="font-size: 1rem; color: var(--slds-g-color-neutral-base-10, #001642);">Devoluciones</p>
-                        <p class="slds-text-body_small slds-text-color_weak">Retornos logísticos</p>
-                    </div>
-                </button>
-            </div>
-            <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-large-size_1-of-4 slds-m-bottom_medium">
-                <button class="slds-box slds-theme_default slds-grid slds-grid_vertical-align-center slds-p-around_medium action-card">
-                    <div class="icon-action-circle bg-purple-light slds-m-right_medium"><lightning-icon icon-name="utility:help" size="small"></lightning-icon></div>
-                    <div class="slds-text-align_left">
-                        <p class="slds-text-title_bold" style="font-size: 1rem; color: var(--slds-g-color-neutral-base-10, #001642);">Aclaraciones</p>
-                        <p class="slds-text-body_small slds-text-color_weak">Reportar un caso</p>
-                    </div>
-                </button>
-            </div>
-        </div>
-
-        <!-- LISTA Y SEGUIMIENTO -->
+        <!-- 4. LISTA Y SEGUIMIENTO (Vista Home) -->
         <template if:true={isHome}>
             <div class="slds-grid slds-gutters slds-wrap">
+                <!-- 4a. Órdenes Recientes -->
                 <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3 slds-m-bottom_x-large">
-                    <div class="slds-card custom-table-card slds-theme_default">
-                        <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-p-around_medium slds-border_bottom table-header">
-                            <h2 class="slds-text-heading_small slds-text-title_bold" style="color: var(--slds-g-color-neutral-base-10, #001642);">Órdenes y Solicitudes Recientes</h2>
-                            <a href="javascript:void(0);" style="font-weight: 700; color: var(--slds-g-color-brand-base-10, #002E6D);">Ver todas</a>
-                        </div>
-                        <div class="slds-p-around_none custom-table-scroll">
-                            <table class="slds-table slds-table_cell-buffer custom-slds-table">
-                                <thead>
-                                    <tr class="slds-line-height_reset">
-                                        <th scope="col"><div class="slds-truncate table-col-title">REF / ENTIDAD</div></th>
-                                        <th scope="col" class="slds-hide_x-small slds-show_small"><div class="slds-truncate table-col-title">FECHA</div></th>
-                                        <th scope="col"><div class="slds-truncate table-col-title">TIPO</div></th>
-                                        <th scope="col"><div class="slds-truncate table-col-title">STATUS</div></th>
-                                        <th scope="col"><div class="slds-truncate table-col-title slds-text-align_right">MONTO</div></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <template for:each={recentOrders} for:item="ord">
-                                        <tr key={ord.id} class="slds-hint-parent table-row">
-                                            <td data-label="Referencia">
-                                                <div class="slds-truncate slds-text-title_bold" style="color: var(--slds-g-color-neutral-base-10, #001642);">{ord.ref}</div>
-                                                <div class="slds-truncate slds-text-body_small slds-text-color_weak">{ord.entity}</div>
-                                            </td>
-                                            <td data-label="Fecha" class="slds-hide_x-small slds-show_small">
-                                                <div class="slds-truncate" style="font-weight: 500; color: var(--slds-g-color-neutral-base-40, #444444);">{ord.date}</div>
-                                            </td>
-                                            <td data-label="Tipo">
-                                                <div class="slds-grid slds-grid_vertical-align-center">
-                                                    <lightning-icon icon-name={ord.typeIcon} size="x-small" class="slds-m-right_x-small type-icon"></lightning-icon>
-                                                    <span style="font-weight: 500; color: var(--slds-g-color-neutral-base-40, #444444);">{ord.type}</span>
-                                                </div>
-                                            </td>
-                                            <td data-label="Status">
-                                                <div class="slds-truncate"><span class={ord.badgeClass}><span class="status-dot"></span> {ord.status}</span></div>
-                                            </td>
-                                            <td data-label="Monto" class="slds-text-align_right">
-                                                <div class="slds-truncate slds-text-title_bold" style="color: var(--slds-g-color-neutral-base-10, #001642);">{ord.amount}</div>
-                                            </td>
-                                        </tr>
-                                    </template>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                    <c-caz-ordenes-recientes user-id={userId} onviewall={handleViewAllOrders}></c-caz-ordenes-recientes>
                 </div>
 
+                <!-- 4b. Seguimiento en Vivo -->
                 <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3 slds-m-bottom_x-large">
-                    <div class="slds-box p-tracking-panel">
-                        <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-m-bottom_large">
-                            <h2 class="slds-text-heading_small slds-text-title_bold tracking-wide" style="color: var(--slds-g-color-neutral-base-10, #001642);">Seguimiento en Vivo</h2>
-                            <div class="badge-gps"><lightning-icon icon-name="utility:checking" size="xx-small" class="slds-m-right_xx-small"></lightning-icon> GPS Activo</div>
-                        </div>
-                        <div class="slds-box slds-theme_default p-tracking-card slds-m-bottom_large">
-                            <div class="slds-grid slds-grid_align-spread slds-m-bottom_small">
-                                <div>
-                                    <p class="slds-text-heading_label slds-text-color_weak" style="font-weight: 600;">ORDEN ACTIVA</p>
-                                    <p class="slds-text-heading_small slds-text-title_bold" style="color: var(--slds-g-color-brand-base-10, #002E6D);">ORD-9021</p>
-                                </div>
-                                <div class="slds-text-align_right">
-                                    <p class="slds-text-heading_label slds-text-color_weak" style="font-weight: 600;">LLEGADA EST.</p>
-                                    <p class="slds-text-heading_small slds-text-title_bold" style="color: var(--slds-g-color-neutral-base-10, #001642);">Hoy, 18:00</p>
-                                </div>
-                            </div>
-                            <div class="progress-bar-container thick-bar slds-m-bottom_xx-small"><div class="progress-filled blue-fill" style="width: 70%;"></div></div>
-                            <p class="slds-text-align_right slds-text-body_small slds-text-color_weak" style="font-weight: 600;">70% completado</p>
-                        </div>
-                        <div class="custom-timeline">
-                            <!-- Step 1: Completed -->
-                            <div class="timeline-step">
-                                <div class="timeline-icon-col">
-                                    <div class="timeline-dot dot-success"><lightning-icon icon-name="utility:check" size="xx-small" variant="inverse"></lightning-icon></div>
-                                    <div class="timeline-connector connector-success"></div>
-                                </div>
-                                <div class="timeline-content">
-                                    <h3 class="slds-text-title_bold slds-m-bottom_xxx-small" style="color: var(--slds-g-color-neutral-base-10, #001642);">Carga Completada</h3>
-                                    <p class="slds-text-body_small slds-text-color_weak">14:30 PM - Planta Tula</p>
-                                </div>
-                            </div>
-                            <!-- Step 2: Active -->
-                            <div class="timeline-step">
-                                <div class="timeline-icon-col">
-                                    <div class="timeline-dot dot-active"><lightning-icon icon-name="utility:record" size="xx-small" variant="inverse"></lightning-icon></div>
-                                    <div class="timeline-connector connector-pending"></div>
-                                </div>
-                                <div class="timeline-content bg-blue-highlight">
-                                    <h3 class="slds-text-title_bold slds-m-bottom_xxx-small" style="color: var(--slds-g-color-brand-base-10, #002E6D);">En Ruta (Unidad 557)</h3>
-                                    <p class="slds-text-body_small slds-text-color_weak">Aproximado a 45 min del destino en base a tráfico actual.</p>
-                                    <a href="javascript:void(0);" class="slds-text-link_reset slds-text-title_bold slds-m-top_xx-small" style="display:inline-block; font-size: 0.75rem; color: #1D4ED8;"><lightning-icon icon-name="utility:macros" size="xx-small" class="slds-m-right_xxx-small"></lightning-icon> Ver en mapa</a>
-                                </div>
-                            </div>
-                            <!-- Step 3: Pending -->
-                            <div class="timeline-step">
-                                <div class="timeline-icon-col">
-                                    <div class="timeline-dot dot-pending"></div>
-                                </div>
-                                <div class="timeline-content">
-                                    <h3 class="slds-m-bottom_xxx-small" style="color: var(--slds-g-color-neutral-base-60, #747474); font-weight: 600;">Entrega en Obra</h3>
-                                    <p class="slds-text-body_small" style="color: var(--slds-g-color-neutral-base-60, #747474);">Pendiente de firma</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <c-caz-seguimiento-vivo user-id={userId}></c-caz-seguimiento-vivo>
                 </div>
             </div>
         </template>
 
-        <!-- SPA Routing Views -->
+        <!-- SPA Routing: Devoluciones -->
         <template if:true={isDevoluciones}>
             <div class="slds-box slds-theme_default custom-card">
                 <button onclick={handleNavHome} class="slds-button slds-m-bottom_medium spa-back-btn">
@@ -286,6 +35,7 @@
             </div>
         </template>
 
+        <!-- SPA Routing: Nueva Devolución -->
         <template if:true={isNuevaDevolucion}>
             <div class="slds-box slds-theme_default custom-card">
                 <button onclick={handleNavDevoluciones} class="slds-button slds-m-bottom_medium spa-back-btn">

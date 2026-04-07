@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Community Side Nav</masterLabel>
+    <description>Menú lateral para Experience Cloud</description>
+
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property
+                name="portalTitle"
+                type="String"
+                label="Título del portal"
+                default="Portal Distribuidor" />
+            <property
+                name="accountName"
+                type="String"
+                label="Nombre de cuenta"
+                default="Distribuidora Norte" />
+            <property
+                name="accountCode"
+                type="String"
+                label="Código de cuenta"
+                default="DST-0092" />
+            <property
+                name="activeKey"
+                type="String"
+                label="Clave activa"
+                default="inicio" />
+            <property
+                name="termsUrl"
+                type="String"
+                label="URL de Términos"
+                default="/terminos" />
+            <property
+                name="privacyUrl"
+                type="String"
+                label="URL de Privacidad"
+                default="/privacidad" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

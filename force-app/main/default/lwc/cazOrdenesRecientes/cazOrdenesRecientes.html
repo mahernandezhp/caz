@@ -1,0 +1,46 @@
+<template>
+    <div class="slds-card custom-table-card slds-theme_default">
+        <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-p-around_medium slds-border_bottom table-header">
+            <h2 class="slds-text-heading_small slds-text-title_bold header-title">Órdenes y Solicitudes Recientes</h2>
+            <a href="javascript:void(0);" class="view-all-link" onclick={handleViewAll}>Ver todas</a>
+        </div>
+        <div class="slds-p-around_none custom-table-scroll">
+            <table class="slds-table slds-table_cell-buffer custom-slds-table">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th scope="col"><div class="slds-truncate table-col-title">REF / ENTIDAD</div></th>
+                        <th scope="col" class="slds-hide_x-small slds-show_small"><div class="slds-truncate table-col-title">FECHA</div></th>
+                        <th scope="col"><div class="slds-truncate table-col-title">TIPO</div></th>
+                        <th scope="col"><div class="slds-truncate table-col-title">STATUS</div></th>
+                        <th scope="col"><div class="slds-truncate table-col-title slds-text-align_right">MONTO</div></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={orders} for:item="ord">
+                        <tr key={ord.id} class="slds-hint-parent table-row">
+                            <td data-label="Referencia">
+                                <div class="slds-truncate slds-text-title_bold ref-text">{ord.ref}</div>
+                                <div class="slds-truncate slds-text-body_small slds-text-color_weak">{ord.entity}</div>
+                            </td>
+                            <td data-label="Fecha" class="slds-hide_x-small slds-show_small">
+                                <div class="slds-truncate date-text">{ord.date}</div>
+                            </td>
+                            <td data-label="Tipo">
+                                <div class="slds-grid slds-grid_vertical-align-center">
+                                    <lightning-icon icon-name={ord.typeIcon} size="x-small" class="slds-m-right_x-small type-icon"></lightning-icon>
+                                    <span class="type-text">{ord.type}</span>
+                                </div>
+                            </td>
+                            <td data-label="Status">
+                                <div class="slds-truncate"><span class={ord.badgeClass}><span class="status-dot"></span> {ord.status}</span></div>
+                            </td>
+                            <td data-label="Monto" class="slds-text-align_right">
+                                <div class="slds-truncate slds-text-title_bold amount-text">{ord.amount}</div>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>
