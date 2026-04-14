@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Lista de usuarios para el Proceso de aprobación</description>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>CAZ_Aprobador_OrderNueva</name>
+    <queueMembers>
+        <users>
+            <user>cruzazul@capptus.com</user>
+            <user>mario.q@capptus.com.cazs</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>CAZ_Solicitud_Reprogramacion__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Order</sobjectType>
+    </queueSobject>
+</Queue>

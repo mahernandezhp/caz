@@ -159,14 +159,14 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <label>Solicitud de Devolución</label>
+    <label>Solicitud de devolución</label>
     <nameField>
         <displayFormat>SD-{00000}</displayFormat>
         <label>Folio Solicitud</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Solicitudes de Devolución</pluralLabel>
+    <pluralLabel>Solicitudes de devoluciónes</pluralLabel>
     <profileSearchLayouts>
         <fields>NAME</fields>
         <fields>CAZ_Account__c</fields>

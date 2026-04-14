@@ -38,38 +38,41 @@
                 </div>
             </template>
 
-            <!-- Selector de tipo de documento -->
-            <div class="slds-m-bottom_small">
-                <lightning-combobox
-                    name="tipoDocumento"
-                    label="Tipo de Documento"
-                    placeholder="-- Selecciona el tipo de documento --"
-                    value={selectedTipoDocumento}
-                    options={tipoDocumentoOptions}
-                    onchange={handleTipoDocumentoChange}
-                    required>
-                </lightning-combobox>
-            </div>
-
-            <!-- File upload (deshabilitado si no se selecciona tipo) -->
-            <template if:false={isUploadDisabled}>
-                <lightning-file-upload
-                    label="Adjuntar Documento"
-                    name="cazDocumentos"
-                    accept={acceptedFormats}
-                    record-id={recordId}
-                    onuploadfinished={handleUploadFinished}
-                    multiple>
-                </lightning-file-upload>
-            </template>
-
-            <template if:true={isUploadDisabled}>
-                <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center slds-m-top_small">
-                    <p class="slds-text-body_small slds-text-color_weak">
-                        <lightning-icon icon-name="utility:info" size="xx-small" class="slds-m-right_xx-small"></lightning-icon>
-                        Selecciona primero el tipo de documento para habilitar la carga.
-                    </p>
+            <!-- Ocultar subida de archivos en modo lectura -->
+            <template if:false={readonlyMode}>
+                <!-- Selector de tipo de documento -->
+                <div class="slds-m-bottom_small">
+                    <lightning-combobox
+                        name="tipoDocumento"
+                        label="Tipo de Documento"
+                        placeholder="-- Selecciona el tipo de documento --"
+                        value={selectedTipoDocumento}
+                        options={tipoDocumentoOptions}
+                        onchange={handleTipoDocumentoChange}
+                        required>
+                    </lightning-combobox>
                 </div>
+
+                <!-- File upload (deshabilitado si no se selecciona tipo) -->
+                <template if:false={isUploadDisabled}>
+                    <lightning-file-upload
+                        label="Adjuntar Documento"
+                        name="cazDocumentos"
+                        accept={acceptedFormats}
+                        record-id={recordId}
+                        onuploadfinished={handleUploadFinished}
+                        multiple>
+                    </lightning-file-upload>
+                </template>
+
+                <template if:true={isUploadDisabled}>
+                    <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center slds-m-top_small">
+                        <p class="slds-text-body_small slds-text-color_weak">
+                            <lightning-icon icon-name="utility:info" size="xx-small" class="slds-m-right_xx-small"></lightning-icon>
+                            Selecciona primero el tipo de documento para habilitar la carga.
+                        </p>
+                    </div>
+                </template>
             </template>
 
             <!-- Archivos ya cargados -->
@@ -80,7 +83,7 @@
                         <template for:each={uploadedFiles} for:item="file">
                             <li key={file.documentId} class="slds-item slds-p-vertical_xx-small">
                                 <lightning-icon icon-name="doctype:attachment" size="x-small" class="slds-m-right_x-small"></lightning-icon>
-                                <strong>{file.tipoDocumento}</strong> — {file.name}
+                                <strong>{file.tipoDocumento}</strong> — <a href={file.downloadUrl} target="_blank" rel="noopener noreferrer">{file.name}</a>
                             </li>
                         </template>
                     </ul>
@@ -88,10 +91,12 @@
             </template>
 
             <!-- Mensaje de documentos faltantes -->
-            <template if:true={hayDocumentosFaltantes}>
-                <div class="slds-notify slds-notify_alert slds-alert_warning slds-m-top_small" role="alert">
-                    <p class="slds-text-body_small">{mensajeFaltantes}</p>
-                </div>
+            <template if:false={readonlyMode}>
+                <template if:true={hayDocumentosFaltantes}>
+                    <div class="slds-notify slds-notify_alert slds-alert_warning slds-m-top_small" role="alert">
+                        <p class="slds-text-body_small">{mensajeFaltantes}</p>
+                    </div>
+                </template>
             </template>
         </div>
     </div>

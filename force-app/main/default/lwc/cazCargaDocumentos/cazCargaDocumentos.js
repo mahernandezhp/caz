@@ -2,11 +2,13 @@ import { LightningElement, api, track } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import getDocumentosRequeridos from '@salesforce/apex/CAZ_DocumentoSolicitudController.getDocumentosRequeridos';
 import etiquetarDocumento from '@salesforce/apex/CAZ_DocumentoSolicitudController.etiquetarDocumento';
+import getDocumentosCargados from '@salesforce/apex/CAZ_DocumentoSolicitudController.getDocumentosCargados';
 
 export default class CazCargaDocumentos extends LightningElement {
     @api recordId;
     @api processName = 'Devolucion';
     @api title = 'Documentos Requeridos';
+    @api readonlyMode = false;
 
     @track isLoading = true;
     @track errorMessage = '';
@@ -48,6 +50,31 @@ export default class CazCargaDocumentos extends LightningElement {
 
     connectedCallback() {
         this.loadDocumentos();
+        if (this.recordId) {
+            this.loadArchivosExistentes();
+        }
+    }
+
+    loadArchivosExistentes() {
+        getDocumentosCargados({ recordId: this.recordId })
+            .then(result => {
+                if (result && result.length > 0) {
+                    this.uploadedFiles = result.map(f => ({
+                        ...f,
+                        downloadUrl: `/sfc/servlet.shepherd/document/download/${f.documentId}`
+                    }));
+                    // Actualizar los íconos de la lista de requeridos si ya fueron cargados previamente
+                    const uploadedTypes = this.uploadedFiles.map(f => f.tipoDocumento);
+                    this.documentosRequeridos = this.documentosRequeridos.map(doc => ({
+                        ...doc,
+                        cargado: uploadedTypes.includes(doc.label) ? true : doc.cargado,
+                        iconName: uploadedTypes.includes(doc.label) ? 'action:approval' : doc.iconName
+                    }));
+                }
+            })
+            .catch(error => {
+                console.error('Error cargando archivos existentes:', error);
+            });
     }
 
     loadDocumentos() {
@@ -93,7 +120,8 @@ export default class CazCargaDocumentos extends LightningElement {
                 const nuevosArchivos = files.map(file => ({
                     documentId: file.documentId,
                     name: file.name,
-                    tipoDocumento: tipoSeleccionado
+                    tipoDocumento: tipoSeleccionado,
+                    downloadUrl: `/sfc/servlet.shepherd/document/download/${file.documentId}`
                 }));
                 this.uploadedFiles = [...this.uploadedFiles, ...nuevosArchivos];
 

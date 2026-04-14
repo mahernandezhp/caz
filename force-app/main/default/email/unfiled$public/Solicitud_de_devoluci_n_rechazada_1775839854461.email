@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;"><span style="font-size:12px;"><span style="font-family:Arial,Helvetica,sans-serif;">&nbsp; &nbsp; Estimado(a) {{{Sender.Name}}},<br />
+<br />
+&nbsp; &nbsp; Le informamos que la devolución de dinero solicitada ha sido rechazada por el área de Crédito y Cobranza.<br />
+<br />
+&nbsp; &nbsp; Detalles de la solicitud:<br />
+<br />
+&nbsp; &nbsp; Número de solicitud:&nbsp;{{{CAZ_SolicitudDevolucion__c.Name}}}<br />
+&nbsp; &nbsp; Monto devuelto: ${{{CAZ_SolicitudDevolucion__c.CAZ_ImporteDevolucion__c}}} MXN<br />
+&nbsp; &nbsp; Fecha de resolución: [FechaDevolución]<br />
+&nbsp; &nbsp; Motivo de rechazo:&nbsp;{{{CAZ_SolicitudDevolucion__c.CAZ_MotivoDevolucion__c}}}<br />
+<br />
+<br />
+&nbsp; &nbsp; Agradecemos su confianza y quedamos atentos a cualquier duda o aclaración adicional.<br />
+<br />
+&nbsp; &nbsp; Atentamente,<br />
+<br />
+&nbsp; &nbsp; [Gerencia de Crédito y Cobranza]</span></span></body>
+</html>

@@ -163,7 +163,13 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Solicitudes de Ampliación de Crédito</pluralLabel>
-    <searchLayouts></searchLayouts>
+    <searchLayouts>
+        <searchResultsAdditionalFields>CAZ_Cuenta__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CAZ_ContactoSolicitante__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CAZ_MontoSolicitado__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CAZ_Estatus__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CREATED_DATE</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

@@ -22,6 +22,8 @@ export default class CazMisSolicitudes extends NavigationMixin(LightningElement)
     @track pageNumber = 1;
     @track totalRecords = 0;
     @track totalPages = 1;
+    isLoading = true;
+    solicitudes = [];
 
     get hasSolicitudes() {
         return this.solicitudes && this.solicitudes.length > 0;
@@ -91,15 +93,16 @@ export default class CazMisSolicitudes extends NavigationMixin(LightningElement)
         }
     }
 
+    @track showNewRequestModal = false;
+
     handleNuevaSolicitud() {
-        if (this.newRequestPageName === 'SPA') {
-            this.dispatchEvent(new CustomEvent('navigatetopage', { detail: { target: 'nueva_solicitud' } }));
-        } else {
-            this[NavigationMixin.Navigate]({
-                type: 'comm__namedPage',
-                attributes: { name: this.newRequestPageName }
-            });
-        }
+        this.showNewRequestModal = true;
+    }
+
+    closeNewRequestModal() {
+        this.showNewRequestModal = false;
+        // Refrescar las solicitudes para que aparezca la nueva
+        this.initPagination();
     }
 
     handleVerDetalle(event) {

@@ -1,0 +1,66 @@
+{
+  "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "a4281a01-d071-4ffe-8f62-4f4f3dd89d44",
+  "label" : "Solicitud de ampliación de crédito Detail",
+  "regions" : [ {
+    "id" : "2384e47c-a1cf-4a53-9d19-866bf18f8498",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "365e5e5f-0619-4cf3-999c-7c952bb0d8d1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "detailsTabLabel" : "Details",
+        "discussionsTabLabel" : "Feed",
+        "recordId" : "{!recordId}",
+        "relatedTabLabel" : "Related",
+        "showLegacyActivityComposer" : false,
+        "tab1Type" : "details",
+        "tab2Type" : "none",
+        "tab3Type" : "none",
+        "tab4Type" : "none",
+        "timelineTabLabel" : "Activity"
+      },
+      "componentName" : "forceCommunity:recordHomeTabs",
+      "id" : "428a174d-a8e8-48f6-89ba-a9c39abce7b0",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "417b0490-61be-4964-9613-3f1dbabbefa5",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "dbb814df-fd97-42df-893d-c28ea7dc819f",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "cc9278c1-6754-41ae-9454-13c9663f094f",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "fe1ce74b-3f2e-4a59-93d9-83c412406f22",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-a1X"
+}

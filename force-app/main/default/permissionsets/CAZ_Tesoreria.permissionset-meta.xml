@@ -3,22 +3,32 @@
     <description>Permisos para el área de Tesorería. Pueden ver, gestionar y confirmar/rechazar solicitudes de devolución en Etapa 2.</description>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Case.CAZ_MotivoDevolucion__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Case.CAZ_ImporteDevolucion__c</field>
+        <field>CAZ_SolicitudDevolucion__c.CAZ_ComprobanteReferencia__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Case.CAZ_MotivoRechazo__c</field>
+        <field>CAZ_SolicitudDevolucion__c.CAZ_Description__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Case.CAZ_NumeroCuentaBancaria__c</field>
+        <field>CAZ_SolicitudDevolucion__c.CAZ_ImporteDevolucion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CAZ_SolicitudDevolucion__c.CAZ_MotivoDevolucion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CAZ_SolicitudDevolucion__c.CAZ_NumeroCuentaBancaria__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CAZ_SolicitudDevolucion__c.CAZ_Status__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -32,38 +42,28 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.CAZ_ImporteDevolucion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.CAZ_MotivoDevolucion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
-        <field>Case.CAZ_NumeroProvisionJDE__c</field>
+        <field>Case.CAZ_MotivoRechazo__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>CAZ_SolicitudDevolucion__c.CAZ_MotivoDevolucion__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>CAZ_SolicitudDevolucion__c.CAZ_ImporteDevolucion__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>CAZ_SolicitudDevolucion__c.CAZ_NumeroCuentaBancaria__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>CAZ_SolicitudDevolucion__c.CAZ_ComprobanteReferencia__c</field>
+        <field>Case.CAZ_NumeroCuentaBancaria__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>CAZ_SolicitudDevolucion__c.CAZ_Description__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>CAZ_SolicitudDevolucion__c.CAZ_Status__c</field>
+        <field>Case.CAZ_NumeroProvisionJDE__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
@@ -74,7 +74,8 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
-        <object>Case</object>
+        <object>CAZ_SolicitudDevolucion__c</object>
+        <viewAllFields>false</viewAllFields>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -83,7 +84,8 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
-        <object>CAZ_SolicitudDevolucion__c</object>
+        <object>Case</object>
+        <viewAllFields>false</viewAllFields>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
 </PermissionSet>

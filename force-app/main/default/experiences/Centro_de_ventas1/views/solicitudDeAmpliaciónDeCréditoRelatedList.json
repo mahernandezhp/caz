@@ -1,0 +1,39 @@
+{
+  "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "aff57084-98e3-457c-9c6c-10b8034d79d2",
+  "label" : "Solicitud de ampliación de crédito Related List",
+  "regions" : [ {
+    "id" : "50bed9b8-90f7-41b4-a167-2392a7406b8f",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customTitle" : "",
+        "parentRecordId" : "{!recordId}",
+        "relatedListName" : "{!relationshipApiName}",
+        "showBreadCrumbs" : true,
+        "showCustomTitle" : false,
+        "showManualRefreshButton" : true,
+        "showRowNumbers" : true
+      },
+      "componentName" : "forceCommunity:relatedList",
+      "id" : "aecc42a2-e6d8-4805-b70f-82c37e0b04ec",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "47510652-8dce-40e3-994d-519a6ec59f21",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "64c6958e-fa8a-41f1-a22f-45f4bf78b57f",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "relatedlist-a1X"
+}

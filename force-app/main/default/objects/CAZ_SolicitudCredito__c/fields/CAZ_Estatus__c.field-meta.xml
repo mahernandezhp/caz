@@ -13,14 +13,24 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Nuevo</fullName>
+                <fullName>Borrador</fullName>
                 <default>true</default>
-                <label>Nuevo</label>
+                <label>Borrador</label>
             </value>
             <value>
-                <fullName>En Análisis</fullName>
+                <fullName>Por atender</fullName>
                 <default>false</default>
-                <label>En Análisis</label>
+                <label>Por atender</label>
+            </value>
+            <value>
+                <fullName>En Revisión</fullName>
+                <default>false</default>
+                <label>En Revisión</label>
+            </value>
+            <value>
+                <fullName>Autorizado</fullName>
+                <default>false</default>
+                <label>Autorizado</label>
             </value>
             <value>
                 <fullName>Aprobado</fullName>
@@ -31,6 +41,11 @@
                 <fullName>Rechazado</fullName>
                 <default>false</default>
                 <label>Rechazado</label>
+            </value>
+            <value>
+                <fullName>Completado</fullName>
+                <default>false</default>
+                <label>Completado</label>
             </value>
         </valueSetDefinition>
     </valueSet>

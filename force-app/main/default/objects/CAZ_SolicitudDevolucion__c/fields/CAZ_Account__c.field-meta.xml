@@ -4,7 +4,6 @@
     <deleteConstraint>SetNull</deleteConstraint>
     <label>Cuenta (Distribuidor)</label>
     <referenceTo>Account</referenceTo>
-    <relationshipLabel>Solicitudes de Devolución</relationshipLabel>
     <relationshipName>Solicitudes_Devolucion</relationshipName>
     <required>false</required>
     <trackHistory>false</trackHistory>

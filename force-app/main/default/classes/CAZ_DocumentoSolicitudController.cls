@@ -42,4 +42,28 @@ public with sharing class CAZ_DocumentoSolicitudController {
         cv.Description = tipoDocumento;
         update cv;
     }
+
+    @AuraEnabled
+    public static List<Map<String, String>> getDocumentosCargados(Id recordId) {
+        if (recordId == null) {
+            return new List<Map<String, String>>();
+        }
+        
+        List<ContentDocumentLink> links = [
+            SELECT ContentDocumentId, ContentDocument.Title, ContentDocument.LatestPublishedVersion.Description
+            FROM ContentDocumentLink
+            WHERE LinkedEntityId = :recordId
+            WITH SECURITY_ENFORCED
+        ];
+        
+        List<Map<String, String>> results = new List<Map<String, String>>();
+        for (ContentDocumentLink link : links) {
+            Map<String, String> fileMap = new Map<String, String>();
+            fileMap.put('documentId', link.ContentDocumentId);
+            fileMap.put('name', link.ContentDocument.Title);
+            fileMap.put('tipoDocumento', link.ContentDocument.LatestPublishedVersion.Description);
+            results.add(fileMap);
+        }
+        return results;
+    }
 }

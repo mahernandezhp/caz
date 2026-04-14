@@ -1,0 +1,51 @@
+<template>
+    <div class="slds-page-header slds-m-bottom_medium slds-page-header_record-home">
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                    <div class="slds-media__figure">
+                        <lightning-icon icon-name="custom:custom13" alternative-text="Solicitud de devolución"></lightning-icon>
+                    </div>
+                    <div class="slds-media__body">
+                        <div class="slds-page-header__name">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <span class="slds-text-heading_label slds-text-color_weak" style="font-size: 13px; font-weight: normal;">Solicitud de devolución</span>
+                                    <br/>
+                                    <span class="slds-page-header__title slds-truncate" title={recordName}>{recordName}</span>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-page-header__col-actions">
+                <div class="slds-page-header__controls">
+                    <div class="slds-page-header__control">
+                        <template lwc:if={isBorrador}>
+                            <lightning-button variant="brand" label="Enviar solicitud" onclick={handleEnviar} disabled={isLoading}></lightning-button>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slds-card slds-p-around_medium slds-m-bottom_large" style="background-color: white;">
+        <lightning-record-form
+            record-id={recordId}
+            object-api-name="CAZ_SolicitudDevolucion__c"
+            layout-type="Full"
+            columns="2"
+            mode={formMode}>
+        </lightning-record-form>
+    </div>
+
+    <div class="slds-m-bottom_large">
+        <c-caz-carga-documentos record-id={recordId} readonly-mode={isReadOnlyState}></c-caz-carga-documentos>
+    </div>
+
+    <template lwc:if={isLoading}>
+        <lightning-spinner alternative-text="Cargando" size="small"></lightning-spinner>
+    </template>
+</template>

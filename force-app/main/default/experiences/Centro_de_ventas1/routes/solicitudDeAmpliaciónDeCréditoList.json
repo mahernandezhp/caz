@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "27455177-e9b3-4491-8ce3-79f057b59cc5",
+  "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
+  "configurationTags" : [ ],
+  "devName" : "list_a1X__c",
+  "id" : "06f3d7f1-04e4-42fa-9931-aa0da7a0d9fb",
+  "label" : "Solicitud de ampliación de crédito List",
+  "objectApiName" : "CAZ_SolicitudCredito__c",
+  "routeType" : "list-a1X",
+  "type" : "route",
+  "urlPrefix" : "caz-solicitudcredito"
+}

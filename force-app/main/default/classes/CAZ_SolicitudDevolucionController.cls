@@ -48,11 +48,28 @@ public with sharing class CAZ_SolicitudDevolucionController {
 
     @AuraEnabled
     public static void enviarSolicitud(Id recordId) {
+        // Redirigir siempre al método oficial que ejecuta la clase central de aprobaciones
+        submitApprovalFromPortal(recordId);
+    }
+
+    @AuraEnabled
+    public static void submitApprovalFromPortal(Id recordId) {
         try {
+            // Se asume Contexto Without Sharing al momento del trigger o System Run si hay temas de acceso
+            // Pero como es public with sharing, el perfil requiere acceso al Id o ser Owner
             CAZ_SolicitudDevolucion__c c = [SELECT Id, CAZ_Status__c FROM CAZ_SolicitudDevolucion__c WHERE Id = :recordId WITH SECURITY_ENFORCED LIMIT 1];
+            
             if (c.CAZ_Status__c == 'Borrador') {
-                c.CAZ_Status__c = 'Por atender';
-                update c;
+                Approval.ProcessSubmitRequest req = new Approval.ProcessSubmitRequest();
+                req.setComments('Solicitud enviada para revisión desde el portal');
+                req.setObjectId(recordId);
+                // Si el usuario es quien lo creó y es el owner, no necesitamos forzar el SubmitterId
+                // porque lo hará por defecto el context user.
+                
+                Approval.ProcessResult result = Approval.process(req);
+                if (!result.isSuccess()) {
+                    throw new AuraHandledException('No se pudo enviar la solicitud.');
+                }
             } else {
                 throw new AuraHandledException('Solo se pueden enviar solicitudes en estado Borrador.');
             }

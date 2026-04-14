@@ -3,62 +3,17 @@
     <description>Permisos para distribuidores en el portal Experience Cloud. Pueden crear solicitudes de devolución y consultar el estado de las propias.</description>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Case.CAZ_MotivoDevolucion__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Case.CAZ_ImporteDevolucion__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Case.CAZ_NumeroCuentaBancaria__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Case.CAZ_ComprobanteReferencia__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Case.CAZ_MotivoRechazo__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Case.CAZ_FechaEnvioTesoreria__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Case.CAZ_NumeroProvisionJDE__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>CAZ_SolicitudCredito__c.CAZ_Comentarios__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>CAZ_SolicitudCredito__c.CAZ_Resolucion__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CAZ_SolicitudCredito__c.CAZ_RFC__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CAZ_SolicitudCredito__c.CAZ_Cuenta__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>CAZ_SolicitudCredito__c.CAZ_ContactoSolicitante__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_SolicitudCredito__c.CAZ_Cuenta__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -68,17 +23,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>CAZ_SolicitudDevolucion__c.CAZ_MotivoDevolucion__c</field>
+        <field>CAZ_SolicitudCredito__c.CAZ_RFC__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>CAZ_SolicitudDevolucion__c.CAZ_ImporteDevolucion__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CAZ_SolicitudDevolucion__c.CAZ_NumeroCuentaBancaria__c</field>
+        <editable>false</editable>
+        <field>CAZ_SolicitudCredito__c.CAZ_Resolucion__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -92,8 +42,48 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_SolicitudDevolucion__c.CAZ_ImporteDevolucion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_SolicitudDevolucion__c.CAZ_MotivoDevolucion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_SolicitudDevolucion__c.CAZ_NumeroCuentaBancaria__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>CAZ_SolicitudDevolucion__c.CAZ_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.CAZ_ComprobanteReferencia__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.CAZ_ImporteDevolucion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.CAZ_MotivoDevolucion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.CAZ_MotivoRechazo__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.CAZ_NumeroCuentaBancaria__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
@@ -104,16 +94,8 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
-        <object>Case</object>
-        <viewAllRecords>false</viewAllRecords>
-    </objectPermissions>
-    <objectPermissions>
-        <allowCreate>true</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>true</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>false</modifyAllRecords>
         <object>CAZ_SolicitudCredito__c</object>
+        <viewAllFields>false</viewAllFields>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -123,6 +105,17 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>CAZ_SolicitudDevolucion__c</object>
+        <viewAllFields>false</viewAllFields>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Case</object>
+        <viewAllFields>false</viewAllFields>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
 </PermissionSet>

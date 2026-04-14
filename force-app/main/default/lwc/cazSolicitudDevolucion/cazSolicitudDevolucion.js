@@ -6,13 +6,18 @@ export default class CazSolicitudDevolucion extends NavigationMixin(LightningEle
     @api title = 'Nueva Solicitud de Devolución';
     @api targetPageName = 'Mis_Solicitudes__c';
 
-    @track isLoading = false;
+    @track isLoading = true; // Inicia cargando
     @track isSubmitted = false;
     @track errorMessage = '';
     @track recordName = '';
     @track newRecordId = '';
     
     objectApiName = DEVOLUCION_OBJECT;
+
+    handleLoad() {
+        // Se dispara cuando el record-edit-form termina de renderizar
+        this.isLoading = false;
+    }
 
     handleSubmit(event) {
         event.preventDefault();
@@ -36,20 +41,10 @@ export default class CazSolicitudDevolucion extends NavigationMixin(LightningEle
     }
 
     handleCancel() {
-        this[NavigationMixin.Navigate]({
-            type: 'comm__namedPage',
-            attributes: { name: 'Home' }
-        });
+        this.dispatchEvent(new CustomEvent('close'));
     }
 
     handleVerSolicitudes() {
-        if (this.targetPageName === 'SPA') {
-            this.dispatchEvent(new CustomEvent('navigatetopage', { detail: { target: 'mis_solicitudes' } }));
-        } else {
-            this[NavigationMixin.Navigate]({
-                type: 'comm__namedPage',
-                attributes: { name: this.targetPageName }
-            });
-        }
+        this.dispatchEvent(new CustomEvent('close'));
     }
 }

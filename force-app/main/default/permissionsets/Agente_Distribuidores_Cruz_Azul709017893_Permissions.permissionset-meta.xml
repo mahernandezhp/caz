@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Allows custom permissions for Agentforce Agent : Agente_Distribuidores_Cruz_Azul&apos;s agent user : agente_distribuidores_cruz_azul@00dwd00000a6hwf180369135.ext.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Agente_Distribuidores_Cruz_Azul709017893 Permissions</label>
+    <license>Einstein Agent</license>
+</PermissionSet>

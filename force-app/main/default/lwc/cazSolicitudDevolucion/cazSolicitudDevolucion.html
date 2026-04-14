@@ -6,7 +6,6 @@
 
         <template if:false={isSubmitted}>
             <div class="slds-card slds-p-around_medium">
-                <h2 class="slds-text-heading_medium slds-m-bottom_medium">{title}</h2>
 
                 <template if:true={errorMessage}>
                     <div class="slds-notify slds-notify_alert slds-alert_error slds-m-bottom_small" role="alert">
@@ -17,6 +16,8 @@
 
                 <lightning-record-edit-form
                     object-api-name={objectApiName}
+                    density="comfy"
+                    onload={handleLoad}
                     onsuccess={handleSuccess}
                     onerror={handleError}
                     onsubmit={handleSubmit}>
@@ -43,7 +44,7 @@
                         <lightning-button
                             variant="brand"
                             type="submit"
-                            label="Enviar Solicitud"
+                            label="Crear solicitud"
                             class="slds-m-right_small">
                         </lightning-button>
                         <lightning-button
@@ -72,7 +73,7 @@
                 <div class="slds-text-align_center slds-p-top_large slds-border_top">
                     <lightning-button
                         variant="brand"
-                        label="Finalizar y Ver Mis Solicitudes"
+                        label="Enviar"
                         onclick={handleVerSolicitudes}>
                     </lightning-button>
                 </div>
