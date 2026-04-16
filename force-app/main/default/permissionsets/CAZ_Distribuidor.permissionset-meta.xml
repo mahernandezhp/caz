@@ -33,6 +33,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CAZ_SolicitudCredito__c.CAZ_Justificacion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CAZ_SolicitudCredito__c.CAZ_MotivoRechazo__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CAZ_SolicitudDevolucion__c.CAZ_ComprobanteReferencia__c</field>
         <readable>true</readable>
     </fieldPermissions>

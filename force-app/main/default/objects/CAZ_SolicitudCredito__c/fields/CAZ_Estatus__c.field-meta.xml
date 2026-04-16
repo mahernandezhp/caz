@@ -47,6 +47,18 @@
                 <default>false</default>
                 <label>Completado</label>
             </value>
+            <value>
+                <fullName>En Análisis</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>En Análisis</label>
+            </value>
+            <value>
+                <fullName>Nuevo</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Nuevo</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

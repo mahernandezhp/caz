@@ -2,51 +2,47 @@
 <Profile xmlns="http://soap.sforce.com/2006/04/metadata">
     <custom>true</custom>
     <classAccesses>
-        <apexClass>CAZ_DocumentoSolicitudController</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>CAZ_SolicitudDevolucionController</apexClass>
+        <apexClass>CAZ_SolicitudCreditoController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <fieldPermissions>
         <editable>true</editable>
-        <field>CAZ_SolicitudDevolucion__c.CAZ_Account__c</field>
+        <field>CAZ_SolicitudCredito__c.CAZ_Comentarios__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CAZ_SolicitudCredito__c.CAZ_ContactoSolicitante__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>CAZ_SolicitudDevolucion__c.CAZ_ComprobanteReferencia__c</field>
+        <field>CAZ_SolicitudCredito__c.CAZ_Cuenta__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CAZ_SolicitudCredito__c.CAZ_Estatus__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>CAZ_SolicitudDevolucion__c.CAZ_Description__c</field>
+        <field>CAZ_SolicitudCredito__c.CAZ_Justificacion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CAZ_SolicitudCredito__c.CAZ_MotivoRechazo__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>CAZ_SolicitudDevolucion__c.CAZ_ImporteDevolucion__c</field>
+        <field>CAZ_SolicitudCredito__c.CAZ_RFC__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>CAZ_SolicitudDevolucion__c.CAZ_MotivoDevolucion__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CAZ_SolicitudDevolucion__c.CAZ_NumeroCuentaBancaria__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CAZ_SolicitudDevolucion__c.CAZ_Respuesta__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CAZ_SolicitudDevolucion__c.CAZ_Status__c</field>
+        <editable>false</editable>
+        <field>CAZ_SolicitudCredito__c.CAZ_Resolucion__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <objectPermissions>
@@ -55,12 +51,12 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
-        <object>CAZ_SolicitudDevolucion__c</object>
+        <object>CAZ_SolicitudCredito__c</object>
         <viewAllFields>false</viewAllFields>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <tabVisibilities>
-        <tab>CAZ_SolicitudDevolucion__c</tab>
+        <tab>CAZ_SolicitudCredito__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <userLicense>Partner Community Login</userLicense>

@@ -1,0 +1,130 @@
+<template>
+    <div class="caz-mis-solicitudes-credito">
+        <div class="slds-card">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__figure slds-line-height_reset">
+                        <lightning-icon icon-name="standard:currency" size="small"></lightning-icon>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 class="slds-card__header-title">{title}</h2>
+                    </div>
+                </header>
+                <div class="slds-no-flex">
+                    <lightning-button
+                        variant="brand"
+                        label="Nueva Solicitud"
+                        onclick={handleNuevaSolicitud}>
+                    </lightning-button>
+                </div>
+            </div>
+
+            <div class="slds-card__body slds-card__body_inner">
+                <template if:true={isLoading}>
+                    <lightning-spinner alternative-text="Cargando..." size="medium"></lightning-spinner>
+                </template>
+
+                <template if:false={isLoading}>
+                    <template if:true={hasSolicitudes}>
+                        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+                            <thead>
+                                <tr class="slds-line-height_reset">
+                                    <th scope="col"><div class="slds-truncate">Folio</div></th>
+                                    <th scope="col"><div class="slds-truncate">Monto Solicitado</div></th>
+                                    <th scope="col"><div class="slds-truncate">Días</div></th>
+                                    <th scope="col"><div class="slds-truncate">Estatus</div></th>
+                                    <th scope="col"><div class="slds-truncate">Fecha</div></th>
+                                    <th scope="col"><div class="slds-truncate">Acciones</div></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each={solicitudes} for:item="sol">
+                                    <tr key={sol.Id}>
+                                        <td><div class="slds-truncate">{sol.Name}</div></td>
+                                        <td><div class="slds-truncate">{sol.montoFormatted}</div></td>
+                                        <td><div class="slds-truncate">{sol.diasFormatted}</div></td>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <lightning-badge label={sol.CAZ_Estatus__c} class={sol.statusClass}></lightning-badge>
+                                            </div>
+                                        </td>
+                                        <td><div class="slds-truncate">{sol.fechaFormatted}</div></td>
+                                        <td>
+                                            <lightning-button-icon
+                                                icon-name="utility:preview"
+                                                variant="border-filled"
+                                                alternative-text="Ver detalle"
+                                                title="Ver detalle"
+                                                data-id={sol.Id}
+                                                class="slds-m-right_x-small"
+                                                onclick={handleVerDetalle}>
+                                            </lightning-button-icon>
+                                            <template if:true={sol.isBorrador}>
+                                                <lightning-button-icon
+                                                    icon-name="utility:send"
+                                                    variant="brand"
+                                                    alternative-text="Enviar a Revisión"
+                                                    title="Enviar a Revisión"
+                                                    data-id={sol.Id}
+                                                    onclick={handleEnviar}>
+                                                </lightning-button-icon>
+                                            </template>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+
+                        <!-- Paginación -->
+                        <div class="slds-grid slds-grid_vertical-align-center slds-grid_align-spread slds-p-top_medium">
+                            <div class="slds-col slds-text-body_small slds-p-left_small">
+                                Mostrando página {pageNumber} de {totalPages} ({totalRecords} total)
+                            </div>
+                            <div class="slds-col slds-p-right_small">
+                                <lightning-button-group>
+                                    <lightning-button-icon icon-name="utility:chevronleft" variant="border-filled" onclick={handlePreviousPage} disabled={isFirstPage} alternative-text="Anterior"></lightning-button-icon>
+                                    <lightning-button-icon icon-name="utility:chevronright" variant="border-filled" onclick={handleNextPage} disabled={isLastPage} alternative-text="Siguiente"></lightning-button-icon>
+                                </lightning-button-group>
+                            </div>
+                        </div>
+                    </template>
+
+                    <template if:false={hasSolicitudes}>
+                        <div class="slds-illustration slds-illustration_small slds-p-around_large slds-text-align_center">
+                            <lightning-icon icon-name="custom:custom18" size="large" class="slds-m-bottom_medium"></lightning-icon>
+                            <p class="slds-text-body_regular">No tienes solicitudes de ampliación de crédito registradas.</p>
+                            <lightning-button
+                                variant="brand"
+                                label="Crear primera solicitud"
+                                onclick={handleNuevaSolicitud}
+                                class="slds-m-top_medium">
+                            </lightning-button>
+                        </div>
+                    </template>
+                </template>
+            </div>
+        </div>
+
+        <!-- NEW REQUEST MODAL -->
+        <template if:true={showNewRequestModal}>
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <lightning-button-icon icon-name="utility:close"
+                                              alternative-text="Cerrar"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"
+                                              size="large"
+                                              onclick={closeNewRequestModal}>
+                        </lightning-button-icon>
+                        <h2 class="slds-text-heading_medium slds-hyphenate">Nueva Solicitud de Ampliación de Crédito</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <c-caz-solicitud-credito onclose={closeNewRequestModal}></c-caz-solicitud-credito>
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+    </div>
+</template>
