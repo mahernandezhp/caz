@@ -1,6 +1,6 @@
 {
   "activeBrandingSetId" : "778a8035-1b68-45e0-9538-c82cc78f1a75",
-  "customCSS" : "",
+  "customCSS" : "/* Ocultar el botón de la ruta (Path) en todo el portal */\n.forceCommunityPath .slds-path__mark-complete,\n.forceCommunityPath .slds-path__action,\n.forceCommunityPath button.slds-button_brand,\n.slds-path__mark-complete,\n.slds-path__action {\n    display: none !important;\n}",
   "developerName" : "mfg",
   "id" : "a8bdba16-e209-4210-b6b1-84f355635298",
   "label" : "Fabricación",

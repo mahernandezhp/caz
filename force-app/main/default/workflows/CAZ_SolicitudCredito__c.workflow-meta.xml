@@ -52,7 +52,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderType>CurrentUser</senderType>
+        <senderType>DefaultWorkflowUser</senderType>
         <template>unfiled$public/CAZ_Ampliacion_Recibida</template>
     </alerts>
     <alerts>
@@ -62,7 +62,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderType>CurrentUser</senderType>
+        <senderType>DefaultWorkflowUser</senderType>
         <template>unfiled$public/CAZ_Ampliacion_En_Revision</template>
     </alerts>
     <alerts>
@@ -72,7 +72,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderType>CurrentUser</senderType>
+        <senderType>DefaultWorkflowUser</senderType>
         <template>unfiled$public/CAZ_Ampliacion_Aprobada</template>
     </alerts>
     <alerts>
@@ -82,7 +82,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderType>CurrentUser</senderType>
+        <senderType>DefaultWorkflowUser</senderType>
         <template>unfiled$public/CAZ_Ampliacion_Rechazada</template>
     </alerts>
 </Workflow>

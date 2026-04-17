@@ -3,28 +3,27 @@
 	<title></title>
 </head>
 <body style="height: auto; min-height: auto;">
-<p><span style="font-size:12px;"><span style="font-family:Arial,Helvetica,sans-serif;">Estimado(a) {{{Sender.Name}}},<br />
+<p><span style="font-size:14px;"><span style="font-family:Arial,Helvetica,sans-serif;">Estimado(a) {{{Sender.Name}}},<br />
 <br />
-Le informamos que hemos recibido su solicitud de devolución de dinero, la cual ya se encuentra en proceso de atención por el área de Crédito y Cobranza.</span></span></p>
+Le informamos que <strong>hemos recibido su solicitud de devolución de dinero,</strong> la cual <strong>ya se encuentra en proceso de atención</strong> por el área de Crédito y Cobranza.</span></span></p>
 
-<p><span style="font-size:12px;"><span style="font-family:Arial,Helvetica,sans-serif;">Detalles de la solicitud:<br />
+<p><span style="font-size:14px;"><span style="font-family:Arial,Helvetica,sans-serif;"><strong>Detalles de la solicitud:</strong><br />
 <br />
 • Número de solicitud:&nbsp;{{{CAZ_SolicitudDevolucion__c.Name}}}<br />
 • Monto solicitado: $&nbsp;{{{CAZ_SolicitudDevolucion__c.CAZ_ImporteDevolucion__c}}} MXN<br />
 • Fecha de recepción:&nbsp;{{{CAZ_SolicitudDevolucion__c.CreatedDate}}}<br />
 • Motivo:&nbsp;{{{CAZ_SolicitudDevolucion__c.CAZ_MotivoDevolucion__c}}}<br />
 <br />
-Nuestro equipo está revisando la información y documentación correspondiente para proceder conforme a las políticas de la Cemento Cruz Azul.<br />
+Nuestro equipo está revisando la información y documentación correspondiente para proceder conforme a las políticas de la <strong>Cemento Cruz Azul.</strong><br />
 <br />
 Una vez finalizado el proceso, le notificaremos la resolución y le compartiremos el comprobante de pago.<br />
-<br />
 <br />
 Agradecemos su paciencia y confianza en nosotros.<br />
 <br />
 Atentamente,<br />
 <br />
-[Gerencia de Crédito y Cobranza]<br />
+<span style="color:#999999;"><strong>[Gerencia de Crédito y Cobranza]</strong></span><br />
 <br />
-[CDMX]</span></span></p>
+<span style="color:#999999;"><strong>[CDMX]</strong></span></span></span></p>
 </body>
 </html>

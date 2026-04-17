@@ -66,4 +66,18 @@ public with sharing class CAZ_DocumentoSolicitudController {
         }
         return results;
     }
+
+    @AuraEnabled
+    public static void eliminarDocumento(Id documentId) {
+        if (documentId == null) {
+            throw new AuraHandledException('El ID del documento es requerido.');
+        }
+
+        try {
+            ContentDocument doc = [SELECT Id FROM ContentDocument WHERE Id = :documentId WITH SECURITY_ENFORCED LIMIT 1];
+            delete doc;
+        } catch (Exception e) {
+            throw new AuraHandledException('Error al eliminar el documento: ' + e.getMessage());
+        }
+    }
 }

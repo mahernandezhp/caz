@@ -2,7 +2,6 @@ import { LightningElement, api, track } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
 import getMisSolicitudes from '@salesforce/apex/CAZ_SolicitudDevolucionController.getMisSolicitudes';
 import getTotalSolicitudes from '@salesforce/apex/CAZ_SolicitudDevolucionController.getTotalSolicitudes';
-import enviarSolicitud from '@salesforce/apex/CAZ_SolicitudDevolucionController.enviarSolicitud';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 const STATUS_CLASSES = {
@@ -114,31 +113,5 @@ export default class CazMisSolicitudes extends NavigationMixin(LightningElement)
                 actionName: 'view'
             }
         });
-    }
-
-    handleEnviar(event) {
-        const recordId = event.currentTarget.dataset.id;
-        this.isLoading = true;
-        enviarSolicitud({ recordId: recordId })
-            .then(() => {
-                this.dispatchEvent(
-                    new ShowToastEvent({
-                        title: 'Éxito',
-                        message: 'La solicitud ha sido enviada a revisión.',
-                        variant: 'success'
-                    })
-                );
-                this.loadSolicitudes();
-            })
-            .catch(error => {
-                this.isLoading = false;
-                this.dispatchEvent(
-                    new ShowToastEvent({
-                        title: 'Error',
-                        message: error.body ? error.body.message : 'No se pudo enviar la solicitud.',
-                        variant: 'error'
-                    })
-                );
-            });
     }
 }

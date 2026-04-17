@@ -5,7 +5,7 @@
     <name>Solicitud de devolución</name>
     <relatedEntityType>CAZ_SolicitudDevolucion__c</relatedEntityType>
     <style>none</style>
-    <subject>Confirmación de devolución exitosa</subject>
+    <subject>Confirmación de solicitud de devolución – En proceso de atención</subject>
     <type>custom</type>
     <uiType>SFX</uiType>
 </EmailTemplate>

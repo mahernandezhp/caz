@@ -40,7 +40,13 @@
                             <tbody>
                                 <template for:each={solicitudes} for:item="caso">
                                     <tr key={caso.Id}>
-                                        <td><div class="slds-truncate">{caso.Name}</div></td>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <a href="javascript:void(0);" data-id={caso.Id} onclick={handleVerDetalle}>
+                                                    {caso.Name}
+                                                </a>
+                                            </div>
+                                        </td>
                                         <td><div class="slds-truncate" title={caso.CAZ_Description__c}>{caso.CAZ_Description__c}</div></td>
                                         <td>
                                             <div class="slds-truncate">
@@ -59,16 +65,7 @@
                                                 class="slds-m-right_x-small"
                                                 onclick={handleVerDetalle}>
                                             </lightning-button-icon>
-                                            <template if:true={caso.isBorrador}>
-                                                <lightning-button-icon
-                                                    icon-name="utility:send"
-                                                    variant="brand"
-                                                    alternative-text="Enviar a Revisión"
-                                                    title="Enviar a Revisión"
-                                                    data-id={caso.Id}
-                                                    onclick={handleEnviar}>
-                                                </lightning-button-icon>
-                                            </template>
+
                                         </td>
                                     </tr>
                                 </template>
@@ -112,7 +109,7 @@
                     <header class="slds-modal__header">
                         <lightning-button-icon icon-name="utility:close"
                                               alternative-text="Cerrar"
-                                              variant="bare-inverse"
+                                              variant="bare"
                                               class="slds-modal__close"
                                               size="large"
                                               onclick={closeNewRequestModal}>

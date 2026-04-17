@@ -1,10 +1,12 @@
 import { LightningElement, api, track } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { NavigationMixin } from 'lightning/navigation';
 import getDocumentosRequeridos from '@salesforce/apex/CAZ_DocumentoSolicitudController.getDocumentosRequeridos';
 import etiquetarDocumento from '@salesforce/apex/CAZ_DocumentoSolicitudController.etiquetarDocumento';
 import getDocumentosCargados from '@salesforce/apex/CAZ_DocumentoSolicitudController.getDocumentosCargados';
+import eliminarDocumento from '@salesforce/apex/CAZ_DocumentoSolicitudController.eliminarDocumento';
 
-export default class CazCargaDocumentos extends LightningElement {
+export default class CazCargaDocumentos extends NavigationMixin(LightningElement) {
     @api recordId;
     @api processName = 'Devolucion';
     @api title = 'Documentos Requeridos';
@@ -16,14 +18,21 @@ export default class CazCargaDocumentos extends LightningElement {
     @track uploadedFiles = [];
     @track selectedTipoDocumento = '';
 
-    acceptedFormats = ['.pdf', '.jpg', '.jpeg', '.png', '.xlsx', '.xls'];
+    acceptedFormats = ['.pdf'];
 
     /** Opciones para el combobox del tipo de documento */
     get tipoDocumentoOptions() {
-        return this.documentosRequeridos.map(doc => ({
-            label: doc.label + (doc.obligatorio ? ' *' : ''),
-            value: doc.label
-        }));
+        const uploadedTypes = this.uploadedFiles.map(f => f.tipoDocumento);
+        return this.documentosRequeridos
+            .filter(doc => !uploadedTypes.includes(doc.label))
+            .map(doc => ({
+                label: doc.label + (doc.obligatorio ? ' *' : ''),
+                value: doc.label
+            }));
+    }
+
+    get hasOpcionesDocumentos() {
+        return this.tipoDocumentoOptions && this.tipoDocumentoOptions.length > 0;
     }
 
     /** Desactiva el file-upload si no se ha seleccionado un tipo de documento */
@@ -88,6 +97,14 @@ export default class CazCargaDocumentos extends LightningElement {
                     cargado: false
                 }));
                 this.isLoading = false;
+                
+                this.dispatchEvent(new CustomEvent('documentosupdated', {
+                    detail: {
+                        totalRequeridos: this.documentosRequeridos.filter(d => d.obligatorio).length,
+                        totalCargados: this.uploadedFiles.length,
+                        completo: !this.hayDocumentosFaltantes
+                    }
+                }));
             })
             .catch(() => {
                 this.errorMessage = 'Error al cargar los documentos requeridos.';
@@ -158,5 +175,62 @@ export default class CazCargaDocumentos extends LightningElement {
                     variant: 'error'
                 }));
             });
+    }
+
+    handleDeleteDocument(event) {
+        const documentId = event.target.dataset.id;
+        const tipoDocumento = event.target.dataset.type;
+
+        this.isLoading = true;
+        eliminarDocumento({ documentId: documentId })
+            .then(() => {
+                this.uploadedFiles = this.uploadedFiles.filter(f => f.documentId !== documentId);
+
+                const stillHasType = this.uploadedFiles.some(f => f.tipoDocumento === tipoDocumento);
+                if (!stillHasType) {
+                    this.documentosRequeridos = this.documentosRequeridos.map(doc => ({
+                        ...doc,
+                        cargado: doc.label === tipoDocumento ? false : doc.cargado,
+                        iconName: doc.label === tipoDocumento 
+                            ? (doc.obligatorio ? 'utility:error' : 'utility:info') 
+                            : doc.iconName
+                    }));
+                }
+
+                // Si el tipo seleccionado previamente es el mismo, lo limpiamos
+                if (this.selectedTipoDocumento === tipoDocumento && !stillHasType) {
+                    this.selectedTipoDocumento = '';
+                }
+
+                this.isLoading = false;
+                this.dispatchEvent(new ShowToastEvent({
+                    title: 'Documento eliminado',
+                    message: `El documento de tipo "${tipoDocumento}" fue eliminado exitosamente.`,
+                    variant: 'success'
+                }));
+
+                this.dispatchEvent(new CustomEvent('documentosupdated', {
+                    detail: {
+                        totalRequeridos: this.documentosRequeridos.filter(d => d.obligatorio).length,
+                        totalCargados: this.uploadedFiles.length,
+                        completo: !this.hayDocumentosFaltantes
+                    }
+                }));
+            })
+            .catch(error => {
+                this.isLoading = false;
+                this.dispatchEvent(new ShowToastEvent({
+                    title: 'Error al eliminar',
+                    message: error.body ? error.body.message : 'Error al procesar la solicitud.',
+                    variant: 'error'
+                }));
+            });
+    }
+
+    handlePreviewFile(event) {
+        const docId = event.target.dataset.id;
+        // Agregamos operationContext=S1 para forzar al navegador a visualizar el PDF/Imagen en lugar de descargarlo
+        const previewUrl = `/sfc/servlet.shepherd/document/download/${docId}?operationContext=S1`;
+        window.open(previewUrl, '_blank');
     }
 }

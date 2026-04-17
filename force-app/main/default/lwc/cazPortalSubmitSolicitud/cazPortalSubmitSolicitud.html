@@ -1,5 +1,5 @@
 <template>
-    <div class="slds-page-header slds-m-bottom_medium slds-page-header_record-home">
+    <div class="premium-header slds-page-header slds-m-bottom_medium slds-page-header_record-home">
         <div class="slds-page-header__row">
             <div class="slds-page-header__col-title">
                 <div class="slds-media">
@@ -22,7 +22,7 @@
             <div class="slds-page-header__col-actions">
                 <div class="slds-page-header__controls">
                     <div class="slds-page-header__control">
-                        <template lwc:if={isBorrador}>
+                        <template lwc:if={showEnviarButton}>
                             <lightning-button variant="brand" label="Enviar solicitud" onclick={handleEnviar} disabled={isLoading}></lightning-button>
                         </template>
                     </div>
@@ -31,7 +31,22 @@
         </div>
     </div>
     
-    <div class="slds-card slds-p-around_medium slds-m-bottom_large" style="background-color: white;">
+    <!-- Path (Ruta de progreso) -->
+    <div class="premium-card slds-p-around_medium slds-m-bottom_medium">
+        <lightning-progress-indicator current-step={currentStatus} type="path" variant="base">
+            <lightning-progress-step label="Borrador" value="Borrador"></lightning-progress-step>
+            <lightning-progress-step label="Por atender" value="Por atender"></lightning-progress-step>
+            <lightning-progress-step label="En revisión Tesorería" value="En revisión Tesorería"></lightning-progress-step>
+            <lightning-progress-step label="Aprobado" value="Aprobado"></lightning-progress-step>
+            <lightning-progress-step label="Rechazado" value="Rechazado"></lightning-progress-step>
+        </lightning-progress-indicator>
+    </div>
+
+    <div class="premium-card">
+        <div class="section-header">
+            <lightning-icon icon-name="utility:form" size="small" class="header-icon"></lightning-icon>
+            <h2 class="section-title">Detalles de la Solicitud</h2>
+        </div>
         <lightning-record-form
             record-id={recordId}
             object-api-name="CAZ_SolicitudDevolucion__c"
@@ -42,7 +57,7 @@
     </div>
 
     <div class="slds-m-bottom_large">
-        <c-caz-carga-documentos record-id={recordId} readonly-mode={isReadOnlyState}></c-caz-carga-documentos>
+        <c-caz-carga-documentos record-id={recordId} readonly-mode={isReadOnlyState} ondocumentosupdated={handleDocumentosUpdated}></c-caz-carga-documentos>
     </div>
 
     <template lwc:if={isLoading}>

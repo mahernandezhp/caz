@@ -40,37 +40,46 @@
 
             <!-- Ocultar subida de archivos en modo lectura -->
             <template if:false={readonlyMode}>
-                <!-- Selector de tipo de documento -->
-                <div class="slds-m-bottom_small">
-                    <lightning-combobox
-                        name="tipoDocumento"
-                        label="Tipo de Documento"
-                        placeholder="-- Selecciona el tipo de documento --"
-                        value={selectedTipoDocumento}
-                        options={tipoDocumentoOptions}
-                        onchange={handleTipoDocumentoChange}
-                        required>
-                    </lightning-combobox>
-                </div>
+                <template if:true={hasOpcionesDocumentos}>
+                    <!-- Selector de tipo de documento -->
+                    <div class="slds-m-bottom_small">
+                        <lightning-combobox
+                            name="tipoDocumento"
+                            label="Tipo de Documento"
+                            placeholder="-- Selecciona el tipo de documento --"
+                            value={selectedTipoDocumento}
+                            options={tipoDocumentoOptions}
+                            onchange={handleTipoDocumentoChange}
+                            required>
+                        </lightning-combobox>
+                    </div>
 
-                <!-- File upload (deshabilitado si no se selecciona tipo) -->
-                <template if:false={isUploadDisabled}>
-                    <lightning-file-upload
-                        label="Adjuntar Documento"
-                        name="cazDocumentos"
-                        accept={acceptedFormats}
-                        record-id={recordId}
-                        onuploadfinished={handleUploadFinished}
-                        multiple>
-                    </lightning-file-upload>
+                    <!-- File upload (deshabilitado si no se selecciona tipo) -->
+                    <template if:false={isUploadDisabled}>
+                        <lightning-file-upload
+                            label="Adjuntar Documento"
+                            name="cazDocumentos"
+                            accept={acceptedFormats}
+                            record-id={recordId}
+                            onuploadfinished={handleUploadFinished}
+                            multiple>
+                        </lightning-file-upload>
+                    </template>
+
+                    <template if:true={isUploadDisabled}>
+                        <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center slds-m-top_small">
+                            <p class="slds-text-body_small slds-text-color_weak">
+                                <lightning-icon icon-name="utility:info" size="xx-small" class="slds-m-right_xx-small"></lightning-icon>
+                                Selecciona primero el tipo de documento para habilitar la carga.
+                            </p>
+                        </div>
+                    </template>
                 </template>
 
-                <template if:true={isUploadDisabled}>
-                    <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center slds-m-top_small">
-                        <p class="slds-text-body_small slds-text-color_weak">
-                            <lightning-icon icon-name="utility:info" size="xx-small" class="slds-m-right_xx-small"></lightning-icon>
-                            Selecciona primero el tipo de documento para habilitar la carga.
-                        </p>
+                <template if:false={hasOpcionesDocumentos}>
+                    <div class="slds-notify slds-notify_alert slds-alert_success slds-m-bottom_small" role="alert">
+                        <lightning-icon icon-name="utility:success" variant="inverse" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                        <h2>Todos los documentos han sido cargados.</h2>
                     </div>
                 </template>
             </template>
@@ -81,9 +90,23 @@
                     <h4 class="slds-text-title_caps slds-m-bottom_xx-small">Archivos Cargados</h4>
                     <ul class="slds-list_dotted">
                         <template for:each={uploadedFiles} for:item="file">
-                            <li key={file.documentId} class="slds-item slds-p-vertical_xx-small">
-                                <lightning-icon icon-name="doctype:attachment" size="x-small" class="slds-m-right_x-small"></lightning-icon>
-                                <strong>{file.tipoDocumento}</strong> — <a href={file.downloadUrl} target="_blank" rel="noopener noreferrer">{file.name}</a>
+                            <li key={file.documentId} class="slds-item slds-p-vertical_xx-small slds-grid slds-grid_vertical-align-center">
+                                <div class="slds-col slds-grow">
+                                    <lightning-icon icon-name="doctype:attachment" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                                    <strong>{file.tipoDocumento}</strong> — <a href="javascript:void(0);" data-id={file.documentId} onclick={handlePreviewFile}>{file.name}</a>
+                                </div>
+                                <div class="slds-col slds-grow-none">
+                                    <template if:false={readonlyMode}>
+                                        <lightning-button-icon icon-name="utility:delete" 
+                                                               variant="bare" 
+                                                               alternative-text="Eliminar documento" 
+                                                               class="slds-m-left_small" 
+                                                               data-id={file.documentId} 
+                                                               data-type={file.tipoDocumento}
+                                                               onclick={handleDeleteDocument}>
+                                        </lightning-button-icon>
+                                    </template>
+                                </div>
                             </li>
                         </template>
                     </ul>
