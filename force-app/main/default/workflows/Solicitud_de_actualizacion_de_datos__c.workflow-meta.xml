@@ -26,6 +26,41 @@
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/CAZ_ActualizacionDeDatos_incorrectos</template>
     </alerts>
+    <alerts>
+        <fullName>CAZ_PdeA_NuevaSAD</fullName>
+        <description>CAZ_PdeA_NuevaSAD</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>cruzazul@capptus.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>mario.q@capptus.com.cazs</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/CAZ_PdeA_NuevaSAD</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>CAZ_SAD_EtapaAprobada</fullName>
+        <field>CAZ_Estado__c</field>
+        <literalValue>Aprobado</literalValue>
+        <name>CAZ_SAD_EtapaAprobada</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>CAZ_SAD_EtapaRechazada</fullName>
+        <field>CAZ_Estado__c</field>
+        <literalValue>Rechazado</literalValue>
+        <name>CAZ_SAD_EtapaRechazada</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
     <fieldUpdates>
         <fullName>CAZ_SAD_activaPdeA</fullName>
         <description>Cuando la Solicitud de actualización de datos es enviada a aprobación</description>

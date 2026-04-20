@@ -1,0 +1,33 @@
+.caz-multipagos-result-wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.caz-loading-box {
+    min-height: 8rem;
+}
+
+.caz-result-card {
+    border-radius: 0.5rem;
+    border: 1px solid #dddbda;
+    background-color: #ffffff;
+}
+
+.caz-result-card_success {
+    border-color: #2e844a;
+    background-color: #effbef;
+}
+
+.caz-result-card_warning {
+    border-color: #fe9339;
+    background-color: #fff4e5;
+}
+
+.caz-result-card_error {
+    border-color: #ba0517;
+    background-color: #fde9ea;
+}
+
+.caz-result-details dt {
+    font-weight: 600;
+}

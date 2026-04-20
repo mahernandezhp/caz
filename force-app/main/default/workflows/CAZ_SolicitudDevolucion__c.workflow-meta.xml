@@ -1,51 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fieldUpdates>
-        <fullName>Actualizar_Estatus_Por_atender</fullName>
-        <field>CAZ_Status__c</field>
-        <literalValue>Por atender</literalValue>
-        <name>Actualizar Estatus: Por atender</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Actualizar_Estatus_Aprobado</fullName>
-        <field>CAZ_Status__c</field>
-        <literalValue>Aprobado</literalValue>
-        <name>Actualizar Estatus: Aprobado</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Actualizar_Estatus_Rechazado</fullName>
-        <field>CAZ_Status__c</field>
-        <literalValue>Rechazado</literalValue>
-        <name>Actualizar Estatus: Rechazado</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Actualizar_Estatus_En_revision_Tesoreria</fullName>
-        <field>CAZ_Status__c</field>
-        <literalValue>En revisión Tesorería</literalValue>
-        <name>Estatus: En revisión Tesorería</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-    </fieldUpdates>
-    <alerts>
-        <fullName>Alerta_Solicitud_Devolucion</fullName>
-        <description>Alerta: Solicitud de Devolución</description>
-        <protected>false</protected>
-        <recipients>
-            <type>owner</type>
-        </recipients>
-        <senderType>DefaultWorkflowUser</senderType>
-        <template>unfiled$public/Solicitud_de_Devoluci_n_1775839314615</template>
-    </alerts>
     <alerts>
         <fullName>Alerta_Solicitud_Aceptada</fullName>
         <description>Alerta: Solicitud de Devolución Aceptada</description>
@@ -57,6 +11,16 @@
         <template>unfiled$public/Solicitud_de_devoluci_n_aceptada_1775839760201</template>
     </alerts>
     <alerts>
+        <fullName>Alerta_Solicitud_Devolucion</fullName>
+        <description>Alerta: Solicitud de Devolución</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>unfiled$public/Solicitud_de_Devoluci_n_1775839314615</template>
+    </alerts>
+    <alerts>
         <fullName>Alerta_Solicitud_Rechazada</fullName>
         <description>Alerta: Solicitud de Devolución Rechazada</description>
         <protected>false</protected>
@@ -66,4 +30,44 @@
         <senderType>DefaultWorkflowUser</senderType>
         <template>unfiled$public/Solicitud_de_devoluci_n_rechazada_1775839854461</template>
     </alerts>
+    <fieldUpdates>
+        <fullName>Actualizar_Estatus_Aprobado</fullName>
+        <field>CAZ_Status__c</field>
+        <literalValue>Aprobado</literalValue>
+        <name>Actualizar Estatus: Aprobado</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Actualizar_Estatus_En_revision_Tesoreria</fullName>
+        <field>CAZ_Status__c</field>
+        <literalValue>En revisión Tesorería</literalValue>
+        <name>Estatus: En revisión Tesorería</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Actualizar_Estatus_Por_atender</fullName>
+        <field>CAZ_Status__c</field>
+        <literalValue>Por atender</literalValue>
+        <name>Actualizar Estatus: Por atender</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Actualizar_Estatus_Rechazado</fullName>
+        <field>CAZ_Status__c</field>
+        <literalValue>Rechazado</literalValue>
+        <name>Actualizar Estatus: Rechazado</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
 </Workflow>

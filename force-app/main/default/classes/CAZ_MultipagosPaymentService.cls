@@ -26,14 +26,34 @@ public with sharing class CAZ_MultipagosPaymentService {
      * - PaymentGateway se localiza por ExternalReference con el patrón:
      *   'MULTIPAGOS_' + Environment
      *   Ejemplo: MULTIPAGOS_PREPROD
-     *
-     * Nota importante:
-     * - La secretKey se recibe como parámetro porque aún no se ha definido
-     *   en qué repositorio seguro se almacenará.
+     * - La secretKey se lee desde el Custom Setting protegido
+     *   CAZ_MultipagosSecrets__c (getOrgDefaults). La llave es proporcionada
+     *   por Flap y NUNCA se envía como parámetro ni se loguea.
      * ============================================================================
      */
 
     private static final String LOG_PREFIX = 'CAZ_MultipagosPaymentService';
+
+    /**
+     * ============================================================================
+     * Seams de prueba (@TestVisible)
+     * ============================================================================
+     * `mockGateway` permite inyectar un PaymentGateway sintético en tests para
+     * cubrir el camino feliz de preparePayment sin depender de un registro real
+     * en la org (PaymentGateway requiere PaymentGatewayProvider + ApexAdapter +
+     * NamedCredential para poder insertarse, cadena no reproducible en @IsTest).
+     *
+     * `bypassPaymentGatewayAssignment` instruye a createPayment a NO asignar
+     * PaymentGatewayId al Payment (porque el Id del mockGateway es sintético
+     * y rompería la FK en el insert). Ambos flags se resetean a null/false
+     * entre tests automáticamente porque son estáticos del contexto de ejecución.
+     * ============================================================================
+     */
+    @TestVisible
+    private static PaymentGateway mockGateway;
+
+    @TestVisible
+    private static Boolean bypassPaymentGatewayAssignment = false;
 
     /**
      * ============================================================================
@@ -85,8 +105,7 @@ public with sharing class CAZ_MultipagosPaymentService {
      * 8. Regresar el DTO con los parámetros del POST.
      *
      * Parámetros:
-     * @param orderId   Id de la Order a pagar.
-     * @param secretKey Llave secreta para generar la firma HMAC SHA-256.
+     * @param orderId Id de la Order a pagar.
      *
      * Retorno:
      * @return PaymentRequestData con los datos necesarios para el POST.
@@ -94,16 +113,19 @@ public with sharing class CAZ_MultipagosPaymentService {
      */
     @AuraEnabled
     public static PaymentRequestData preparePayment(Id orderId) {
-        String secretKey = '';
         System.debug(LoggingLevel.INFO, LOG_PREFIX + ' | preparePayment | Inicio');
         System.debug(LoggingLevel.DEBUG, LOG_PREFIX + ' | preparePayment | orderId=' + orderId);
-        System.debug(LoggingLevel.DEBUG, LOG_PREFIX + ' | preparePayment | secretKeyProvided=' + !String.isBlank(secretKey));
 
         if (orderId == null) {
             throw new AuraHandledException('El orderId es obligatorio.');
         }
+
+        String secretKey = getSecretKey();
+        System.debug(LoggingLevel.DEBUG, LOG_PREFIX + ' | preparePayment | secretKeyConfigured=' + !String.isBlank(secretKey));
+
         if (String.isBlank(secretKey)) {
-            throw new AuraHandledException('La secretKey es obligatoria para preparar el pago.');
+            System.debug(LoggingLevel.ERROR, LOG_PREFIX + ' | preparePayment | SecretKey no configurada en CAZ_MultipagosSecrets__c');
+            throw new AuraHandledException('La configuración de seguridad de Multipagos no está completa. Contacte al administrador.');
         }
 
         CAZ_MultipagosConfiguration__mdt config = getActiveConfiguration();
@@ -175,6 +197,27 @@ public with sharing class CAZ_MultipagosPaymentService {
         System.debug(LoggingLevel.DEBUG, LOG_PREFIX + ' | preparePayment | DTO=' + JSON.serialize(dto));
 
         return dto;
+    }
+
+    /**
+     * ============================================================================
+     * Método: getSecretKey
+     * ============================================================================
+     * Propósito:
+     * Obtener la llave privada HMAC SHA-256 desde el Custom Setting
+     * protegido CAZ_MultipagosSecrets__c.
+     *
+     * Retorno:
+     * @return String con la llave, o null/blank si no está configurada.
+     * ============================================================================
+     */
+    @TestVisible
+    private static String getSecretKey() {
+        CAZ_MultipagosSecrets__c secrets = CAZ_MultipagosSecrets__c.getOrgDefaults();
+        if (secrets == null) {
+            return null;
+        }
+        return secrets.CAZ_SecretKey__c;
     }
 
     /**
@@ -296,7 +339,13 @@ public with sharing class CAZ_MultipagosPaymentService {
      * MULTIPAGOS_PREPROD
      * ============================================================================
      */
+    @TestVisible
     private static PaymentGateway getPaymentGateway(String environment) {
+        if (mockGateway != null) {
+            System.debug(LoggingLevel.DEBUG, LOG_PREFIX + ' | getPaymentGateway | Usando mockGateway (test hook)');
+            return mockGateway;
+        }
+
         String gatewayReference = 'MULTIPAGOS_' + environment;
         System.debug(LoggingLevel.DEBUG, LOG_PREFIX + ' | getPaymentGateway | gatewayReference=' + gatewayReference);
 
@@ -335,6 +384,7 @@ public with sharing class CAZ_MultipagosPaymentService {
      * del Id de la Order.
      * ============================================================================
      */
+    @TestVisible
     private static String buildMultipagosOrder(Order ord) {
         String baseValue;
 
@@ -360,23 +410,48 @@ public with sharing class CAZ_MultipagosPaymentService {
      * Método: buildMultipagosReference
      * ============================================================================
      * Propósito:
-     * Construir el valor de mp_reference.
+     * Construir el valor de mp_reference respetando el límite de Multipagos
+     * de 30 caracteres alfanuméricos.
      *
      * Estrategia:
-     * Combina prefijo + OrderNumber/Id + timestamp corto para volverlo único.
+     * - Prefijo: máximo 3 chars alfanuméricos (default 'CAZ').
+     * - Timestamp: últimos 10 dígitos del epoch (unicidad sub-segundo suficiente).
+     * - OrderNumber/Id: ocupa el espacio restante (30 - prefix - timestamp).
      * ============================================================================
      */
+    @TestVisible
     private static String buildMultipagosReference(Order ord, String prefix) {
         String safePrefix = String.isBlank(prefix) ? 'CAZ' : prefix.replaceAll('[^a-zA-Z0-9]', '');
+        if (safePrefix.length() > 3) {
+            safePrefix = safePrefix.substring(0, 3);
+        }
+        if (String.isBlank(safePrefix)) {
+            safePrefix = 'CAZ';
+        }
+
         String baseOrder = !String.isBlank(ord.OrderNumber)
             ? ord.OrderNumber.replaceAll('[^a-zA-Z0-9]', '')
             : String.valueOf(ord.Id).replaceAll('[^a-zA-Z0-9]', '');
 
         String timePart = String.valueOf(DateTime.now().getTime());
-        String raw = safePrefix + baseOrder + timePart;
-        String result = raw.length() > 50 ? raw.substring(0, 50) : raw;
+        if (timePart.length() > 10) {
+            timePart = timePart.substring(timePart.length() - 10);
+        }
 
-        System.debug(LoggingLevel.DEBUG, LOG_PREFIX + ' | buildMultipagosReference | result=' + result);
+        Integer available = 30 - safePrefix.length() - timePart.length();
+        if (available < 0) {
+            available = 0;
+        }
+        if (baseOrder.length() > available) {
+            baseOrder = baseOrder.substring(0, available);
+        }
+
+        String result = safePrefix + baseOrder + timePart;
+        if (result.length() > 30) {
+            result = result.substring(0, 30);
+        }
+
+        System.debug(LoggingLevel.DEBUG, LOG_PREFIX + ' | buildMultipagosReference | result=' + result + ' | length=' + result.length());
 
         return result;
     }
@@ -443,10 +518,15 @@ public with sharing class CAZ_MultipagosPaymentService {
         System.debug(LoggingLevel.INFO, LOG_PREFIX + ' | createPayment | Creando Payment');
 
         Payment paymentRecord = new Payment();
+        paymentRecord.Status = 'Pending';
+        paymentRecord.Type = 'Sale';
+        paymentRecord.ProcessingMode = 'External';
         paymentRecord.Amount = amount;
         paymentRecord.Date = System.now();
         paymentRecord.AccountId = ord.AccountId;
-        paymentRecord.PaymentGatewayId = paymentGateway.Id;
+        if (!bypassPaymentGatewayAssignment) {
+            paymentRecord.PaymentGatewayId = paymentGateway.Id;
+        }
         paymentRecord.PaymentGroupId = paymentGroup.Id;
         paymentRecord.GatewayRefNumber = multipagosReference;
         paymentRecord.GatewayRefDetails = 'mp_order=' + multipagosOrder;

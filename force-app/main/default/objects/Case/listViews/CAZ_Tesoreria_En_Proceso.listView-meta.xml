@@ -7,7 +7,8 @@
         <operation>equals</operation>
         <value>En Proceso</value>
     </filters>
-    <label>Devoluciones - En Proceso</label>    <sharedTo>
+    <label>Devoluciones - En Proceso</label>
+    <sharedTo>
         <group>CAZ_Tesoreria</group>
     </sharedTo>
 </ListView>

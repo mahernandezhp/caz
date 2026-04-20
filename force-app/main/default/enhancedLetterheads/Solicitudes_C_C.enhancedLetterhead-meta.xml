@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<EnhancedLetterhead xmlns="http://soap.sforce.com/2006/04/metadata">
-    <letterheadFooter><![CDATA[<p><a href="mailto:correo@cruzazul.com.mx" title="mailto:correo@cruzazul.com.mx">correo@cruzazul.com.mx </a><br> <span style="font-size:9pt; font-family:Verdana, sans-serif; color:#898d8d;">Tel. 55-5424-9000 Ext. 1234</span><br> <br> <img alt="LogoNoOficialCAZ" height="35" src="https://customer-connect-47072--devcap.sandbox.file.force.com/servlet/servlet.ImageServer?id=015WD000006kZlh&amp;oid=00DWD00000A6HWf" style="max-width: 906.617px;" title="LogoNoOficialCAZ" width="125"></p>]]></letterheadFooter>
-    <letterheadHeader><![CDATA[]]></letterheadHeader>
-    <name>Solicitudes C&amp;C</name>
-</EnhancedLetterhead>

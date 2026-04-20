@@ -2,13 +2,14 @@
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>CAZ_Tesoreria_Por_Atender</fullName>
     <filterScope>Queue</filterScope>
-    <queue>Tesoreria</queue>
     <filters>
         <field>CASES.STATUS</field>
         <operation>equals</operation>
         <value>Por atender</value>
     </filters>
-    <label>Devoluciones - Por atender</label>    <sharedTo>
+    <label>Devoluciones - Por atender</label>
+    <queue>Tesoreria</queue>
+    <sharedTo>
         <group>CAZ_Tesoreria</group>
     </sharedTo>
 </ListView>

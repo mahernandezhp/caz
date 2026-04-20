@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Todos</fullName>
+    <columns>NAME</columns>
+    <columns>CAZ_RFC__c</columns>
+    <columns>CAZ_MontoSolicitado__c</columns>
+    <columns>CAZ_Estatus__c</columns>
+    <columns>CAZ_Cuenta__c</columns>
+    <columns>CAZ_Dias__c</columns>
+    <columns>CAZ_ContactoSolicitante__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>CREATEDBY_USER</columns>
+    <filterScope>Mine</filterScope>
+    <label>Todos</label>
+    <sharedTo></sharedTo>
+</ListView>

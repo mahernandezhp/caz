@@ -7,7 +7,8 @@
         <operation>equals</operation>
         <value>Vencido</value>
     </filters>
-    <label>Devoluciones - Vencidas</label>    <sharedTo>
+    <label>Devoluciones - Vencidas</label>
+    <sharedTo>
         <group>CAZ_CreditoCobranza</group>
     </sharedTo>
 </ListView>

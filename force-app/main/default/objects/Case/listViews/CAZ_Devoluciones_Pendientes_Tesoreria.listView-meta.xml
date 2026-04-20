@@ -7,7 +7,8 @@
         <operation>equals</operation>
         <value>Por atender</value>
     </filters>
-    <label>Devoluciones - Pendientes Tesorería</label>    <sharedTo>
+    <label>Devoluciones - Pendientes Tesorería</label>
+    <sharedTo>
         <group>CAZ_CreditoCobranza</group>
     </sharedTo>
 </ListView>

@@ -2,13 +2,14 @@
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>CAZ_Devoluciones_Nuevas</fullName>
     <filterScope>Queue</filterScope>
-    <queue>CreditoCobranza</queue>
     <filters>
         <field>CASES.STATUS</field>
         <operation>equals</operation>
         <value>Borrador</value>
     </filters>
-    <label>Devoluciones - Nuevas</label>    <sharedTo>
+    <label>Devoluciones - Nuevas</label>
+    <queue>CreditoCobranza</queue>
+    <sharedTo>
         <group>CAZ_CreditoCobranza</group>
     </sharedTo>
 </ListView>

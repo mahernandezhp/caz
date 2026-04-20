@@ -521,6 +521,16 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
+                    <value>readonly</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CAZ_Correo_institucional__c</fieldItem>
+                <identifier>RecordCAZ_Correo_institucional_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.CAZ_Direccion_plantilla_B__c</fieldItem>
@@ -894,6 +904,26 @@
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>cmpHeight</name>
+                    <value>600px</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>cmpWidth</name>
+                    <value>100%</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>domain</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>miniMapId</name>
+                </componentInstanceProperties>
+                <componentName>maps:MiniMapLightningComponent</componentName>
+                <identifier>maps_MiniMapLightningComponent</identifier>
+            </componentInstance>
+        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>

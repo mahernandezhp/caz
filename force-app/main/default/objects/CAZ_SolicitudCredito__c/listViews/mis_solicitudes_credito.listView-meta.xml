@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>mis_solicitudes_credito</fullName>
+    <columns>NAME</columns>
+    <columns>CAZ_RFC__c</columns>
+    <columns>CAZ_MontoSolicitado__c</columns>
+    <columns>CAZ_Estatus__c</columns>
+    <columns>CAZ_Cuenta__c</columns>
+    <columns>CAZ_Dias__c</columns>
+    <columns>CAZ_ContactoSolicitante__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>CREATEDBY_USER</columns>
+    <filterScope>Mine</filterScope>
+    <label>Mis solicitudes de crédito</label>
+    <sharedTo>
+        <group>CAZ_Distribuidores</group>
+        <roleAndSubordinates>CAZ_UsuarioDistribuidor</roleAndSubordinates>
+    </sharedTo>
+</ListView>

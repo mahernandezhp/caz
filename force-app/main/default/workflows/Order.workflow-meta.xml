@@ -146,4 +146,44 @@
         <protected>false</protected>
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Order_Status_Autorizado</fullName>
+        <field>Status</field>
+        <literalValue>Autorizado</literalValue>
+        <name>Order Status - Autorizado</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Order_Status_En_Revision</fullName>
+        <field>Status</field>
+        <literalValue>En Revisión</literalValue>
+        <name>Order Status - En Revisión</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Order_Status_Rechazado</fullName>
+        <field>Status</field>
+        <literalValue>Rechazado</literalValue>
+        <name>Order Status - Rechazado</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Order_Status_Reprogramacion</fullName>
+        <field>Status</field>
+        <literalValue>Reprogramación</literalValue>
+        <name>Order Status - Reprogramación</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
 </Workflow>

@@ -1,0 +1,35 @@
+<template>
+    <div class="slds-box slds-theme_default caz-multipagos-wrapper">
+        <template lwc:if={isLoading}>
+            <div class="slds-is-relative slds-p-around_medium">
+                <lightning-spinner alternative-text="Preparando pago con Multipagos..." size="medium"></lightning-spinner>
+                <p class="slds-text-align_center slds-text-body_regular slds-p-top_medium">
+                    Redirigiendo a Multipagos...
+                </p>
+            </div>
+        </template>
+
+        <template lwc:else>
+            <template lwc:if={hasError}>
+                <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error slds-m-bottom_small" role="alert">
+                    <span class="slds-assistive-text">Error</span>
+                    <h2>{errorMessage}</h2>
+                </div>
+            </template>
+
+            <lightning-button
+                variant="brand"
+                label={buttonLabel}
+                title={buttonLabel}
+                icon-name="utility:lock"
+                onclick={handlePagar}
+                disabled={isDisabled}
+                class="slds-m-top_small">
+            </lightning-button>
+
+            <p class="slds-text-body_small slds-text-color_weak slds-p-top_small">
+                Serás redirigido al portal seguro de Multipagos (BBVA) para completar tu pago.
+            </p>
+        </template>
+    </div>
+</template>

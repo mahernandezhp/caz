@@ -1,0 +1,127 @@
+<template>
+    <div class="caz-multipagos-result-wrapper">
+
+        <template if:true={isLoading}>
+            <div class="slds-box slds-p-around_large slds-align_absolute-center caz-loading-box">
+                <lightning-spinner alternative-text="Validando respuesta" size="medium"></lightning-spinner>
+                <p class="slds-p-left_medium slds-text-body_regular">
+                    Validando la respuesta de Multipagos...
+                </p>
+            </div>
+        </template>
+
+        <template if:true={noParams}>
+            <div class="slds-box slds-p-around_large caz-result-card">
+                <div class="slds-media slds-media_center">
+                    <div class="slds-media__figure">
+                        <lightning-icon icon-name="utility:info" variant="inverse" alternative-text="Información" size="medium"></lightning-icon>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 class="slds-text-heading_medium slds-m-bottom_x-small">Sin información de pago</h2>
+                        <p class="slds-text-body_regular">
+                            Esta página está diseñada para mostrar el resultado de una transacción que viene desde Multipagos.
+                            No encontramos los parámetros de una transacción reciente.
+                        </p>
+                    </div>
+                </div>
+                <div class="slds-m-top_medium slds-grid slds-grid_align-end">
+                    <lightning-button label="Ir al inicio" onclick={handleGoHome} variant="neutral"></lightning-button>
+                </div>
+            </div>
+        </template>
+
+        <template if:true={hasError}>
+            <div class="slds-box slds-p-around_large caz-result-card caz-result-card_error">
+                <div class="slds-media slds-media_center">
+                    <div class="slds-media__figure">
+                        <lightning-icon icon-name="utility:error" variant="inverse" alternative-text="Error" size="medium"></lightning-icon>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 class="slds-text-heading_medium slds-m-bottom_x-small">No pudimos procesar la respuesta</h2>
+                        <p class="slds-text-body_regular">{errorMessage}</p>
+                        <p class="slds-text-body_small slds-m-top_small slds-text-color_weak">
+                            Si el cargo se realizó en tu banco, contacta con atención a clientes antes de volver a intentar.
+                        </p>
+                    </div>
+                </div>
+                <div class="slds-m-top_medium slds-grid slds-grid_align-end slds-gutters_direct-x-small">
+                    <lightning-button class="slds-m-right_x-small" label="Ver mis órdenes" onclick={handleGoOrders} variant="neutral"></lightning-button>
+                    <lightning-button label="Ir al inicio" onclick={handleGoHome} variant="brand"></lightning-button>
+                </div>
+            </div>
+        </template>
+
+        <template if:true={hasResult}>
+            <div class={containerClass}>
+                <div class="slds-media slds-media_center">
+                    <div class="slds-media__figure">
+                        <lightning-icon icon-name={headerIcon} variant="inverse" alternative-text={headerTitle} size="medium"></lightning-icon>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 class="slds-text-heading_medium slds-m-bottom_x-small">{headerTitle}</h2>
+
+                        <template if:true={isApproved}>
+                            <p class="slds-text-body_regular">
+                                Tu pago fue procesado correctamente por Multipagos (BBVA). Ya registramos la confirmación en tu orden.
+                            </p>
+                        </template>
+
+                        <template if:true={isRejected}>
+                            <p class="slds-text-body_regular">
+                                El banco rechazó la transacción. Puedes intentar nuevamente con otro método de pago o contactar a tu banco emisor.
+                            </p>
+                        </template>
+
+                        <template if:true={isSignatureInvalid}>
+                            <p class="slds-text-body_regular">
+                                Recibimos la respuesta de Multipagos pero no pudimos validar su firma de seguridad. Por tu protección dejamos la orden pendiente de revisión. Si el cargo aparece en tu banco, contacta con atención a clientes antes de intentar otro pago.
+                            </p>
+                        </template>
+
+                        <template if:true={isRefererInvalid}>
+                            <p class="slds-text-body_regular">
+                                El origen de esta página no corresponde al portal esperado de Multipagos. Marcamos la transacción para revisión manual.
+                            </p>
+                        </template>
+
+                        <template if:true={isErrorStatus}>
+                            <p class="slds-text-body_regular">
+                                Ocurrió un error al procesar la respuesta. Nuestro equipo revisará este pago.
+                            </p>
+                        </template>
+                    </div>
+                </div>
+
+                <template if:true={isAlreadyProcessed}>
+                    <div class="slds-m-top_medium slds-notify slds-notify_alert slds-theme_info" role="status">
+                        <span class="slds-assistive-text">Información</span>
+                        <span>
+                            Esta transacción ya había sido registrada previamente. Mostramos el resultado que quedó guardado en tu orden.
+                        </span>
+                    </div>
+                </template>
+
+                <dl class="slds-m-top_medium slds-dl_horizontal caz-result-details">
+                    <template if:true={hasResponseCode}>
+                        <dt class="slds-dl_horizontal__label">Código de respuesta</dt>
+                        <dd class="slds-dl_horizontal__detail">{result.responseCode}</dd>
+                    </template>
+                    <template if:true={hasResponseMessage}>
+                        <dt class="slds-dl_horizontal__label">Mensaje</dt>
+                        <dd class="slds-dl_horizontal__detail">{result.responseMessage}</dd>
+                    </template>
+                    <template if:true={hasAuthorization}>
+                        <dt class="slds-dl_horizontal__label">Autorización</dt>
+                        <dd class="slds-dl_horizontal__detail">{result.authorization}</dd>
+                    </template>
+                </dl>
+
+                <div class="slds-m-top_medium slds-grid slds-grid_align-end slds-gutters_direct-x-small">
+                    <lightning-button class="slds-m-right_x-small" label="Ver mis órdenes" onclick={handleGoOrders} variant="neutral"></lightning-button>
+                    <lightning-button label="Ir al inicio" onclick={handleGoHome} variant="brand"></lightning-button>
+                </div>
+            </div>
+        </template>
+
+    </div>
+</template>

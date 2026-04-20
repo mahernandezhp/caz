@@ -128,16 +128,22 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
-        <formFactor>Large</formFactor>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Solicitud_de_Ampliaci_n_de_Cr_dito_Record_Page1</content>
         <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Solicitud_de_Ampliaci_n_de_Cr_dito_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
@@ -154,7 +160,7 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <label>Solicitud de Ampliación de Crédito</label>
+    <label>Solicitudes de crédito</label>
     <nameField>
         <displayFormat>SAC-{00000}</displayFormat>
         <label>Folio</label>
@@ -162,7 +168,7 @@
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Solicitudes de Ampliación de Crédito</pluralLabel>
+    <pluralLabel>Solicitudes de ampliación de crédito</pluralLabel>
     <searchLayouts>
         <searchResultsAdditionalFields>CAZ_Cuenta__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CAZ_ContactoSolicitante__c</searchResultsAdditionalFields>
@@ -170,6 +176,6 @@
         <searchResultsAdditionalFields>CAZ_Estatus__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CREATED_DATE</searchResultsAdditionalFields>
     </searchLayouts>
-    <sharingModel>Private</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

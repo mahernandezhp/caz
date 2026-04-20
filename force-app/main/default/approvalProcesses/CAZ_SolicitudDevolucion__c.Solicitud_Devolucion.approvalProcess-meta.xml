@@ -5,7 +5,6 @@
     <allowedSubmitters>
         <type>owner</type>
     </allowedSubmitters>
-    <emailTemplate>unfiled$public/Solicitud_de_Devoluci_n_1775839314615</emailTemplate>
     <approvalPageFields>
         <field>Name</field>
         <field>Owner</field>
@@ -14,6 +13,9 @@
         <field>CAZ_NumeroCuentaBancaria__c</field>
         <field>CAZ_ComprobanteReferencia__c</field>
         <field>CAZ_Account__c</field>
+        <field>CreatedBy</field>
+        <field>LastModifiedBy</field>
+        <field>CAZ_Respuesta__c</field>
     </approvalPageFields>
     <approvalStep>
         <allowDelegate>false</allowDelegate>
@@ -48,6 +50,7 @@
             <type>RejectRequest</type>
         </rejectBehavior>
     </approvalStep>
+    <emailTemplate>unfiled$public/Solicitud_de_Devoluci_n_1775839314615</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <criteriaItems>
