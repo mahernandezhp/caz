@@ -4,6 +4,14 @@
     <description>Proceso para las solicitudes de ampliacion de crédito</description>
     <isActive>true</isActive>
     <values>
+        <fullName>Aprobado</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Autorizado</fullName>
+        <default>false</default>
+    </values>
+    <values>
         <fullName>Borrador</fullName>
         <default>true</default>
     </values>
@@ -17,6 +25,10 @@
     </values>
     <values>
         <fullName>En Proceso</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>En Revisión</fullName>
         <default>false</default>
     </values>
     <values>

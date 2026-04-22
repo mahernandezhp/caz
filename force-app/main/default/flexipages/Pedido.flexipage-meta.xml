@@ -25,7 +25,7 @@
                                 <criteria>
                                     <leftValue>{!Record.Status}</leftValue>
                                     <operator>EQUAL</operator>
-                                    <rightValue>Borrador</rightValue>
+                                    <rightValue>Draft</rightValue>
                                 </criteria>
                                 <criteria>
                                     <leftValue>{!Record.Status}</leftValue>
@@ -536,6 +536,12 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>c:cazMultipagosPaymentForm</componentName>
+                <identifier>caz_cazMultipagosPaymentForm</identifier>
+            </componentInstance>
+        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
