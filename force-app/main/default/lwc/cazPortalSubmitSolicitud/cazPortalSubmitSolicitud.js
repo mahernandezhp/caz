@@ -56,8 +56,12 @@ export default class CazPortalSubmitSolicitud extends LightningElement {
         return importe && motivo && cuenta && desc;
     }
 
-    get showEnviarButton() {
-        return this.isBorrador && this.isDocumentosCompletos && this.isCamposCompletos;
+    get isEnviarDisabled() {
+        return !this.isDocumentosCompletos || !this.isCamposCompletos || this.isLoading;
+    }
+
+    get showFaltaDocumentosAlert() {
+        return this.isBorrador && (!this.isDocumentosCompletos || !this.isCamposCompletos);
     }
 
     handleDocumentosUpdated(event) {

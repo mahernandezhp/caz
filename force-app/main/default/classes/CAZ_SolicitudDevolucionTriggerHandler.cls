@@ -176,7 +176,7 @@ public with sharing class CAZ_SolicitudDevolucionTriggerHandler {
             if (c.CAZ_Status__c == 'Por atender') {
                 body = 'Hay una nueva Solicitud de Devolución para Revisión Inicial en tu bandeja.';
                 if (creditoCobranzaId != null) recipientIds.add(creditoCobranzaId);
-            } else if (c.CAZ_Status__c == 'En revisión Tesorería') {
+            } else if (c.CAZ_Status__c == 'Solicitud Completada') {
                 body = 'La Solicitud de Devolución superó revisión crediticia y espera Revisión Final en tu bandeja.';
                 if (tesoreriaId != null) recipientIds.add(tesoreriaId);
             } else if (c.CAZ_Status__c == 'Aprobado') {

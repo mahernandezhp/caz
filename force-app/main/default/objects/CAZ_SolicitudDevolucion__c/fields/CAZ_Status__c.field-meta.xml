@@ -23,11 +23,6 @@
                 <label>Por atender</label>
             </value>
             <value>
-                <fullName>En revisión Tesorería</fullName>
-                <default>false</default>
-                <label>En revisión Tesorería</label>
-            </value>
-            <value>
                 <fullName>Aprobado</fullName>
                 <default>false</default>
                 <label>Aprobado</label>
@@ -36,6 +31,11 @@
                 <fullName>Rechazado</fullName>
                 <default>false</default>
                 <label>Rechazado</label>
+            </value>
+            <value>
+                <fullName>Solicitud Completada</fullName>
+                <default>false</default>
+                <label>Solicitud Completada</label>
             </value>
         </valueSetDefinition>
     </valueSet>

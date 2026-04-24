@@ -43,8 +43,8 @@
     <fieldUpdates>
         <fullName>Actualizar_Estatus_En_revision_Tesoreria</fullName>
         <field>CAZ_Status__c</field>
-        <literalValue>En revisión Tesorería</literalValue>
-        <name>Estatus: En revisión Tesorería</name>
+        <literalValue>Solicitud Completada</literalValue>
+        <name>Estatus: Solicitud Completada</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
@@ -70,4 +70,19 @@
         <protected>false</protected>
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
+    <rules>
+        <fullName>Regla_Notificar_Solicitud_Recibida</fullName>
+        <actions>
+            <name>Alerta_Solicitud_Devolucion</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>CAZ_SolicitudDevolucion__c.CAZ_Status__c</field>
+            <operation>equals</operation>
+            <value>Por atender</value>
+        </criteriaItems>
+        <description>Se dispara cuando el distribuidor envía la solicitud y ésta pasa a la bandeja del Ejecutivo.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
 </Workflow>
