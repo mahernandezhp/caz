@@ -168,8 +168,7 @@ public with sharing class CAZ_SolicitudDevolucionTriggerHandler {
         Id tesoreriaId = queueNameMap.get('Tesoreria');
         
         for (CAZ_SolicitudDevolucion__c c : solicitudesConCambio) {
-            if (c.CAZ_Status__c == 'Borrador') continue;
-
+            
             // 1. Notificaciones para Ejecutivos (Colas)
             Set<String> recipientEjecutivos = new Set<String>();
             String bodyEjecutivos = '';
@@ -177,9 +176,6 @@ public with sharing class CAZ_SolicitudDevolucionTriggerHandler {
             if (c.CAZ_Status__c == 'Por atender') {
                 bodyEjecutivos = 'Hay una nueva Solicitud de Devolución para Revisión Inicial en tu bandeja.';
                 if (creditoCobranzaId != null) recipientEjecutivos.add(creditoCobranzaId);
-            } else if (c.CAZ_Status__c == 'Solicitud Completada') {
-                bodyEjecutivos = 'La Solicitud de Devolución superó revisión crediticia y espera Revisión Final en tu bandeja.';
-                if (tesoreriaId != null) recipientEjecutivos.add(tesoreriaId);
             }
 
             if (!recipientEjecutivos.isEmpty()) {
@@ -199,6 +195,10 @@ public with sharing class CAZ_SolicitudDevolucionTriggerHandler {
                     bodyDistribuidor = 'Tu Solicitud de Devolución ha sido Aprobada y resuelta con éxito.';
                 } else if (c.CAZ_Status__c == 'Rechazado') {
                     bodyDistribuidor = 'Tu Solicitud de Devolución ha sido Rechazada. Consulta las resoluciones de los ejecutivos.';
+                } else if (c.CAZ_Status__c == 'Borrador') {
+                    bodyDistribuidor = 'Tu Solicitud de Devolución requiere ajustes. Por favor, revisa la solicitud en estado Borrador.';
+                } else if (c.CAZ_Status__c == 'Solicitud Completada') {
+                    bodyDistribuidor = 'Tu Solicitud de Devolución ha sido completada exitosamente.';
                 } else {
                     bodyDistribuidor = 'El estatus de tu Solicitud de Devolución ha cambiado a: ' + c.CAZ_Status__c;
                 }
