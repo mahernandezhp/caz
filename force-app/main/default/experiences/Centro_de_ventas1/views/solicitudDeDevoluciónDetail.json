@@ -1,6 +1,6 @@
 {
   "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
-  "componentName" : "siteforce:sldsOneColLayout",
+  "componentName" : "siteforce:sldsTwoCol84Layout",
   "dataProviders" : [ ],
   "id" : "7b2237a2-17c5-4ada-99bb-f142b7c71e22",
   "label" : "Solicitud de Devolución Detail",
@@ -40,6 +40,27 @@
     } ],
     "id" : "f03191df-6566-4e0f-aeea-11a95ab7c051",
     "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "canChangeSorting" : true,
+        "defaultFilter" : "",
+        "defaultSortOrderHomeFeed" : "Relevance",
+        "defaultSortOrderTopicsFeed" : "Relevance",
+        "feedDesign" : "DEFAULT",
+        "hasFeedSearch" : true,
+        "subjectId" : "{!recordId}",
+        "type" : "Record"
+      },
+      "componentName" : "forceCommunity:forceCommunityFeed",
+      "id" : "c3daa843-8f97-4b7c-bba6-b16711948a7c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "30e7f050-2110-480a-9dfe-d64b26eee88e",
+    "regionName" : "sidebar",
     "type" : "region"
   } ],
   "themeLayoutType" : "Inner",

@@ -1,0 +1,49 @@
+{
+  "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "a190db3d-1cf1-4423-958f-e609f7fa60d5",
+  "label" : "Solicitudes de crédito",
+  "regions" : [ {
+    "id" : "ca4cf3ca-b208-47bc-915b-8414119b32b8",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "listPageSize" : 10,
+        "title" : "Mis Solicitudes de Crédito"
+      },
+      "componentName" : "c:cazMisSolicitudesCredito",
+      "id" : "0c89c122-cc17-4605-8da5-e9ba0df8a03a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "dcf17837-eba6-49ab-ab04-66ed1cf65637",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "aba41959-8db9-4a3c-a736-bfd522ddd843",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Solicitudes de crédito"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "d6895b81-cb51-470e-8815-c0b727941b6b",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "46ce0e6a-8925-44f6-9bb7-eccaeaaf1c12",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-solicitudes-de-credito"
+}

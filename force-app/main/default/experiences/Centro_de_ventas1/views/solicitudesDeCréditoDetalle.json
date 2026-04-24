@@ -1,0 +1,62 @@
+{
+  "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "75589740-3ada-44d7-8f40-dc47d9fe556e",
+  "label" : "Solicitudes de crédito detalle",
+  "regions" : [ {
+    "id" : "052de6bf-a222-48be-a625-25a0f103d854",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:cazCreditRequestDetail",
+      "id" : "8566abad-bc7d-4a14-8e53-001ad9012f4c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "canChangeSorting" : false,
+        "defaultFilter" : "",
+        "defaultSortOrderHomeFeed" : "Relevance",
+        "defaultSortOrderTopicsFeed" : "Relevance",
+        "feedDesign" : "DEFAULT",
+        "hasFeedSearch" : false,
+        "subjectId" : "{!recordId}",
+        "type" : "Record"
+      },
+      "componentName" : "forceCommunity:forceCommunityFeed",
+      "id" : "9bdbc146-79ba-40ea-9e70-da97998cb643",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "9eb19ab0-8597-4ceb-b4b3-26896f928d28",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "fc7eef85-0f14-40a6-aad5-5d00e65a116f",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Solicitudes de crédito detalle"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "f127b46a-ccd2-4f84-a0fd-51d9a78984aa",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "987acb8d-6319-49a8-8891-2e03dd5a2da3",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-solicitudes-de-credito-detalle"
+}

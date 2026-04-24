@@ -45,7 +45,7 @@
     "regions" : [ {
       "components" : [ {
         "componentAttributes" : {
-          "background" : "background: rgb(211, 239, 248)",
+          "background" : "background: rgb(255, 255, 255)",
           "backgroundOverlayColor" : "rgba(0, 0, 0, 0)",
           "borderBottomColor" : "rgba(0, 0, 0, 0)",
           "borderTopColor" : "rgba(0, 0, 0, 0)",

@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "e62e976f-c033-47ba-82c7-81698a7fc798",
+  "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
+  "configurationTags" : [ ],
+  "devName" : "callback__c",
+  "id" : "76108c8d-318c-49cf-ac6b-947e87802b0d",
+  "label" : "Pago Fallido",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-callback",
+  "type" : "route",
+  "urlPrefix" : "callback"
+}

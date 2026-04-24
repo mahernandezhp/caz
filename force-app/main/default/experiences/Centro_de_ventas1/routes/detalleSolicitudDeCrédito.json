@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "2731f077-210d-4270-a12a-3ead79b1885e",
+  "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
+  "configurationTags" : [ ],
+  "devName" : "solicitudDeCreditoDetail__c",
+  "id" : "aa3d2bd3-a7fd-4885-9e15-5b14ca299252",
+  "label" : "Detalle solicitud de crédito",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-detalle-solicitud-de-credito",
+  "type" : "route",
+  "urlPrefix" : "detalle-solicitud-de-credito"
+}

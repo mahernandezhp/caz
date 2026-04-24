@@ -11,7 +11,6 @@
     <disableReputationRecordConversations>true</disableReputationRecordConversations>
     <emailSenderAddress>cloudmobilesfa@gmail.com</emailSenderAddress>
     <emailSenderName>Centro de ventas</emailSenderName>
-    <embeddedLoginEnabled>false</embeddedLoginEnabled>
     <enableApexCDNCaching>true</enableApexCDNCaching>
     <enableCustomVFErrorPageOverrides>false</enableCustomVFErrorPageOverrides>
     <enableDirectMessages>true</enableDirectMessages>

@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "da92d903-b08d-42ee-bb7e-b430c53b6d4c",
+  "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
+  "configurationTags" : [ ],
+  "devName" : "CAZ_PagoExitoso__c",
+  "id" : "fe48b8c0-bfa0-41c9-98e0-168eb1801c93",
+  "label" : "Pago Exitoso",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-pago-exitoso",
+  "type" : "route",
+  "urlPrefix" : "pago-exitoso"
+}

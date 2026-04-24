@@ -1,0 +1,49 @@
+{
+  "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "e62e976f-c033-47ba-82c7-81698a7fc798",
+  "label" : "callback",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "homeUrl" : "/",
+        "ordersUrl" : "/my-orders"
+      },
+      "componentName" : "c:cazMultipagosPaymentResult",
+      "id" : "dadfd48c-55d9-4466-837c-7a8849cc09ba",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "02b4299f-d1ec-4286-a91d-0e8ecff20469",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "b3c721f7-1ed6-46dc-a920-3a1e90bda534",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "b3d53c7c-1d95-461b-940d-4f0ce4a05d12",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "callback"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "b0911078-e729-4c6c-a165-df12f3a75f65",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "0bc309c6-e434-46df-a39c-4538ea41b0fe",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-callback"
+}

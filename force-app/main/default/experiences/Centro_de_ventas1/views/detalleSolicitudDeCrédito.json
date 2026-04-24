@@ -2,18 +2,18 @@
   "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
   "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "a4281a01-d071-4ffe-8f62-4f4f3dd89d44",
-  "label" : "Solicitud de ampliación de crédito Detail",
+  "id" : "2731f077-210d-4270-a12a-3ead79b1885e",
+  "label" : "Detalle solicitud de crédito",
   "regions" : [ {
-    "id" : "2384e47c-a1cf-4a53-9d19-866bf18f8498",
+    "id" : "f613cadf-d3a5-4566-bdaf-290b0ae842b4",
     "regionName" : "header",
     "type" : "region"
   }, {
-    "id" : "417b0490-61be-4964-9613-3f1dbabbefa5",
+    "id" : "9d97925e-b26b-49bb-a853-8ea7303a1cfe",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "dbb814df-fd97-42df-893d-c28ea7dc819f",
+    "id" : "6ad1fd77-1dde-42f1-bcfe-3cc63cef7763",
     "regionName" : "footer",
     "type" : "region"
   }, {
@@ -21,18 +21,18 @@
       "componentAttributes" : {
         "customHeadTags" : "",
         "description" : "",
-        "title" : "{!Record._Object}: {!Record._Title}"
+        "title" : "Detalle solicitud de crédito"
       },
       "componentName" : "forceCommunity:seoAssistant",
-      "id" : "cc9278c1-6754-41ae-9454-13c9663f094f",
+      "id" : "b373da59-8c8f-4742-aa57-9c029a01be3b",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "fe1ce74b-3f2e-4a59-93d9-83c412406f22",
+    "id" : "e1caf9f9-f6d1-4cdc-b57d-ff223d4995e6",
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   } ],
   "themeLayoutType" : "Inner",
   "type" : "view",
-  "viewType" : "detail-a1X"
+  "viewType" : "custom-detalle-solicitud-de-credito"
 }
