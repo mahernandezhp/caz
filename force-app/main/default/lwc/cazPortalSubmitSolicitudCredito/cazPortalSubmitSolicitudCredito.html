@@ -1,0 +1,76 @@
+<template>
+    <div class="premium-header slds-page-header slds-m-bottom_medium slds-page-header_record-home">
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                    <div class="slds-media__figure">
+                        <lightning-icon icon-name="custom:custom17" alternative-text="Solicitud de Crédito"></lightning-icon>
+                    </div>
+                    <div class="slds-media__body">
+                        <div class="slds-page-header__name">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <span class="slds-text-heading_label slds-text-color_weak" style="font-size: 13px; font-weight: normal;">Solicitud de crédito</span>
+                                    <br/>
+                                    <span class="slds-page-header__title slds-truncate" title={recordName}>{recordName}</span>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-page-header__col-actions">
+                <div class="slds-page-header__controls">
+                    <div class="slds-page-header__control">
+                        <template lwc:if={isBorrador}>
+                            <lightning-button variant="brand" label="Enviar a revisión" onclick={handleEnviar} disabled={isEnviarDisabled}></lightning-button>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <template lwc:if={showFaltaDocumentosAlert}>
+        <div class="slds-notify slds-notify_alert slds-alert_warning slds-m-bottom_medium" role="alert" style="border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <span class="slds-assistive-text">warning</span>
+            <h2>
+                <lightning-icon icon-name="utility:warning" size="x-small" variant="inverse" class="slds-m-right_x-small"></lightning-icon> 
+                <strong>Acción Requerida:</strong> {alertaMensaje}
+            </h2>
+        </div>
+    </template>
+
+    <!-- Path (Ruta de progreso) -->
+    <div class="premium-card slds-p-around_medium slds-m-bottom_medium">
+        <lightning-progress-indicator current-step={currentStatus} type="path" variant="base">
+            <lightning-progress-step label="Borrador" value="Borrador"></lightning-progress-step>
+            <lightning-progress-step label="Por atender" value="Por atender"></lightning-progress-step>
+            <lightning-progress-step label="En Revisión" value="En Revisión"></lightning-progress-step>
+            <lightning-progress-step label="Aprobado" value="Aprobado"></lightning-progress-step>
+            <lightning-progress-step label="Rechazado" value="Rechazado"></lightning-progress-step>
+        </lightning-progress-indicator>
+    </div>
+
+    <div class="premium-card">
+        <div class="section-header">
+            <lightning-icon icon-name="utility:form" size="small" class="header-icon"></lightning-icon>
+            <h2 class="section-title">Detalles de la Solicitud</h2>
+        </div>
+        <lightning-record-form
+            record-id={recordId}
+            object-api-name="CAZ_SolicitudCredito__c"
+            layout-type="Full"
+            columns="2"
+            mode={formMode}>
+        </lightning-record-form>
+    </div>
+
+    <div class="slds-m-bottom_large">
+        <c-caz-carga-documentos process-name="SolicitudCredito" record-id={recordId} readonly-mode={isReadOnlyState} ondocumentosupdated={handleDocumentosUpdated}></c-caz-carga-documentos>
+    </div>
+
+    <template lwc:if={isLoading}>
+        <lightning-spinner alternative-text="Cargando" size="small"></lightning-spinner>
+    </template>
+</template>

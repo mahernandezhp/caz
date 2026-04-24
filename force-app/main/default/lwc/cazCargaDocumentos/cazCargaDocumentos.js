@@ -1,10 +1,10 @@
 import { LightningElement, api, track } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { NavigationMixin } from 'lightning/navigation';
-import getDocumentosRequeridos from '@salesforce/apex/CAZ_DocumentoSolicitudController.getDocumentosRequeridos';
-import etiquetarDocumento from '@salesforce/apex/CAZ_DocumentoSolicitudController.etiquetarDocumento';
-import getDocumentosCargados from '@salesforce/apex/CAZ_DocumentoSolicitudController.getDocumentosCargados';
-import eliminarDocumento from '@salesforce/apex/CAZ_DocumentoSolicitudController.eliminarDocumento';
+import getDocumentosRequeridos from '@salesforce/apex/CAZ_DocumentoSolicitudCtrl.getDocumentosRequeridos';
+import etiquetarDocumento from '@salesforce/apex/CAZ_DocumentoSolicitudCtrl.etiquetarDocumento';
+import getDocumentosCargados from '@salesforce/apex/CAZ_DocumentoSolicitudCtrl.getDocumentosCargados';
+import eliminarDocumento from '@salesforce/apex/CAZ_DocumentoSolicitudCtrl.eliminarDocumento';
 
 export default class CazCargaDocumentos extends NavigationMixin(LightningElement) {
     @api recordId;
@@ -57,6 +57,18 @@ export default class CazCargaDocumentos extends NavigationMixin(LightningElement
         return `Documentos obligatorios pendientes: ${nombres}`;
     }
 
+    setDefaultTipoDocumento() {
+        const options = this.tipoDocumentoOptions;
+        if (options && options.length > 0) {
+            const isValidSelection = options.some(opt => opt.value === this.selectedTipoDocumento);
+            if (!isValidSelection || !this.selectedTipoDocumento) {
+                this.selectedTipoDocumento = options[0].value;
+            }
+        } else {
+            this.selectedTipoDocumento = '';
+        }
+    }
+
     connectedCallback() {
         this.loadDocumentos();
         if (this.recordId) {
@@ -79,6 +91,7 @@ export default class CazCargaDocumentos extends NavigationMixin(LightningElement
                         cargado: uploadedTypes.includes(doc.label) ? true : doc.cargado,
                         iconName: uploadedTypes.includes(doc.label) ? 'action:approval' : doc.iconName
                     }));
+                    this.setDefaultTipoDocumento();
                 }
             })
             .catch(error => {
@@ -88,7 +101,7 @@ export default class CazCargaDocumentos extends NavigationMixin(LightningElement
 
     loadDocumentos() {
         this.isLoading = true;
-        getDocumentosRequeridos({ processName: this.processName })
+        getDocumentosRequeridos({ processName: this.processName, recordId: this.recordId })
             .then(result => {
                 this.documentosRequeridos = result.map(doc => ({
                     label: doc.MasterLabel,
@@ -96,6 +109,7 @@ export default class CazCargaDocumentos extends NavigationMixin(LightningElement
                     iconName: doc.CAZ_Obligatorio__c ? 'utility:error' : 'utility:info',
                     cargado: false
                 }));
+                this.setDefaultTipoDocumento();
                 this.isLoading = false;
                 
                 this.dispatchEvent(new CustomEvent('documentosupdated', {
@@ -149,7 +163,7 @@ export default class CazCargaDocumentos extends NavigationMixin(LightningElement
                     iconName: doc.label === tipoSeleccionado ? 'action:approval' : doc.iconName
                 }));
 
-                this.selectedTipoDocumento = '';
+                this.setDefaultTipoDocumento();
                 this.isLoading = false;
 
                 this.dispatchEvent(new ShowToastEvent({
@@ -197,10 +211,7 @@ export default class CazCargaDocumentos extends NavigationMixin(LightningElement
                     }));
                 }
 
-                // Si el tipo seleccionado previamente es el mismo, lo limpiamos
-                if (this.selectedTipoDocumento === tipoDocumento && !stillHasType) {
-                    this.selectedTipoDocumento = '';
-                }
+                this.setDefaultTipoDocumento();
 
                 this.isLoading = false;
                 this.dispatchEvent(new ShowToastEvent({
@@ -229,8 +240,15 @@ export default class CazCargaDocumentos extends NavigationMixin(LightningElement
 
     handlePreviewFile(event) {
         const docId = event.target.dataset.id;
-        // Agregamos operationContext=S1 para forzar al navegador a visualizar el PDF/Imagen en lugar de descargarlo
-        const previewUrl = `/sfc/servlet.shepherd/document/download/${docId}?operationContext=S1`;
-        window.open(previewUrl, '_blank');
+        this[NavigationMixin.Navigate]({
+            type: 'standard__namedPage',
+            attributes: {
+                pageName: 'filePreview'
+            },
+            state: {
+                recordIds: docId,
+                selectedRecordId: docId
+            }
+        });
     }
 }

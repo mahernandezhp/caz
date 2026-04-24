@@ -2,7 +2,7 @@
 <head>
 	<title></title>
 </head>
-<body style="height: auto; min-height: auto;"><span style="font-size:12px;"><span style="font-family:Arial,Helvetica,sans-serif;">&nbsp; &nbsp; Estimado(a) {{{Sender.Name}}},<br />
+<body style="height: auto; min-height: auto;"><span style="font-size:12px;"><span style="font-family:Arial,Helvetica,sans-serif;">&nbsp; &nbsp; Estimado(a) {{{Recipient.Name}}},<br />
 <br />
 &nbsp; &nbsp; Le informamos que la devolución de dinero solicitada ha sido procesada exitosamente por el área de Crédito y Cobranza.<br />
 <br />
@@ -10,9 +10,9 @@
 <br />
 &nbsp; &nbsp; Número de solicitud:&nbsp;{{{CAZ_SolicitudDevolucion__c.Name}}}<br />
 &nbsp; &nbsp; Monto devuelto: ${{{CAZ_SolicitudDevolucion__c.CAZ_ImporteDevolucion__c}}} MXN<br />
-&nbsp; &nbsp; Fecha de devolución: [FechaDevolución]<br />
+&nbsp; &nbsp; Fecha de resolución: {{{CAZ_SolicitudDevolucion__c.LastModifiedDate}}}<br />
 &nbsp; &nbsp; Motivo de la devolución:&nbsp;{{{CAZ_SolicitudDevolucion__c.CAZ_MotivoDevolucion__c}}}<br />
-&nbsp; &nbsp; Referencia bancaria: [ReferenciaBancaria]<br />
+&nbsp; &nbsp; Referencia bancaria: {{{CAZ_SolicitudDevolucion__c.CAZ_ComprobanteReferencia__c}}}<br />
 <br />
 &nbsp; &nbsp; El depósito se realizó a la cuenta previamente indicada. Le recomendamos verificar la acreditación del monto en su estado de cuenta.<br />
 <br />

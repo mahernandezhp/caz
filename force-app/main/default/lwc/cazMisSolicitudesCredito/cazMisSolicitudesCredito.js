@@ -100,9 +100,21 @@ export default class CazMisSolicitudesCredito extends NavigationMixin(LightningE
         this.showNewRequestModal = true;
     }
 
-    closeNewRequestModal() {
+    closeNewRequestModal(event) {
         this.showNewRequestModal = false;
         this.initPagination();
+
+        // Si el evento de cierre trajo un id de registro nuevo, navegar al detalle
+        if (event && event.detail && event.detail.recordId) {
+            this[NavigationMixin.Navigate]({
+                type: 'standard__recordPage',
+                attributes: {
+                    recordId: event.detail.recordId,
+                    objectApiName: 'CAZ_SolicitudCredito__c',
+                    actionName: 'view'
+                }
+            });
+        }
     }
 
     handleVerDetalle(event) {
@@ -111,6 +123,7 @@ export default class CazMisSolicitudesCredito extends NavigationMixin(LightningE
             type: 'standard__recordPage',
             attributes: {
                 recordId: recordId,
+                objectApiName: 'CAZ_SolicitudCredito__c',
                 actionName: 'view'
             }
         });

@@ -69,4 +69,28 @@ public with sharing class CAZ_SolicitudCreditoController {
             throw new AuraHandledException(e.getMessage());
         }
     }
+
+    @AuraEnabled(cacheable=true)
+    public static Map<String, String> getUserContext() {
+        Map<String, String> context = new Map<String, String>();
+        
+        List<User> currentUsers = [
+            SELECT Id, AccountId, ContactId 
+            FROM User 
+            WHERE Id = :UserInfo.getUserId() 
+            LIMIT 1
+        ];
+        
+        if (!currentUsers.isEmpty()) {
+            User u = currentUsers[0];
+            if (u.AccountId != null) {
+                context.put('AccountId', u.AccountId);
+            }
+            if (u.ContactId != null) {
+                context.put('ContactId', u.ContactId);
+            }
+        }
+        
+        return context;
+    }
 }

@@ -1,6 +1,6 @@
 {
   "appPageId" : "a6bd5e6d-f919-43ce-ac47-b56fa975f12d",
-  "componentName" : "siteforce:sldsOneColLayout",
+  "componentName" : "siteforce:sldsTwoCol84Layout",
   "dataProviders" : [ ],
   "id" : "a4281a01-d071-4ffe-8f62-4f4f3dd89d44",
   "label" : "Solicitud de ampliación de crédito Detail",
@@ -9,6 +9,16 @@
     "regionName" : "header",
     "type" : "region"
   }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "c:cazPortalSubmitSolicitudCredito",
+      "id" : "bf8d9094-bf20-4809-b4f5-06be05bca766",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
     "id" : "417b0490-61be-4964-9613-3f1dbabbefa5",
     "regionName" : "content",
     "type" : "region"
@@ -30,6 +40,27 @@
     } ],
     "id" : "fe1ce74b-3f2e-4a59-93d9-83c412406f22",
     "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "canChangeSorting" : true,
+        "defaultFilter" : "",
+        "defaultSortOrderHomeFeed" : "Relevance",
+        "defaultSortOrderTopicsFeed" : "Relevance",
+        "feedDesign" : "DEFAULT",
+        "hasFeedSearch" : true,
+        "subjectId" : "{!recordId}",
+        "type" : "Record"
+      },
+      "componentName" : "forceCommunity:forceCommunityFeed",
+      "id" : "8755cef4-2522-45df-ba2c-44ea71473b48",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "131c923e-54ed-4668-a781-5010a9a9452f",
+    "regionName" : "sidebar",
     "type" : "region"
   } ],
   "themeLayoutType" : "Inner",
