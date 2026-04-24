@@ -68,36 +68,44 @@ public with sharing class CAZ_SolicitudCreditoTriggerHandler {
         for (CAZ_SolicitudCredito__c c : solicitudesConCambio) {
             if (c.CAZ_Estatus__c == 'Borrador') continue;
 
-            String body = '';
-            Set<String> recipientIds = new Set<String>();
+            // 1. Notificaciones para Ejecutivos (Colas)
+            Set<String> recipientEjecutivos = new Set<String>();
+            String bodyEjecutivos = '';
             
             if (c.CAZ_Estatus__c == 'Por atender' || c.CAZ_Estatus__c == 'En Revisión') {
-                body = 'Hay una nueva Solicitud de Crédito para Revisión en tu bandeja.';
-                if (creditoCobranzaId != null) recipientIds.add(creditoCobranzaId);
-            } else if (c.CAZ_Estatus__c == 'Aprobado') {
-                body = 'Tu Solicitud de Crédito ha sido Aprobada y resuelta con éxito.';
-                if (String.valueOf(c.OwnerId).startsWith('005')) recipientIds.add(c.OwnerId);
-            } else if (c.CAZ_Estatus__c == 'Rechazado') {
-                body = 'Tu Solicitud de Crédito ha sido Rechazada. Consulta las resoluciones de los ejecutivos.';
-                if (String.valueOf(c.OwnerId).startsWith('005')) recipientIds.add(c.OwnerId);
-            } else {
-                body = 'El estatus de la Solicitud de Crédito ha cambiado a: ' + c.CAZ_Estatus__c;
-                if (String.valueOf(c.OwnerId).startsWith('005')) recipientIds.add(c.OwnerId);
+                bodyEjecutivos = 'Hay una nueva Solicitud de Crédito para Revisión en tu bandeja.';
+                if (creditoCobranzaId != null) recipientEjecutivos.add(creditoCobranzaId);
             }
 
-            if (!recipientIds.isEmpty()) {
-                Messaging.CustomNotification notification = new Messaging.CustomNotification();
-                notification.setBody(body);
-                notification.setTitle('Actualización: Solicitud de Crédito');
-                notification.setSenderId(UserInfo.getUserId());
-                notification.setNotificationTypeId(notifTypeId);
-                notification.setTargetId(c.Id);
+            if (!recipientEjecutivos.isEmpty()) {
+                Messaging.CustomNotification notifEjec = new Messaging.CustomNotification();
+                notifEjec.setBody(bodyEjecutivos);
+                notifEjec.setTitle('Acción Requerida: Solicitud de Crédito');
+                notifEjec.setSenderId(UserInfo.getUserId());
+                notifEjec.setNotificationTypeId(notifTypeId);
+                notifEjec.setTargetId(c.Id);
+                try { notifEjec.send(recipientEjecutivos); } catch (Exception e) {}
+            }
 
-                try {
-                    notification.send(recipientIds);
-                } catch (Exception e) {
-                    System.debug('Error enviando notificación push: ' + e.getMessage());
+            // 2. Notificación al Distribuidor (siempre y cuando él NO haya sido el que hizo el cambio)
+            if (c.OwnerId != UserInfo.getUserId() && String.valueOf(c.OwnerId).startsWith('005')) {
+                String bodyDistribuidor = '';
+                if (c.CAZ_Estatus__c == 'Aprobado') {
+                    bodyDistribuidor = 'Tu Solicitud de Crédito ha sido Aprobada y resuelta con éxito.';
+                } else if (c.CAZ_Estatus__c == 'Rechazado') {
+                    bodyDistribuidor = 'Tu Solicitud de Crédito ha sido Rechazada. Consulta las resoluciones de los ejecutivos.';
+                } else {
+                    bodyDistribuidor = 'El estatus de tu Solicitud de Crédito ha cambiado a: ' + c.CAZ_Estatus__c;
                 }
+
+                Set<String> recDistribuidor = new Set<String>{ c.OwnerId };
+                Messaging.CustomNotification notifDist = new Messaging.CustomNotification();
+                notifDist.setBody(bodyDistribuidor);
+                notifDist.setTitle('Actualización: Solicitud de Crédito');
+                notifDist.setSenderId(UserInfo.getUserId());
+                notifDist.setNotificationTypeId(notifTypeId);
+                notifDist.setTargetId(c.Id);
+                try { notifDist.send(recDistribuidor); } catch (Exception e) {}
             }
         }
     }
