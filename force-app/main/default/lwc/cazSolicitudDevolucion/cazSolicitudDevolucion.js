@@ -35,7 +35,19 @@ export default class CazSolicitudDevolucion extends NavigationMixin(LightningEle
         this.isLoading = false;
         this.recordName = event.detail.fields.Name?.value || '';
         this.newRecordId = event.detail.id;
-        this.isSubmitted = true;
+        
+        this.dispatchEvent(
+            new ShowToastEvent({
+                title: 'Solicitud Creada',
+                message: `Tu solicitud ${this.recordName} fue guardada. Por favor, procede a adjuntar los documentos requeridos.`,
+                variant: 'success'
+            })
+        );
+
+        // Disparar cierre del modal enviando el id del nuevo registro para que el componente contenedor navegue.
+        this.dispatchEvent(new CustomEvent('close', {
+            detail: { recordId: this.newRecordId }
+        }));
     }
 
     handleError(event) {
@@ -47,47 +59,5 @@ export default class CazSolicitudDevolucion extends NavigationMixin(LightningEle
         this.dispatchEvent(new CustomEvent('close'));
     }
 
-    handleVerSolicitudes() {
-        this.dispatchEvent(new CustomEvent('close'));
-    }
 
-    handleDocumentosUpdated(event) {
-        this.isEnviarDisabled = !event.detail.completo;
-    }
-
-    handleEnviar() {
-        this.isLoading = true;
-        enviarSolicitud({ recordId: this.newRecordId })
-            .then(() => {
-                this.dispatchEvent(
-                    new ShowToastEvent({
-                        title: 'Éxito',
-                        message: 'La solicitud ha sido enviada a revisión.',
-                        variant: 'success'
-                    })
-                );
-                
-                // Navegar al registro recién creado
-                this[NavigationMixin.Navigate]({
-                    type: 'standard__recordPage',
-                    attributes: {
-                        recordId: this.newRecordId,
-                        actionName: 'view'
-                    }
-                });
-                
-                // Conservar dispatch para quick actions
-                this.dispatchEvent(new CustomEvent('close'));
-            })
-            .catch(error => {
-                this.isLoading = false;
-                this.dispatchEvent(
-                    new ShowToastEvent({
-                        title: 'Error',
-                        message: error.body ? error.body.message : 'No se pudo enviar la solicitud.',
-                        variant: 'error'
-                    })
-                );
-            });
-    }
 }

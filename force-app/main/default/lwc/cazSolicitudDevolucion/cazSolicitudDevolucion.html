@@ -4,7 +4,7 @@
             <lightning-spinner alternative-text="Cargando..." size="medium"></lightning-spinner>
         </template>
 
-        <template if:false={isSubmitted}>
+
             <div class="slds-card slds-p-around_medium">
 
                 <template if:true={errorMessage}>
@@ -55,36 +55,6 @@
                     </div>
                 </lightning-record-edit-form>
             </div>
-        </template>
 
-        <template if:true={isSubmitted}>
-            <div class="slds-card slds-p-around_large slds-align_absolute-center slds-grid slds-grid_vertical">
-                <div class="slds-text-align_center slds-m-bottom_large">
-                    <lightning-icon icon-name="action:approval" size="large" class="slds-m-bottom_medium"></lightning-icon>
-                    <h2 class="slds-text-heading_medium slds-m-bottom_small">Solicitud Registrada Temporalmente</h2>
-                    <p class="slds-text-body_regular">Tu solicitud de devolución <strong>{recordName}</strong> fue guardada exitosamente en estado <strong>Borrador</strong>.</p>
-                    <p class="slds-text-body_regular slds-m-top_x-small">Para poder enviarla a revisión, por favor adjunta los documentos requeridos a continuación. Si requieres más tiempo, puedes continuar más tarde desde la sección de Mis Solicitudes.</p>
-                </div>
-
-                <div class="slds-size_1-of-1 slds-m-bottom_x-large" style="max-width: 600px;">
-                    <c-caz-carga-documentos record-id={newRecordId} ondocumentosupdated={handleDocumentosUpdated}></c-caz-carga-documentos>
-                </div>
-
-                <div class="slds-text-align_center slds-p-top_large slds-border_top">
-                    <lightning-button
-                        variant="brand"
-                        label="Enviar"
-                        disabled={isEnviarDisabled}
-                        onclick={handleEnviar}>
-                    </lightning-button>
-                    <lightning-button
-                        variant="neutral"
-                        label="Enviar más tarde"
-                        onclick={handleVerSolicitudes}
-                        class="slds-m-left_small">
-                    </lightning-button>
-                </div>
-            </div>
-        </template>
     </div>
 </template>

@@ -98,10 +98,22 @@ export default class CazMisSolicitudes extends NavigationMixin(LightningElement)
         this.showNewRequestModal = true;
     }
 
-    closeNewRequestModal() {
+    closeNewRequestModal(event) {
         this.showNewRequestModal = false;
         // Refrescar las solicitudes para que aparezca la nueva
         this.initPagination();
+
+        // Si el evento de cierre trajo un id de registro nuevo, navegar al detalle
+        if (event && event.detail && event.detail.recordId) {
+            this[NavigationMixin.Navigate]({
+                type: 'standard__recordPage',
+                attributes: {
+                    recordId: event.detail.recordId,
+                    objectApiName: 'CAZ_SolicitudDevolucion__c',
+                    actionName: 'view'
+                }
+            });
+        }
     }
 
     handleVerDetalle(event) {

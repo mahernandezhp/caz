@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validacion_Ejecutivo_En_Revision</fullName>
+    <active>true</active>
+    <description>El Ejecutivo de Cuenta solo puede modificar la solicitud cuando se encuentra en estatus Por Atender (En revisión inicial).</description>
+    <errorConditionFormula>AND(
+  $Profile.Name = &apos;Ejecutivo de cuenta&apos;,
+  NOT(ISNEW()),
+  NOT(ISPICKVAL(PRIORVALUE(CAZ_Status__c), &apos;Por atender&apos;))
+)</errorConditionFormula>
+    <errorMessage>Como Ejecutivo de Cuenta, solo puedes modificar solicitudes que estén asignadas en la etapa de &quot;Por atender&quot;.</errorMessage>
+</ValidationRule>

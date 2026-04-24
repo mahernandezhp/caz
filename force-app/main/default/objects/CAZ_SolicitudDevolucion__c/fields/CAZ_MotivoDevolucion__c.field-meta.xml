@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>CAZ_MotivoDevolucion__c</fullName>
+    <externalId>false</externalId>
     <label>Motivo de Devolución</label>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
@@ -11,24 +13,36 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
+                <fullName>Proveedor erroneo</fullName>
+                <default>false</default>
+                <label>Proveedor erroneo</label>
+            </value>
+            <value>
+                <fullName>Cuenta origen erronea</fullName>
+                <default>false</default>
+                <label>Cuenta origen erronea</label>
+            </value>
+            <value>
                 <fullName>Pago duplicado</fullName>
                 <default>false</default>
                 <label>Pago duplicado</label>
             </value>
             <value>
+                <fullName>Otro</fullName>
+                <default>false</default>
+                <label>Otro</label>
+            </value>
+            <value>
                 <fullName>Pago incorrecto</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>Pago incorrecto</label>
             </value>
             <value>
                 <fullName>Proveedor distinto</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>Proveedor distinto</label>
-            </value>
-            <value>
-                <fullName>Otro</fullName>
-                <default>false</default>
-                <label>Otro</label>
             </value>
         </valueSetDefinition>
     </valueSet>
