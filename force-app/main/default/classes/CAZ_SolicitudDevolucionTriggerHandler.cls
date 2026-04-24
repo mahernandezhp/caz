@@ -170,39 +170,47 @@ public with sharing class CAZ_SolicitudDevolucionTriggerHandler {
         for (CAZ_SolicitudDevolucion__c c : solicitudesConCambio) {
             if (c.CAZ_Status__c == 'Borrador') continue;
 
-            String body = '';
-            Set<String> recipientIds = new Set<String>();
+            // 1. Notificaciones para Ejecutivos (Colas)
+            Set<String> recipientEjecutivos = new Set<String>();
+            String bodyEjecutivos = '';
             
             if (c.CAZ_Status__c == 'Por atender') {
-                body = 'Hay una nueva Solicitud de Devolución para Revisión Inicial en tu bandeja.';
-                if (creditoCobranzaId != null) recipientIds.add(creditoCobranzaId);
+                bodyEjecutivos = 'Hay una nueva Solicitud de Devolución para Revisión Inicial en tu bandeja.';
+                if (creditoCobranzaId != null) recipientEjecutivos.add(creditoCobranzaId);
             } else if (c.CAZ_Status__c == 'Solicitud Completada') {
-                body = 'La Solicitud de Devolución superó revisión crediticia y espera Revisión Final en tu bandeja.';
-                if (tesoreriaId != null) recipientIds.add(tesoreriaId);
-            } else if (c.CAZ_Status__c == 'Aprobado') {
-                body = 'Tu Solicitud de Devolución ha sido Aprobada y resuelta con éxito.';
-                if (String.valueOf(c.OwnerId).startsWith('005')) recipientIds.add(c.OwnerId);
-            } else if (c.CAZ_Status__c == 'Rechazado') {
-                body = 'Tu Solicitud de Devolución ha sido Rechazada. Consulta las resoluciones de los ejecutivos.';
-                if (String.valueOf(c.OwnerId).startsWith('005')) recipientIds.add(c.OwnerId);
-            } else {
-                body = 'El estatus de la Solicitud de Devolución ha cambiado a: ' + c.CAZ_Status__c;
-                if (String.valueOf(c.OwnerId).startsWith('005')) recipientIds.add(c.OwnerId);
+                bodyEjecutivos = 'La Solicitud de Devolución superó revisión crediticia y espera Revisión Final en tu bandeja.';
+                if (tesoreriaId != null) recipientEjecutivos.add(tesoreriaId);
             }
 
-            if (!recipientIds.isEmpty()) {
-                Messaging.CustomNotification notification = new Messaging.CustomNotification();
-                notification.setBody(body);
-                notification.setTitle('Actualización: Solicitud de Devolución');
-                notification.setSenderId(UserInfo.getUserId());
-                notification.setNotificationTypeId(notifTypeId);
-                notification.setTargetId(c.Id);
+            if (!recipientEjecutivos.isEmpty()) {
+                Messaging.CustomNotification notifEjec = new Messaging.CustomNotification();
+                notifEjec.setBody(bodyEjecutivos);
+                notifEjec.setTitle('Acción Requerida: Solicitud de Devolución');
+                notifEjec.setSenderId(UserInfo.getUserId());
+                notifEjec.setNotificationTypeId(notifTypeId);
+                notifEjec.setTargetId(c.Id);
+                try { notifEjec.send(recipientEjecutivos); } catch (Exception e) {}
+            }
 
-                try {
-                    notification.send(recipientIds);
-                } catch (Exception e) {
-                    System.debug('Error enviando notificación push de la campaña: ' + e.getMessage());
+            // 2. Notificación al Distribuidor (siempre y cuando él NO haya sido el que originó el cambio)
+            if (c.OwnerId != UserInfo.getUserId() && String.valueOf(c.OwnerId).startsWith('005')) {
+                String bodyDistribuidor = '';
+                if (c.CAZ_Status__c == 'Aprobado') {
+                    bodyDistribuidor = 'Tu Solicitud de Devolución ha sido Aprobada y resuelta con éxito.';
+                } else if (c.CAZ_Status__c == 'Rechazado') {
+                    bodyDistribuidor = 'Tu Solicitud de Devolución ha sido Rechazada. Consulta las resoluciones de los ejecutivos.';
+                } else {
+                    bodyDistribuidor = 'El estatus de tu Solicitud de Devolución ha cambiado a: ' + c.CAZ_Status__c;
                 }
+
+                Set<String> recDistribuidor = new Set<String>{ c.OwnerId };
+                Messaging.CustomNotification notifDist = new Messaging.CustomNotification();
+                notifDist.setBody(bodyDistribuidor);
+                notifDist.setTitle('Actualización: Solicitud de Devolución');
+                notifDist.setSenderId(UserInfo.getUserId());
+                notifDist.setNotificationTypeId(notifTypeId);
+                notifDist.setTargetId(c.Id);
+                try { notifDist.send(recDistribuidor); } catch (Exception e) {}
             }
         }
     }
