@@ -26,6 +26,11 @@
                 <default>false</default>
                 <label>Importe menor al límite mínimo</label>
             </value>
+            <value>
+                <fullName>Otro</fullName>
+                <default>false</default>
+                <label>Otro</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

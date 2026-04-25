@@ -3,10 +3,35 @@
     <fullName>CAZ_MotivoRechazo__c</fullName>
     <description>Motivo de rechazo de la solicitud de ampliación de crédito.</description>
     <label>Motivo de Rechazo</label>
-    <length>32768</length>
+    <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
-    <type>LongTextArea</type>
-    <visibleLines>3</visibleLines>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Falta de documentación</fullName>
+                <default>false</default>
+                <label>Falta de documentación</label>
+            </value>
+            <value>
+                <fullName>Documentación errónea</fullName>
+                <default>false</default>
+                <label>Documentación errónea</label>
+            </value>
+            <value>
+                <fullName>Garantía insuficiente</fullName>
+                <default>false</default>
+                <label>Garantía insuficiente</label>
+            </value>
+            <value>
+                <fullName>Otro</fullName>
+                <default>false</default>
+                <label>Otro</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
 </CustomField>
