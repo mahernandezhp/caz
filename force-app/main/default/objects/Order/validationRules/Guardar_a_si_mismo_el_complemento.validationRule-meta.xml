@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Guardar_a_si_mismo_el_complemento</fullName>
+    <active>false</active>
+    <description>Si es complemento, el campo Pedido Original no puede ser el mismo Id de Pedido</description>
+    <errorConditionFormula>AND(
+    CAZ_Creada_en_SF__c,
+    OriginalOrderId = Id
+)</errorConditionFormula>
+    <errorMessage>El Pedido Original no puede ser el mismo pedido.</errorMessage>
+</ValidationRule>

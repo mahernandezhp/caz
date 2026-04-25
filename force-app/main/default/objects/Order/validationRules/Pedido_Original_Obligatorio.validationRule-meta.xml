@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pedido_Original_Obligatorio</fullName>
+    <active>false</active>
+    <description>Si el pedido es un complemento, el campo Pedido Original es obligatorio</description>
+    <errorConditionFormula>AND(
+    CAZ_Creada_en_SF__c,
+    ISBLANK(OriginalOrderId)
+)</errorConditionFormula>
+    <errorMessage>Cuando el pedido es un complemento, debes indicar el Pedido Original.</errorMessage>
+</ValidationRule>

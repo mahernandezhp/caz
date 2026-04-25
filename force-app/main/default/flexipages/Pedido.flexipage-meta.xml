@@ -538,12 +538,6 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>c:cazMultipagosPaymentForm</componentName>
-                <identifier>caz_cazMultipagosPaymentForm</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
                 <componentInstanceProperties>
                     <name>columns</name>
                     <value>Facet-784ab68e-5604-4e0b-b369-f1dd9613b918</value>
@@ -870,6 +864,12 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>cazMultipagosPaymentForm</componentName>
+                <identifier>caz_cazMultipagosPaymentForm</identifier>
+            </componentInstance>
+        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Misma_cuenta_en_Complemento</fullName>
+    <active>false</active>
+    <description>La cuenta del complemento debe ser la misma que la del Pedido Original.</description>
+    <errorConditionFormula>AND(
+    CAZ_Creada_en_SF__c,
+    NOT(ISBLANK(OriginalOrderId)),
+    AccountId &lt;&gt; OriginalOrder.AccountId
+)</errorConditionFormula>
+    <errorMessage>El distribuidor del complemento debe ser el mismo que el del Pedido Original.</errorMessage>
+</ValidationRule>

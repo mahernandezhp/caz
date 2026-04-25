@@ -39,7 +39,7 @@
             <criteriaItems>
                 <field>Order.Status</field>
                 <operation>equals</operation>
-                <value>Borrador</value>
+                <value>Draft</value>
             </criteriaItems>
         </entryCriteria>
         <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
@@ -103,7 +103,7 @@
         <criteriaItems>
             <field>Order.Status</field>
             <operation>equals</operation>
-            <value>Borrador</value>
+            <value>Draft</value>
         </criteriaItems>
         <criteriaItems>
             <field>Order.Status</field>

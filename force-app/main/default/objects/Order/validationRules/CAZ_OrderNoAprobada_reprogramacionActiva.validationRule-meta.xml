@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_OrderNoAprobada_reprogramacionActiva</fullName>
+    <active>true</active>
+    <description>No es posible solicitar una reprogramación en una Orden que no ha sido aprobada</description>
+    <errorConditionFormula>AND(
+   CAZ_Order_aprobada__c = false,
+   ISPICKVAL(CAZ_Estado__c,&apos;Reprogramación&apos;)
+)</errorConditionFormula>
+    <errorMessage>No es posible solicitar una reprogramación en una Orden que no ha sido aprobada</errorMessage>
+</ValidationRule>
