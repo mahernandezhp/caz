@@ -2,7 +2,6 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>CAZ_Comentarios__c</fullName>
     <description>Campo de uso exclusivo interno para anotaciones, seguimiento o justificaciones que el cliente no debe ver.</description>
-    <externalId>false</externalId>
     <label>Comentarios Internos</label>
     <length>32768</length>
     <trackFeedHistory>false</trackFeedHistory>

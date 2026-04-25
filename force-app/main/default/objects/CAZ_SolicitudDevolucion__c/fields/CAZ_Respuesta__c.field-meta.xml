@@ -2,7 +2,6 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>CAZ_Respuesta__c</fullName>
     <description>Respuesta de la solicitud y motivo en caso de rechazo</description>
-    <externalId>false</externalId>
     <label>Respuesta / Motivo de Rechazo</label>
     <length>32768</length>
     <trackFeedHistory>false</trackFeedHistory>

@@ -43,6 +43,19 @@ public with sharing class CAZ_SolicitudDevolucionTriggerHandler {
         List<CAZ_SolicitudDevolucion__c> casosAValidar = new List<CAZ_SolicitudDevolucion__c>();
         for (CAZ_SolicitudDevolucion__c c : newRecords) {
             CAZ_SolicitudDevolucion__c oldRecord = oldMap.get(c.Id);
+
+            // 1. Asignación para el Siguiente Recordatorio
+            if (c.CAZ_Status__c == 'Aprobado') {
+                if (oldRecord.CAZ_Status__c != 'Aprobado' || c.CAZ_SiguienteRecordatorio__c == null) {
+                    // La primera vez que pasa a Aprobado, lo programamos a 8 horas desde ahora
+                    c.CAZ_SiguienteRecordatorio__c = System.now().addHours(8);
+                }
+            } else {
+                // Si el estatus ya no es Aprobado, limpiamos el campo para cancelar cualquier recordatorio
+                c.CAZ_SiguienteRecordatorio__c = null;
+            }
+
+            // 2. Validación de documentos requeridos
             if (oldRecord.CAZ_Status__c == STATUS_BORRADOR
                 && c.CAZ_Status__c == STATUS_POR_ATENDER) {
                 casosAValidar.add(c);

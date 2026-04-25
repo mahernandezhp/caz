@@ -2,48 +2,128 @@
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Acceso base al objeto Checklist de Monitoreo y su pestaña.</description>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>CAZ_Checklist_Monitoreo__c.CAZ_Calle__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>CAZ_Checklist_Monitoreo__c.CAZ_Ciudad__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>CAZ_Checklist_Monitoreo__c.CAZ_Codigo_postal__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CAZ_Checklist_Monitoreo__c.CAZ_Comentarios__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CAZ_Checklist_Monitoreo__c.CAZ_Comparativo_marcas__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>CAZ_Checklist_Monitoreo__c.CAZ_Cuenta__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>CAZ_Checklist_Monitoreo__c.CAZ_Estado__c</field>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_Acabados__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>CAZ_Checklist_Monitoreo__c.CAZ_Estatus__c</field>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_CPC_condiciones__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>CAZ_Checklist_Monitoreo__c.CAZ_Exhibicion_correcta_marca__c</field>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_CPC_precio_mayoreo__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_CPC_precio_publico__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_CPC_volumen__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_Comentarios_generales__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_Ferreteria__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_Granel_condiciones__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_Granel_precio_mayoreo__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_Granel_precio_publico__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_Granel_volumen__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_Imagen_general__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_Infraestructura__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_Mortero_condiciones__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_Mortero_precio_mayoreo__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_Mortero_precio_publico__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_Mortero_volumen__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_Otros_productos__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_Precio_mayoreo__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_Precio_publico__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_Problematica_actual__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_Rotulacion_CAZ__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_Solo_Cruz_Azul__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Dist_Vendedores__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -53,37 +133,137 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>CAZ_Checklist_Monitoreo__c.CAZ_Modo_venta_publico__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>CAZ_Checklist_Monitoreo__c.CAZ_Pais__c</field>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Fotos__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>CAZ_Checklist_Monitoreo__c.CAZ_Precio_observado__c</field>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Hora_llegada__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>CAZ_Checklist_Monitoreo__c.CAZ_Tipo_punto__c</field>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Hora_termino__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Mat_Atencion_distribuidor__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Mat_CPC_condiciones__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Mat_CPC_precio_mayoreo__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Mat_CPC_precio_publico__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Mat_CPC_volumen__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Mat_Clasificacion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Mat_Comportamiento__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Mat_Estrategias_competencia__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Mat_Granel_condiciones__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Mat_Granel_precio_mayoreo__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Mat_Granel_precio_publico__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Mat_Granel_volumen__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Mat_Imagen__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Mat_Marcas_volumen__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Mat_Mortero_condiciones__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Mat_Mortero_precio_mayoreo__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Mat_Mortero_precio_publico__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Mat_Mortero_volumen__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Mat_Precio_mayoreo__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Mat_Precio_publico__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Mat_Situacion_ventas__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Mat_Sucursales__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_Checklist_Monitoreo__c.CAZ_Mat_Vol_Compra_CAZ__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>CAZ_Checklist_Monitoreo__c.CAZ_Ubicacion__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CAZ_Checklist_Monitoreo__c.CAZ_Zona__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CAZ_Checklist_Monitoreo__c.CAZ_Zona_de_influencia__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
@@ -98,12 +278,20 @@
         <viewAllFields>false</viewAllFields>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
+    <pageAccesses>
+        <apexPage>CAZ_CreateChecklistDistribuidor</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>CAZ_CreateChecklistMaterialista</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
     <recordTypeVisibilities>
-        <recordType>CAZ_Checklist_Monitoreo__c.Competidor</recordType>
+        <recordType>CAZ_Checklist_Monitoreo__c.Distribuidor</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
-        <recordType>CAZ_Checklist_Monitoreo__c.Propia</recordType>
+        <recordType>CAZ_Checklist_Monitoreo__c.Materialista</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <tabSettings>
