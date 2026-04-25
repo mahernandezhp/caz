@@ -29,11 +29,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>CAZ_SolicitudCredito__c.CAZ_MotivoRechazo__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>CAZ_SolicitudCredito__c.CAZ_OtroMotivoRechazo__c</field><readable>true</readable></fieldPermissions><fieldPermissions>
         <editable>true</editable>
         <field>CAZ_SolicitudCredito__c.CAZ_RFC__c</field>
         <readable>true</readable>
@@ -68,7 +68,7 @@
         <field>CAZ_SolicitudDevolucion__c.CAZ_NumeroCuentaBancaria__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>CAZ_SolicitudDevolucion__c.CAZ_OtroMotivoRechazo__c</field><readable>true</readable></fieldPermissions><fieldPermissions>
         <editable>false</editable>
         <field>CAZ_SolicitudDevolucion__c.CAZ_Status__c</field>
         <readable>true</readable>

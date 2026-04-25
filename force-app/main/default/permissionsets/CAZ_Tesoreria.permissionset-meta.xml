@@ -3,7 +3,7 @@
     <description>Permisos para el área de Tesorería. Pueden ver, gestionar y confirmar/rechazar solicitudes de devolución en Etapa 2.</description>
     <hasActivationRequired>false</hasActivationRequired>
     <label>CAZ - Tesorería</label>
-    <fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>CAZ_SolicitudCredito__c.CAZ_MotivoRechazo__c</field><readable>true</readable></fieldPermissions><fieldPermissions><editable>true</editable><field>CAZ_SolicitudCredito__c.CAZ_OtroMotivoRechazo__c</field><readable>true</readable></fieldPermissions><fieldPermissions>
         <editable>false</editable>
         <field>CAZ_SolicitudDevolucion__c.CAZ_ComprobanteReferencia__c</field>
         <readable>true</readable>
@@ -28,7 +28,7 @@
         <field>CAZ_SolicitudDevolucion__c.CAZ_NumeroCuentaBancaria__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>CAZ_SolicitudDevolucion__c.CAZ_OtroMotivoRechazo__c</field><readable>true</readable></fieldPermissions><fieldPermissions>
         <editable>false</editable>
         <field>CAZ_SolicitudDevolucion__c.CAZ_Status__c</field>
         <readable>true</readable>

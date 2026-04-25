@@ -2,7 +2,7 @@
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <hasActivationRequired>false</hasActivationRequired>
     <label>CAZ - Admin</label>
-    <fieldPermissions><editable>true</editable><field>CAZ_SolicitudDevolucion__c.CAZ_MotivoRechazo__c</field><readable>true</readable></fieldPermissions><fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>CAZ_SolicitudCredito__c.CAZ_MotivoRechazo__c</field><readable>true</readable></fieldPermissions><fieldPermissions><editable>true</editable><field>CAZ_SolicitudCredito__c.CAZ_OtroMotivoRechazo__c</field><readable>true</readable></fieldPermissions><fieldPermissions><editable>true</editable><field>CAZ_SolicitudDevolucion__c.CAZ_MotivoRechazo__c</field><readable>true</readable></fieldPermissions><fieldPermissions><editable>true</editable><field>CAZ_SolicitudDevolucion__c.CAZ_OtroMotivoRechazo__c</field><readable>true</readable></fieldPermissions><fieldPermissions>
         <editable>true</editable>
         <field>Case.AccountId</field>
         <readable>true</readable>
