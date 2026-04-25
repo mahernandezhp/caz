@@ -96,6 +96,40 @@
                     <name>uiBehavior</name>
                     <value>required</value>
                 </fieldInstanceProperties>
+                <fieldItem>Record.CAZ_ImporteDevolucion__c</fieldItem>
+                <identifier>RecordCAZ_ImporteDevolucion_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>required</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CAZ_ComprobanteReferencia__c</fieldItem>
+                <identifier>RecordCAZ_ComprobanteReferencia_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>required</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CAZ_Status__c</fieldItem>
+                <identifier>RecordCAZ_Status_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-e6773559-b842-499b-9e6e-5e50bdd1df89</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>required</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.CAZ_Account__c</fieldItem>
                 <identifier>RecordCAZ_Account_cField</identifier>
             </fieldInstance>
@@ -116,52 +150,8 @@
                     <name>uiBehavior</name>
                     <value>required</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.CAZ_ImporteDevolucion__c</fieldItem>
-                <identifier>RecordCAZ_ImporteDevolucion_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-e6773559-b842-499b-9e6e-5e50bdd1df89</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>required</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CAZ_Status__c</fieldItem>
-                <identifier>RecordCAZ_Status_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>required</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.CAZ_NumeroCuentaBancaria__c</fieldItem>
                 <identifier>RecordCAZ_NumeroCuentaBancaria_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>required</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CAZ_ComprobanteReferencia__c</fieldItem>
-                <identifier>RecordCAZ_ComprobanteReferencia_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CAZ_MotivoRechazo__c</fieldItem>
-                <identifier>RecordCAZ_MotivoRechazo_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-5a2f35a4-16e4-4332-9b2c-2edfb6429231</name>
@@ -227,6 +217,51 @@
             </componentInstance>
         </itemInstances>
         <name>Facet-eae6ce1e-589c-4042-88f7-450580fdd1a2</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CAZ_MotivoRechazo__c</fieldItem>
+                <identifier>RecordCAZ_MotivoRechazo_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CAZ_OtroMotivoRechazo__c</fieldItem>
+                <identifier>RecordCAZ_OtroMotivoRechazo_cField</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.CAZ_MotivoRechazo__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Otro</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-4df75f8d-55c1-42b5-a007-b427134efdcc</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-4df75f8d-55c1-42b5-a007-b427134efdcc</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column6</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-87a0b044-753e-48da-a763-4fe9b1b5f6b9</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -332,6 +367,24 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection3</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>columns</name>
+                    <value>Facet-87a0b044-753e-48da-a763-4fe9b1b5f6b9</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>horizontalAlignment</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Resolución</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:fieldSection</componentName>
+                <identifier>flexipage_fieldSection4</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
