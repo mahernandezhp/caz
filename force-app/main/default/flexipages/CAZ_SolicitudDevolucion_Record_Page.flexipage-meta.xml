@@ -154,6 +154,16 @@
                 <identifier>RecordCAZ_ComprobanteReferencia_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CAZ_MotivoRechazo__c</fieldItem>
+                <identifier>RecordCAZ_MotivoRechazo_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-5a2f35a4-16e4-4332-9b2c-2edfb6429231</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -190,6 +200,16 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.CAZ_Description__c</fieldItem>
                 <identifier>RecordCAZ_Description_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CAZ_Comentarios__c</fieldItem>
+                <identifier>RecordCAZ_Comentarios_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-755b125c-fbab-4476-a2fb-f732d8c218aa</name>
@@ -395,8 +415,8 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>runtime_approvals:approvalTrace</componentName>
-                <identifier>runtime_approvals_approvalTrace</identifier>
+                <componentName>forceChatter:recordFeedContainer</componentName>
+                <identifier>forceChatter_recordFeedContainer2</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>

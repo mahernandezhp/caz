@@ -1,6 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Permisos para Ejecutivos de Crédito y Cobranza. Pueden ver, editar y aprobar/rechazar solicitudes de devolución en Etapa 1.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>CAZ - Ejecutivo Crédito y Cobranza</label>
     <fieldPermissions>
         <editable>true</editable>
         <field>CAZ_SolicitudCredito__c.CAZ_Comentarios__c</field>
@@ -51,7 +53,7 @@
         <field>CAZ_SolicitudDevolucion__c.CAZ_MotivoDevolucion__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>CAZ_SolicitudDevolucion__c.CAZ_MotivoRechazo__c</field><readable>true</readable></fieldPermissions><fieldPermissions>
         <editable>true</editable>
         <field>CAZ_SolicitudDevolucion__c.CAZ_NumeroCuentaBancaria__c</field>
         <readable>true</readable>
@@ -68,7 +70,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Case.CAZ_DiasCredito__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.CAZ_DocumentosCompletos__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Case.CAZ_FechaEnvioTesoreria__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.CAZ_FechaLimiteJuridico__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -96,8 +113,11 @@
         <field>Case.CAZ_NumeroProvisionJDE__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <hasActivationRequired>false</hasActivationRequired>
-    <label>CAZ - Ejecutivo Crédito y Cobranza</label>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.CAZ_RFC__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>false</allowDelete>

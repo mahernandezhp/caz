@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_MotivoRechazo__c</fullName>
+    <label>Motivos de Rechazo</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cierre de mes fiscal</fullName>
+                <default>false</default>
+                <label>Cierre de mes fiscal</label>
+            </value>
+            <value>
+                <fullName>Anticipo facturado y amortizado</fullName>
+                <default>false</default>
+                <label>Anticipo facturado y amortizado</label>
+            </value>
+            <value>
+                <fullName>Importe menor al límite mínimo</fullName>
+                <default>false</default>
+                <label>Importe menor al límite mínimo</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
