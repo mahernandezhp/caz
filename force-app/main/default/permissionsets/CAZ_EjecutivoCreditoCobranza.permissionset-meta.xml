@@ -23,7 +23,7 @@
         <field>CAZ_SolicitudCredito__c.CAZ_Estatus__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>CAZ_SolicitudCredito__c.CAZ_MotivoRechazo__c</field><readable>true</readable></fieldPermissions><fieldPermissions><editable>true</editable><field>CAZ_SolicitudCredito__c.CAZ_OtroMotivoRechazo__c</field><readable>true</readable></fieldPermissions><fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>CAZ_SolicitudCredito__c.CAZ_MotivoRechazo__c</field><readable>true</readable></fieldPermissions><fieldPermissions><editable>true</editable><field>CAZ_SolicitudCredito__c.CAZ_OtroMotivoRechazo__c</field><readable>true</readable></fieldPermissions><fieldPermissions><editable>true</editable><field>CAZ_SolicitudCredito__c.CAZ_PlazosCredito__c</field><readable>true</readable></fieldPermissions><fieldPermissions>
         <editable>true</editable>
         <field>CAZ_SolicitudCredito__c.CAZ_RFC__c</field>
         <readable>true</readable>
