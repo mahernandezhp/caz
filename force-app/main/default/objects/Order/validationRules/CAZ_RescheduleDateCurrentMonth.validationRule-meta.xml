@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_RescheduleDateCurrentMonth</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    NOT($Permission.CAZ_Automation_Validation_Bypass),
+    NOT(ISBLANK(CAZ_Fecha_reprogramacion__c)),
+    OR(
+        MONTH(CAZ_Fecha_reprogramacion__c) &lt;&gt; MONTH(TODAY()),
+        YEAR(CAZ_Fecha_reprogramacion__c) &lt;&gt; YEAR(TODAY())
+    )
+)</errorConditionFormula>
+    <errorDisplayField>CAZ_Fecha_reprogramacion__c</errorDisplayField>
+    <errorMessage>La fecha de reprogramación solicitada debe estar dentro del mes en curso.</errorMessage>
+</ValidationRule>
