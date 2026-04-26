@@ -122,6 +122,12 @@ public with sharing class CAZ_SolicitudDevolucionTriggerHandler {
             }
         }
 
+        Id creditoCobranzaQueueId = null;
+        List<Group> queues = [SELECT Id FROM Group WHERE Type = 'Queue' AND DeveloperName = 'CreditoCobranza' LIMIT 1];
+        if (!queues.isEmpty()) {
+            creditoCobranzaQueueId = queues[0].Id;
+        }
+
         for (CAZ_SolicitudDevolucion__c c : casosAValidar) {
             Set<String> tiposCargados = tiposDocPorRegistro.get(c.Id);
             List<String> faltantes = new List<String>();
@@ -139,6 +145,8 @@ public with sharing class CAZ_SolicitudDevolucionTriggerHandler {
                     + 'Faltan los siguientes documentos obligatorios: '
                     + mensajeFaltantes + '.'
                 );
+            } else if (creditoCobranzaQueueId != null) {
+                c.OwnerId = creditoCobranzaQueueId;
             }
         }
     }
