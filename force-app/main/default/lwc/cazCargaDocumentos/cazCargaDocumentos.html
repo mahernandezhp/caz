@@ -93,7 +93,7 @@
                             <li key={file.documentId} class="slds-item slds-p-vertical_xx-small slds-grid slds-grid_vertical-align-center">
                                 <div class="slds-col slds-grow">
                                     <lightning-icon icon-name="doctype:attachment" size="x-small" class="slds-m-right_x-small"></lightning-icon>
-                                    <strong>{file.tipoDocumento}</strong> — <a href="javascript:void(0);" data-id={file.documentId} onclick={handlePreviewFile}>{file.name}</a>
+                                    <strong>{file.tipoDocumento}</strong> — <a href={file.downloadUrl} target="_blank">{file.name}</a>
                                 </div>
                                 <div class="slds-col slds-grow-none">
                                     <template if:false={readonlyMode}>

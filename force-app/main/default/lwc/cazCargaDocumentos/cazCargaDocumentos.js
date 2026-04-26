@@ -238,17 +238,5 @@ export default class CazCargaDocumentos extends NavigationMixin(LightningElement
             });
     }
 
-    handlePreviewFile(event) {
-        const docId = event.target.dataset.id;
-        this[NavigationMixin.Navigate]({
-            type: 'standard__namedPage',
-            attributes: {
-                pageName: 'filePreview'
-            },
-            state: {
-                recordIds: docId,
-                selectedRecordId: docId
-            }
-        });
-    }
+
 }
