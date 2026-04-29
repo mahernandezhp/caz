@@ -40,15 +40,28 @@ public with sharing class CAZ_SolicitudDevolucionTriggerHandler {
             return;
         }
 
+        Map<String, Id> queueMap = new Map<String, Id>();
+        for (Group g : [SELECT Id, DeveloperName FROM Group WHERE Type = 'Queue' AND DeveloperName IN ('CreditoCobranza', 'Tesoreria')]) {
+            queueMap.put(g.DeveloperName, g.Id);
+        }
+
+        BusinessHours bh = [SELECT Id FROM BusinessHours WHERE IsDefault = true LIMIT 1];
+        Long ochoHorasEnMs = 8L * 60L * 60L * 1000L;
+
         List<CAZ_SolicitudDevolucion__c> casosAValidar = new List<CAZ_SolicitudDevolucion__c>();
         for (CAZ_SolicitudDevolucion__c c : newRecords) {
             CAZ_SolicitudDevolucion__c oldRecord = oldMap.get(c.Id);
 
-            // 1. Asignación para el Siguiente Recordatorio
+            // 1. Asignación para el Siguiente Recordatorio y Cambio a Tesorería
             if (c.CAZ_Status__c == 'Aprobado') {
-                if (oldRecord.CAZ_Status__c != 'Aprobado' || c.CAZ_SiguienteRecordatorio__c == null) {
-                    // La primera vez que pasa a Aprobado, lo programamos a 8 horas desde ahora
-                    c.CAZ_SiguienteRecordatorio__c = System.now().addHours(8);
+                if (oldRecord.CAZ_Status__c != 'Aprobado') {
+                    // La primera vez que pasa a Aprobado, lo programamos a 8 horas hábiles y lo pasamos a Tesorería
+                    c.CAZ_SiguienteRecordatorio__c = BusinessHours.add(bh.Id, System.now(), ochoHorasEnMs);
+                    if (queueMap.get('Tesoreria') != null) {
+                        c.OwnerId = queueMap.get('Tesoreria');
+                    }
+                } else if (c.CAZ_SiguienteRecordatorio__c == null) {
+                    c.CAZ_SiguienteRecordatorio__c = BusinessHours.add(bh.Id, System.now(), ochoHorasEnMs);
                 }
             } else {
                 // Si el estatus ya no es Aprobado, limpiamos el campo para cancelar cualquier recordatorio
@@ -59,6 +72,11 @@ public with sharing class CAZ_SolicitudDevolucionTriggerHandler {
             if (oldRecord.CAZ_Status__c == STATUS_BORRADOR
                 && c.CAZ_Status__c == STATUS_POR_ATENDER) {
                 casosAValidar.add(c);
+            }
+
+            // 3. Regresar propietario al creador si pasa a Borrador
+            if (oldRecord.CAZ_Status__c != STATUS_BORRADOR && c.CAZ_Status__c == STATUS_BORRADOR) {
+                c.OwnerId = c.CreatedById;
             }
         }
 
@@ -122,11 +140,7 @@ public with sharing class CAZ_SolicitudDevolucionTriggerHandler {
             }
         }
 
-        Id creditoCobranzaQueueId = null;
-        List<Group> queues = [SELECT Id FROM Group WHERE Type = 'Queue' AND DeveloperName = 'CreditoCobranza' LIMIT 1];
-        if (!queues.isEmpty()) {
-            creditoCobranzaQueueId = queues[0].Id;
-        }
+        Id creditoCobranzaQueueId = queueMap.get('CreditoCobranza');
 
         for (CAZ_SolicitudDevolucion__c c : casosAValidar) {
             Set<String> tiposCargados = tiposDocPorRegistro.get(c.Id);
@@ -157,10 +171,30 @@ public with sharing class CAZ_SolicitudDevolucionTriggerHandler {
     public static void handleAfterUpdate(List<CAZ_SolicitudDevolucion__c> newRecords, Map<Id, CAZ_SolicitudDevolucion__c> oldMap) {
         
         List<CAZ_SolicitudDevolucion__c> solicitudesConCambio = new List<CAZ_SolicitudDevolucion__c>();
+        List<CAZ_SolicitudDevolucion__Share> sharesToInsert = new List<CAZ_SolicitudDevolucion__Share>();
+
         for (CAZ_SolicitudDevolucion__c c : newRecords) {
             String oldStatus = oldMap.get(c.Id).CAZ_Status__c;
             if (c.CAZ_Status__c != oldStatus) {
                 solicitudesConCambio.add(c);
+            }
+
+            // Mantenimiento de acceso: Si cambió el propietario y ya no es el creador, restaurar acceso al creador
+            if (c.OwnerId != oldMap.get(c.Id).OwnerId && c.OwnerId != c.CreatedById) {
+                CAZ_SolicitudDevolucion__Share shareRec = new CAZ_SolicitudDevolucion__Share();
+                shareRec.ParentId = c.Id;
+                shareRec.UserOrGroupId = c.CreatedById;
+                shareRec.AccessLevel = 'Edit';
+                shareRec.RowCause = Schema.CAZ_SolicitudDevolucion__Share.RowCause.Manual;
+                sharesToInsert.add(shareRec);
+            }
+        }
+        
+        if (!sharesToInsert.isEmpty()) {
+            try {
+                new SharingHelper().insertShares(sharesToInsert);
+            } catch (Exception e) {
+                System.debug('Error insertando CAZ_SolicitudDevolucion__Share: ' + e.getMessage());
             }
         }
         
@@ -197,6 +231,9 @@ public with sharing class CAZ_SolicitudDevolucionTriggerHandler {
             if (c.CAZ_Status__c == 'Por atender') {
                 bodyEjecutivos = 'Hay una nueva Solicitud de Devolución para Revisión Inicial en tu bandeja.';
                 if (creditoCobranzaId != null) recipientEjecutivos.add(creditoCobranzaId);
+            } else if (c.CAZ_Status__c == 'Aprobado') {
+                bodyEjecutivos = 'Hay una Solicitud de Devolución Aprobada lista para tu gestión.';
+                if (tesoreriaId != null) recipientEjecutivos.add(tesoreriaId);
             }
 
             if (!recipientEjecutivos.isEmpty()) {
@@ -209,11 +246,11 @@ public with sharing class CAZ_SolicitudDevolucionTriggerHandler {
                 try { notifEjec.send(recipientEjecutivos); } catch (Exception e) {}
             }
 
-            // 2. Notificación al Distribuidor (siempre y cuando él NO haya sido el que originó el cambio)
-            if (c.OwnerId != UserInfo.getUserId() && String.valueOf(c.OwnerId).startsWith('005')) {
+            // 2. Notificación al Distribuidor Creador (siempre y cuando él NO haya sido el que originó el cambio)
+            if (c.CreatedById != null && c.CreatedById != UserInfo.getUserId()) {
                 String bodyDistribuidor = '';
                 if (c.CAZ_Status__c == 'Aprobado') {
-                    bodyDistribuidor = 'Tu Solicitud de Devolución ha sido Aprobada y resuelta con éxito.';
+                    bodyDistribuidor = 'Tu Solicitud de Devolución ha sido Aprobada y será procesada por Tesorería.';
                 } else if (c.CAZ_Status__c == 'Rechazado') {
                     bodyDistribuidor = 'Tu Solicitud de Devolución ha sido Rechazada. Consulta las resoluciones de los ejecutivos.';
                 } else if (c.CAZ_Status__c == 'Borrador') {
@@ -224,7 +261,7 @@ public with sharing class CAZ_SolicitudDevolucionTriggerHandler {
                     bodyDistribuidor = 'El estatus de tu Solicitud de Devolución ha cambiado a: ' + c.CAZ_Status__c;
                 }
 
-                Set<String> recDistribuidor = new Set<String>{ c.OwnerId };
+                Set<String> recDistribuidor = new Set<String>{ c.CreatedById };
                 Messaging.CustomNotification notifDist = new Messaging.CustomNotification();
                 notifDist.setBody(bodyDistribuidor);
                 notifDist.setTitle('Actualización: Solicitud de Devolución');
@@ -244,5 +281,13 @@ public with sharing class CAZ_SolicitudDevolucionTriggerHandler {
 
         return profileName == 'System Administrator'
             || profileName == 'Administrador del sistema';
+    }
+
+    private without sharing class SharingHelper {
+        public void insertShares(List<CAZ_SolicitudDevolucion__Share> shares) {
+            if (!shares.isEmpty()) {
+                insert shares;
+            }
+        }
     }
 }

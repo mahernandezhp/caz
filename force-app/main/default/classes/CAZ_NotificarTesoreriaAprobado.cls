@@ -1,16 +1,16 @@
 public with sharing class CAZ_NotificarTesoreriaAprobado {
     
-    @InvocableMethod(label='Enviar Recordatorio a Tesorería' description='Envía notificación In-App y Correo a Tesorería, y re-programa el campo CAZ_SiguienteRecordatorio__c')
+    @InvocableMethod(label='Enviar Recordatorio a Tesorería' description='Envía notificación In-App y Correo al dueño actual (Tesorería o Usuario asignado), y re-programa usando horario hábil')
     public static void enviarRecordatorios(List<Id> solicitudIds) {
         if (solicitudIds == null || solicitudIds.isEmpty()) return;
 
         List<CAZ_SolicitudDevolucion__c> solicitudes = [
-            SELECT Id, Name, CAZ_Status__c, CAZ_SiguienteRecordatorio__c 
+            SELECT Id, Name, CAZ_Status__c, CAZ_SiguienteRecordatorio__c, OwnerId 
             FROM CAZ_SolicitudDevolucion__c 
             WHERE Id IN :solicitudIds AND CAZ_Status__c = 'Aprobado'
         ];
 
-        if (solicitudIds.isEmpty()) return;
+        if (solicitudes.isEmpty()) return;
 
         // 1. Obtener Custom Notification Type
         List<CustomNotificationType> notifTypes = [
@@ -26,18 +26,49 @@ public with sharing class CAZ_NotificarTesoreriaAprobado {
             tesoreriaGroup = grupos[0];
         }
 
-        Set<String> recipientIds = new Set<String>();
-        if (tesoreriaGroup != null) recipientIds.add(tesoreriaGroup.Id);
-
-        // Opcional: Obtener correos directos de los miembros para enviar un correo
-        // (Por simplicidad, enviaremos la CustomNotification. Para el correo usaremos el email de la cola si tiene, o iteramos)
         List<String> emailsTesoreria = new List<String>();
         if (tesoreriaGroup != null) {
-            for(User u : [SELECT Email FROM User WHERE Id IN (SELECT UserOrGroupId FROM GroupMember WHERE GroupId = :tesoreriaGroup.Id)]) {
+            Set<Id> directMemberIds = new Set<Id>();
+            for (GroupMember gm : [SELECT UserOrGroupId FROM GroupMember WHERE GroupId = :tesoreriaGroup.Id]) {
+                directMemberIds.add(gm.UserOrGroupId);
+            }
+            
+            Set<Id> userIds = new Set<Id>();
+            for (Id memId : directMemberIds) {
+                if (memId.getSObjectType() == User.sObjectType) {
+                    userIds.add(memId);
+                }
+            }
+            
+            for (GroupMember gm : [SELECT UserOrGroupId FROM GroupMember WHERE GroupId IN :directMemberIds]) {
+                if (gm.UserOrGroupId.getSObjectType() == User.sObjectType) {
+                    userIds.add(gm.UserOrGroupId);
+                }
+            }
+            
+            for(User u : [SELECT Email FROM User WHERE Id IN :userIds]) {
                 emailsTesoreria.add(u.Email);
             }
         }
         
+        // 3. Obtener correos de los usuarios asignados individuales
+        Set<Id> ownerUserIds = new Set<Id>();
+        for (CAZ_SolicitudDevolucion__c sol : solicitudes) {
+            if (sol.OwnerId.getSObjectType() == User.sObjectType) {
+                ownerUserIds.add(sol.OwnerId);
+            }
+        }
+        Map<Id, String> ownerUserEmails = new Map<Id, String>();
+        if (!ownerUserIds.isEmpty()) {
+            for (User u : [SELECT Id, Email FROM User WHERE Id IN :ownerUserIds]) {
+                ownerUserEmails.put(u.Id, u.Email);
+            }
+        }
+
+        // 4. Obtener Horario Hábil por Defecto (Business Hours)
+        BusinessHours bh = [SELECT Id FROM BusinessHours WHERE IsDefault = true LIMIT 1];
+        Long ochoHorasEnMs = 8L * 60L * 60L * 1000L;
+
         String siteUrl = URL.getOrgDomainUrl().toExternalForm() + '/lightning/r/CAZ_SolicitudDevolucion__c/';
 
         List<Messaging.SingleEmailMessage> emailsToSend = new List<Messaging.SingleEmailMessage>();
@@ -45,6 +76,19 @@ public with sharing class CAZ_NotificarTesoreriaAprobado {
 
         for (CAZ_SolicitudDevolucion__c sol : solicitudes) {
             String recordUrl = siteUrl + sol.Id + '/view';
+            
+            Set<String> recipientIds = new Set<String>();
+            List<String> currentEmails = new List<String>();
+
+            if (sol.OwnerId.getSObjectType() == User.sObjectType) {
+                recipientIds.add(sol.OwnerId);
+                if (ownerUserEmails.containsKey(sol.OwnerId)) {
+                    currentEmails.add(ownerUserEmails.get(sol.OwnerId));
+                }
+            } else {
+                if (tesoreriaGroup != null) recipientIds.add(tesoreriaGroup.Id);
+                currentEmails = emailsTesoreria;
+            }
             
             // Notification Push
             if (notifTypeId != null && !recipientIds.isEmpty()) {
@@ -58,24 +102,23 @@ public with sharing class CAZ_NotificarTesoreriaAprobado {
             }
 
             // Email Send
-            if (!emailsTesoreria.isEmpty()) {
+            if (!currentEmails.isEmpty()) {
                 Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
-                email.setToAddresses(emailsTesoreria);
+                email.setToAddresses(currentEmails);
                 email.setSubject('⏳ Recordatorio de Atención: Solicitud de Devolución en Espera [' + sol.Name + ']');
                 email.setHtmlBody(
-                    'Hola equipo de Tesorería,<br><br>' +
+                    'Hola,<br><br>' +
                     'La Solicitud de Devolución <b>' + sol.Name + '</b> cuenta con el estatus de <b>\'Aprobado\'</b> y está pendiente de su atención para continuar con el proceso.<br><br>' +
                     'Por favor, accede al siguiente enlace para revisarla y gestionarla:<br>' +
                     '<a href="' + recordUrl + '">' + recordUrl + '</a><br><br>' +
-                    '<i>(Este es un recordatorio automático que se generará cada 8 horas mientras la solicitud se mantenga en este estatus).</i>'
+                    '<i>(Este es un recordatorio automático que se generará cada 8 horas hábiles mientras la solicitud se mantenga en este estatus).</i>'
                 );
                 email.setSaveAsActivity(false);
                 emailsToSend.add(email);
             }
 
-            // Update Field to re-trigger the Flow later
-            // Adding 8 hours to the current date/time to re-queue the Scheduled Path
-            sol.CAZ_SiguienteRecordatorio__c = System.now().addHours(8);
+            // Update Field to re-trigger the Flow later using Business Hours
+            sol.CAZ_SiguienteRecordatorio__c = BusinessHours.add(bh.Id, System.now(), ochoHorasEnMs);
             recordsToUpdate.add(sol);
         }
 
