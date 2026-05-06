@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Configuración por ambiente para la integración con Multipagos</description>
+    <label>Configuración de multipagos</label>
+    <pluralLabel>Configuraciones de multipagos</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

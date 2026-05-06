@@ -32,6 +32,12 @@
                 <default>false</default>
                 <label>Otro</label>
             </value>
+            <value>
+                <fullName>Otros</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Otros</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

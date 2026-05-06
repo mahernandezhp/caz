@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Profile xmlns="http://soap.sforce.com/2006/04/metadata">
     <classAccesses>
+        <apexClass>CAZ_CaseListCtrl</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_CaseListCtrlTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CAZ_CaseTriggerHandler</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -9,7 +17,27 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CAZ_CkDistCtrl</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_CkMatCtrl</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CAZ_DocumentoSolicitudController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_DocumentoSolicitudCtrl</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_MisSolicitudesCreditoCtrl</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_MultipagosPaymentGatewayAdapter</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -17,7 +45,31 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CAZ_MultipagosPaymentServiceTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_MultipagosResponseHandler</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_MultipagosResponseHandlerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CAZ_MultipagosSignatureService</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_MultipagosSignatureServiceTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_NotificarCreditoCobranzaRevision</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_NotificarTesoreriaAprobado</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -29,11 +81,59 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CAZ_SolicitudCaseController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_SolicitudCreditoController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_SolicitudCreditoTriggerHandler</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CAZ_SolicitudDevolucionController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CAZ_SolicitudDevolucionTriggerHandler</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_WS_IU_Contactos</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_WS_IU_ContactosCamposJSON</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_WS_IU_ContactosRespuesta</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_WS_IU_Cuentas</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_WS_IU_CuentasCamposJSON</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_WS_IU_CuentasRespuesta</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_WS_IU_OrdenVentaCamposJSON</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_WS_IU_OrdenesDeVenta</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_WS_IU_OrdenesDeVentaRespuesta</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -45,7 +145,15 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CAZ_WS_SActualizacionDatoDataAccount</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CAZ_WS_SActualizacionDatoResponse</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_WS_SComplementoBase</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -58,6 +166,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CAZ_WS_SComplementoSalienteEstatusN0</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_WS_SComplementoSalienteRespuesta</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -188,6 +300,10 @@
         <apexClass>SiteRegisterControllerTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
+    <classAccesses>
+        <apexClass>Test</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
     <custom>false</custom>
     <fieldPermissions>
         <editable>false</editable>
@@ -276,7 +392,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.CAZ_IdExternoCP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account.CAZ_IdExterno__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.CAZ_Usuario_activo__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -396,17 +522,27 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>CAZ_SolicitudCredito__c.CAZ_Cuenta__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>CAZ_SolicitudCredito__c.CAZ_Estatus__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>CAZ_SolicitudCredito__c.CAZ_Justificacion__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CAZ_SolicitudCredito__c.CAZ_MotivoRechazo__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CAZ_SolicitudCredito__c.CAZ_OtroMotivoRechazo__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CAZ_SolicitudCredito__c.CAZ_PlazosCredito__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -421,7 +557,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>CAZ_SolicitudDevolucion__c.CAZ_Account__c</field>
+        <field>CAZ_SolicitudCredito__c.CAZ_SiguienteRecordatorio__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CAZ_SolicitudDevolucion__c.CAZ_Comentarios__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -446,12 +587,27 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CAZ_SolicitudDevolucion__c.CAZ_MotivoRechazo__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CAZ_SolicitudDevolucion__c.CAZ_NumeroCuentaBancaria__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CAZ_SolicitudDevolucion__c.CAZ_OtroMotivoRechazo__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>CAZ_SolicitudDevolucion__c.CAZ_Respuesta__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CAZ_SolicitudDevolucion__c.CAZ_SiguienteRecordatorio__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -605,6 +761,14 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>BandwidthExceeded</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>CAZ_CreateChecklistDistribuidor</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>CAZ_CreateChecklistMaterialista</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
@@ -841,6 +1005,10 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>ImportPersonal</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>IntegrationIntelligenceUser</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>

@@ -1,0 +1,134 @@
+<template>
+    <lightning-modal-header label="Nueva solicitud de crédito"></lightning-modal-header>
+    <lightning-modal-body>
+        <div style="position:relative; min-height: 250px;">
+            <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Cargando..." size="medium"></lightning-spinner>
+            </template>
+            
+            <!-- PASO 1 (Form) -->
+            <template if:true={isStep1}>
+                <template if:true={recordTypeIdLoaded}>
+                    <div class="slds-p-around_medium" style={formStyle}>
+                        <p class="slds-m-bottom_medium">Por favor capture la información de su requerimiento:</p>
+                        <lightning-record-edit-form 
+                            density="comfy"
+                            object-api-name="Case" 
+                            record-type-id={recordTypeId}
+                            onsuccess={handleSuccess}
+                            onsubmit={handleSubmit}
+                            onload={handleLoad}
+                            onerror={handleError}>
+                            <lightning-messages></lightning-messages>
+                            
+                            <div class="slds-grid slds-wrap">
+                                <lightning-input-field field-name="Subject" value="Solicitud de crédito" class="slds-hide"></lightning-input-field>
+                                <lightning-input-field field-name="Status" class="slds-hide"></lightning-input-field>
+                                <lightning-input-field field-name="CAZ_RFC__c" value={userRFC} class="slds-hide"></lightning-input-field>
+
+                                <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">
+                                    <lightning-input label="Nombre del Solicitante" value={userName} readonly></lightning-input>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2 slds-p-right_small slds-m-bottom_small">
+                                    <lightning-input label="Razón Social" value={accountName} readonly></lightning-input>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2 slds-m-bottom_small">
+                                    <lightning-input label="RFC" value={userRFC} readonly></lightning-input>
+                                </div>
+
+                                <div class="slds-col slds-size_1-of-2 slds-p-right_small slds-m-bottom_small">
+                                    <lightning-input-field field-name="CAZ_MontoSolicitado__c" required></lightning-input-field>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2 slds-m-bottom_small">
+                                    <lightning-input-field field-name="CAZ_DiasCredito__c" required></lightning-input-field>
+                                </div>
+                                <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">
+                                    <lightning-input-field field-name="Description"></lightning-input-field>
+                                </div>
+                            </div>
+                            
+                            <div class="slds-m-top_medium slds-text-align_right">
+                                <lightning-button label="Cancelar" onclick={handleCancel} class="slds-m-right_small"></lightning-button>
+                                <lightning-button label="Generar Solicitud" variant="brand" type="submit"></lightning-button>
+                            </div>
+                        </lightning-record-edit-form>
+                    </div>
+                </template>
+            </template>
+
+            <!-- PASO 2 (Upload) -->
+            <template if:false={isStep1}>
+                <div class="slds-p-around_medium">
+                    <p class="slds-m-bottom_medium slds-text-color_success slds-text-heading_small slds-text-align_center">
+                        <b>✓ Solicitud Registrada. Completa los documentos para enviar.</b>
+                    </p>
+                    <div class="slds-grid slds-wrap slds-gutters">
+                        <!-- Columna Izquierda: Selector y Carga -->
+                        <template if:true={hasMoreDocsToUpload}>
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-m-bottom_medium">
+                                <lightning-combobox
+                                    label="¿Qué documento vas a subir?"
+                                    value={selectedDocType}
+                                    placeholder="Selecciona..."
+                                    options={docTypeOptions}
+                                    onchange={handleDocTypeChange}
+                                    class="slds-m-bottom_small"
+                                    required>
+                                </lightning-combobox>
+
+                                <lightning-file-upload
+                                    label="Adjuntar Archivo"
+                                    name="fileUploader"
+                                    accept={acceptedFormats}
+                                    record-id={createdCaseId}
+                                    onuploadfinished={handleUploadFinished}>
+                                </lightning-file-upload>
+                            </div>
+                        </template>
+                        
+                        <!-- Columna Derecha: Lista y Faltantes -->
+                        <div class={rightColumnClass}>
+                            <div class="slds-box slds-box_x-small">
+                                <h3 class="slds-text-heading_small slds-m-bottom_small"><b>Documentos Cargados</b></h3>
+                                <ul class="slds-has-dividers_bottom-space slds-m-bottom_medium">
+                                    <template if:false={uploadedDocs.length}>
+                                        <li class="slds-item slds-text-color_weak slds-text-align_center">Sin documentos anexos.</li>
+                                    </template>
+                                    <template for:each={uploadedDocs} for:item="doc">
+                                        <li key={doc.id} class="slds-item slds-grid slds-grid_vertical-align-center slds-grid_align-spread">
+                                            <div style="width: 70%;" class="slds-truncate">
+                                                <lightning-icon icon-name="doctype:attachment" size="small" class="slds-m-right_x-small"></lightning-icon>
+                                                <b>{doc.tipoDocumento}</b><br/>
+                                                <span class="slds-text-body_small slds-text-color_weak">{doc.name}</span>
+                                            </div>
+                                            <div>
+                                                <lightning-button-icon icon-name="utility:preview" variant="bare" data-id={doc.id} onclick={previewDoc} class="slds-m-right_x-small" title="Ver" alternative-text="Ver"></lightning-button-icon>
+                                                <lightning-button-icon icon-name="utility:delete" variant="bare" data-id={doc.id} onclick={deleteDoc} title="Eliminar" alternative-text="Eliminar"></lightning-button-icon>
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ul>
+
+                                <template if:true={missingDocsText}>
+                                    <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_warning" role="alert">
+                                        <h2 style="font-size:0.8rem;"><b>Falta subir:</b> {missingDocsText}</h2>
+                                    </div>
+                                </template>
+                                <template if:false={missingDocsText}>
+                                    <div class="slds-notify slds-notify_alert slds-alert_success" role="alert">
+                                        <h2 style="font-size:0.8rem;"><b>✓ Requisitos completos.</b></h2>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </lightning-modal-body>
+    <template if:false={isStep1}>
+        <lightning-modal-footer>
+            <lightning-button label="Enviar Solicitud" variant="brand" onclick={handleFinish} disabled={isSubmitDisabled}></lightning-button>
+        </lightning-modal-footer>
+    </template>
+</template>

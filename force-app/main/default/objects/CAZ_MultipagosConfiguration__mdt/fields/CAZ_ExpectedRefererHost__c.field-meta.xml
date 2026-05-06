@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_ExpectedRefererHost__c</fullName>
+    <description>Guarda el host esperado en el referer del POST de regreso.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Expected Referer Host</label>
+    <required>false</required>
+    <type>Url</type>
+</CustomField>

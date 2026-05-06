@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_SimulationMode__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>Indica si el ambiente debe tratarse como simulación.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Modo simulación</label>
+    <type>Checkbox</type>
+</CustomField>

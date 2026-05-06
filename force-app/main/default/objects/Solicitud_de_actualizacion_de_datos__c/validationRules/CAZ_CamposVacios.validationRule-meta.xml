@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_CamposVacios</fullName>
+    <active>true</active>
+    <description>Si todos los campos para información propuesta están vacíos, no se podrá mandar a Aprobación</description>
+    <errorConditionFormula>AND(
+   RecordType.DeveloperName = &apos;CAZ_Informacion_propia&apos;,
+   OR(
+      ISPICKVAL(CAZ_Estado__c,&apos;En aprobación&apos;),
+      ISPICKVAL(CAZ_Estado__c,&apos;Aprobado&apos;),
+      ISPICKVAL(CAZ_Estado__c,&apos;Rechazado&apos;)
+   ),
+   AND(
+      ISBLANK(CAZPB_Colonia__c),
+      ISBLANK(CAZPB_Municipio__c),
+      ISBLANK(CAZPB_No_exterior__c),
+      ISBLANK(CAZPB_No_interior__c),
+      ISBLANK(CAZPB_Ciudad__c),
+      ISBLANK(CAZPB_Pais__c),
+      ISBLANK(CAZPB_CodigoPostal__c),
+      ISBLANK(CAZPB_Estado__c),
+      ISBLANK(CAZPB_Calle__c),
+      ISBLANK(CAZPS_Colonia__c),
+      ISBLANK(CAZPS_Municipio__c),
+      ISBLANK(CAZPS_No_exterior__c),
+      ISBLANK(CAZPS_No_interior__c),
+      ISBLANK(CAZPS_Ciudad__c),
+      ISBLANK(CAZPS_Pais__c),
+      ISBLANK(CAZPS_CodigoPostal__c),
+      ISBLANK(CAZPS_Estado__c),
+      ISBLANK(CAZPS_Calle__c),
+      ISBLANK(CAZP_Email__c)
+   )
+)</errorConditionFormula>
+    <errorMessage>No es posible mandar una solicitud de aprobación si no se ha ingresado información que evaluar</errorMessage>
+</ValidationRule>

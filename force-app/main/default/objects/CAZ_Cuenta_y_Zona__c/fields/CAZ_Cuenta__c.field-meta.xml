@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_Cuenta__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>CAZ_Cuenta</label>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>CAZ_Cuentas_y_Zonas</relationshipLabel>
+    <relationshipName>CAZ_Cuentas_y_Zonas</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

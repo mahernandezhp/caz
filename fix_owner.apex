@@ -1,0 +1,1 @@
+CAZ_SolicitudDevolucion__c c = [SELECT Id, OwnerId, CreatedById, CAZ_Status__c FROM CAZ_SolicitudDevolucion__c WHERE Id = 'a1VWD000006RTot2AG' LIMIT 1]; if (c.OwnerId != c.CreatedById) { c.OwnerId = c.CreatedById; update c; }

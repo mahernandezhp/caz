@@ -1,16 +1,44 @@
 public with sharing class CAZ_DocumentoSolicitudController {
 
     @AuraEnabled(cacheable=true)
-    public static List<CAZ_DocumentoSolicitud__mdt> getDocumentosRequeridos(String processName) {
+    public static List<CAZ_DocumentoSolicitud__mdt> getDocumentosRequeridos(String processName, Id recordId) {
         if (String.isBlank(processName)) {
             return new List<CAZ_DocumentoSolicitud__mdt>();
         }
-        return [
-            SELECT MasterLabel, CAZ_Obligatorio__c, CAZ_TipoProceso__c, CAZ_TipoArchivoPermitido__c
+        
+        List<CAZ_DocumentoSolicitud__mdt> metadataList = [
+            SELECT MasterLabel, CAZ_Obligatorio__c, CAZ_TipoProceso__c, CAZ_TipoArchivoPermitido__c,
+                   CAZ_MontoMinimo__c, CAZ_MontoMaximo__c
             FROM CAZ_DocumentoSolicitud__mdt
             WHERE CAZ_TipoProceso__c = :processName
             ORDER BY MasterLabel ASC
         ];
+
+        Decimal montoSolicitado = 0;
+        if (recordId != null && recordId.getSobjectType().getDescribe().getName() == 'Case') {
+            List<Case> casoLista = [SELECT CAZ_MontoSolicitado__c FROM Case WHERE Id = :recordId WITH SECURITY_ENFORCED LIMIT 1];
+            if (!casoLista.isEmpty() && casoLista[0].CAZ_MontoSolicitado__c != null) {
+                montoSolicitado = casoLista[0].CAZ_MontoSolicitado__c;
+            }
+        }
+
+        List<CAZ_DocumentoSolicitud__mdt> filteredList = new List<CAZ_DocumentoSolicitud__mdt>();
+        for (CAZ_DocumentoSolicitud__mdt doc : metadataList) {
+            Boolean addDoc = true;
+            
+            if (doc.CAZ_MontoMinimo__c != null && montoSolicitado < doc.CAZ_MontoMinimo__c) {
+                addDoc = false;
+            }
+            if (doc.CAZ_MontoMaximo__c != null && montoSolicitado >= doc.CAZ_MontoMaximo__c) {
+                addDoc = false;
+            }
+            
+            if (addDoc) {
+                filteredList.add(doc);
+            }
+        }
+
+        return filteredList;
     }
 
     /**

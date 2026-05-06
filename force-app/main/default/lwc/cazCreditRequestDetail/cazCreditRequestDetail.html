@@ -1,0 +1,119 @@
+<template>
+    <!-- PREMIUM HEADER -->
+    <div class="premium-header slds-page-header slds-m-bottom_medium slds-page-header_record-home">
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                    <div class="slds-media__figure">
+                        <lightning-icon icon-name="standard:case" alternative-text="Solicitud de crédito"></lightning-icon>
+                    </div>
+                    <div class="slds-media__body">
+                        <div class="slds-page-header__name">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <span class="slds-text-heading_label slds-text-color_weak" style="font-size: 13px; font-weight: normal;">Solicitud de crédito</span>
+                                    <br/>
+                                    <span class="slds-page-header__title slds-truncate" title={recordName}>{recordName}</span>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-page-header__col-actions">
+                <div class="slds-page-header__controls">
+                    <div class="slds-page-header__control">
+                        <template if:true={isEditable}>
+                            <lightning-button variant="brand" label="Enviar a Revisión" onclick={handleEnviarRevision} disabled={isSubmitDisabled}></lightning-button>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- PATH de PROGRESO -->
+    <div class="premium-card slds-p-around_medium slds-m-bottom_medium">
+        <lightning-progress-indicator current-step={currentStatus} type="path" variant="base">
+            <template for:each={pathSteps} for:item="step">
+                <lightning-progress-step key={step.value} label={step.label} value={step.value}></lightning-progress-step>
+            </template>
+        </lightning-progress-indicator>
+    </div>
+
+    <!-- DETALLES FORM -->
+    <div class="premium-card">
+        <div class="section-header">
+            <lightning-icon icon-name="utility:form" size="small" class="header-icon"></lightning-icon>
+            <h2 class="section-title">Detalles de la Solicitud</h2>
+        </div>
+        
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Cargando..." size="small"></lightning-spinner>
+        </template>
+        
+        <template if:false={isLoading}>
+            <template if:true={isEditable}>
+                <lightning-record-edit-form record-id={recordId} object-api-name="Case" onsubmit={handleSubmit} onsuccess={handleSuccess} onerror={handleError}>
+                    <lightning-messages></lightning-messages>
+                    <div class="slds-grid slds-wrap slds-gutters">
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-m-bottom_small">
+                            <lightning-output-field field-name="ContactId"></lightning-output-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-m-bottom_small">
+                            <lightning-output-field field-name="AccountId"></lightning-output-field>
+                        </div>
+
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-m-bottom_small">
+                            <lightning-output-field field-name="CAZ_RFC__c"></lightning-output-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-m-bottom_small">
+                            <lightning-input-field field-name="CAZ_MontoSolicitado__c" required></lightning-input-field>
+                        </div>
+
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-m-bottom_small">
+                            <lightning-input-field field-name="CAZ_DiasCredito__c" required></lightning-input-field>
+                        </div>
+                    </div>
+                    <div class="slds-m-top_medium slds-text-align_right">
+                        <lightning-button label="Guardar Detalles" variant="neutral" type="submit"></lightning-button>
+                    </div>
+                </lightning-record-edit-form>
+            </template>
+            
+            <template if:false={isEditable}>
+                <lightning-record-view-form record-id={recordId} object-api-name="Case">
+                    <div class="slds-grid slds-wrap slds-gutters">
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-m-bottom_small">
+                            <lightning-output-field field-name="ContactId"></lightning-output-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-m-bottom_small">
+                            <lightning-output-field field-name="AccountId"></lightning-output-field>
+                        </div>
+
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-m-bottom_small">
+                            <lightning-output-field field-name="CAZ_RFC__c"></lightning-output-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-m-bottom_small">
+                            <lightning-output-field field-name="CAZ_MontoSolicitado__c"></lightning-output-field>
+                        </div>
+                        
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-m-bottom_small">
+                            <lightning-output-field field-name="CAZ_DiasCredito__c"></lightning-output-field>
+                        </div>
+                    </div>
+                </lightning-record-view-form>
+            </template>
+        </template>
+    </div>
+
+    <div class="slds-m-bottom_large">
+        <c-caz-carga-documentos 
+            record-id={recordId} 
+            process-name="SolicitudCredito" 
+            title="Documentos Adjuntos"
+            readonly-mode={isReadOnlyState}
+            ondocumentosupdated={handleDocumentosUpdated}>
+        </c-caz-carga-documentos>
+    </div>
+</template>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_Validar_Fecha_Reprogramacion</fullName>
+    <active>true</active>
+    <description>La fecha de reprogramación no puede ser menor  o igual a la fecha pactada de entrega en la orden</description>
+    <errorConditionFormula>AND(
+  NOT(ISBLANK(CAZ_Fecha_Reprogramacion__c)),
+  NOT(ISBLANK(CAZ_Numero_Orden__c)),
+  NOT(ISBLANK(CAZ_Numero_Orden__r.EffectiveDate)),
+
+  OR(
+    /* 1) No permitir fechas pasadas */
+    CAZ_Fecha_Reprogramacion__c &lt; TODAY(),
+
+    /* 2) No permitir reprogramar antes o el mismo día de la fecha original */
+    CAZ_Fecha_Reprogramacion__c &lt;= CAZ_Numero_Orden__r.EffectiveDate,
+
+    /* 3) No permitir exceder el último día del mes de la fecha original */
+    CAZ_Fecha_Reprogramacion__c &gt;
+      (
+        DATE(
+          YEAR(CAZ_Numero_Orden__r.EffectiveDate),
+          MONTH(CAZ_Numero_Orden__r.EffectiveDate) + 1,
+          1
+        ) - 1
+      )
+  )
+)</errorConditionFormula>
+    <errorDisplayField>CAZ_Fecha_Reprogramacion__c</errorDisplayField>
+    <errorMessage>La fecha de reprogramación debe ser posterior a hoy, posterior a la fecha original y no puede exceder el último día del mes de la fecha original.</errorMessage>
+</ValidationRule>

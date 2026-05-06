@@ -69,15 +69,27 @@ export default class CazCargaDocumentos extends NavigationMixin(LightningElement
         }
     }
 
-    connectedCallback() {
-        this.loadDocumentos();
-        if (this.recordId) {
-            this.loadArchivosExistentes();
+    async connectedCallback() {
+        this.isLoading = true;
+        try {
+            await this.loadDocumentos();
+            if (this.recordId) {
+                await this.loadArchivosExistentes();
+            }
+        } finally {
+            this.isLoading = false;
+            this.dispatchEvent(new CustomEvent('documentosupdated', {
+                detail: {
+                    totalRequeridos: this.documentosRequeridos.filter(d => d.obligatorio).length,
+                    totalCargados: this.uploadedFiles.length,
+                    completo: !this.hayDocumentosFaltantes
+                }
+            }));
         }
     }
 
     loadArchivosExistentes() {
-        getDocumentosCargados({ recordId: this.recordId })
+        return getDocumentosCargados({ recordId: this.recordId })
             .then(result => {
                 if (result && result.length > 0) {
                     this.uploadedFiles = result.map(f => ({
@@ -100,8 +112,7 @@ export default class CazCargaDocumentos extends NavigationMixin(LightningElement
     }
 
     loadDocumentos() {
-        this.isLoading = true;
-        getDocumentosRequeridos({ processName: this.processName, recordId: this.recordId })
+        return getDocumentosRequeridos({ processName: this.processName, recordId: this.recordId })
             .then(result => {
                 this.documentosRequeridos = result.map(doc => ({
                     label: doc.MasterLabel,
@@ -110,19 +121,9 @@ export default class CazCargaDocumentos extends NavigationMixin(LightningElement
                     cargado: false
                 }));
                 this.setDefaultTipoDocumento();
-                this.isLoading = false;
-                
-                this.dispatchEvent(new CustomEvent('documentosupdated', {
-                    detail: {
-                        totalRequeridos: this.documentosRequeridos.filter(d => d.obligatorio).length,
-                        totalCargados: this.uploadedFiles.length,
-                        completo: !this.hayDocumentosFaltantes
-                    }
-                }));
             })
             .catch(() => {
                 this.errorMessage = 'Error al cargar los documentos requeridos.';
-                this.isLoading = false;
             });
     }
 

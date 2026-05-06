@@ -1,0 +1,49 @@
+.status-borrador {
+    --sds-c-badge-color-background: #ecebea;
+    --sds-c-badge-text-color: #3e3e3c;
+}
+
+.status-en-revision {
+    --sds-c-badge-color-background: #0070d2;
+    --sds-c-badge-text-color: #ffffff;
+}
+
+.status-info-pendiente {
+    --sds-c-badge-color-background: #ffb75d;
+    --sds-c-badge-text-color: #080707;
+}
+
+.status-por-autorizar {
+    --sds-c-badge-color-background: #8e24aa;
+    --sds-c-badge-text-color: #ffffff;
+}
+
+.status-formalizacion {
+    --sds-c-badge-color-background: #00a1e0;
+    --sds-c-badge-text-color: #ffffff;
+}
+
+.status-rechazado {
+    --sds-c-badge-color-background: #ea001e;
+    --sds-c-badge-text-color: #ffffff;
+}
+
+.status-aprobado {
+    --sds-c-badge-color-background: #04844b;
+    --sds-c-badge-text-color: #ffffff;
+}
+
+.status-default {
+    --sds-c-badge-color-background: #54698d;
+    --sds-c-badge-text-color: #ffffff;
+}
+
+.status-autorizado {
+    --sds-c-badge-color-background: #00a1e0;
+    --sds-c-badge-text-color: #ffffff;
+}
+
+.status-completado {
+    --sds-c-badge-color-background: #023436;
+    --sds-c-badge-text-color: #ffffff;
+}

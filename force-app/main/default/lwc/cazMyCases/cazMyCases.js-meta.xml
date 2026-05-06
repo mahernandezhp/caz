@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>CAZ Dynamic Case List</masterLabel>
+    <description>Muestra una tabla de casos filtrada por Record Type y con columnas variables (Dynamic SOQL).</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="title" type="String" default="My Cases" label="Title" />
+            <property name="recordTypeDevName" type="String" label="Record Type Developer Name" description="Por ejemplo: SolicitudCredito" />
+            <property name="fieldsToShow" type="String" default="CaseNumber,Subject,Status,CreatedDate" label="Comma separated Field API Names" />
+            <property name="emptyMessage" type="String" default="No cases found." label="Empty State Message" />
+            <property name="listPageSize" type="Integer" default="10" label="Records per Page" />
+            <property name="targetPageName" type="String" default="solicitudCreditoDetail__c" label="Target Page API Name" description="The community page to navigate when a case is clicked." />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

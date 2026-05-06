@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_SuccessUrl__c</fullName>
+    <description>Es la URL que enviarás como mp_urlsuccess. Multipagos regresará a esta dirección cuando el pago sea exitoso.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Success URL</label>
+    <required>false</required>
+    <type>Url</type>
+</CustomField>

@@ -1,0 +1,83 @@
+<template>
+    <div class="caz-my-cases">
+        <div class="slds-card">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__figure slds-line-height_reset">
+                        <lightning-icon icon-name="standard:case" size="small"></lightning-icon>
+                    </div>
+                    <div class="media__body">
+                        <h2 class="slds-card__header-title">{title}</h2>
+                    </div>
+                </header>
+                <div class="slds-no-flex">
+                    <lightning-button label="Nueva Solicitud" variant="brand" onclick={handleNewRequest}></lightning-button>
+                </div>
+            </div>
+
+            <div class="slds-card__body slds-card__body_inner">
+                <template if:true={isLoading}>
+                    <lightning-spinner alternative-text="Loading..." size="medium"></lightning-spinner>
+                </template>
+
+                <template if:false={isLoading}>
+                    <template if:true={hasRecords}>
+                        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+                            <thead>
+                                <tr class="slds-line-height_reset">
+                                    <th scope="col"><div class="slds-truncate">No. Caso</div></th>
+                                    <th scope="col"><div class="slds-truncate">Asunto</div></th>
+                                    <th scope="col"><div class="slds-truncate">Estatus</div></th>
+                                    <th scope="col"><div class="slds-truncate">Fecha</div></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each={records} for:item="record">
+                                    <tr key={record.Id}>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <a href="javascript:void(0);" data-id={record.Id} onclick={handleVerDetalle}>
+                                                    {record.CaseNumber}
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td><div class="slds-truncate" title={record.Subject}>{record.Subject}</div></td>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <lightning-badge label={record.Status} class={record.statusCssClass}></lightning-badge>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <lightning-formatted-date-time value={record.CreatedDate} year="numeric" month="short" day="2-digit"></lightning-formatted-date-time>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+
+                        <div class="slds-grid slds-grid_vertical-align-center slds-grid_align-spread slds-p-top_medium">
+                            <div class="slds-col slds-text-body_small slds-p-left_small">
+                                Mostrando página {pageNumber} de {totalPages} ({totalRecords} total)
+                            </div>
+                            <div class="slds-col slds-p-right_small">
+                                <lightning-button-group>
+                                    <lightning-button-icon icon-name="utility:chevronleft" variant="border-filled" onclick={handlePreviousPage} disabled={isFirstPage} alternative-text="Anterior"></lightning-button-icon>
+                                    <lightning-button-icon icon-name="utility:chevronright" variant="border-filled" onclick={handleNextPage} disabled={isLastPage} alternative-text="Siguiente"></lightning-button-icon>
+                                </lightning-button-group>
+                            </div>
+                        </div>
+                    </template>
+
+                    <template if:false={hasRecords}>
+                        <div class="slds-illustration slds-illustration_small slds-p-around_large slds-text-align_center">
+                            <lightning-icon icon-name="custom:custom18" size="large" class="slds-m-bottom_medium"></lightning-icon>
+                            <p class="slds-text-body_regular">{emptyMessage}</p>
+                        </div>
+                    </template>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

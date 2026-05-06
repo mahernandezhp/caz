@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_Aprobador_SAD_Solicitud_de_actualizacion_de_datos</fullName>
+    <filterScope>Queue</filterScope>
+    <label>CAZ_Aprobador_SAD</label>
+    <queue>CAZ_Aprobador_SAD</queue>
+    <sharedTo>
+        <allInternalUsers></allInternalUsers>
+    </sharedTo>
+</ListView>

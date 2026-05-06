@@ -1,4 +1,5 @@
 import { LightningElement, api } from 'lwc';
+import { NavigationMixin } from 'lightning/navigation';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import preparePayment from '@salesforce/apex/CAZ_MultipagosPaymentService.preparePayment';
 
@@ -24,9 +25,9 @@ import preparePayment from '@salesforce/apex/CAZ_MultipagosPaymentService.prepar
  *   - El <form> se monta en document.body (no en el shadow root) porque
  *     los forms dentro de shadowRoot pueden ser filtrados por el runtime
  *     de LWC locker. Montarlo en document.body garantiza que el submit se
- *     ejecute como un form HTML estándar.
+ *     ejecute como un form HTML estándar. 
  */
-export default class CazMultipagosPaymentForm extends LightningElement {
+export default class CazMultipagosPaymentForm extends NavigationMixin(LightningElement) {
     @api recordId;
     @api buttonLabel = 'Pagar con Multipagos';
 
@@ -88,6 +89,24 @@ export default class CazMultipagosPaymentForm extends LightningElement {
             mp_urlsuccess: dto.mp_urlsuccess,
             mp_urlfailure: dto.mp_urlfailure
         };
+        const formFields = Object.entries(fields).reduce((acc, [name, value]) => {
+            if (value !== null && value !== undefined) {
+                acc[name] = String(value);
+            }
+            return acc;
+        }, {});
+        console.log(
+            'Multipagos POST payload:',
+            JSON.stringify(
+                {
+                    method: 'POST',
+                    action: endpoint,
+                    fields: formFields
+                },
+                null,
+                2
+            )
+        );
 
         const form = document.createElement('form');
         form.setAttribute('method', 'POST');
@@ -95,20 +114,16 @@ export default class CazMultipagosPaymentForm extends LightningElement {
         form.setAttribute('target', '_self');
         form.style.display = 'none';
 
-        Object.keys(fields).forEach((name) => {
-            const value = fields[name];
-            if (value === null || value === undefined) {
-                return;
-            }
+        Object.keys(formFields).forEach((name) => {
             const input = document.createElement('input');
             input.setAttribute('type', 'hidden');
             input.setAttribute('name', name);
-            input.setAttribute('value', String(value));
+            input.setAttribute('value', formFields[name]);
             form.appendChild(input);
         });
 
         document.body.appendChild(form);
-        form.submit();
+        //form.submit();
     }
 
     extractErrorMessage(error) {

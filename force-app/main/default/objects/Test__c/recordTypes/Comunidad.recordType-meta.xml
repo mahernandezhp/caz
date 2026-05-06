@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Comunidad</fullName>
+    <active>true</active>
+    <label>Comunidad</label>
+    <picklistValues>
+        <picklist>A3__c</picklist>
+        <values>
+            <fullName>E1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>E2</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Documento__c</picklist>
+        <values>
+            <fullName>CURP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>INE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RFC</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Clave_JDE_soloNumeros</fullName>
+    <active>true</active>
+    <description>El valor del campo Clave JDE, solo acepta números</description>
+    <errorConditionFormula>NOT(REGEX(ClaveJDE__c,&apos;^[0-9]+$&apos;))</errorConditionFormula>
+    <errorMessage>El valor del campo Clave JDE, solo acepta números</errorMessage>
+</ValidationRule>

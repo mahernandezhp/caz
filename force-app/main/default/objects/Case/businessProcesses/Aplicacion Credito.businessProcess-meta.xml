@@ -1,30 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BusinessProcess xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Aplicacion Credito</fullName>
-    <description>Proceso para las solicitudes de ampliacion de crédito</description>
+    <description>Proceso para las solicitudes de crédito (CC2). Estatus del flujo: Borrador → En Revisión → Por Autorizar → Formalización → Aprobado / Rechazado.</description>
     <isActive>true</isActive>
     <values>
         <fullName>Aprobado</fullName>
-        <default>false</default>
-    </values>
-    <values>
-        <fullName>Autorizado</fullName>
-        <default>false</default>
-    </values>
-    <values>
-        <fullName>Borrador</fullName>
-        <default>true</default>
-    </values>
-    <values>
-        <fullName>Closed</fullName>
-        <default>false</default>
-    </values>
-    <values>
-        <fullName>Completado</fullName>
-        <default>false</default>
-    </values>
-    <values>
-        <fullName>En Proceso</fullName>
         <default>false</default>
     </values>
     <values>
@@ -32,27 +12,23 @@
         <default>false</default>
     </values>
     <values>
-        <fullName>Escalated</fullName>
+        <fullName>Formalización</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Información Pendiente</fullName>
         <default>false</default>
     </values>
     <values>
         <fullName>New</fullName>
-        <default>false</default>
+        <default>true</default>
     </values>
     <values>
-        <fullName>Por atender</fullName>
+        <fullName>Por Autorizar</fullName>
         <default>false</default>
     </values>
     <values>
         <fullName>Rechazado</fullName>
-        <default>false</default>
-    </values>
-    <values>
-        <fullName>Vencido</fullName>
-        <default>false</default>
-    </values>
-    <values>
-        <fullName>Working</fullName>
         <default>false</default>
     </values>
 </BusinessProcess>

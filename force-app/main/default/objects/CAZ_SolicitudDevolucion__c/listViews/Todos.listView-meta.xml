@@ -8,7 +8,7 @@
     <columns>CAZ_Status__c</columns>
     <columns>CREATEDBY_USER</columns>
     <columns>CREATED_DATE</columns>
-    <filterScope>Mine</filterScope>
+    <filterScope>Everything</filterScope>
     <label>Todos</label>
     <sharedTo>
         <allPartnerUsers></allPartnerUsers>

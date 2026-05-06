@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <actionCalls>
+        <name>Llamar_Notificacion_Apex</name>
+        <label>Llamar Notificación Apex</label>
+        <locationX>300</locationX>
+        <locationY>288</locationY>
+        <actionName>CAZ_NotificarCreditoCobranzaRevision</actionName>
+        <actionType>apex</actionType>
+        <inputParameters>
+            <name>solicitudIds</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <environments>Default</environments>
+    <interviewLabel>CAZ Recordatorio Revision Credito {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CAZ_Recordatorio_Revision_Credito</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CAZ_Estatus__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>En Revisión</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CAZ_SiguienteRecordatorio__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>CAZ_SolicitudCredito__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>Recordatorio_A_La_Hora_Asignada</name>
+            <connector>
+                <targetReference>Llamar_Notificacion_Apex</targetReference>
+            </connector>
+            <label>Recordatorio a la hora asignada</label>
+            <offsetNumber>0</offsetNumber>
+            <offsetUnit>Hours</offsetUnit>
+            <recordField>CAZ_SiguienteRecordatorio__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

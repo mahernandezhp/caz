@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_MultipagosEndpoint__c</fullName>
+    <description>Aquí guardas la URL de Multipagos a la que vas a mandar el formulario POST</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Multipagos Endpoint</label>
+    <required>false</required>
+    <type>Url</type>
+</CustomField>

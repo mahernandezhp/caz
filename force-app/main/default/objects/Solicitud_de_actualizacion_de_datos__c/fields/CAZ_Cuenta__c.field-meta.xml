@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_Cuenta__c</fullName>
+    <label>CAZ_Cuenta</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>No se encontró información que coincida con los filtros</errorMessage>
+        <filterItems>
+            <field>Account.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CAZ Información propia</value>
+        </filterItems>
+        <infoMessage>Registros de clientes propios</infoMessage>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Actualización de datos</relationshipLabel>
+    <relationshipName>Solicitudes_de_actualizaci_n_de_datos</relationshipName>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_Informacion_propia</fullName>
+    <active>true</active>
+    <description>Registros para almacenar clientes CAZ</description>
+    <label>CAZ Información propia</label>
+    <picklistValues>
+        <picklist>CAZ_Estado__c</picklist>
+        <values>
+            <fullName>Aprobado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cancelado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>En aprobación</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rechazado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recibido</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -9,11 +9,6 @@
     <columns>CASES.CREATED_DATE</columns>
     <columns>CORE.USERS.ALIAS</columns>
     <filterScope>Queue</filterScope>
-    <filters>
-        <field>CASES.STATUS</field>
-        <operation>equals</operation>
-        <value>Borrador</value>
-    </filters>
     <label>Devoluciones</label>
     <queue>CreditoCobranza</queue>
     <sharedTo>

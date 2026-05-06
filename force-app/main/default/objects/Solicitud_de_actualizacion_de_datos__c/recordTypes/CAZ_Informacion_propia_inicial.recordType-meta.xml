@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_Informacion_propia_inicial</fullName>
+    <active>true</active>
+    <description>Paso para crear el registro inicial</description>
+    <label>Solicitud de actualización</label>
+    <picklistValues>
+        <picklist>CAZ_Estado__c</picklist>
+        <values>
+            <fullName>Aprobado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cancelado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>En aprobación</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rechazado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recibido</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+</RecordType>
