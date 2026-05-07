@@ -30,12 +30,7 @@
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
         <label>Información del sistema</label>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>OwnerId</field>
-            </layoutItems>
-        </layoutColumns>
+        <layoutColumns/>
         <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>

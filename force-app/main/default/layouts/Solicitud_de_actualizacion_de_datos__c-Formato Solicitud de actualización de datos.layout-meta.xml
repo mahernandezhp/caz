@@ -24,7 +24,7 @@
                 <field>CAZ_Estado__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>CAZ_IdExterno__c</field>
             </layoutItems>
             <layoutItems>
@@ -261,10 +261,6 @@
         <editHeading>true</editHeading>
         <label>Información del sistema</label>
         <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>OwnerId</field>
-            </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>RecordTypeId</field>
