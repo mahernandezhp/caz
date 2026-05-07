@@ -16,7 +16,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Contacto_Principal__c</field>
+                <field>CAZ_ContactoPrincipal__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

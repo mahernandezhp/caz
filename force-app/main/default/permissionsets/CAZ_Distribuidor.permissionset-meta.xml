@@ -3,7 +3,7 @@
     <description>Permisos para distribuidores en el portal Experience Cloud. Pueden crear solicitudes de devolución y consultar el estado de las propias.</description>
     <fieldPermissions>
         <editable>false</editable>
-        <field>AccountContactRelation.Contacto_Principal__c</field>
+        <field>AccountContactRelation.CAZ_ContactoPrincipal__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
