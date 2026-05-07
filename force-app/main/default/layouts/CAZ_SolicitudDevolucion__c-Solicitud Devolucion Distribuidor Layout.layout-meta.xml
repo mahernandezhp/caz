@@ -21,7 +21,7 @@
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Required</behavior>
+                <behavior>Readonly</behavior>
                 <field>CAZ_Status__c</field>
             </layoutItems>
             <layoutItems>
@@ -50,8 +50,12 @@
                 <field>CAZ_Description__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>CAZ_Comentarios__c</field>
+                <behavior>Readonly</behavior>
+                <field>CAZ_MotivoRechazo__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>CAZ_Respuesta__c</field>
             </layoutItems>
         </layoutColumns>
         <style>OneColumn</style>

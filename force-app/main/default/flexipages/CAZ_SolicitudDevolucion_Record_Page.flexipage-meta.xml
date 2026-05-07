@@ -247,6 +247,16 @@
                 </visibilityRule>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CAZ_Respuesta__c</fieldItem>
+                <identifier>RecordCAZ_Respuesta_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-4df75f8d-55c1-42b5-a007-b427134efdcc</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -466,7 +476,7 @@
         <name>sidebar</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>Solicitud de Devolución Record Page</masterLabel>
+    <masterLabel>Solicitud Devolución (Interno)</masterLabel>
     <parentFlexiPage>flexipage__default_rec_L</parentFlexiPage>
     <sobjectType>CAZ_SolicitudDevolucion__c</sobjectType>
     <template>

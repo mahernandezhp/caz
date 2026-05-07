@@ -131,7 +131,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>required</value>
+                    <value>readonly</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.CAZ_Status__c</fieldItem>
                 <identifier>RecordCAZ_Status_cField</identifier>
@@ -213,16 +213,7 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.OwnerId</fieldItem>
-                <identifier>RecordOwnerIdField</identifier>
-            </fieldInstance>
-        </itemInstances>
+
         <itemInstances>
             <fieldInstance>
                 <fieldInstanceProperties>
@@ -400,7 +391,7 @@
         <name>sidebar</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>Solicitud de Devolución Record Page</masterLabel>
+    <masterLabel>Solicitud Devolución (Distribuidor)</masterLabel>
     <parentFlexiPage>flexipage__default_rec_L</parentFlexiPage>
     <sobjectType>CAZ_SolicitudDevolucion__c</sobjectType>
     <template>
