@@ -2,6 +2,11 @@
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Permisos para distribuidores en el portal Experience Cloud. Pueden crear solicitudes de devolución y consultar el estado de las propias.</description>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>AccountContactRelation.Contacto_Principal__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>CAZ_SolicitudCredito__c.CAZ_Comentarios__c</field>
         <readable>true</readable>
