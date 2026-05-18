@@ -85,6 +85,7 @@ export default class CazMultipagosPaymentForm extends NavigationMixin(LightningE
             mp_concept: dto.mp_concept,
             mp_amount: dto.mp_amount,
             mp_currency: dto.mp_currency,
+            mp_customername: dto.mp_customername,
             mp_signature: dto.mp_signature,
             mp_urlsuccess: dto.mp_urlsuccess,
             mp_urlfailure: dto.mp_urlfailure
@@ -123,7 +124,7 @@ export default class CazMultipagosPaymentForm extends NavigationMixin(LightningE
         });
 
         document.body.appendChild(form);
-        //form.submit();
+        form.submit();
     }
 
     extractErrorMessage(error) {

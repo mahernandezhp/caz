@@ -35,6 +35,13 @@ public with sharing class CAZ_MultipagosPaymentService {
     private static final String LOG_PREFIX = 'CAZ_MultipagosPaymentService';
 
     /**
+     * mp_customername — Manual Técnico Multipagos v7.4 pág. 19/25:
+     * parámetro mínimo (TEXTO 50). Nombre del contribuyente/pagador.
+     */
+    private static final Integer MP_CUSTOMERNAME_MAX_LENGTH = 50;
+    private static final String  MP_CUSTOMERNAME_DEFAULT    = 'Cruz Azul Cliente';
+
+    /**
      * ============================================================================
      * Seams de prueba (@TestVisible)
      * ============================================================================
@@ -81,6 +88,7 @@ public with sharing class CAZ_MultipagosPaymentService {
         @AuraEnabled public String mp_concept;
         @AuraEnabled public String mp_amount;
         @AuraEnabled public String mp_currency;
+        @AuraEnabled public String mp_customername;
         @AuraEnabled public String mp_signature;
         @AuraEnabled public String mp_urlsuccess;
         @AuraEnabled public String mp_urlfailure;
@@ -189,6 +197,7 @@ public with sharing class CAZ_MultipagosPaymentService {
         dto.mp_concept = config.CAZ_Concept__c;
         dto.mp_amount = normalizedAmount;
         dto.mp_currency = config.CAZ_Currency__c;
+        dto.mp_customername = buildCustomerName(ord);
         dto.mp_signature = requestSignature;
         dto.mp_urlsuccess = config.CAZ_SuccessUrl__c;
         dto.mp_urlfailure = config.CAZ_FailureUrl__c;
@@ -276,7 +285,7 @@ public with sharing class CAZ_MultipagosPaymentService {
         System.debug(LoggingLevel.DEBUG, LOG_PREFIX + ' | getOrder | Consultando Order');
 
         List<Order> orders = [
-            SELECT Id, OrderNumber, AccountId, TotalAmount
+            SELECT Id, OrderNumber, AccountId, Account.Name, TotalAmount
             FROM Order
             WHERE Id = :orderId
             LIMIT 1
@@ -477,6 +486,39 @@ public with sharing class CAZ_MultipagosPaymentService {
         System.debug(LoggingLevel.DEBUG, LOG_PREFIX + ' | buildAmount | amount=' + ord.TotalAmount);
 
         return ord.TotalAmount;
+    }
+
+    /**
+     * ============================================================================
+     * Método: buildCustomerName
+     * ============================================================================
+     * Propósito:
+     * Construir el valor de mp_customername a partir del Account de la Order.
+     * Manual Técnico Multipagos v7.4 pág. 19/25: parámetro mínimo TEXTO 50.
+     *
+     * Estrategia:
+     * - Toma Order.Account.Name (es siempre informativo del pagador).
+     * - Si Account no está poblado o el nombre viene en blanco, cae al default
+     *   para no enviar un valor vacío al endpoint.
+     * - Trunca a 50 caracteres (límite del manual).
+     * ============================================================================
+     */
+    @TestVisible
+    private static String buildCustomerName(Order ord) {
+        String name = (ord != null && ord.Account != null)
+            ? ord.Account.Name
+            : null;
+
+        if (String.isBlank(name)) {
+            name = MP_CUSTOMERNAME_DEFAULT;
+        }
+
+        if (name.length() > MP_CUSTOMERNAME_MAX_LENGTH) {
+            name = name.substring(0, MP_CUSTOMERNAME_MAX_LENGTH);
+        }
+
+        System.debug(LoggingLevel.DEBUG, LOG_PREFIX + ' | buildCustomerName | name=' + name);
+        return name;
     }
 
     /**

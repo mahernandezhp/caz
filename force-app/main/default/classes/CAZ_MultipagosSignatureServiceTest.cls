@@ -18,7 +18,7 @@ private class CAZ_MultipagosSignatureServiceTest {
      *
      * Notas:
      * - La clase bajo prueba es pura (sin DML ni SOQL), por eso estos tests no
-     *   requieren @TestSetup ni Test.startTest()/stopTest() salvo para aislar
+     *   requieren @TestSetup ni System.Test.startTest()/stopTest() salvo para aislar
      *   límites en el caso más pesado.
      * ============================================================================
      */
@@ -30,11 +30,11 @@ private class CAZ_MultipagosSignatureServiceTest {
 
     @IsTest
     static void generateRequestSignature_returnsHexLowercase() {
-        Test.startTest();
+        System.Test.startTest();
         String sig = CAZ_MultipagosSignatureService.generateRequestSignature(
             ORDER, REFERENCE, 100.00, SECRET
         );
-        Test.stopTest();
+        System.Test.stopTest();
 
         System.assertNotEquals(null, sig, 'La firma no debe ser null');
         System.assertEquals(64, sig.length(), 'HMAC SHA-256 en hex debe tener 64 chars');

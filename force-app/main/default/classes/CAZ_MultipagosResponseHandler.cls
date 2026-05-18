@@ -41,7 +41,23 @@ public with sharing class CAZ_MultipagosResponseHandler {
     private static final String STATUS_SIGNATURE_INVALID = 'Signature_Invalid';
     private static final String STATUS_REFERER_INVALID   = 'Referer_Invalid';
 
-    private static final String APPROVED_RESPONSE_CODE = '00';
+    /**
+     * Códigos de respuesta que el Manual Técnico Multipagos v7.4 (Anexo 3,
+     * págs. 83-89) reconoce como "Aprobada/Autorizada" según el procesador
+     * que opere la cuenta:
+     *   - Openpay (BBVA común):              '000'
+     *   - Alignet / Interred / Interred 5.1: '00'
+     *   - CyberSource / Amex:                '0'
+     *   - Cheque en Línea / CoDi:            '00'
+     * Mantenemos el set explícito y validamos adicionalmente la autorización
+     * bancaria, que es la verdad final según el manual pág. 34: "el número
+     * de aprobación de un pago exitoso será siempre diferente de cero,
+     * cadena de ceros, null o vacía".
+     */
+    @TestVisible
+    private static final Set<String> APPROVED_RESPONSE_CODES = new Set<String>{
+        '00', '000', '0'
+    };
 
     /**
      * ============================================================================
@@ -163,6 +179,7 @@ public with sharing class CAZ_MultipagosResponseHandler {
 
         String finalStatus = determineTransactionStatus(
             responseData.mp_response,
+            responseData.mp_authorization,
             signatureValid,
             refererValid
         );
@@ -408,26 +425,58 @@ public with sharing class CAZ_MultipagosResponseHandler {
      * de referer.
      *
      * Prioridad de reglas:
-     * 1. Si mp_response == '00' y firma inválida → Signature_Invalid (posible fraude).
-     * 2. Si mp_response == '00' y firma válida → Approved.
-     *    (Referer inválido se registra pero no degrada una transacción aprobada
-     *    con firma válida, porque algunos navegadores no envían referer.)
-     * 3. Cualquier otro mp_response → Rejected.
+     * 1. Si mp_response es código aprobado del set APPROVED_RESPONSE_CODES Y
+     *    la autorización bancaria es válida (no null, no vacía, no cadena
+     *    de ceros — manual pág. 34) Y la firma es inválida → Signature_Invalid
+     *    (posible fraude).
+     * 2. Si mp_response es código aprobado Y autorización válida Y firma
+     *    válida → Approved. (Referer inválido se registra pero no degrada
+     *    una transacción aprobada con firma válida, porque algunos navegadores
+     *    no envían referer.)
+     * 3. Cualquier otro caso (código no aprobado, o autorización inválida
+     *    aunque el código diga aprobado) → Rejected.
      * ============================================================================
      */
     @TestVisible
     private static String determineTransactionStatus(
         String responseCode,
+        String authorization,
         Boolean signatureValid,
         Boolean refererValid
     ) {
-        if (APPROVED_RESPONSE_CODE.equals(responseCode)) {
+        Boolean codeApproved = responseCode != null
+            && APPROVED_RESPONSE_CODES.contains(responseCode);
+        Boolean authValid = isValidAuthorization(authorization);
+
+        if (codeApproved && authValid) {
             if (!signatureValid) {
                 return STATUS_SIGNATURE_INVALID;
             }
             return STATUS_APPROVED;
         }
         return STATUS_REJECTED;
+    }
+
+    /**
+     * ============================================================================
+     * Método: isValidAuthorization
+     * ============================================================================
+     * Propósito:
+     * Validar que el número de aprobación bancaria (mp_authorization) cumpla
+     * con la regla del Manual Técnico Multipagos v7.4 pág. 34:
+     *   "El número de aprobación de un pago exitoso será siempre diferente
+     *    de cero (0), cadena de ceros, null o vacía."
+     *
+     * Retorna true únicamente cuando authorization está poblada y NO es una
+     * cadena compuesta solamente por ceros.
+     * ============================================================================
+     */
+    @TestVisible
+    private static Boolean isValidAuthorization(String authorization) {
+        if (String.isBlank(authorization)) {
+            return false;
+        }
+        return authorization.replace('0', '').length() > 0;
     }
 
     /**

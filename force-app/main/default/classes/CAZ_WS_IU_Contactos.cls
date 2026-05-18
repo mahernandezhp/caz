@@ -5,22 +5,26 @@
  * Campos en upsert - CAZ_IdExterno__c -
  */
 
-/*@RestResource(urlMapping='/v1/iuContactos/*')*/ global class CAZ_WS_IU_Contactos {
-    //@HttpPost global static CAZ_WS_IU_ContactosRespuesta procesaPeticion() {
-    /*@HttpPost */global static void procesaPeticion() {
+@RestResource(urlMapping='/v1/iuContactos/*') global class CAZ_WS_IU_Contactos {
+    @HttpPost global static CAZ_WS_IU_ContactosRespuesta procesaPeticion() {
         system.debug('CAZ_WS_IU_Contactos ::: urlMapping: v1_iuContactos');
 
         // Se inician variables
-        Boolean continuaValidacion = true;
-        map<String, String> idExternoidCuenta = new map<String, String>();
+        String apexJSON = null;
+        list<String> idExternoidCuenta = new list<String>();
         list<CAZ_WS_IU_ContactosCamposJSON> cjson = new list<CAZ_WS_IU_ContactosCamposJSON>();
-        CAZ_WS_IU_ContactosRespuesta resultado = new CAZ_WS_IU_ContactosRespuesta();
         list<Account> consultaCuentas = new list<Account>();
-        list<Contact> listaInsertar = new list<Contact>();
-        // ---
-        String idExito = '';
-        String idError = '';
-        String datoRecibido = '[{"CAZ_Cuenta":"A001","CAZ_Nombre": "Nombre0","CAZ_SegundoNombre": "Nombre1","CAZ_Apellidos":"Apellidos","CAZ_Email":"correo2@correo.correo","CAZ_Telefono":"5500000002","CAZ_Factura":false,"CAZ_ClaveJDE":"C100","CAZ_IdExterno":"C000"}]';
+        list<CAZ_WS_IU_ContactosEstructura> contactoJSONRespuesta = new list<CAZ_WS_IU_ContactosEstructura>();
+        CAZ_WS_IU_ContactosRespuesta resultado = new CAZ_WS_IU_ContactosRespuesta();
+
+        // Se recibe la información desde el servicio
+        RestRequest request = RestContext.request;
+        system.debug('CAZ_WS_IU_Cuentas ::: request: '+ request.requestURI);
+
+        RestResponse res = RestContext.response;
+        String datoRecibido = request.requestBody.toString();
+
+        system.debug('CAZ_WS_IU_Contactos ::: datoRecibido: ' + datoRecibido);
 
         // Se procesa la respuesta del servicio de Cruz Azul
         cjson = (list<CAZ_WS_IU_ContactosCamposJSON>) JSON.deserialize(datoRecibido, list<CAZ_WS_IU_ContactosCamposJSON>.class);
@@ -28,73 +32,51 @@
 
         // Se consulta la Cuenta asociada en base al valor del campo "Cuenta" del JSON
         for(CAZ_WS_IU_ContactosCamposJSON forData : cjson) {
-            system.debug('CAZ_WS_IU_Contactos ::: forData: ' + forData);
-            if(!String.isBlank(forData.CAZ_Cuenta) && !String.isEmpty(forData.CAZ_Cuenta) && !idExternoidCuenta.containsKey(forData.CAZ_Cuenta)) {
-                idExternoidCuenta.put(forData.CAZ_Cuenta, null);
+            system.debug('CAZ_WS_IU_Contactos ::: forData: ' + forData.CAZ_ClaveJDE);
+
+            if(!String.isBlank(forData.CAZ_ClaveJDE) && !String.isEmpty(forData.CAZ_ClaveJDE) && !idExternoidCuenta.contains(forData.CAZ_ClaveJDE)) {
+                idExternoidCuenta.add(forData.CAZ_ClaveJDE);
             }
         }
-        system.debug('CAZ_WS_IU_Contactos ::: idExternoidCuenta: ' + idExternoidCuenta.keySet());
+        system.debug('CAZ_WS_IU_Contactos ::: idExternoidCuenta: ' + idExternoidCuenta.size());
 
-        // Si se encontro como minimo un valor en el mapa, se consultara la Cuenta asociada
-        if(!idExternoidCuenta.keySet().isEmpty()) {
-            consultaCuentas = [select Id, CAZ_IdExterno__c from Account where CAZ_IdExterno__c IN : idExternoidCuenta.keySet()];
+        // Si se encontro como minimo un valor en la lista, se consultaran las Cuentas asociadas
+        if(!idExternoidCuenta.isEmpty()) {
+            // Se consultan los registros de Cuenta asociados
+            consultaCuentas = [select Id, ClaveJDE__c, (select Id, AccountId, Account.Name, FirstName, MiddleName, LastName, Email, Phone from Contacts) from Account where ClaveJDE__c IN : idExternoidCuenta];
             system.debug('CAZ_WS_IU_Contactos ::: consultaCuentas: ' + consultaCuentas.size());
 
             if(!consultaCuentas.isEmpty()) {
-                // Se carga el mapa para agregar la informacion al nuevo registro
+                // Se agrupa la informacion de Contactos
                 for(Account forData : consultaCuentas) {
-                    idExternoidCuenta.put(forData.CAZ_IdExterno__c, forData.Id);
-                }
-                system.debug('CAZ_WS_IU_Contactos ::: idExternoidCuenta: ' + idExternoidCuenta.size());
-
-                // se agrega el valor
-                for(CAZ_WS_IU_ContactosCamposJSON forData : cjson) {
-                    Contact tmp = new Contact();
-                    if(idExternoidCuenta.get(forData.CAZ_Cuenta) != null) {
-                        tmp.AccountId = idExternoidCuenta.get(forData.CAZ_Cuenta);
-                        tmp.FirstName = forData.CAZ_Nombre;
-                        tmp.MiddleName = forData.CAZ_SegundoNombre;
-                        tmp.LastName = forData.CAZ_Apellidos;
-                        tmp.Email = forData.CAZ_Email;
-                        tmp.Phone = forData.CAZ_Telefono;
-                        tmp.CAZ_Factura__c = forData.CAZ_Factura;
-                        tmp.CAZ_IdExterno__c = forData.CAZ_IdExterno;
-                        listaInsertar.add(tmp);
-                    }
-                    else {
-                        resultado.Success = false;
-                        resultado.Mesagge = 'No se encontro la Cuenta asociada al Contacto. Cuenta: ' + forData.CAZ_Cuenta;
-                        resultado.Data = null;
-                        continuaValidacion = false;
-                    }
-                }
-                system.debug('CAZ_WS_IU_Contactos ::: listaInsertar: ' + listaInsertar.size());
-
-                // Se insertan los registros
-                // - false - insertara todos los registros posibles, embase a los datos minimos necesarios para crear un registro en Salesforce
-                // - true  - si un registro como minimo no cumple con los datos minimos necesarios para crear un registro en Salesforce, toda la operacion se cancela
-                // Cuando se usa "true", apex ya no itera - Database.UpsertResult -
-                Database.UpsertResult[] resultsUpsert = Database.upsert(listaInsertar, Contact.Fields.CAZ_IdExterno__c, false);
-                for(Database.UpsertResult forData : resultsUpsert) {
-                    if(forData.isSuccess()) {
-                        idExito += ', ' + forData.getId();
-                    }
-                    else {
-                        for(Database.Error forDataError : forData.getErrors()) {
-                            idError += ' ::: ' + forDataError.getMessage();
+                    if(!forData.Contacts.isEmpty()) {
+                        for(Contact forData2 : forData.Contacts) {
+                            CAZ_WS_IU_ContactosEstructura contactoJSONtmp = new CAZ_WS_IU_ContactosEstructura();
+                            contactoJSONtmp.IdAccount = forData2.AccountId;
+                            contactoJSONtmp.Distribuidor = forData2.Account.Name;
+                            contactoJSONtmp.Nombre = forData2.FirstName;
+                            contactoJSONtmp.Nombre2 = forData2.MiddleName;
+                            contactoJSONtmp.Apellidos = forData2.LastName;
+                            contactoJSONtmp.Email = forData2.Email;
+                            contactoJSONtmp.Telefono = forData2.Phone;
+                            contactoJSONRespuesta.add(contactoJSONtmp);
                         }
-                        continuaValidacion = false;
                     }
                 }
+                system.debug('CAZ_WS_IU_Contactos ::: contactoJSONRespuesta: ' + contactoJSONRespuesta.size());
 
-                resultado.Success = continuaValidacion ? true : false;
-                resultado.Mesagge = continuaValidacion ? 'Informacion procesada' + idExito + ', correctamente en Salesforce': 'La informacion ingresada a Salesforce tuvo errores de validacion' + idError;
+                // Se prepara la respuesta
+                resultado.Success = true;
+                resultado.Mesagge = !contactoJSONRespuesta.isEmpty() ? 'Informacion cargada correctamente.' : 'No se encontraron Contactos relacionados ';
+                resultado.Data = !contactoJSONRespuesta.isEmpty() ? contactoJSONRespuesta : null;
+            }
+            else {
+                resultado.Success = false;
+                resultado.Mesagge = 'No se encontro registro de Cuenta (Distribuidor) con el JDE indicado.';
                 resultado.Data = null;
-
-                system.debug('CAZ_WS_IU_Contactos ::: resultado: ' + resultado);
             }
         }
-        //return resultado;
+        return resultado;
     }
 }
 
@@ -102,28 +84,21 @@
 JSON propuesto
 [
    {
-      "CAZ_Cuenta":"A001",
-      "CAZ_Nombre":"Nombre0",
-      "CAZ_SegundoNombre":"Nombre1",
-      "CAZ_Apellidos":"Apellidos",
-      "CAZ_Email":"correo2@correo.correo",
-      "CAZ_Telefono":"5500000002",
-      "CAZ_Factura":false,
-      "CAZ_IdExterno":"C000"
+      "CAZ_ClaveJDE":"1003"
    }
 ]
 
 SUCCESS
 {
   "Success" : true,
-  "Mesagge" : "Operacion correcta",
-  "Data" : null
+  "Mesagge" : "Texto...",
+  "Data" : objClass
 }
 
 ERROR
 {
   "Success" : false,
-  "Mesagge" : "Descripcion del error",
+  "Mesagge" : "Texto...",
   "Data" : null
 }
 */

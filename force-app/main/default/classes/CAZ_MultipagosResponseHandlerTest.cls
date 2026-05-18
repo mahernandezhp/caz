@@ -68,7 +68,7 @@ private class CAZ_MultipagosResponseHandlerTest {
             AccountId     = acc.Id,
             EffectiveDate = Date.today(),
             Status        = 'Draft',
-            Pricebook2Id  = Test.getStandardPricebookId()
+            Pricebook2Id  = System.Test.getStandardPricebookId()
         );
         insert ord;
 
@@ -140,10 +140,10 @@ private class CAZ_MultipagosResponseHandlerTest {
             '00', 'Aprobada', MP_AUTH, validSig
         );
 
-        Test.startTest();
+        System.Test.startTest();
         CAZ_MultipagosResponseHandler.PaymentResultData result =
             CAZ_MultipagosResponseHandler.processResponse(json, VALID_REFERER);
-        Test.stopTest();
+        System.Test.stopTest();
 
         System.assertEquals(paymentId, result.paymentId);
         System.assertEquals('Approved', result.transactionStatus);
@@ -180,10 +180,10 @@ private class CAZ_MultipagosResponseHandlerTest {
             '54', 'Tarjeta expirada', MP_AUTH, validSig
         );
 
-        Test.startTest();
+        System.Test.startTest();
         CAZ_MultipagosResponseHandler.PaymentResultData result =
             CAZ_MultipagosResponseHandler.processResponse(json, VALID_REFERER);
-        Test.stopTest();
+        System.Test.stopTest();
 
         System.assertEquals('Rejected', result.transactionStatus);
         System.assertEquals(false, result.isApproved);
@@ -210,10 +210,10 @@ private class CAZ_MultipagosResponseHandlerTest {
             '00', 'Aprobada', MP_AUTH, fakeSig
         );
 
-        Test.startTest();
+        System.Test.startTest();
         CAZ_MultipagosResponseHandler.PaymentResultData result =
             CAZ_MultipagosResponseHandler.processResponse(json, VALID_REFERER);
-        Test.stopTest();
+        System.Test.stopTest();
 
         System.assertEquals('Signature_Invalid', result.transactionStatus,
             'mp_response=00 con firma inválida debe marcar como Signature_Invalid');
@@ -238,11 +238,11 @@ private class CAZ_MultipagosResponseHandlerTest {
             '00', 'Aprobada', MP_AUTH, validSig
         );
 
-        Test.startTest();
+        System.Test.startTest();
         // Referer de un host distinto al CMT expected.
         CAZ_MultipagosResponseHandler.PaymentResultData result =
             CAZ_MultipagosResponseHandler.processResponse(json, 'https://evil.example.com/bad');
-        Test.stopTest();
+        System.Test.stopTest();
 
         System.assertEquals('Approved', result.transactionStatus,
             'Regla documentada: referer inválido se audita pero no degrada Approved con firma válida');
@@ -260,10 +260,10 @@ private class CAZ_MultipagosResponseHandlerTest {
             '00', 'Aprobada', MP_AUTH, validSig
         );
 
-        Test.startTest();
+        System.Test.startTest();
         CAZ_MultipagosResponseHandler.PaymentResultData result =
             CAZ_MultipagosResponseHandler.processResponse(json, '');
-        Test.stopTest();
+        System.Test.stopTest();
 
         System.assertEquals('Approved', result.transactionStatus);
         System.assertEquals(false, result.refererValid,
@@ -280,10 +280,10 @@ private class CAZ_MultipagosResponseHandlerTest {
             '00', 'Aprobada', MP_AUTH, validSig
         );
 
-        Test.startTest();
+        System.Test.startTest();
         CAZ_MultipagosResponseHandler.PaymentResultData result =
             CAZ_MultipagosResponseHandler.processResponse(json, VALID_REFERER);
-        Test.stopTest();
+        System.Test.stopTest();
 
         System.assertEquals('Error', result.transactionStatus);
         System.assertEquals(null, result.paymentId,
@@ -314,10 +314,10 @@ private class CAZ_MultipagosResponseHandlerTest {
             '00', 'Segunda respuesta', MP_AUTH, validSig
         );
 
-        Test.startTest();
+        System.Test.startTest();
         CAZ_MultipagosResponseHandler.PaymentResultData result =
             CAZ_MultipagosResponseHandler.processResponse(json, VALID_REFERER);
-        Test.stopTest();
+        System.Test.stopTest();
 
         System.assertEquals(true, result.alreadyProcessed,
             'Un Payment no-Pending debe devolver alreadyProcessed=true');
@@ -447,13 +447,17 @@ private class CAZ_MultipagosResponseHandlerTest {
 
     @IsTest
     static void determineTransactionStatus_approvedWithValidSig() {
-        String status = CAZ_MultipagosResponseHandler.determineTransactionStatus('00', true, true);
+        String status = CAZ_MultipagosResponseHandler.determineTransactionStatus(
+            '00', 'AUTH123456', true, true
+        );
         System.assertEquals('Approved', status);
     }
 
     @IsTest
     static void determineTransactionStatus_approvedCodeWithInvalidSig() {
-        String status = CAZ_MultipagosResponseHandler.determineTransactionStatus('00', false, true);
+        String status = CAZ_MultipagosResponseHandler.determineTransactionStatus(
+            '00', 'AUTH123456', false, true
+        );
         System.assertEquals('Signature_Invalid', status);
     }
 
@@ -461,14 +465,86 @@ private class CAZ_MultipagosResponseHandlerTest {
     static void determineTransactionStatus_approvedWithInvalidReferer_stillApproved() {
         // Regla documentada en el handler: referer inválido NO degrada un
         // Approved cuando la firma es válida.
-        String status = CAZ_MultipagosResponseHandler.determineTransactionStatus('00', true, false);
+        String status = CAZ_MultipagosResponseHandler.determineTransactionStatus(
+            '00', 'AUTH123456', true, false
+        );
         System.assertEquals('Approved', status);
     }
 
     @IsTest
     static void determineTransactionStatus_rejectedCode() {
-        String status = CAZ_MultipagosResponseHandler.determineTransactionStatus('54', true, true);
+        String status = CAZ_MultipagosResponseHandler.determineTransactionStatus(
+            '54', 'AUTH123456', true, true
+        );
         System.assertEquals('Rejected', status);
+    }
+
+    /**
+     * H2 — Manual Anexo 3 pág. 83-89: Openpay (procesador BBVA común) marca
+     * "APROBADA" con código '000' (3 dígitos), no '00'. El handler debe
+     * reconocerlo como Approved.
+     */
+    @IsTest
+    static void determineTransactionStatus_openpayApproved000_returnsApproved() {
+        String status = CAZ_MultipagosResponseHandler.determineTransactionStatus(
+            '000', 'AUTH123456', true, true
+        );
+        System.assertEquals('Approved', status);
+    }
+
+    /**
+     * H2 — Manual Anexo 3 pág. 88-89: American Express / CyberSource marca
+     * "AUTORIZADA" con código '0' (1 dígito). El handler debe reconocerlo.
+     */
+    @IsTest
+    static void determineTransactionStatus_amexApproved0_returnsApproved() {
+        String status = CAZ_MultipagosResponseHandler.determineTransactionStatus(
+            '0', 'AUTH123456', true, true
+        );
+        System.assertEquals('Approved', status);
+    }
+
+    /**
+     * H2 — Manual pág. 34: "El número de aprobación de un pago exitoso será
+     * siempre diferente de cero, cadena de ceros, null o vacía." Aunque el
+     * código de respuesta sea aprobado, una autorización de ceros debe
+     * marcarse como Rejected.
+     */
+    @IsTest
+    static void determineTransactionStatus_authAllZeros_returnsRejected() {
+        String status = CAZ_MultipagosResponseHandler.determineTransactionStatus(
+            '00', '000000', true, true
+        );
+        System.assertEquals('Rejected', status);
+    }
+
+    /**
+     * H2 — Autorización null/blank también invalida la aprobación.
+     */
+    @IsTest
+    static void determineTransactionStatus_authBlank_returnsRejected() {
+        String status = CAZ_MultipagosResponseHandler.determineTransactionStatus(
+            '00', '', true, true
+        );
+        System.assertEquals('Rejected', status);
+
+        status = CAZ_MultipagosResponseHandler.determineTransactionStatus(
+            '00', null, true, true
+        );
+        System.assertEquals('Rejected', status);
+    }
+
+    /**
+     * H2 helper — verifica directamente el helper isValidAuthorization.
+     */
+    @IsTest
+    static void isValidAuthorization_variants() {
+        System.assertEquals(true,  CAZ_MultipagosResponseHandler.isValidAuthorization('AUTH001'));
+        System.assertEquals(true,  CAZ_MultipagosResponseHandler.isValidAuthorization('100'));
+        System.assertEquals(false, CAZ_MultipagosResponseHandler.isValidAuthorization('0'));
+        System.assertEquals(false, CAZ_MultipagosResponseHandler.isValidAuthorization('0000'));
+        System.assertEquals(false, CAZ_MultipagosResponseHandler.isValidAuthorization(''));
+        System.assertEquals(false, CAZ_MultipagosResponseHandler.isValidAuthorization(null));
     }
 
     @IsTest

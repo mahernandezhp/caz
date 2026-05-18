@@ -87,7 +87,7 @@ private class CAZ_MultipagosPaymentServiceTest {
         Product2 prod = new Product2(Name = 'Test CAZ Product', IsActive = true);
         insert prod;
 
-        Id standardPbId = Test.getStandardPricebookId();
+        Id standardPbId = System.Test.getStandardPricebookId();
 
         PricebookEntry pbe = new PricebookEntry(
             Pricebook2Id = standardPbId,
@@ -133,7 +133,7 @@ private class CAZ_MultipagosPaymentServiceTest {
             AccountId     = acc.Id,
             EffectiveDate = Date.today(),
             Status        = 'Draft',
-            Pricebook2Id  = Test.getStandardPricebookId()
+            Pricebook2Id  = System.Test.getStandardPricebookId()
         );
         insert ord;
 
@@ -151,18 +151,23 @@ private class CAZ_MultipagosPaymentServiceTest {
         setupMockGateway();
         Order ord = createOrderWithTotal(150.00, 2);
 
-        Test.startTest();
+        System.Test.startTest();
         CAZ_MultipagosPaymentService.PaymentRequestData dto =
             CAZ_MultipagosPaymentService.preparePayment(ord.Id);
-        Test.stopTest();
+        System.Test.stopTest();
 
         System.assertNotEquals(null, dto, 'El DTO no debe ser null');
         System.assertNotEquals(null, dto.paymentId, 'paymentId debe estar poblado');
         System.assertNotEquals(null, dto.paymentGroupId, 'paymentGroupId debe estar poblado');
         System.assertNotEquals(null, dto.paymentGatewayId, 'paymentGatewayId debe venir del mock');
         System.assertEquals('PREPROD', dto.environment);
-        System.assertEquals('https://prepro.adquiracloud.mx', dto.multipagosEndpoint);
-        System.assertEquals('12780', dto.mp_account);
+        // Endpoint y mp_account vienen del CMT activo. Flap confirmó por correo
+        // (folio 00615439) los valores para PREPROD; el test verifica que el
+        // DTO arrastra lo que el CMT tenga configurado, no hardcoded.
+        System.assert(!String.isBlank(dto.multipagosEndpoint),
+            'multipagosEndpoint debe estar poblado desde el CMT activo');
+        System.assert(!String.isBlank(dto.mp_account),
+            'mp_account debe estar poblado desde el CMT activo (Flap PREPROD = 11049)');
         System.assertNotEquals(null, dto.mp_order);
         System.assert(!String.isBlank(dto.mp_reference));
         System.assert(dto.mp_reference.length() <= 30,
@@ -171,6 +176,14 @@ private class CAZ_MultipagosPaymentServiceTest {
             '2 * 150.00 = 300.00 con normalización a 2 decimales');
         System.assertNotEquals(null, dto.mp_signature);
         System.assertEquals(64, dto.mp_signature.length(), 'Firma hex SHA-256 = 64 chars');
+        // H1: mp_customername es parámetro mínimo según Manual pág. 19/25.
+        // Debe estar poblado, no vacío, y respetar el límite de 50 chars.
+        System.assert(!String.isBlank(dto.mp_customername),
+            'mp_customername no puede ir vacío al endpoint de Multipagos');
+        System.assert(dto.mp_customername.length() <= 50,
+            'mp_customername no debe exceder 50 chars (Manual pág. 19). Got: ' + dto.mp_customername);
+        System.assertEquals('Test CAZ Account', dto.mp_customername,
+            'mp_customername debe tomarse de Order.Account.Name');
 
         // Verifica que el Payment se creó en DB con los campos CAZ_* correctos.
         Payment persisted = [
@@ -200,10 +213,10 @@ private class CAZ_MultipagosPaymentServiceTest {
         PaymentGroup preExisting = new PaymentGroup(SourceObjectId = ord.Id);
         insert preExisting;
 
-        Test.startTest();
+        System.Test.startTest();
         CAZ_MultipagosPaymentService.PaymentRequestData dto =
             CAZ_MultipagosPaymentService.preparePayment(ord.Id);
-        Test.stopTest();
+        System.Test.stopTest();
 
         System.assertEquals(preExisting.Id, dto.paymentGroupId,
             'Debe reutilizar el PaymentGroup existente en lugar de crear otro');
@@ -354,5 +367,64 @@ private class CAZ_MultipagosPaymentServiceTest {
         String result = CAZ_MultipagosPaymentService.buildMultipagosReference(synthetic, '###');
         System.assert(result.startsWith('CAZ'),
             'Prefix inválido tras sanitize debe caer a CAZ. Got: ' + result);
+    }
+
+    /**
+     * H1 — buildCustomerName con Account null o Name en blanco debe caer al
+     * default para nunca enviar string vacío al endpoint.
+     */
+    @IsTest
+    static void buildCustomerName_nullOrder_returnsDefault() {
+        String name = CAZ_MultipagosPaymentService.buildCustomerName(null);
+        System.assertEquals('Cruz Azul Cliente', name);
+    }
+
+    @IsTest
+    static void buildCustomerName_orderWithoutAccount_returnsDefault() {
+        Order ord = new Order();
+        String name = CAZ_MultipagosPaymentService.buildCustomerName(ord);
+        System.assertEquals('Cruz Azul Cliente', name);
+    }
+
+    /**
+     * H1 — Manual pág. 19: TEXTO 50. Nombres más largos deben truncarse.
+     */
+    @IsTest
+    static void buildCustomerName_longAccountName_truncatesTo50() {
+        Account fakeAcc = (Account) JSON.deserialize(
+            '{"attributes":{"type":"Account"},"Name":"'
+            + 'Sociedad Cooperativa de Trabajadores de la Cruz Azul Sociedad Cooperativa de RL de CV"}',
+            Account.class
+        );
+        // syntheticOrder no incluye Account; construimos uno con Account inline.
+        Order ord = (Order) JSON.deserialize(
+            '{"attributes":{"type":"Order"},'
+            + '"Account":' + JSON.serialize(fakeAcc) + '}',
+            Order.class
+        );
+
+        String name = CAZ_MultipagosPaymentService.buildCustomerName(ord);
+        System.assertEquals(50, name.length(),
+            'Nombre largo debe truncarse a 50 chars (Manual pág. 19). Got length=' + name.length());
+        System.assert(name.startsWith('Sociedad Cooperativa'),
+            'Truncamiento debe conservar el inicio del nombre. Got: ' + name);
+    }
+
+    /**
+     * H1 — Account.Name normal: se usa tal cual.
+     */
+    @IsTest
+    static void buildCustomerName_normalAccountName_returnsAsIs() {
+        Account fakeAcc = (Account) JSON.deserialize(
+            '{"attributes":{"type":"Account"},"Name":"Cooperativa La Cruz Azul"}',
+            Account.class
+        );
+        Order ord = (Order) JSON.deserialize(
+            '{"attributes":{"type":"Order"},'
+            + '"Account":' + JSON.serialize(fakeAcc) + '}',
+            Order.class
+        );
+        String name = CAZ_MultipagosPaymentService.buildCustomerName(ord);
+        System.assertEquals('Cooperativa La Cruz Azul', name);
     }
 }

@@ -7,7 +7,6 @@ global class CAZ_WS_IU_CuentasCamposJSON {
     public String CAZ_Email {get; set;}
     public String Phone {get; set;}
 
-    public String CAZ_IdExterno {get; set;}
     public String CAZ_NombreDeLaCuenta {get; set;}
 
     public String CAZB_Calle {get; set;}
@@ -42,7 +41,6 @@ global class CAZ_WS_IU_CuentasCamposJSON {
         CAZ_Email = null;
         Phone = null;
         // ---
-        CAZ_IdExterno = null;
         CAZ_NombreDeLaCuenta = null;
         //---
         CAZB_Calle = null;
@@ -64,6 +62,6 @@ global class CAZ_WS_IU_CuentasCamposJSON {
         CAZS_No_exterior = null;
         CAZS_No_interior = null;
         //---
-        cuentaPricipal = null;
+        CuentaPricipal = null;
     }
 }

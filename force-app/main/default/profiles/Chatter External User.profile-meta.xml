@@ -33,6 +33,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CAZ_GenerarCasosCobranzaBatch</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CAZ_MisSolicitudesCreditoCtrl</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -106,6 +110,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CAZ_WS_IU_ContactosCamposJSON</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CAZ_WS_IU_ContactosEstructura</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -372,6 +380,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Account.CAZ_DiasAtraso__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Account.CAZ_Direccion_plantilla_B__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -402,7 +415,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Account.CAZ_NivelRiesgoCobranza__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Account.CAZ_Usuario_activo__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.CAZ_Viene_de_WS__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -521,6 +544,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_SolicitudCredito__c.CAZ_Cuenta__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>CAZ_SolicitudCredito__c.CAZ_Estatus__c</field>
         <readable>false</readable>
@@ -533,6 +561,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>CAZ_SolicitudCredito__c.CAZ_MotivoRechazo__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CAZ_SolicitudCredito__c.CAZ_NombreCreador__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -559,6 +592,11 @@
         <editable>false</editable>
         <field>CAZ_SolicitudCredito__c.CAZ_SiguienteRecordatorio__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_SolicitudDevolucion__c.CAZ_Account__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -588,6 +626,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>CAZ_SolicitudDevolucion__c.CAZ_MotivoRechazo__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CAZ_SolicitudDevolucion__c.CAZ_NombreCreador__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_Viene_de_WS__c</fullName>
+    <defaultValue>false</defaultValue>
+    <inlineHelpText>NO AGREGAR AL FORMATO DE PAGINA. La casilla será marcada el recibir la información desde el WS. Si la casilla no está marcada al crear el registro, se mostrará un mensaje de error. Regla de validación &quot;CAZ_OrigenDeLaCuenta&quot;. Solo se podrán crear Cuentas (Distribuidores) desde el WS indicado el 12 de mayo 2026</inlineHelpText>
+    <label>¿Viene de WS?</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

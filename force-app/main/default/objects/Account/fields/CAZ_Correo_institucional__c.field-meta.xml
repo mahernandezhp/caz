@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>CAZ_Correo_institucional__c</fullName>
     <externalId>false</externalId>
-    <label>Correo electrónico</label>
+    <label>CAZ_Correo_institucional</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>

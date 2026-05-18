@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_OrigenDeLaCuenta</fullName>
+    <active>true</active>
+    <description>Si la información de la Cuenta no tiene como origen el WS (CAZ_WS_IU_Cuentas) se mostrara el siguiente mensaje</description>
+    <errorConditionFormula>AND(
+   ISNEW(),
+   CAZ_Viene_de_WS__c
+)</errorConditionFormula>
+    <errorMessage>No se permiten crear registros de Cuentas (Distribuidor) si el origen no es por medio del servicio web</errorMessage>
+</ValidationRule>
