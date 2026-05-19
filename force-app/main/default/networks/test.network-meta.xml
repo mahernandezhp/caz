@@ -9,7 +9,7 @@
         <partnerUserRole>Distribuidor</partnerUserRole>
     </communityRoles>
     <disableReputationRecordConversations>false</disableReputationRecordConversations>
-    <emailSenderAddress>cloudmobilesfa@gmail.com</emailSenderAddress>
+    <emailSenderAddress>marcohernandezhp@gmail.com</emailSenderAddress>
     <emailSenderName>test</emailSenderName>
     <embeddedLoginEnabled>false</embeddedLoginEnabled>
     <enableApexCDNCaching>false</enableApexCDNCaching>
@@ -76,7 +76,7 @@
         <selfRegProfilePageOverrideSetting>Standard</selfRegProfilePageOverrideSetting>
     </networkPageOverrides>
     <picassoSite>test1</picassoSite>
-    <selfRegProfile>external apps login user</selfRegProfile>
+    <selfRegProfile>portal distribuidor - partner community user</selfRegProfile>
     <selfRegistration>true</selfRegistration>
     <sendWelcomeEmail>true</sendWelcomeEmail>
     <site>test</site>
