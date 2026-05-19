@@ -17,6 +17,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>CAZ_SolicitudCredito__c.CAZ_Cuenta__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>CAZ_SolicitudCredito__c.CAZ_Estatus__c</field>
         <readable>true</readable>

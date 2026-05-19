@@ -6,6 +6,52 @@
     <description>Se utiliza para gestionar y aprobar las solicitudes de devolución de los distribuidores.</description>
     <label>Devolución</label>
     <picklistValues>
+        <picklist>CAZ_BucketActual__c</picklist>
+        <values>
+            <fullName>Al Corriente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Amarillo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Naranja</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rojo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Verde</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>CAZ_MotivoAclaracion__c</picklist>
+        <values>
+            <fullName>Error en clave de distribuidor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Error en la referencia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Error en pago de convenio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No se ve reflejado en el portal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pago duplicado</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>CAZ_MotivoDevolucion__c</picklist>
         <values>
             <fullName>Otro</fullName>

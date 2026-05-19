@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Confirmación de solicitud de Aclaración de Pago recibida</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>CAZ Confirmación de Aclaración de Pago</name>
+    <style>none</style>
+    <subject>Confirmación de Solicitud de Aclaración de Pago - {!Case.CaseNumber}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

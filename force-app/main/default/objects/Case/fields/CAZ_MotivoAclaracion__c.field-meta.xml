@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_MotivoAclaracion__c</fullName>
+    <description>Motivo de la aclaración de pago</description>
+    <label>Motivo de Aclaración</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Pago duplicado</fullName>
+                <default>false</default>
+                <label>Pago duplicado</label>
+            </value>
+            <value>
+                <fullName>No se ve reflejado en el portal</fullName>
+                <default>false</default>
+                <label>No se ve reflejado en el portal</label>
+            </value>
+            <value>
+                <fullName>Error en la referencia</fullName>
+                <default>false</default>
+                <label>Error en la referencia</label>
+            </value>
+            <value>
+                <fullName>Error en pago de convenio</fullName>
+                <default>false</default>
+                <label>Error en pago de convenio</label>
+            </value>
+            <value>
+                <fullName>Error en clave de distribuidor</fullName>
+                <default>false</default>
+                <label>Error en clave de distribuidor</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

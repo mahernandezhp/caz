@@ -1,0 +1,151 @@
+<template>
+    <lightning-card title="Aclaración de Pagos" icon-name="custom:custom17">
+        
+        <div if:true={isLoading}>
+            <lightning-spinner alternative-text="Cargando..." size="medium"></lightning-spinner>
+        </div>
+        
+        <div class="slds-p-around_medium">
+            
+            <!-- Indicador de Progreso -->
+            <lightning-progress-indicator current-step={currentStep} type="path" variant="base">
+                <lightning-progress-step label="Selección de Distribuidor" value="1"></lightning-progress-step>
+                <lightning-progress-step label="Detalle de Aclaración" value="2"></lightning-progress-step>
+                <lightning-progress-step label="Confirmación" value="3"></lightning-progress-step>
+            </lightning-progress-indicator>
+            
+            <!-- PASO 1: Selección de Distribuidor -->
+            <div if:true={isStep1} class="slds-m-top_large fade-in">
+                <h2 class="slds-text-heading_small slds-m-bottom_medium">Paso 1: Selecciona la clave de distribuidor</h2>
+                
+                <lightning-combobox
+                    name="distribuidor"
+                    label="Distribuidor"
+                    value={selectedAccountId}
+                    placeholder="Seleccione un distribuidor"
+                    options={distribuidoresOptions}
+                    onchange={handleAccountChange}
+                    required>
+                </lightning-combobox>
+                
+                <div class="slds-m-top_large slds-text-align_right">
+                    <lightning-button variant="brand" label="Siguiente" onclick={goToStep2} disabled={isNextStep1Disabled}></lightning-button>
+                </div>
+            </div>
+            
+            <!-- PASO 2: Formulario -->
+            <div if:true={isStep2} class="slds-m-top_large fade-in">
+                <h2 class="slds-text-heading_small slds-m-bottom_medium">Paso 2: Detalles del Pago</h2>
+                
+                <div class="slds-grid slds-wrap slds-gutters">
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                        <lightning-combobox
+                            name="motivo"
+                            label="Motivo de la Aclaración"
+                            value={motivo}
+                            placeholder="Seleccione el motivo"
+                            options={motivosOptions}
+                            onchange={handleInputChange}
+                            required>
+                        </lightning-combobox>
+                    </div>
+                    
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                        <lightning-input 
+                            type="text" 
+                            name="numeroFactura" 
+                            label="Número de Factura o Anticipo" 
+                            value={numeroFactura} 
+                            onchange={handleInputChange}
+                            required>
+                        </lightning-input>
+                    </div>
+                    
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-m-top_small">
+                        <lightning-input 
+                            type="number" 
+                            name="monto" 
+                            label="Monto Pagado" 
+                            formatter="currency" 
+                            step="0.01" 
+                            value={monto} 
+                            onchange={handleInputChange}
+                            required>
+                        </lightning-input>
+                    </div>
+                    
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-m-top_small">
+                        <lightning-input 
+                            type="date" 
+                            name="fechaPago" 
+                            label="Fecha de Pago" 
+                            value={fechaPago} 
+                            onchange={handleInputChange}
+                            required>
+                        </lightning-input>
+                    </div>
+                    
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-m-top_small">
+                        <lightning-input 
+                            type="text" 
+                            name="referencia" 
+                            label="Referencia Bancaria" 
+                            value={referencia} 
+                            onchange={handleInputChange}>
+                        </lightning-input>
+                    </div>
+                    
+                    <div class="slds-col slds-size_1-of-1 slds-m-top_small">
+                        <lightning-textarea 
+                            name="descripcion" 
+                            label="Comentarios Adicionales" 
+                            value={descripcion} 
+                            onchange={handleInputChange}>
+                        </lightning-textarea>
+                    </div>
+                    
+                    <div class="slds-col slds-size_1-of-1 slds-m-top_medium">
+                        <label class="slds-form-element__label">Comprobante de Pago</label>
+                        <div if:false={hasFile} class="slds-box slds-box_small file-upload-box">
+                            <lightning-file-upload
+                                label="Adjuntar Archivo"
+                                name="fileUploader"
+                                accept=".pdf, .png, .jpg, .jpeg"
+                                record-id={caseIdCreated}
+                                onuploadfinished={handleUploadFinished}
+                                multiple="false">
+                            </lightning-file-upload>
+                            <p class="slds-m-top_x-small slds-text-color_weak slds-text-align_center">
+                                *Nota: El comprobante se adjuntará al caso una vez enviado.
+                            </p>
+                        </div>
+                        <div if:true={hasFile} class="slds-box slds-box_small slds-theme_default">
+                            <lightning-icon icon-name="doctype:attachment" size="small" class="slds-m-right_small"></lightning-icon>
+                            <span class="slds-text-heading_small">{fileName}</span>
+                            <lightning-button-icon icon-name="utility:delete" variant="bare" class="slds-m-left_medium" onclick={removeFile} title="Eliminar"></lightning-button-icon>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slds-m-top_large slds-grid slds-grid_align-spread">
+                    <lightning-button label="Atrás" onclick={goToStep1}></lightning-button>
+                    <lightning-button variant="brand" label="Enviar Solicitud" onclick={handleSubmit}></lightning-button>
+                </div>
+            </div>
+            
+            <!-- PASO 3: Confirmación -->
+            <div if:true={isStep3} class="slds-m-top_large slds-text-align_center fade-in">
+                <lightning-icon icon-name="action:approval" size="large" alternative-text="Éxito"></lightning-icon>
+                <h2 class="slds-text-heading_medium slds-m-top_medium">¡Solicitud Enviada Exitosamente!</h2>
+                <p class="slds-m-top_small slds-text-body_regular">
+                    Tu solicitud de aclaración de pago ha sido registrada en nuestro sistema y está en proceso de validación. 
+                    Pronto recibirás una notificación con el resultado.
+                </p>
+                <div class="slds-m-top_large">
+                    <lightning-button variant="brand" label="Crear Nueva Aclaración" onclick={resetForm}></lightning-button>
+                </div>
+            </div>
+            
+        </div>
+    </lightning-card>
+</template>

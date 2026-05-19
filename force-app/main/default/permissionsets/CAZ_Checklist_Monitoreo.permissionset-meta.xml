@@ -133,11 +133,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>CAZ_Checklist_Monitoreo__c.CAZ_Fotos__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>CAZ_Checklist_Monitoreo__c.CAZ_Hora_llegada__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -266,11 +261,15 @@
         <field>CAZ_Checklist_Monitoreo__c.CAZ_Ubicacion__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <flowAccesses>
+        <enabled>true</enabled>
+        <flow>CAZ_Create_Checklist_From_Maps</flow>
+    </flowAccesses>
     <hasActivationRequired>false</hasActivationRequired>
     <label>CAZ Checklist de Monitoreo</label>
     <objectPermissions>
         <allowCreate>true</allowCreate>
-        <allowDelete>true</allowDelete>
+        <allowDelete>false</allowDelete>
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
