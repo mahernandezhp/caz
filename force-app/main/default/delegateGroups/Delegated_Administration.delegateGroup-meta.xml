@@ -6,4 +6,5 @@
     <profiles>Portal Distribuidor - Base - Login</profiles>
     <profiles>Portal Distribuidor - Partner Community User</profiles>
     <profiles>External Apps Login User</profiles>
+    <roles>Usuario del distribuidor</roles>
 </DelegateGroup>
