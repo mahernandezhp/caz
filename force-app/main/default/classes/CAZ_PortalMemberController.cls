@@ -136,6 +136,22 @@ public with sharing class CAZ_PortalMemberController {
             }
         } catch (Exception e) {
             System.debug(LoggingLevel.ERROR, 'Error creating user async: ' + e.getMessage() + '\n' + e.getStackTraceString());
+            notifyFailureByEmail(contactId, email, e.getMessage());
         }
+    }
+
+    private static void notifyFailureByEmail(Id contactId, String email, String errorMsg) {
+        try {
+            Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+            mail.setToAddresses(new List<String>{UserInfo.getUserEmail()});
+            mail.setSubject('[CAZ Portal] Error creando usuario');
+            mail.setPlainTextBody(
+                'Hubo un error al crear el usuario asincrono.\n\n' +
+                'ContactId: ' + contactId + '\n' +
+                'Email: ' + email + '\n' +
+                'Error: ' + errorMsg
+            );
+            Messaging.sendEmail(new List<Messaging.SingleEmailMessage>{mail});
+        } catch (Exception ignore) {}
     }
 }
