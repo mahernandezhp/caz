@@ -16,7 +16,7 @@
     <enableNetPortalUserReportOpts>true</enableNetPortalUserReportOpts>
     <enableNetworksEnabled>true</enableNetworksEnabled>
     <enableOotbProfExtUserOpsEnable>true</enableOotbProfExtUserOpsEnable>
-    <enablePRMAccRelPref>false</enablePRMAccRelPref>
+    <enablePRMAccRelPref>true</enablePRMAccRelPref>
     <enablePowerCustomerCaseStatus>false</enablePowerCustomerCaseStatus>
     <enablePreventBadgeGuestAccess>true</enablePreventBadgeGuestAccess>
     <enableRelaxPartnerAccountFieldPref>false</enableRelaxPartnerAccountFieldPref>
