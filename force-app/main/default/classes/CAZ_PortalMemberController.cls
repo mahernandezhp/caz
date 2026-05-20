@@ -134,6 +134,10 @@ public with sharing class CAZ_PortalMemberController {
                 }
                 insert psas;
             }
+
+            try {
+                System.resetPassword(u.Id, true);
+            } catch (Exception ignore) {}
         } catch (Exception e) {
             System.debug(LoggingLevel.ERROR, 'Error creating user async: ' + e.getMessage() + '\n' + e.getStackTraceString());
             notifyFailureByEmail(contactId, email, e.getMessage());
