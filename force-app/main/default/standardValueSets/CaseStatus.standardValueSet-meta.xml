@@ -8,21 +8,99 @@
         <closed>false</closed>
     </standardValue>
     <standardValue>
-        <fullName>Working</fullName>
-        <default>false</default>
-        <label>Working</label>
-        <closed>false</closed>
-    </standardValue>
-    <standardValue>
-        <fullName>Escalated</fullName>
-        <default>false</default>
-        <label>Escalated</label>
-        <closed>false</closed>
-    </standardValue>
-    <standardValue>
         <fullName>Closed</fullName>
         <default>false</default>
         <label>Closed</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>En Revisión</fullName>
+        <default>false</default>
+        <label>En Revisión</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Aprobado</fullName>
+        <default>false</default>
+        <label>Aprobado</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Rechazado</fullName>
+        <default>false</default>
+        <label>Rechazado</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Formalización</fullName>
+        <default>false</default>
+        <label>Formalización</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Información Pendiente</fullName>
+        <default>false</default>
+        <label>Información Pendiente</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Por Autorizar</fullName>
+        <default>false</default>
+        <label>Por Autorizar</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Nuevo</fullName>
+        <default>false</default>
+        <label>Nuevo</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Gestión Comercial</fullName>
+        <default>false</default>
+        <label>Gestión Comercial</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Negociación Activa</fullName>
+        <default>false</default>
+        <label>Negociación Activa</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Evaluación Comercial</fullName>
+        <default>false</default>
+        <label>Evaluación Comercial</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Espera de Propuesta</fullName>
+        <default>false</default>
+        <label>Espera de Propuesta</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Formalización de Convenio</fullName>
+        <default>false</default>
+        <label>Formalización de Convenio</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Proceso Legal</fullName>
+        <default>false</default>
+        <label>Proceso Legal</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Cerrado - Liquidado</fullName>
+        <default>false</default>
+        <label>Cerrado - Liquidado</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Cerrado - Relación Terminada</fullName>
+        <default>false</default>
+        <label>Cerrado - Relación Terminada</label>
         <closed>true</closed>
     </standardValue>
     <standardValue>
@@ -32,33 +110,27 @@
         <closed>false</closed>
     </standardValue>
     <standardValue>
-        <fullName>Por atender</fullName>
-        <default>false</default>
-        <label>Por atender</label>
-        <closed>false</closed>
-    </standardValue>
-    <standardValue>
-        <fullName>Vencido</fullName>
-        <default>false</default>
-        <label>Vencido</label>
-        <closed>false</closed>
-    </standardValue>
-    <standardValue>
         <fullName>En Proceso</fullName>
         <default>false</default>
         <label>En Proceso</label>
         <closed>false</closed>
     </standardValue>
     <standardValue>
-        <fullName>Completado</fullName>
+        <fullName>Cerrado - Exitoso</fullName>
         <default>false</default>
-        <label>Completado</label>
+        <label>Cerrado - Exitoso</label>
         <closed>true</closed>
     </standardValue>
     <standardValue>
-        <fullName>Rechazado</fullName>
+        <fullName>Cerrado - Rechazado</fullName>
         <default>false</default>
-        <label>Rechazado</label>
+        <label>Cerrado - Rechazado</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Cerrado - No concluido</fullName>
+        <default>false</default>
+        <label>Cerrado - No concluido</label>
         <closed>true</closed>
     </standardValue>
 </StandardValueSet>

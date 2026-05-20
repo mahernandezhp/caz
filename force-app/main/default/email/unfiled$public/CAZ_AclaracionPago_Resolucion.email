@@ -1,0 +1,10 @@
+Estimado/a Distribuidor(a),
+
+Le informamos que su solicitud de aclaración de pago con número de caso {!Case.CaseNumber} ha cambiado de estado.
+
+El estado actual de su solicitud es: {!Case.Status}
+
+Si tiene alguna duda, por favor responda a este correo o comuníquese con su ejecutivo.
+
+Atentamente,
+Equipo de Cruz Azul

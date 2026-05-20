@@ -1,10 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>AmpliacionCredito</fullName>
+    <fullName>CAZ_CobranzaNegociacion</fullName>
     <active>true</active>
-    <businessProcess>Aplicacion Credito</businessProcess>
-    <description>Solicitudes de ampliación de credito generadas desde el portal</description>
-    <label>Ampliacion Credito</label>
+    <businessProcess>CAZ_Cobranza</businessProcess>
+    <description>Tipo de registro para el proceso de Cobranza y Negociación (CC3)</description>
+    <label>Cobranza y Negociación</label>
+    <picklistValues>
+        <picklist>CAZ_BucketActual__c</picklist>
+        <values>
+            <fullName>Al Corriente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Amarillo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Naranja</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rojo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Verde</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>CAZ_MotivoAclaracion__c</picklist>
+        <values>
+            <fullName>Error en clave de distribuidor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Error en la referencia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Error en pago de convenio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No se ve reflejado en el portal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pago duplicado</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
     <picklistValues>
         <picklist>CAZ_MotivoDevolucion__c</picklist>
         <values>

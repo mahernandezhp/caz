@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_BucketActual__c</fullName>
+    <description>Nivel de riesgo de cobranza actual de este caso.</description>
+    <label>Bucket Actual</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Verde</fullName>
+                <default>false</default>
+                <label>Verde</label>
+            </value>
+            <value>
+                <fullName>Amarillo</fullName>
+                <default>false</default>
+                <label>Amarillo</label>
+            </value>
+            <value>
+                <fullName>Naranja</fullName>
+                <default>false</default>
+                <label>Naranja</label>
+            </value>
+            <value>
+                <fullName>Rojo</fullName>
+                <default>false</default>
+                <label>Rojo</label>
+            </value>
+            <value>
+                <fullName>Al Corriente</fullName>
+                <default>false</default>
+                <label>Al Corriente</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

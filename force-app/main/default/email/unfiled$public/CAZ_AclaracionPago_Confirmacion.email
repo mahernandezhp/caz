@@ -1,0 +1,13 @@
+Estimado/a Distribuidor(a),
+
+Hemos recibido correctamente su solicitud de aclaración de pago con número de caso {!Case.CaseNumber}.
+
+Detalles de la solicitud:
+Número de Factura / Anticipo: {!Case.CAZ_NumeroFactura__c}
+Monto Pagado: {!Case.CAZ_MontoPagado__c}
+Fecha de Pago: {!Case.CAZ_FechaPago__c}
+
+Su solicitud se encuentra en revisión. Le notificaremos por este medio una vez que tengamos una resolución.
+
+Atentamente,
+Equipo de Cruz Azul
