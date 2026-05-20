@@ -65,10 +65,10 @@ Archivo local de respaldo:
 
 - `force-app/main/default/experiences/test1/views/accountManagementCustom.json`
 
-Pendiente operativo:
+Estado operativo:
 
-- Publicar el sitio `test` desde Experience Builder si la version publicada aun conserva una referencia al LWC.
-- Despues de publicar, ejecutar el delete final de `LightningComponentBundle:cazAddPortalMember` en la org si sigue listado en metadata.
+- El sitio `test` fue publicado desde Experience Builder despues de remover el componente.
+- `LightningComponentBundle:cazAddPortalMember` fue eliminado de la org.
 
 ## Manifest relacionado
 
