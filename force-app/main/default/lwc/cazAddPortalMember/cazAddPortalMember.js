@@ -54,7 +54,7 @@ export default class CazAddPortalMember extends LightningElement {
         }
         this.isLoading = true;
         try {
-            const userId = await createPortalMember({
+            await createPortalMember({
                 firstName: this.firstName,
                 lastName: this.lastName,
                 email: this.email,
@@ -63,7 +63,7 @@ export default class CazAddPortalMember extends LightningElement {
                 permissionSetIds: this.permissionSetIds,
                 accountId: this.accountId
             });
-            this.showToast('Éxito', `Usuario creado: ${userId}`, 'success');
+            this.showToast('Éxito', 'Solicitud enviada. El usuario se creará en unos segundos.', 'success');
             this.resetForm();
         } catch (e) {
             this.showToast('Error', e.body ? e.body.message : e.message, 'error');

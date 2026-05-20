@@ -75,7 +75,6 @@ public with sharing class CAZ_PortalMemberController {
             throw new AuraHandledException('Faltan campos requeridos.');
         }
 
-        Savepoint sp = Database.setSavepoint();
         try {
             Contact c = new Contact(
                 FirstName = firstName,
@@ -85,6 +84,28 @@ public with sharing class CAZ_PortalMemberController {
             );
             insert c;
 
+            createUserAsync(
+                c.Id, firstName, lastName, email, profileId, roleId,
+                permissionSetIds == null ? new List<Id>() : permissionSetIds
+            );
+
+            return c.Id;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
+    @future
+    public static void createUserAsync(
+        Id contactId,
+        String firstName,
+        String lastName,
+        String email,
+        Id profileId,
+        Id roleId,
+        List<Id> permissionSetIds
+    ) {
+        try {
             String baseUsername = email + '.' + UserInfo.getOrganizationId().substring(0, 5).toLowerCase();
             String alias = ((firstName == null ? '' : firstName.substring(0, Math.min(1, firstName.length()))) + lastName).replaceAll('[^a-zA-Z0-9]', '').toLowerCase();
             if (alias.length() > 8) alias = alias.substring(0, 8);
@@ -101,7 +122,7 @@ public with sharing class CAZ_PortalMemberController {
                 LocaleSidKey = 'es_MX',
                 TimeZoneSidKey = 'America/Mexico_City',
                 ProfileId = profileId,
-                ContactId = c.Id,
+                ContactId = contactId,
                 UserRoleId = roleId
             );
             insert u;
@@ -113,11 +134,8 @@ public with sharing class CAZ_PortalMemberController {
                 }
                 insert psas;
             }
-
-            return u.Id;
         } catch (Exception e) {
-            Database.rollback(sp);
-            throw new AuraHandledException(e.getMessage());
+            System.debug(LoggingLevel.ERROR, 'Error creating user async: ' + e.getMessage() + '\n' + e.getStackTraceString());
         }
     }
 }
