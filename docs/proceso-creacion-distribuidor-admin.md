@@ -65,8 +65,24 @@ Este documento describe el flujo completo para habilitar un nuevo distribuidor e
 - `classes/CAZ_ZonaSharingHandler.cls`
 - `classes/CAZ_ZonaSharingHandlerTest.cls`
 
-### Al crear/modificar relacion Cuenta-Zona (CAZ_CuentaZonaTrigger → after insert/delete)
+### Al crear/modificar relacion Cuenta-Zona (CAZ_CuentaZonaTrigger → before insert, after insert/delete)
 
+#### Validacion de duplicados (`CAZ_CuentaZonaValidationHandler`)
+
+- **Evento**: `before insert`
+- **Accion**: impide crear un registro `CAZ_Cuenta_y_Zona__c` si ya existe la misma combinacion Cuenta + Zona.
+- Valida tanto contra registros existentes en la base de datos como contra duplicados dentro del mismo lote (bulk insert).
+- Mensajes de error:
+  - `"Esta Cuenta ya está relacionada con esta Zona."` — si ya existe en BD.
+  - `"Ya existe otra relación en este lote para la misma Cuenta y Zona."` — si hay duplicado en el mismo batch.
+
+**Archivos**:
+- `classes/CAZ_CuentaZonaValidationHandler.cls`
+- `classes/CAZ_CuentaZonaValidationHandlerTest.cls`
+
+#### Reconciliacion de membresia de grupos
+
+- **Evento**: `after insert`, `after delete`
 - **Accion**: reconcilia las membresías de grupo de todos los usuarios portal activos de esa cuenta.
 - Si se agrega una nueva zona → los usuarios se agregan al grupo de esa zona.
 - Si se elimina una zona → los usuarios se remueven del grupo de esa zona.
