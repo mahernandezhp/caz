@@ -15,7 +15,7 @@ export default class CazPortalPedidos extends NavigationMixin(LightningElement) 
     orders = [];
     isLoading = true;
 
-    defaultStatus = 'Borrador';
+    defaultStatus = 'Draft';
 
     columns = [
         {
