@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>60.0</apiVersion>
     <actionCalls>
         <name>Llamar_Notificacion_Apex</name>
         <label>Llamar Notificación Apex</label>
@@ -8,13 +7,16 @@
         <locationY>288</locationY>
         <actionName>CAZ_NotificarTesoreriaAprobado</actionName>
         <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>solicitudIds</name>
             <value>
                 <elementReference>$Record.Id</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>CAZ_NotificarTesoreriaAprobado</nameSegment>
     </actionCalls>
+    <apiVersion>60.0</apiVersion>
     <environments>Default</environments>
     <interviewLabel>CAZ Recordatorio Aprobado Devolucion {!$Flow.CurrentDateTime}</interviewLabel>
     <label>CAZ_Recordatorio_Aprobado_Devolucion</label>

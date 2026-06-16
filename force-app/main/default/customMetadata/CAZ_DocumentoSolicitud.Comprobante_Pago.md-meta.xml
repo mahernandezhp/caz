@@ -3,8 +3,12 @@
     <label>Comprobante de pago</label>
     <protected>false</protected>
     <values>
-        <field>CAZ_TipoProceso__c</field>
-        <value xsi:type="xsd:string">Devolucion</value>
+        <field>CAZ_MontoMaximo__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>CAZ_MontoMinimo__c</field>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>CAZ_Obligatorio__c</field>
@@ -13,5 +17,9 @@
     <values>
         <field>CAZ_TipoArchivoPermitido__c</field>
         <value xsi:type="xsd:string">pdf,jpg,png</value>
+    </values>
+    <values>
+        <field>CAZ_TipoProceso__c</field>
+        <value xsi:type="xsd:string">Devolucion</value>
     </values>
 </CustomMetadata>

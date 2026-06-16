@@ -5,7 +5,7 @@
         <description>Alerta: Solicitud de Devolución Aceptada</description>
         <protected>false</protected>
         <recipients>
-            <type>owner</type>
+            <type>creator</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
         <template>unfiled$public/Solicitud_de_devoluci_n_aceptada_1775839760201</template>
@@ -15,7 +15,7 @@
         <description>Alerta: Solicitud de Devolución</description>
         <protected>false</protected>
         <recipients>
-            <type>owner</type>
+            <type>creator</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
         <template>unfiled$public/Solicitud_de_Devoluci_n_1775839314615</template>
@@ -25,7 +25,7 @@
         <description>Alerta: Solicitud de Devolución Rechazada</description>
         <protected>false</protected>
         <recipients>
-            <type>owner</type>
+            <type>creator</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
         <template>unfiled$public/Solicitud_de_devoluci_n_rechazada_1775839854461</template>
@@ -70,6 +70,21 @@
         <protected>false</protected>
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
+    <rules>
+        <fullName>Regla_Notificar_Solicitud_Completada</fullName>
+        <actions>
+            <name>Alerta_Solicitud_Aceptada</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>CAZ_SolicitudDevolucion__c.CAZ_Status__c</field>
+            <operation>equals</operation>
+            <value>Solicitud Completada</value>
+        </criteriaItems>
+        <description>Se dispara cuando la solicitud pasa a Solicitud Completada.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
     <rules>
         <fullName>Regla_Notificar_Solicitud_Recibida</fullName>
         <actions>

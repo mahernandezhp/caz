@@ -11,9 +11,6 @@
         <picklistValueName>Borrador</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
-        <picklistValueName>Solicitud Completada</picklistValueName>
-    </pathAssistantSteps>
-    <pathAssistantSteps>
         <picklistValueName>Por atender</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>

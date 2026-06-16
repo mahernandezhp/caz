@@ -75,10 +75,6 @@
             <name>Actualizar_Estatus_Rechazado</name>
             <type>FieldUpdate</type>
         </action>
-        <action>
-            <name>Alerta_Solicitud_Rechazada</name>
-            <type>Alert</type>
-        </action>
     </finalRejectionActions>
     <finalRejectionRecordLock>false</finalRejectionRecordLock>
     <initialSubmissionActions>
