@@ -7,7 +7,6 @@
   $Profile.Name &lt;&gt; &apos;System Administrator&apos;,
   $Profile.Name &lt;&gt; &apos;Administrador del sistema&apos;,
   OR(
-    ISPICKVAL(PRIORVALUE(CAZ_Status__c), &quot;Solicitud Completada&quot;),
     ISPICKVAL(PRIORVALUE(CAZ_Status__c), &quot;Completado&quot;),
     ISPICKVAL(PRIORVALUE(CAZ_Status__c), &quot;Rechazado&quot;),
     ISPICKVAL(PRIORVALUE(CAZ_Status__c), &quot;Cancelado&quot;)

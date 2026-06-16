@@ -43,8 +43,8 @@
     <fieldUpdates>
         <fullName>Actualizar_Estatus_En_revision_Tesoreria</fullName>
         <field>CAZ_Status__c</field>
-        <literalValue>Solicitud Completada</literalValue>
-        <name>Estatus: Solicitud Completada</name>
+        <literalValue>Completado</literalValue>
+        <name>Estatus: Completado</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
@@ -80,9 +80,9 @@
         <criteriaItems>
             <field>CAZ_SolicitudDevolucion__c.CAZ_Status__c</field>
             <operation>equals</operation>
-            <value>Solicitud Completada</value>
+            <value>Completado</value>
         </criteriaItems>
-        <description>Se dispara cuando la solicitud pasa a Solicitud Completada.</description>
+        <description>Se dispara cuando la solicitud pasa a Completado.</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>

@@ -45,10 +45,11 @@ Hoy el org usa estos valores:
 - `Por atender`
 - `Aprobado`
 - `Rechazado`
-- `Solicitud Completada`
+- `Completado`
+- `Solicitud Completada` legacy inactivo
 - `En revision Tesoreria` inactivo
 
-Adecuacion pendiente: reemplazar semanticamente `Aprobado` por `En proceso`, agregar `Pendiente de informacion` y `Cancelado`, y normalizar `Solicitud Completada` a `Completado` si negocio lo aprueba.
+Adecuacion pendiente: reemplazar semanticamente `Aprobado` por `En proceso`. `Pendiente de informacion`, `Cancelado` y `Completado` ya existen en metadata. `Solicitud Completada` queda como valor legacy inactivo y no debe usarse en Apex, Flows, Workflow ni LWC.
 
 ## SLA
 
@@ -384,7 +385,8 @@ Esta rama ya contiene el respaldo recuperado del org para devoluciones y este do
 Primera tanda aplicada en el objeto:
 
 - `CAZ_Status__c` ya incluye los valores objetivo `Pendiente de informacion`, `En proceso`, `Completado` y `Cancelado`.
-- Se conservaron temporalmente los valores legacy `Aprobado` y `Solicitud Completada` porque Apex/Flows/Workflow todavia los referencian.
+- Se conserva temporalmente el valor legacy `Aprobado` porque Apex/Flows/LWC todavia lo referencian.
+- `Solicitud Completada` fue normalizado a `Completado` en Apex, Flow, Workflow y LWC; el valor legacy queda inactivo en el picklist para evitar duplicidad en el Path.
 - Se agrego `CAZ_EstadoSLA__c` para separar el SLA del estado principal.
 - Se agregaron campos de fechas/control para CC, informacion adicional, reenvios, Tesoreria, provision JDE, referencia bancaria y fecha de pago.
 - Se actualizo el layout interno de solicitud de devolucion para exponer los nuevos campos operativos.

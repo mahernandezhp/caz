@@ -50,6 +50,7 @@
             <value>
                 <fullName>Solicitud Completada</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>Solicitud Completada</label>
             </value>
             <value>

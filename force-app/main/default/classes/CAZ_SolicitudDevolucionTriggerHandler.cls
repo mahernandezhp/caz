@@ -255,7 +255,7 @@ public with sharing class CAZ_SolicitudDevolucionTriggerHandler {
                     bodyDistribuidor = 'Tu Solicitud de Devolución ha sido Rechazada. Consulta las resoluciones de los ejecutivos.';
                 } else if (c.CAZ_Status__c == 'Borrador') {
                     bodyDistribuidor = 'Tu Solicitud de Devolución requiere ajustes. Por favor, revisa la solicitud en estado Borrador.';
-                } else if (c.CAZ_Status__c == 'Solicitud Completada') {
+                } else if (c.CAZ_Status__c == 'Completado') {
                     bodyDistribuidor = 'Tu Solicitud de Devolución ha sido completada exitosamente.';
                 } else {
                     bodyDistribuidor = 'El estatus de tu Solicitud de Devolución ha cambiado a: ' + c.CAZ_Status__c;

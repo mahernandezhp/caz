@@ -18,7 +18,7 @@
     </actionCalls>
     <apiVersion>60.0</apiVersion>
     <environments>Default</environments>
-    <interviewLabel>Alerta Solicitud Completada {!$Flow.CurrentDateTime}</interviewLabel>
+    <interviewLabel>Alerta Completado {!$Flow.CurrentDateTime}</interviewLabel>
     <label>CAZ_Alerta_Solicitud_Completada</label>
     <processMetadataValues>
         <name>BuilderType</name>
@@ -44,7 +44,7 @@
             <field>CAZ_Status__c</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Solicitud Completada</stringValue>
+                <stringValue>Completado</stringValue>
             </value>
         </filters>
         <object>CAZ_SolicitudDevolucion__c</object>

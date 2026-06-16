@@ -7,7 +7,7 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 const STATUS_CLASSES = {
     'Borrador': 'slds-theme_shade',
     'Por atender': 'slds-theme_info',
-    'Solicitud Completada': 'slds-theme_warning',
+    'Completado': 'slds-theme_success',
     'Aprobado': 'slds-theme_success',
     'Rechazado': 'slds-theme_error'
 };
