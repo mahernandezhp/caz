@@ -379,7 +379,19 @@ SLA:
 
 ## Estado actual de esta rama
 
-Esta rama ya contiene el respaldo recuperado del org para devoluciones y este documento de handoff. Al momento de crear este documento no se han aplicado adecuaciones funcionales todavia; solo se analizo y documento el proceso.
+Esta rama ya contiene el respaldo recuperado del org para devoluciones y este documento de handoff.
+
+Primera tanda aplicada en el objeto:
+
+- `CAZ_Status__c` ya incluye los valores objetivo `Pendiente de informacion`, `En proceso`, `Completado` y `Cancelado`.
+- Se conservaron temporalmente los valores legacy `Aprobado` y `Solicitud Completada` porque Apex/Flows/Workflow todavia los referencian.
+- Se agrego `CAZ_EstadoSLA__c` para separar el SLA del estado principal.
+- Se agregaron campos de fechas/control para CC, informacion adicional, reenvios, Tesoreria, provision JDE, referencia bancaria y fecha de pago.
+- Se actualizo el layout interno de solicitud de devolucion para exponer los nuevos campos operativos.
+- Se actualizo `CAZ_Devolucion.pathAssistant` para reflejar el flujo objetivo.
+- Se amplio `Bloqueo_Edicion_Cerrada` para contemplar `Completado` y `Cancelado`.
+
+Pendiente: ajustar Apex, Flow, Workflow, LWC, permisos y pruebas para usar los nuevos estatus de forma operativa.
 
 Cambios ajenos existentes en el workspace no forman parte de esta rama funcional y no deben mezclarse con devoluciones:
 
@@ -387,4 +399,3 @@ Cambios ajenos existentes en el workspace no forman parte de esta rama funcional
 - Metadata de Order/Account/logistica
 - Scripts temporales en `scripts/apex`
 - Archivos temporales/debug
-

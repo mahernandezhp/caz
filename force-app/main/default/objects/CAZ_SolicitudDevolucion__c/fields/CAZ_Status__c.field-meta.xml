@@ -23,6 +23,16 @@
                 <label>Por atender</label>
             </value>
             <value>
+                <fullName>Pendiente de informacion</fullName>
+                <default>false</default>
+                <label>Pendiente de informacion</label>
+            </value>
+            <value>
+                <fullName>En proceso</fullName>
+                <default>false</default>
+                <label>En proceso</label>
+            </value>
+            <value>
                 <fullName>Aprobado</fullName>
                 <default>false</default>
                 <label>Aprobado</label>
@@ -33,9 +43,19 @@
                 <label>Rechazado</label>
             </value>
             <value>
+                <fullName>Completado</fullName>
+                <default>false</default>
+                <label>Completado</label>
+            </value>
+            <value>
                 <fullName>Solicitud Completada</fullName>
                 <default>false</default>
                 <label>Solicitud Completada</label>
+            </value>
+            <value>
+                <fullName>Cancelado</fullName>
+                <default>false</default>
+                <label>Cancelado</label>
             </value>
             <value>
                 <fullName>En revisión Tesorería</fullName>

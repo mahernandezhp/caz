@@ -5,16 +5,25 @@
     <fieldName>CAZ_Status__c</fieldName>
     <masterLabel>Path Devoluciones</masterLabel>
     <pathAssistantSteps>
-        <picklistValueName>Aprobado</picklistValueName>
-    </pathAssistantSteps>
-    <pathAssistantSteps>
         <picklistValueName>Borrador</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
         <picklistValueName>Por atender</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
+        <picklistValueName>Pendiente de informacion</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <picklistValueName>En proceso</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
         <picklistValueName>Rechazado</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <picklistValueName>Completado</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <picklistValueName>Cancelado</picklistValueName>
     </pathAssistantSteps>
     <recordTypeName>__MASTER__</recordTypeName>
 </PathAssistant>

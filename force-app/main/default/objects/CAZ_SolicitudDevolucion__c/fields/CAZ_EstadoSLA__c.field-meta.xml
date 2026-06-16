@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_EstadoSLA__c</fullName>
+    <description>Estado operativo del SLA de Tesoreria. Se administra separado del estatus principal de la solicitud.</description>
+    <externalId>false</externalId>
+    <label>Estado SLA</label>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>No iniciado</fullName>
+                <default>true</default>
+                <label>No iniciado</label>
+            </value>
+            <value>
+                <fullName>En tiempo</fullName>
+                <default>false</default>
+                <label>En tiempo</label>
+            </value>
+            <value>
+                <fullName>Vencido</fullName>
+                <default>false</default>
+                <label>Vencido</label>
+            </value>
+            <value>
+                <fullName>Cumplido</fullName>
+                <default>false</default>
+                <label>Cumplido</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>CAZ_SiguienteRecordatorio__c</fullName>
-    <description>Almacena la fecha y hora del siguiente recordatorio automático (cada 8 horas) para Tesorería mientras la solicitud esté Aprobada.</description>
+    <description>Fecha y hora del siguiente recordatorio automatico de Tesoreria. Se usa cuando la solicitud esta en proceso y el SLA sigue abierto.</description>
     <externalId>false</externalId>
     <label>Siguiente Recordatorio</label>
     <required>false</required>

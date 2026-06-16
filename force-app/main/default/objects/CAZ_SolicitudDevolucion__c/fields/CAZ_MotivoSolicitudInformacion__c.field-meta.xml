@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_MotivoSolicitudInformacion__c</fullName>
+    <description>Motivo visible para el distribuidor cuando Credito y Cobranza solicita informacion adicional.</description>
+    <externalId>false</externalId>
+    <label>Motivo Solicitud Informacion</label>
+    <length>32768</length>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>4</visibleLines>
+</CustomField>
