@@ -11,5 +11,5 @@
     )
 )</errorConditionFormula>
     <errorDisplayField>CAZ_Fecha_reprogramacion__c</errorDisplayField>
-    <errorMessage>La fecha de reprogramación solicitada debe estar dentro del mes en curso.</errorMessage>
+    <errorMessage>La fecha de reprogramación debe estar dentro del mes en curso.</errorMessage>
 </ValidationRule>

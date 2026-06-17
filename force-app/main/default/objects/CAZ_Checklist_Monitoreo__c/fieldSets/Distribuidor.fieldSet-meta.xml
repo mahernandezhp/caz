@@ -22,10 +22,5 @@
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </displayedFields>
-    <displayedFields>
-        <field>CAZ_Fotos__c</field>
-        <isFieldManaged>false</isFieldManaged>
-        <isRequired>false</isRequired>
-    </displayedFields>
     <label>Distribuidor</label>
 </FieldSet>

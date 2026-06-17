@@ -130,7 +130,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>CAZ_SolicitudDevolucion_Record_Page</content>
-        <formFactor>Large</formFactor>
+        <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -138,7 +138,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>CAZ_SolicitudDevolucion_Record_Page</content>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -172,6 +172,7 @@
         <fields>NAME</fields>
         <fields>CAZ_Account__c</fields>
         <fields>CAZ_Status__c</fields>
+        <fields>CAZ_EstadoSLA__c</fields>
         <fields>CREATEDBY_USER</fields>
         <fields>CREATED_DATE</fields>
         <fields>UPDATEDBY_USER</fields>
@@ -183,6 +184,7 @@
         <customTabListAdditionalFields>CAZ_ImporteDevolucion__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>CAZ_MotivoDevolucion__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>CAZ_Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CAZ_EstadoSLA__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
         <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
         <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
@@ -193,10 +195,12 @@
         <lookupDialogsAdditionalFields>CAZ_Account__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>CAZ_ImporteDevolucion__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>CAZ_Status__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CAZ_EstadoSLA__c</lookupDialogsAdditionalFields>
         <searchResultsAdditionalFields>CAZ_Account__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CAZ_ImporteDevolucion__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CAZ_MotivoDevolucion__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CAZ_Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CAZ_EstadoSLA__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CREATEDBY_USER</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CREATED_DATE</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>UPDATEDBY_USER</searchResultsAdditionalFields>

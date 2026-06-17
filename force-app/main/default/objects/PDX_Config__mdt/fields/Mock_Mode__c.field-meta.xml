@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mock_Mode__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>Si está activo, los servicios PDX devuelven datos mock (mientras el P0 de credenciales CAZ siga bloqueado).</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Mock Mode</label>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_Pegazulejo</fullName>
+    <active>true</active>
+    <description>Tipos de pegazulejo a seleccionar</description>
+    <label>CAZ_Pegazulejo</label>
+    <picklistValues>
+        <picklist>CAZ_Tipo_de_documento__c</picklist>
+        <values>
+            <fullName>BB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SQ</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Family</picklist>
+        <values>
+            <fullName>None</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>QuantityUnitOfMeasure</picklist>
+        <values>
+            <fullName>Each</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

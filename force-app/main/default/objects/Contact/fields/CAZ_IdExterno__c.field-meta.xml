@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_IdExterno__c</fullName>
+    <caseSensitive>false</caseSensitive>
+    <description>Valor obsoleto - 13.05.2026</description>
+    <externalId>true</externalId>
+    <inlineHelpText>Valor único de cada Contacto. Valor obsoleto - 13.05.2026</inlineHelpText>
+    <label>CAZ_IdExterno</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Text</type>
+    <unique>true</unique>
+</CustomField>

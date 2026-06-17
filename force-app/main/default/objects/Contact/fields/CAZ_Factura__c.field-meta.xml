@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAZ_Factura__c</fullName>
+    <defaultValue>false</defaultValue>
+    <inlineHelpText>Si el campo esta marcado, es el Contacto utilizado para recibir la(s) Factura(s)</inlineHelpText>
+    <label>CAZ_Factura</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Checkbox</type>
+</CustomField>

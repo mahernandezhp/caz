@@ -158,7 +158,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <externalSharingModel>Private</externalSharingModel>
     <label>Solicitud de actualización de datos</label>
     <nameField>
         <displayFormat>SAD-{000000000}</displayFormat>
@@ -178,6 +178,6 @@
         <excludedStandardButtons>PrintableListView</excludedStandardButtons>
         <excludedStandardButtons>MassAssignRecordLabel</excludedStandardButtons>
     </searchLayouts>
-    <sharingModel>ControlledByParent</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

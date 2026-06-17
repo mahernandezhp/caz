@@ -10,5 +10,10 @@
     <columns>ORDERS.TOTAL_AMOUNT</columns>
     <columns>ORDERS.EFFECTIVE_DATE</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>ORDERS.STATUS</field>
+        <operation>notEqual</operation>
+        <value>Draft</value>
+    </filters>
     <label>All Orders</label>
 </ListView>
