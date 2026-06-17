@@ -34,6 +34,14 @@
                 <behavior>Edit</behavior>
                 <field>Solicitud_de_complemento__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CAZ_BigBag__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>CAZ_Tipo_de_documento__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

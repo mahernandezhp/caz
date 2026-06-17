@@ -11,6 +11,10 @@
         <label>Order Information</label>
         <layoutColumns>
             <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Name</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>OrderNumber</field>
             </layoutItems>
@@ -55,6 +59,34 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>CAZ_BigBag__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CAZ_Cancelacion__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CAZ_Fecha_de_creacion__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CAZ_Fecha_UModificacion__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CAZ_Producto_WS__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CAZ_CreadoPor__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CAZ_TotalAmount__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>CAZ_Capacidad_de_retiroF__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

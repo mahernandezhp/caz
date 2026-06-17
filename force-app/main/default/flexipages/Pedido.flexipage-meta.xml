@@ -69,6 +69,10 @@
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>hideSlackAction</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>numVisibleActions</name>
                     <value>5</value>
                 </componentInstanceProperties>
@@ -98,6 +102,16 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Name</fieldItem>
+                <identifier>RecordNameField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
                     <value>readonly</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.OrderNumber</fieldItem>
@@ -122,6 +136,72 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.CAZ_Numero_JDE__c</fieldItem>
                 <identifier>RecordJAF_Numero_JDE__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CAZ_Cancelacion__c</fieldItem>
+                <identifier>RecordCAZ_Cancelacion__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CAZ_Fecha_de_creacion__c</fieldItem>
+                <identifier>RecordCAZ_Fecha_de_creacion__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CAZ_Fecha_UModificacion__c</fieldItem>
+                <identifier>RecordFecha_UModificacion__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CAZ_Producto_WS__c</fieldItem>
+                <identifier>RecordCAZ_Producto_WS__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CAZ_CreadoPor__c</fieldItem>
+                <identifier>RecordCAZ_CreadoPor__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CAZ_TotalAmount__c</fieldItem>
+                <identifier>RecordCAZ_TotalAmount__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.CAZ_Capacidad_de_retiroF__c</fieldItem>
+                <identifier>RecordCAZ_Capacidad_de_retiroF__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-a9e1afac-572b-4e1b-9f99-db8c8ba815d6</name>
@@ -400,6 +480,16 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.CAZ_Listado_de_Productos__c</fieldItem>
                 <identifier>RecordCAZ_Listado_de_Productos__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CAZ_VieneDeWS__c</fieldItem>
+                <identifier>RecordCAZ_VieneDeWS_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-7a5d84e1-e641-474c-9090-cf08d071afb6</name>

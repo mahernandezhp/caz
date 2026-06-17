@@ -72,6 +72,18 @@
                 <identifier>RecordCAZ_Estado_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.CAZ_Planta__c</fieldItem>
+                <identifier>RecordCAZ_Planta__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.CAZ_Numero_Orden_Agentforce__c</fieldItem>
+                <identifier>RecordCAZ_Numero_Orden_Agentforce__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-be355d03-da33-4d26-8076-245bfa64bf7e</name>
         <type>Facet</type>
     </flexiPageRegions>
