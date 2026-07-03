@@ -1,0 +1,30 @@
+<template>
+    <div class="pdx-filterbar">
+        <lightning-input
+            class="pdx-filterbar__field"
+            type="text"
+            label="Número de cliente"
+            value={numCliente}
+            disabled={numClienteReadonly}
+            onchange={handleNum}
+        ></lightning-input>
+        <lightning-input
+            class="pdx-filterbar__field"
+            type="date"
+            label="Fecha inicio"
+            value={desde}
+            onchange={handleDesde}
+        ></lightning-input>
+        <lightning-input
+            class="pdx-filterbar__field"
+            type="date"
+            label="Fecha fin"
+            value={hasta}
+            onchange={handleHasta}
+        ></lightning-input>
+        <div class="pdx-filterbar__actions">
+            <c-pdx-button label="Aplicar" icon-name="utility:filterList" onclick={apply}></c-pdx-button>
+            <c-pdx-button label="Limpiar" variant="neutral" onclick={clearFilters}></c-pdx-button>
+        </div>
+    </div>
+</template>

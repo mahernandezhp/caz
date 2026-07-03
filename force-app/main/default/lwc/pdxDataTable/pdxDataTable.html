@@ -1,0 +1,21 @@
+<template>
+    <div class="pdx-datatable">
+        <template lwc:if={enableExport}>
+            <div class="pdx-datatable__toolbar">
+                <c-pdx-button
+                    label="Exportar CSV"
+                    variant="neutral"
+                    icon-name="utility:download"
+                    onclick={exportCsv}
+                ></c-pdx-button>
+            </div>
+        </template>
+        <lightning-datatable
+            key-field={keyField}
+            data={records}
+            columns={columns}
+            hide-checkbox-column
+            onrowaction={handleRowAction}
+        ></lightning-datatable>
+    </div>
+</template>

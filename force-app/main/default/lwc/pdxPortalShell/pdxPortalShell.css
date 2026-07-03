@@ -1,0 +1,28 @@
+.pdx-shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.pdx-shell__body {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: stretch;
+}
+.pdx-shell__sidebar {
+    flex: 0 0 15rem;
+    width: 15rem;
+}
+.pdx-shell__content {
+    flex: 1 1 auto;
+    padding: 1.5rem;
+    min-width: 0;
+}
+@media (max-width: 48em) {
+    .pdx-shell__body {
+        flex-direction: column;
+    }
+    .pdx-shell__sidebar {
+        flex-basis: auto;
+        width: 100%;
+    }
+}

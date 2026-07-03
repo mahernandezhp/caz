@@ -1,0 +1,18 @@
+<template>
+    <article class="pdx-card">
+        <div class="pdx-card__header">
+            <div class="pdx-card__title">
+                <template lwc:if={iconName}>
+                    <lightning-icon icon-name={iconName} size="small" class="slds-m-right_small"></lightning-icon>
+                </template>
+                <h2>{title}</h2>
+            </div>
+            <div class="pdx-card__actions">
+                <slot name="actions"></slot>
+            </div>
+        </div>
+        <div class="pdx-card__body">
+            <slot></slot>
+        </div>
+    </article>
+</template>

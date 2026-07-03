@@ -1,0 +1,36 @@
+<template>
+    <div class="pdx-shell">
+        <c-pdx-theme-header></c-pdx-theme-header>
+        <div class="pdx-shell__body">
+            <aside class="pdx-shell__sidebar">
+                <c-pdx-theme-sidebar active={activeModule} onnavigate={handleNavigate}></c-pdx-theme-sidebar>
+            </aside>
+            <main class="pdx-shell__content" role="main">
+                <template lwc:if={isHome}>
+                    <c-pdx-home onnavigate={handleNavigate}></c-pdx-home>
+                </template>
+                <template lwc:elseif={isOrdenes}>
+                    <c-pdx-ordenes></c-pdx-ordenes>
+                </template>
+                <template lwc:elseif={isFacturas}>
+                    <c-pdx-facturas></c-pdx-facturas>
+                </template>
+                <template lwc:elseif={isEstado}>
+                    <c-pdx-estado-cuenta></c-pdx-estado-cuenta>
+                </template>
+                <template lwc:elseif={isPagos}>
+                    <c-pdx-pagos></c-pdx-pagos>
+                </template>
+                <template lwc:elseif={isBonificaciones}>
+                    <c-pdx-bonificaciones></c-pdx-bonificaciones>
+                </template>
+                <template lwc:elseif={isSolicitudes}>
+                    <c-pdx-solicitudes></c-pdx-solicitudes>
+                </template>
+                <template lwc:elseif={isCuenta}>
+                    <c-pdx-cuenta></c-pdx-cuenta>
+                </template>
+            </main>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,8 @@
+<template>
+    <button class={computedClass} type={type} disabled={disabled} onclick={handleClick}>
+        <template lwc:if={iconName}>
+            <lightning-icon icon-name={iconName} size="x-small" class="slds-m-right_x-small pdx-button__icon"></lightning-icon>
+        </template>
+        <span>{label}</span>
+    </button>
+</template>

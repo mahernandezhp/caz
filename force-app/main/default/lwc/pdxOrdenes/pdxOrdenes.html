@@ -1,0 +1,13 @@
+<template>
+    <c-pdx-card title="Órdenes de venta" icon-name="utility:orders">
+        <c-pdx-filter-bar num-cliente={numCliente} onapply={handleApply}></c-pdx-filter-bar>
+        <c-pdx-data-table
+            key-field="id"
+            columns={columns}
+            records={ordenes}
+            enable-export
+            export-filename="ordenes.csv"
+            onrowaction={handleRowAction}
+        ></c-pdx-data-table>
+    </c-pdx-card>
+</template>

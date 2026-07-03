@@ -1,0 +1,47 @@
+.pdx-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    height: 2.25rem;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    line-height: 1;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: background-color 0.1s ease;
+}
+.pdx-button:focus {
+    outline: 2px solid var(--pdx-brand-primary, #0033a0);
+    outline-offset: 2px;
+}
+.pdx-button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.pdx-button_brand {
+    background-color: var(--pdx-brand-primary, #0033a0);
+    color: #fff;
+}
+.pdx-button_brand:hover:not([disabled]) {
+    background-color: var(--pdx-brand-primary-dark, #00257a);
+}
+.pdx-button_neutral {
+    background-color: #fff;
+    color: #181818;
+    border-color: #c9c9c9;
+}
+.pdx-button_neutral:hover:not([disabled]) {
+    background-color: #f3f3f3;
+}
+.pdx-button_destructive {
+    background-color: #ba0517;
+    color: #fff;
+}
+.pdx-button_destructive:hover:not([disabled]) {
+    background-color: #8e030f;
+}
+.pdx-button__icon {
+    --slds-c-icon-color-foreground-default: currentColor;
+}

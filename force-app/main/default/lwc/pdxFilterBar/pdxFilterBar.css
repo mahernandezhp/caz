@@ -1,0 +1,25 @@
+.pdx-filterbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 1rem;
+    padding: 0.25rem 0 1rem;
+}
+.pdx-filterbar__field {
+    flex: 1 1 12rem;
+    min-width: 10rem;
+}
+.pdx-filterbar__actions {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+    padding-bottom: 0.1rem;
+}
+@media (max-width: 48em) {
+    .pdx-filterbar__field {
+        flex-basis: 100%;
+    }
+    .pdx-filterbar__actions {
+        width: 100%;
+    }
+}
